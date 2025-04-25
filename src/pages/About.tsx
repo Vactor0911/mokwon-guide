@@ -1,5 +1,11 @@
+import { Stack } from "@mui/material";
+
 const About = () => {
-  return <></>;
+  return (
+    <Stack height="100vh" justifyContent="center">
+      About Page!
+    </Stack>
+  );
 };
 
 export default About;
