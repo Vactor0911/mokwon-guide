@@ -55,7 +55,7 @@ const Header = () => {
       <Drawer open={isDrawerOpen} onClose={handleIsDrawerOpen(false)}>
         <Box
           role="presentation"
-          width="100vw"
+          width="95vw"
           maxWidth="450px"
           height="100%"
           padding={1}
