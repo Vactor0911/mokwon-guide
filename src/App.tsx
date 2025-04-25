@@ -7,7 +7,7 @@ import Header from "./components/Header";
 const App = () => {
   return (
     <>
-      <CssBaseline />
+      <CssBaseline /> 
       <ThemeProvider theme={theme}>
         <Header />
         <BrowserRouter>
