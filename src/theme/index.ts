@@ -37,4 +37,13 @@ export const theme = createTheme({
       fontWeight: "bold",
     },
   },
+  components: {
+    MuiTooltip: {
+      styleOverrides: {
+        tooltip: {
+          fontSize: "1em",
+        },
+      },
+    },
+  },
 });
