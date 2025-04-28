@@ -160,7 +160,7 @@ const DrawerMenu = () => {
                 {buildings.map((building) => (
                   <DrawerNavLink
                     key={building.id}
-                    to={`detail/${building.alpha}`}
+                    to={`detail?building=${building.alpha}`}
                     onClick={handleCloseAll}
                   >
                     <Grid container spacing={1}>
