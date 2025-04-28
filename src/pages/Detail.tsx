@@ -1,11 +1,14 @@
 import { Stack } from "@mui/material";
+import { useLocation } from "react-router";
 
 const Detail = () => {
-  const params = window.location.pathname.split("/").slice(2);
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const building = queryParams.get("building");
 
   return (
-    <Stack height="100vh" justifyContent="center">
-      Detail Page! {params[0]}
+    <Stack height="100%" justifyContent="center">
+      Detail Page! {building}
     </Stack>
   );
 };

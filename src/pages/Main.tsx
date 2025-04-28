@@ -1,7 +1,7 @@
 import { Stack } from "@mui/material";
 
 const Main = () => {
-  return <Stack height="100vh" justifyContent="center">
+  return <Stack height="100%" justifyContent="center">
     Main Page!
   </Stack>;
 };
