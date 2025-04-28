@@ -1,0 +1,18 @@
+[
+  { "id": 1, "alpha": "A", "name": "신학관" },
+  { "id": 2, "alpha": "B", "name": "문화콘텐츠관" },
+  { "id": 3, "alpha": "C", "name": "보건안전관" },
+  { "id": 4, "alpha": "D", "name": "공학관" },
+  { "id": 5, "alpha": "E", "name": "사회과학관" },
+  { "id": 6, "alpha": "F", "name": "음악관" },
+  { "id": 7, "alpha": "G", "name": "미술관" },
+  { "id": 8, "alpha": "G1", "name": "미술대학실습동" },
+  { "id": 9, "alpha": "I", "name": "캠퍼스타운" },
+  { "id": 10, "alpha": "J", "name": "(구) 신학관" },
+  { "id": 11, "alpha": "M", "name": "중앙도서관" },
+  { "id": 12, "alpha": "N", "name": "학생회관" },
+  { "id": 13, "alpha": "O", "name": "건축도시지원센터" },
+  { "id": 14, "alpha": "O1", "name": "창업보육센터" },
+  { "id": 15, "alpha": "P", "name": "체육관" },
+  { "id": 16, "alpha": "R", "name": "콘서트홀" }
+]

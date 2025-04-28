@@ -1,4 +1,4 @@
-import { CssBaseline, ThemeProvider } from "@mui/material";
+import { CssBaseline, Stack, ThemeProvider } from "@mui/material";
 import { theme } from "./theme";
 import { BrowserRouter, Route, Routes } from "react-router";
 import { About, Detail, Main } from "./pages";
@@ -11,11 +11,13 @@ const App = () => {
       <ThemeProvider theme={theme}>
         <BrowserRouter>
           <Header />
-          <Routes>
-            <Route path="/" element={<Main />} />
-            <Route path="/about" element={<About />} />
-            <Route path="/detail/*" element={<Detail />} />
-          </Routes>
+          <Stack height="calc(100vh - 64px)">
+            <Routes>
+              <Route path="/" element={<Main />} />
+              <Route path="/about" element={<About />} />
+              <Route path="/detail/*" element={<Detail />} />
+            </Routes>
+          </Stack>
         </BrowserRouter>
       </ThemeProvider>
     </>
