@@ -20,7 +20,7 @@ const Header = () => {
   return (
     <>
       {/* 헤더 */}
-      <AppBar>
+      <AppBar position="relative">
         <Toolbar sx={{ justifyContent: "space-between" }}>
           <IconButton
             edge="start"
