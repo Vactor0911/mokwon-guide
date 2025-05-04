@@ -2,18 +2,34 @@ import { ImageOverlay, MapContainer } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import { LatLngBoundsExpression, CRS } from "leaflet";
 import MapImage from "/images/map.png";
-
-const bounds: LatLngBoundsExpression = [
-  [0, 0],
-  [3840, 2160],
-];
-
-const maxBounds: LatLngBoundsExpression = [
-  [0, 100],
-  [3840, 2060],
-];
+import { useMediaQuery } from "@mui/material";
+import { theme } from "../theme";
 
 const MapViewer = () => {
+  const bounds: LatLngBoundsExpression = useMediaQuery(
+    theme.breakpoints.up("sm")
+  )
+    ? [
+        [0, 0],
+        [3840, 2160],
+      ]
+    : [
+        [0, 0],
+        [1920, 1080],
+      ];
+
+  const maxBounds: LatLngBoundsExpression = useMediaQuery(
+    theme.breakpoints.up("sm")
+  )
+    ? [
+        [0, 100],
+        [3840, 2060],
+      ]
+    : [
+        [0, 50],
+        [1920, 930],
+      ];
+
   return (
     <MapContainer
       crs={CRS.Simple}
