@@ -32,14 +32,7 @@ const Header = () => {
             <MenuIcon fontSize="large" />
           </IconButton>
 
-          <Typography
-            variant="h3"
-            fontSize={{
-              xs: "1.25rem",
-              sm: "1.75rem",
-            }}
-            sx={{ color: "white" }}
-          >
+          <Typography variant="h4" sx={{ color: "white" }}>
             목원 길잡이
           </Typography>
 
