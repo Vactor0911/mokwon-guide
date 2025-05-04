@@ -31,8 +31,9 @@ const BuildingDetailDrawer = (props: BuildingDetailDrawerProps) => {
       keepMounted
       sx={{
         "& > .MuiPaper-root": {
-          visibility: "hidden",
           alignItems: "center",
+          background: "transparent",
+          boxShadow: "none",
         },
       }}
     >
@@ -52,7 +53,6 @@ const BuildingDetailDrawer = (props: BuildingDetailDrawerProps) => {
             xs: 8,
             sm: 16,
           },
-          visibility: "visible",
           ".MuiButtonBase-root .MuiButton-startIcon > svg": {
             fontSize: "1.75em",
           },
