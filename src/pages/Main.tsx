@@ -20,7 +20,9 @@ const Main = () => {
         <MapViewer />
 
         {/* 드로어 테스트용 버튼 */}
-        <Box position="absolute" bottom={5} left={5}>
+        <Box position="absolute" bottom={5} left={5} zIndex={1000} sx={{
+          opacity: 0.4,
+        }}>
           <Button
             variant="contained"
             onClick={handleBuildingDetailDrawerOpen(true)}
