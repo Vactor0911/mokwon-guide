@@ -28,7 +28,6 @@ const BuildingDetailDrawer = (props: BuildingDetailDrawerProps) => {
       onOpen={handleDrawerOpen(true)}
       swipeAreaWidth={56}
       disableSwipeToOpen
-      keepMounted
       sx={{
         "& > .MuiPaper-root": {
           alignItems: "center",
@@ -127,7 +126,7 @@ const BuildingDetailDrawer = (props: BuildingDetailDrawerProps) => {
             }}
           >
             <SearchRoundedIcon />
-            <Typography variant="h5">더보기</Typography>
+            <Typography variant="h6">더보기</Typography>
           </Stack>
         </Button>
 
@@ -142,7 +141,7 @@ const BuildingDetailDrawer = (props: BuildingDetailDrawerProps) => {
               borderRadius: "50px",
             }}
           >
-            <Typography variant="h5" color="secondary">
+            <Typography variant="h6" color="secondary">
               출발
             </Typography>
           </Button>
@@ -156,7 +155,7 @@ const BuildingDetailDrawer = (props: BuildingDetailDrawerProps) => {
               borderRadius: "50px",
             }}
           >
-            <Typography variant="h5">도착</Typography>
+            <Typography variant="h6">도착</Typography>
           </Button>
         </Stack>
       </Stack>
