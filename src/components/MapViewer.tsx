@@ -8,9 +8,9 @@ import { useCallback, useState } from "react";
 import MyLocationRoundedIcon from "@mui/icons-material/MyLocationRounded";
 
 const MapViewer = () => {
-  const bounds: LatLngBoundsExpression = useMediaQuery(
-    theme.breakpoints.up("sm")
-  )
+  const isLargeScreen = useMediaQuery(theme.breakpoints.up("sm"));
+
+  const bounds: LatLngBoundsExpression = isLargeScreen
     ? [
         [0, 0],
         [1920, 1080],
@@ -20,9 +20,7 @@ const MapViewer = () => {
         [960, 540],
       ];
 
-  const maxBounds: LatLngBoundsExpression = useMediaQuery(
-    theme.breakpoints.up("sm")
-  )
+  const maxBounds: LatLngBoundsExpression = isLargeScreen
     ? [
         [0, -500],
         [1920, 1580],
