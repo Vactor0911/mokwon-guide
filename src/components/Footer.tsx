@@ -24,7 +24,7 @@ const IconLinkButton = (props: IconLinkButtonProps) => {
   const { iconImage, alt, tooltip, onClick, ...others } = props;
 
   return (
-    <Tooltip title={tooltip}>
+    <Tooltip title={tooltip} arrow>
       <IconButton onClick={onClick}>
         <Box
           component="img"
