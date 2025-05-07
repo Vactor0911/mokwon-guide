@@ -11,15 +11,16 @@ import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import SearchRoundedIcon from "@mui/icons-material/SearchRounded";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
 import { useCallback, useState } from "react";
+import { useAtom } from "jotai";
+import { isSearchDrawerOpenAtom } from "../states";
 
-interface SearchDrawerProps {
-  isOpen: boolean;
-  onClose: () => void;
-}
-
-const SearchDrawer = (props: SearchDrawerProps) => {
-  const { isOpen, onClose } = props;
+const SearchDrawer = () => {
+  const [isOpen, setIsOpen] = useAtom(isSearchDrawerOpenAtom);
   const [searchData, setSearchData] = useState(""); // 검색어 입력값
+
+  const handleClose = useCallback(() => {
+    setIsOpen(false);
+  }, [setIsOpen]);
 
   const handleSearch = useCallback((event: React.FormEvent) => {
     event.preventDefault();
@@ -44,7 +45,7 @@ const SearchDrawer = (props: SearchDrawerProps) => {
     <Drawer
       anchor="right"
       open={isOpen}
-      onClose={onClose}
+      onClose={handleClose}
       sx={{
         "& .MuiDrawer-paper": {
           width: "100%",
@@ -63,7 +64,7 @@ const SearchDrawer = (props: SearchDrawerProps) => {
             justifyContent: "space-between",
           }}
         >
-          <IconButton onClick={onClose}>
+          <IconButton onClick={handleClose}>
             <ArrowForwardIosIcon
               fontSize="large"
               sx={{

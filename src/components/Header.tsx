@@ -1,9 +1,9 @@
 import { AppBar, IconButton, Toolbar, Typography } from "@mui/material";
 import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
-import { useCallback, useState } from "react";
+import { useCallback } from "react";
 import { useSetAtom } from "jotai";
-import { isDrawerOpenAtom } from "../states";
+import { isDrawerOpenAtom, isSearchDrawerOpenAtom } from "../states";
 import DrawerMenu from "./DrawerMenu";
 import SearchDrawer from "./SearchDrawer";
 
@@ -19,15 +19,11 @@ const Header = () => {
   );
 
   // 검색 드로어 열림 관련
-  const [isSearchDrawerOpen, setIsSearchDrawerOpen] = useState(false);
+  const setIsSearchDrawerOpen = useSetAtom(isSearchDrawerOpenAtom);
 
   const handleSearchDrawerOpen = useCallback(() => {
     setIsSearchDrawerOpen(true);
-  }, []);
-
-  const handleSearchDrawerClose = useCallback(() => {
-    setIsSearchDrawerOpen(false);
-  }, []);
+  }, [setIsSearchDrawerOpen]);
 
   return (
     <>
@@ -64,10 +60,7 @@ const Header = () => {
       <DrawerMenu />
 
       {/* 검색 드로어 */}
-      <SearchDrawer
-        isOpen={isSearchDrawerOpen}
-        onClose={handleSearchDrawerClose}
-      />
+      <SearchDrawer />
     </>
   );
 };
