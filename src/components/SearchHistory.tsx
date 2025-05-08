@@ -65,13 +65,36 @@ const SearchHistory = ({
       <Paper elevation={0} sx={{ borderRadius: 2 }}>
         <List>
           {searchHistory.map((item, index) => {
+            // ID 부분 추출 (있는 경우)
+            let displayName = item;
+            let extractedId = "";
+
+            // "이름 [ID]" 형식 파싱
+            const idMatch = item.match(/^(.*) \[(.*)\]$/);
+            if (idMatch) {
+              displayName = idMatch[1]; // 순수 이름 부분
+              extractedId = idMatch[2]; // ID 부분
+            }
+
             // 검색 기록 아이템이 건물인지 시설인지 확인
             const buildingMatch = buildings.find(
-              (building) => building.name === item
+              (building) => building.name === displayName
             );
-            const facilityMatch = buildingLayouts.find(
-              (facility) => facility.name === item
-            );
+
+            // ID가 있으면 그 ID로 시설 찾기, 없으면 이름으로 찾기
+            const facilityMatch = extractedId
+              ? buildingLayouts.find((facility) => facility.id === extractedId)
+              : buildingLayouts.find(
+                  (facility) => facility.name === displayName
+                );
+
+            // 아이콘 결정 - 건물 아니면 시설 아이콘
+            const IconComponent = buildingMatch
+              ? ApartmentIcon
+              : LocationOnIcon;
+            const iconColor = buildingMatch
+              ? theme.palette.primary.main
+              : theme.palette.secondary.main;
 
             return (
               <ListItem
@@ -92,23 +115,13 @@ const SearchHistory = ({
                     },
                   }}
                 >
-                  {buildingMatch ? (
-                    <ApartmentIcon
-                      fontSize="large"
-                      sx={{
-                        mr: 2,
-                        color: theme.palette.primary.main,
-                      }}
-                    />
-                  ) : (
-                    <LocationOnIcon
-                      fontSize="large"
-                      sx={{
-                        mr: 2,
-                        color: theme.palette.secondary.main,
-                      }}
-                    />
-                  )}
+                  <IconComponent
+                    fontSize="large"
+                    sx={{
+                      mr: 2,
+                      color: iconColor,
+                    }}
+                  />
                   <ListItemText
                     sx={{
                       "& .MuiListItemText-primary": {
@@ -116,13 +129,11 @@ const SearchHistory = ({
                         fontSize: "1.1rem",
                       },
                     }}
-                    primary={item}
+                    primary={displayName} // ID 없이 이름만 표시
                     secondary={
                       buildingMatch
                         ? "건물"
-                        : facilityMatch
-                        ? `시설 (${facilityMatch.id})`
-                        : "검색어"
+                        : `시설 (${facilityMatch?.id || extractedId})`
                     }
                   />
                   <IconButton

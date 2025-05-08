@@ -95,10 +95,16 @@ export interface Facility {
   name: string;
 }
 
+// 타입을 enum으로 변경
+export enum ItemType {
+  Building = "building",
+  Facility = "facility",
+}
+
 export interface SearchResult {
-  id: string;
+  id: string; // 시설의 호실 예: "A101"
   name: string;
-  type: "building" | "facility";
+  type: ItemType;
   category: number;
 }
 
@@ -130,14 +136,14 @@ export const findSearchResults = (
       results.push({
         id: building.alpha,
         name: building.name,
-        type: "building",
+        type: ItemType.Building,
         category: 1,
       });
     } else if (includesQuery) {
       results.push({
         id: building.alpha,
         name: building.name,
-        type: "building",
+        type: ItemType.Building,
         category: 2,
       });
     }
@@ -151,14 +157,14 @@ export const findSearchResults = (
       results.push({
         id: facility.id,
         name: facility.name,
-        type: "facility",
+        type: ItemType.Facility,
         category: 3,
       });
     } else if (facilityNameLower.includes(queryLower)) {
       results.push({
         id: facility.id,
         name: facility.name,
-        type: "facility",
+        type: ItemType.Facility,
         category: 4,
       });
     }
@@ -227,23 +233,59 @@ export const getItemUrl = (
  * 검색 기록에 항목 추가 (중복 제거)
  * @param historyArray 기존 검색 기록 배열
  * @param newItem 추가할 새 항목
+ * @param itemId 항목의 ID (선택적)
+ * @param itemType 항목의 타입 (선택적)
  * @returns 업데이트된 검색 기록 배열
  */
 export const addToSearchHistory = (
   historyArray: string[] | null,
-  newItem: string
+  newItem: string,
+  itemId?: string,
+  itemType?: ItemType
 ): string[] => {
   // null 또는 undefined 처리
   const currentHistory = historyArray || [];
 
-  // 이미 존재하는 항목이면 그대로 반환
-  if (currentHistory.includes(newItem)) {
-    return currentHistory;
+  // 건물인 경우는 이름으로만 비교
+  if (!itemId || itemType === ItemType.Building) {
+    // 이미 존재하는 항목인지 확인
+    const existingIndex = currentHistory.indexOf(newItem);
+
+    // 이미 존재하면 해당 항목을 제거한 후 맨 앞에 추가
+    if (existingIndex >= 0) {
+      const updatedHistory = [...currentHistory];
+      updatedHistory.splice(existingIndex, 1); // 기존 항목 제거
+      return [newItem, ...updatedHistory]; // 맨 앞에 추가
+    }
+
+    // 존재하지 않으면 맨 앞에 추가
+    return [newItem, ...currentHistory];
   }
 
-  // 새 항목을 배열 앞에 추가 (최신 기록이 먼저 오도록)
-  return [newItem, ...currentHistory];
+  // 시설인 경우: 이름과 ID를 모두 비교하여 중복 체크
+  const itemWithId = `${newItem} [${itemId}]`;
+
+  // 이미 존재하는 항목이 있는지 확인
+  const existingIndex = currentHistory.findIndex((item) => {
+    // "이름 [ID]" 형식으로 저장된 항목이 있는지 확인
+    return (
+      item === newItem ||
+      item === itemWithId ||
+      item.startsWith(`${newItem} [${itemId}]`)
+    );
+  });
+
+  // 이미 존재하면 해당 항목을 제거한 후 맨 앞에 추가
+  if (existingIndex >= 0) {
+    const updatedHistory = [...currentHistory];
+    updatedHistory.splice(existingIndex, 1); // 기존 항목 제거
+    return [itemWithId, ...updatedHistory]; // 맨 앞에 추가
+  }
+
+  // 존재하지 않으면 맨 앞에 추가
+  return [itemWithId, ...currentHistory];
 };
+
 
 /**
  * 검색 기록에서 특정 인덱스 항목 제거
