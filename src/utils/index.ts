@@ -1,3 +1,5 @@
+import CryptoJS from 'crypto-js'; // 추가된 부분
+
 /**
  * 샘플 텍스트 생성 함수
  * @param index 반복문 인덱스
@@ -7,50 +9,45 @@ export const getSampleText = (index: number) => {
   return `목원 길잡이 Mokwon Guide ${index + 1}`;
 };
 
-
-
 // 환경 변수에서 암호화 키 가져오기
 const SECRET_KEY = import.meta.env.VITE_SECRET_KEY
 
-// 문자열 암호화 함수
+
+/**
+ * 문자열 암호화 함수 (AES)
+ * @param text 암호화할 문자열
+ * @returns AES 암호화된 문자열
+ */
 export function encrypt(text: string): string {
   try {
-    // XOR 기반 암호화 구현
-    const result = [];
-    for (let i = 0; i < text.length; i++) {
-      const charCode = text.charCodeAt(i) ^ SECRET_KEY.charCodeAt(i % SECRET_KEY.length);
-      result.push(String.fromCharCode(charCode));
-    }
-    
-    // 유니코드 문자를 처리하기 위해 encodeURIComponent 사용
-    return btoa(encodeURIComponent(result.join('')));
+    return CryptoJS.AES.encrypt(text, SECRET_KEY).toString();
   } catch (error) {
     console.error("암호화 중 오류 발생", error);
     return text; // 오류 시 원본 반환
   }
 }
 
-// 문자열 복호화 함수
+/**
+ * 문자열 복호화 함수 (AES)
+ * @param encoded AES 암호화된 문자열
+ * @returns 복호화된 문자열
+ */
 export function decrypt(encoded: string): string {
   try {
-    // Base64 디코딩 후 URI 디코딩
-    const text = decodeURIComponent(atob(encoded));
-    const result = [];
-    
-    // XOR 복호화
-    for (let i = 0; i < text.length; i++) {
-      const charCode = text.charCodeAt(i) ^ SECRET_KEY.charCodeAt(i % SECRET_KEY.length);
-      result.push(String.fromCharCode(charCode));
-    }
-    
-    return result.join('');
+    const bytes = CryptoJS.AES.decrypt(encoded, SECRET_KEY);
+    return bytes.toString(CryptoJS.enc.Utf8);
   } catch (error) {
     console.error("복호화 중 오류 발생", error);
-    return '[]'; // 오류 시 빈 배열 문자열 반환
+    return ''; // 오류 시 빈 문자열 반환
   }
 }
 
-// 타입 호환성을 갖춘 암호화 스토리지 핸들러
+
+/**
+ * 타입 호환성을 갖춘 암호화 스토리지 핸들러
+ * @param index 반복문 인덱스
+ * @returns 목원 길잡이 Mokwon Guide {index + 1}
+ */
 export const encryptedStorage = {
   getItem: (key: string) => {
     const item = localStorage.getItem(key);

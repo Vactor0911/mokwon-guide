@@ -242,9 +242,6 @@ const SearchDrawer = () => {
   // 검색 결과 아이템 클릭 시
   const handleResultItemClick = useCallback(
     (item: SearchResult) => {
-      // 디버깅용 콘솔 로그 추가
-      console.log("검색 결과 클릭:", item);
-
       // searchHistory가 null인 경우 빈 배열로 처리
       const currentHistory = searchHistory || [];
 
