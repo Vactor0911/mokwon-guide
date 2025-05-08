@@ -286,7 +286,6 @@ export const addToSearchHistory = (
   return [itemWithId, ...currentHistory];
 };
 
-
 /**
  * 검색 기록에서 특정 인덱스 항목 제거
  * @param historyArray 기존 검색 기록 배열
