@@ -3,7 +3,7 @@ import { theme } from "../theme";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import SearchRoundedIcon from "@mui/icons-material/SearchRounded";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
-import { useCallback, useState, useEffect } from "react";
+import { useCallback, useState, useEffect, useMemo } from "react";
 import { useAtom } from "jotai";
 import { isSearchDrawerOpenAtom, searchHistoryAtom } from "../states";
 import {
@@ -11,20 +11,12 @@ import {
   findItemByName,
   findSearchResults,
   getItemUrl,
+  SearchResult,
 } from "../utils"; // 유틸리티 함수들
 import buildings from "../assets/buildings.json"; // 건물 데이터
 import buildingLayouts from "../assets/building_layouts.json"; // 시설 데이터
 import SearchResults from "./SearchResults"; // 검색 결과 컴포넌트
 import SearchHistory from "./SearchHistory"; // 검색 기록 컴포넌트
-
-// 검색 결과 인터페이스 정의
-interface SearchResult {
-  id: string;
-  name: string;
-  type: "building" | "facility";
-  category: number;
-  // 우선순위 1: 첫글자 건물, 2: 포함 건물, 3: 첫글자 시설, 4: 포함 시설
-}
 
 const SearchDrawer = () => {
   const [isOpen, setIsOpen] = useAtom(isSearchDrawerOpenAtom);
@@ -140,6 +132,62 @@ const SearchDrawer = () => {
   // 안전하게 searchHistory에 접근하기 위한 변수
   const safeSearchHistory = searchHistory || [];
 
+  // 검색 입력 UI
+  const searchInputUI = useMemo(
+    () => (
+      <Box
+        component="form"
+        onSubmit={handleSearch}
+        sx={{
+          display: "flex",
+          alignItems: "center",
+          backgroundColor: "white",
+          borderRadius: "25px",
+          border: "3px solid #69172A",
+          padding: "0px 3px",
+        }}
+      >
+        <IconButton
+          type="submit"
+          disableRipple
+          sx={{
+            color: "white",
+            backgroundColor: theme.palette.primary.main,
+            borderRadius: "50%",
+            padding: "4px",
+            margin: "4px",
+            "&:hover": {
+              backgroundColor: `${theme.palette.primary.main} !important`,
+            },
+          }}
+        >
+          <SearchRoundedIcon fontSize="large" />
+        </IconButton>
+
+        <InputBase
+          placeholder="건물, 시설 검색"
+          sx={{ ml: 1, flex: 1, fontSize: "1.3rem", fontWeight: "bold" }}
+          autoFocus
+          value={searchData}
+          onChange={handleSearchDataChange}
+        />
+        <IconButton
+          type="button"
+          onClick={handleDelete}
+          sx={{
+            color: "#666666",
+            borderRadius: "50%",
+            padding: "4px",
+            margin: "4px",
+          }}
+        >
+          <CloseRoundedIcon fontSize="large" />
+        </IconButton>
+      </Box>
+    ),
+    [searchData, handleSearchDataChange, handleSearch, handleDelete]
+  );
+
   return (
     <Drawer
       anchor="right"
@@ -184,56 +232,8 @@ const SearchDrawer = () => {
             />
           </IconButton>
 
-          {/* 검색 입력 */}
-          <Box
-            component="form"
-            onSubmit={handleSearch}
-            sx={{
-              display: "flex",
-              alignItems: "center",
-              backgroundColor: "white",
-              borderRadius: "25px",
-              border: "3px solid #69172A",
-              padding: "0px 3px",
-            }}
-          >
-            <IconButton
-              type="submit"
-              disableRipple
-              sx={{
-                color: "white",
-                backgroundColor: theme.palette.primary.main,
-                borderRadius: "50%",
-                padding: "4px",
-                margin: "4px",
-                "&:hover": {
-                  backgroundColor: `${theme.palette.primary.main} !important`,
-                },
-              }}
-            >
-              <SearchRoundedIcon fontSize="large" />
-            </IconButton>
-
-            <InputBase
-              placeholder="건물, 시설 검색"
-              sx={{ ml: 1, flex: 1, fontSize: "1.3rem", fontWeight: "bold" }}
-              autoFocus
-              value={searchData}
-              onChange={handleSearchDataChange}
-            />
-            <IconButton
-              type="button"
-              onClick={handleDelete}
-              sx={{
-                color: "#666666",
-                borderRadius: "50%",
-                padding: "4px",
-                margin: "4px",
-              }}
-            >
-              <CloseRoundedIcon fontSize="large" />
-            </IconButton>
-          </Box>
+          {/* 검색 입력 - 메모이제이션된 컴포넌트 */}
+          {searchInputUI}
         </Stack>
 
         {/* 검색 결과 또는 최근 검색어 표시 영역 */}
