@@ -3,8 +3,9 @@ import MenuIcon from "@mui/icons-material/Menu";
 import SearchIcon from "@mui/icons-material/Search";
 import { useCallback } from "react";
 import { useSetAtom } from "jotai";
-import { isDrawerOpenAtom } from "../states";
+import { isDrawerOpenAtom, isSearchDrawerOpenAtom } from "../states";
 import DrawerMenu from "./DrawerMenu";
+import SearchDrawer from "./SearchDrawer";
 
 const Header = () => {
   // 드로어 메뉴 열림 관련
@@ -16,6 +17,13 @@ const Header = () => {
     },
     [setIsDrawerOpen]
   );
+
+  // 검색 드로어 열림 관련
+  const setIsSearchDrawerOpen = useSetAtom(isSearchDrawerOpenAtom);
+
+  const handleSearchDrawerOpen = useCallback(() => {
+    setIsSearchDrawerOpen(true);
+  }, [setIsSearchDrawerOpen]);
 
   return (
     <>
@@ -41,6 +49,7 @@ const Header = () => {
             sx={{
               color: "white",
             }}
+            onClick={handleSearchDrawerOpen}
           >
             <SearchIcon fontSize="large" />
           </IconButton>
@@ -49,6 +58,9 @@ const Header = () => {
 
       {/* 드로어 메뉴 */}
       <DrawerMenu />
+
+      {/* 검색 드로어 */}
+      <SearchDrawer />
     </>
   );
 };
