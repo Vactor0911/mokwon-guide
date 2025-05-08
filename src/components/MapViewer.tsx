@@ -56,7 +56,7 @@ const MapViewer = () => {
           left: "initial",
           top: "initial",
         },
-        "& .leaflet-control-attribution > a:first-child, & .leaflet-control-attribution > span":
+        "& .leaflet-control-attribution > a:first-of-type, & .leaflet-control-attribution > span":
           {
             display: "none",
           },
