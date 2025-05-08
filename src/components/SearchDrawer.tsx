@@ -1,5 +1,6 @@
 import {
   Box,
+  Button,
   Drawer,
   IconButton,
   InputBase,
@@ -7,23 +8,30 @@ import {
   Typography,
 } from "@mui/material";
 import { useAtom } from "jotai";
-import { isSearchDrawerOpenAtom } from "../states";
-import { useCallback, useRef, useState } from "react";
+import {
+  isSearchDrawerOpenAtom,
+  keywordAtom,
+  searchHistoryAtom,
+  searchResultAtom,
+} from "../states";
+import { useCallback, useRef } from "react";
 import ArrowForwardIosRoundedIcon from "@mui/icons-material/ArrowForwardIosRounded";
 import { theme } from "../theme";
 import SearchRoundedIcon from "@mui/icons-material/SearchRounded";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import { grey } from "@mui/material/colors";
-import { searchByKeyword, SearchResultInterface } from "../utils";
-import SearchResultButton from "./SearchResultButton";
+import { searchById, searchByKeyword } from "../utils/search";
+import FacilityItemButton from "./SearchResultButton";
+import DeleteRoundedIcon from "@mui/icons-material/DeleteRounded";
 
 const SearchDrawer = () => {
   const [isSearchDrawerOpen, setIsSearchDrawerOpen] = useAtom(
     isSearchDrawerOpenAtom
   ); // 검색 드로어 열림 관련
-  const [keyword, setKeyword] = useState(""); // 검색어
+  const [keyword, setKeyword] = useAtom(keywordAtom); // 검색어
   const inputRef = useRef<HTMLInputElement>(null); // 검색란 ref
-  const [searchResults, setSearchResults] = useState<SearchResultInterface[]>([]); // 검색 결과
+  const [searchResults, setSearchResults] = useAtom(searchResultAtom); // 검색 결과
+  const [searchHistory, setSearchHistory] = useAtom(searchHistoryAtom);
 
   // 검색 드로어 닫기
   const handleSearchDrawerClose = useCallback(() => {
@@ -38,9 +46,8 @@ const SearchDrawer = () => {
 
       const newSearchResults = searchByKeyword(newKeyword);
       setSearchResults(newSearchResults); // 검색 결과 업데이트
-      console.log(newSearchResults); // 검색 결과 콘솔 출력
     },
-    []
+    [setKeyword, setSearchResults]
   );
 
   // 입력란 키 입력시
@@ -59,7 +66,12 @@ const SearchDrawer = () => {
     setKeyword("");
     setSearchResults([]);
     inputRef.current?.focus(); // 입력란 포커스
-  }, []);
+  }, [setKeyword, setSearchResults]);
+
+  // 검색 기록 초기화 버튼 클릭
+  const handleClearHistory = useCallback(() => {
+    setSearchHistory([]);
+  }, [setSearchHistory]);
 
   return (
     <Drawer
@@ -131,6 +143,7 @@ const SearchDrawer = () => {
               inputProps={{
                 style: {
                   fontSize: "1.2em",
+                  fontWeight: 700,
                 },
               }}
             />
@@ -148,27 +161,50 @@ const SearchDrawer = () => {
         </Stack>
 
         {/* 검색 결과 */}
-        <Stack
-          flex={1}
-          justifyContent={searchResults.length !== 0 ? "flex-start" : "center"}
-        >
-          {searchResults.length !== 0 ? (
+        <Stack flex={1}>
+          {searchResults.length > 0 ? (
+            // 검색 기록 있음
             searchResults.map((item, index) => (
-              <SearchResultButton
+              <FacilityItemButton
                 key={`search-result-${index}`}
                 item={item}
                 keyword={keyword}
               />
             ))
+          ) : searchHistory && searchHistory.length > 0 ? (
+            // 검색 결과 없음 && 검색 기록 있음
+            <Stack>
+              {/* 검색 기록 버튼 */}
+              {searchHistory.map((history, index) => (
+                <FacilityItemButton
+                  key={`search-history-${index}`}
+                  item={searchById(history)!}
+                  deleteBtn
+                />
+              ))}
+
+              {/* 검색 기록 삭제 버튼 */}
+              <Box alignSelf="flex-end" m={2} my={1}>
+                <Button
+                  startIcon={<DeleteRoundedIcon />}
+                  onClick={handleClearHistory}
+                >
+                  <Typography variant="subtitle2">검색 기록 초기화</Typography>
+                </Button>
+              </Box>
+            </Stack>
           ) : (
-            <Typography
-              variant="h6"
-              fontWeight={500}
-              textAlign="center"
-              color={grey[500]}
-            >
-              검색 결과가 없습니다.
-            </Typography>
+            // 검색 결과 없음 && 검색 기록 없음
+            <Stack height="100%" justifyContent="center">
+              <Typography
+                variant="h6"
+                fontWeight={500}
+                textAlign="center"
+                color={grey[500]}
+              >
+                검색 결과가 없습니다.
+              </Typography>
+            </Stack>
           )}
         </Stack>
       </Stack>
