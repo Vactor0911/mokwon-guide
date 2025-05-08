@@ -333,14 +333,26 @@ const SearchDrawer = () => {
         "& .MuiDrawer-paper": {
           width: "100%",
           maxWidth: "500px",
+          display: "flex",
+          flexDirection: "column",
         },
       }}
     >
-      <Stack spacing={1}>
+      <Stack
+        spacing={0}
+        sx={{
+          height: "100%",
+          display: "flex",
+          flexDirection: "column",
+        }}
+      >
         {/* 검색창 헤더 */}
         <Stack
           direction="row"
           alignItems="center"
+          position={"sticky"}
+          top={0}
+          zIndex={1000}
           sx={{
             backgroundColor: theme.palette.primary.main,
             padding: "5px 8px",
@@ -409,7 +421,7 @@ const SearchDrawer = () => {
         </Stack>
 
         {/* 검색 결과 또는 최근 검색어 표시 영역 */}
-        <Box sx={{ flex: 1, overflow: "auto" }}>
+        <Box sx={{ flex: 1, overflow: "auto", pt: 1 }}>
           {isSearching && searchResults.length > 0 ? (
             // 검색 결과 표시
             <Paper elevation={0} sx={{ borderRadius: 2, overflow: "hidden" }}>
