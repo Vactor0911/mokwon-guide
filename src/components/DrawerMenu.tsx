@@ -72,10 +72,6 @@ const DrawerMenu = () => {
           >
             <Typography
               variant="h3"
-              fontSize={{
-                xs: "1.25rem",
-                sm: "1.75rem",
-              }}
               sx={{
                 color: "white",
               }}
@@ -101,12 +97,8 @@ const DrawerMenu = () => {
             ].map((data, index) => (
               <DrawerNavLink to={data.to} onClick={handleCloseAll} key={index}>
                 <Typography
-                  variant="h3"
+                  variant="h5"
                   color="white"
-                  fontSize={{
-                    xs: "1.25rem",
-                    sm: "1.75rem",
-                  }}
                   sx={{
                     cursor: "pointer",
                   }}
@@ -126,12 +118,8 @@ const DrawerMenu = () => {
               onClick={handleToggleAccordion}
             >
               <Typography
-                variant="h3"
+                variant="h5"
                 color="white"
-                fontSize={{
-                  xs: "1.25rem",
-                  sm: "1.75rem",
-                }}
               >
                 건물 상세
               </Typography>
@@ -166,24 +154,16 @@ const DrawerMenu = () => {
                     <Grid container spacing={1}>
                       <Grid size={1.5}>
                         <Typography
-                          variant="h4"
+                          variant="h5"
                           color="white"
-                          fontSize={{
-                            xs: "1rem",
-                            sm: "1.5rem",
-                          }}
                         >
                           {building.id}
                         </Typography>
                       </Grid>
                       <Grid size={10.5}>
                         <Typography
-                          variant="h4"
+                          variant="h6"
                           color="white"
-                          fontSize={{
-                            xs: "1rem",
-                            sm: "1.5rem",
-                          }}
                           fontWeight={300}
                         >
                           {building.name}
