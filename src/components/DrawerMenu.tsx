@@ -71,7 +71,7 @@ const DrawerMenu = () => {
             alignItems="center"
           >
             <Typography
-              variant="h3"
+              variant="h4"
               sx={{
                 color: "white",
               }}
@@ -117,10 +117,7 @@ const DrawerMenu = () => {
               }}
               onClick={handleToggleAccordion}
             >
-              <Typography
-                variant="h5"
-                color="white"
-              >
+              <Typography variant="h5" color="white">
                 건물 상세
               </Typography>
               <ExpandMoreIcon
@@ -153,19 +150,12 @@ const DrawerMenu = () => {
                   >
                     <Grid container spacing={1}>
                       <Grid size={1.5}>
-                        <Typography
-                          variant="h5"
-                          color="white"
-                        >
+                        <Typography variant="h5" color="white">
                           {building.id}
                         </Typography>
                       </Grid>
                       <Grid size={10.5}>
-                        <Typography
-                          variant="h6"
-                          color="white"
-                          fontWeight={300}
-                        >
+                        <Typography variant="h6" color="white" fontWeight={300}>
                           {building.name}
                         </Typography>
                       </Grid>
