@@ -50,13 +50,14 @@ const MapViewer = () => {
       ref={setMap}
       css={{
         height: "100%",
+        background: "#fff",
         "& .leaflet-control-container .leaflet-top.leaflet-left": {
           bottom: "22px",
           right: "6px",
           left: "initial",
           top: "initial",
         },
-        "& .leaflet-control-attribution > a:first-child, & .leaflet-control-attribution > span":
+        "& .leaflet-control-attribution > a:first-of-type, & .leaflet-control-attribution > span":
           {
             display: "none",
           },

@@ -71,11 +71,7 @@ const DrawerMenu = () => {
             alignItems="center"
           >
             <Typography
-              variant="h3"
-              fontSize={{
-                xs: "1.25rem",
-                sm: "1.75rem",
-              }}
+              variant="h4"
               sx={{
                 color: "white",
               }}
@@ -101,12 +97,8 @@ const DrawerMenu = () => {
             ].map((data, index) => (
               <DrawerNavLink to={data.to} onClick={handleCloseAll} key={index}>
                 <Typography
-                  variant="h3"
+                  variant="h5"
                   color="white"
-                  fontSize={{
-                    xs: "1.25rem",
-                    sm: "1.75rem",
-                  }}
                   sx={{
                     cursor: "pointer",
                   }}
@@ -125,14 +117,7 @@ const DrawerMenu = () => {
               }}
               onClick={handleToggleAccordion}
             >
-              <Typography
-                variant="h3"
-                color="white"
-                fontSize={{
-                  xs: "1.25rem",
-                  sm: "1.75rem",
-                }}
-              >
+              <Typography variant="h5" color="white">
                 건물 상세
               </Typography>
               <ExpandMoreIcon
@@ -160,32 +145,17 @@ const DrawerMenu = () => {
                 {buildings.map((building) => (
                   <DrawerNavLink
                     key={building.id}
-                    to={`/detail?building=${building.alpha}`}
+                    to={`/detail?building=${building.id}`}
                     onClick={handleCloseAll}
                   >
                     <Grid container spacing={1}>
                       <Grid size={1.5}>
-                        <Typography
-                          variant="h4"
-                          color="white"
-                          fontSize={{
-                            xs: "1rem",
-                            sm: "1.5rem",
-                          }}
-                        >
-                          {building.alpha}
+                        <Typography variant="h5" color="white">
+                          {building.id}
                         </Typography>
                       </Grid>
                       <Grid size={10.5}>
-                        <Typography
-                          variant="h4"
-                          color="white"
-                          fontSize={{
-                            xs: "1rem",
-                            sm: "1.5rem",
-                          }}
-                          fontWeight={300}
-                        >
+                        <Typography variant="h6" color="white" fontWeight={300}>
                           {building.name}
                         </Typography>
                       </Grid>
