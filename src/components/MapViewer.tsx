@@ -50,6 +50,7 @@ const MapViewer = () => {
       ref={setMap}
       css={{
         height: "100%",
+        background: "#fff",
         "& .leaflet-control-container .leaflet-top.leaflet-left": {
           bottom: "22px",
           right: "6px",
