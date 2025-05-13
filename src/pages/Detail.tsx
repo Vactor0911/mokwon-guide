@@ -9,6 +9,7 @@ const Detail = () => {
   return (
     <Stack height="100%" justifyContent="center">
       Detail Page! {building}
+      Hello World!
     </Stack>
   );
 };
