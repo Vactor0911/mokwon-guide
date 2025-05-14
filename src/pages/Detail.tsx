@@ -1,4 +1,4 @@
-import { Stack } from "@mui/material";
+import { Box, Grid, Stack } from "@mui/material";
 import { useLocation } from "react-router";
 
 const Detail = () => {
@@ -8,7 +8,11 @@ const Detail = () => {
 
   return (
     <Stack height="100%" justifyContent="center">
-      Detail Page! {building}
+      {building}
+      <Stack>
+        <Box></Box>
+      </Stack>
+      <Grid size={6}>temp</Grid>
     </Stack>
   );
 };
