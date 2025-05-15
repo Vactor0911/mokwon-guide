@@ -1,4 +1,4 @@
-import { Box, Grid, Stack } from "@mui/material";
+import { Stack, Box, Button } from "@mui/material";
 import { useLocation } from "react-router";
 
 const Detail = () => {
@@ -8,11 +8,12 @@ const Detail = () => {
 
   return (
     <Stack height="100%" justifyContent="center">
-      {building}
-      <Stack>
-        <Box></Box>
+      <Stack spacing={2}>
+        <Box>건물 이미지</Box>
+        {building}
+        <Box>건물 상세 이미지</Box>
+        <Button>1F</Button>
       </Stack>
-      <Grid size={6}>temp</Grid>
     </Stack>
   );
 };
