@@ -1,4 +1,11 @@
-import { Stack, Box, Button } from "@mui/material";
+import {
+  Stack,
+  Box,
+  TextField,
+  InputLabel,
+  Select,
+  MenuItem,
+} from "@mui/material";
 import { useLocation } from "react-router";
 
 const Detail = () => {
@@ -7,12 +14,34 @@ const Detail = () => {
   const building = queryParams.get("building");
 
   return (
-    <Stack height="100%" justifyContent="center">
-      <Stack spacing={2}>
-        <Box>건물 이미지</Box>
-        {building}
-        <Box>건물 상세 이미지</Box>
-        <Button>1F</Button>
+    <Stack height="100%">
+      <Stack gap={3} my={2}>
+        {/* Main image */}
+        <Box height={"300px"} mx={5} bgcolor={"#222222"}></Box>
+
+        {/* main title */}
+        <Stack textAlign={"center"}>{building}</Stack>
+
+        {/* detail image */}
+        <Box height={"300px"} mx={5} bgcolor={"#d9d9d9"}></Box>
+
+        {/* Buttons */}
+        <Stack gap={6} mx={10}>
+          <Select labelId="demo-simple-select-label" id="demo-simple-select">
+            <MenuItem value={1}>1F</MenuItem>
+            <MenuItem value={2}>2F</MenuItem>
+            <MenuItem value={3}>3F</MenuItem>
+          </Select>
+          <TextField
+            id="filled-search"
+            label="호실을 입력해주세요"
+            type="search"
+            variant="filled"
+          />
+        </Stack>
+
+        {/* detail content */}
+        <Stack></Stack>
       </Stack>
     </Stack>
   );
