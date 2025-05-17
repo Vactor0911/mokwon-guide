@@ -109,10 +109,13 @@ const Detail = () => {
   return (
     <Stack height="100%">
       <Stack gap={6} mt={8}>
-        {/* 메인 이미지 */}
-        <Box height={"300px"} mx={5} bgcolor={theme.palette.info.main}>
-          건물 이미지
-        </Box>
+        {/* 이미지 */}
+        <Box
+          component="img"
+          src="/images/building_images/n_1.jpg"
+          alt=""
+          width="100%"
+        />
 
         {/* 메인 타이틀 */}
         <Stack textAlign="center">
@@ -132,8 +135,28 @@ const Detail = () => {
         </Stack>
 
         {/* 상세 이미지 */}
-        <Box height={"200px"} mx={5} bgcolor={theme.palette.info.main}>
-          건물 상세 이미지
+        <Box
+          sx={{
+            mx: 5,
+            height: "500px",
+            display: "flex",
+            justifyContent: "center",
+            alignItems: "center",
+            overflow: "hidden",
+          }}
+        >
+          {buildingId && (
+            <Box
+              component="img"
+              src={`/images/building_layouts/${buildingId.toLowerCase()}_${selectedFloor}.jpg`}
+              alt={`${buildingName} ${selectedFloor}층 도면`}
+              sx={{
+                maxWidth: "100%",
+                maxHeight: "100%",
+                objectFit: "contain",
+              }}
+            />
+          )}
         </Box>
 
         {/* 층 선택 및 검색 */}
