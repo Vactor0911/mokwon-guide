@@ -15,60 +15,100 @@ import {
   Paper,
 } from "@mui/material";
 import { useLocation } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import Footer from "../components/Footer";
 import { theme } from "../theme";
 import buildings from "../assets/buildings.json";
 import facilities from "../assets/facilities.json";
 
+interface Facility {
+  id: string;
+  name: string;
+}
+
 const Detail = () => {
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
   const buildingId = queryParams.get("building");
-  const facilityId = queryParams.get("facilities");
 
   const [searchRoom, setSearchRoom] = useState("");
-  const [selectedFloor, setSelectedFloor] = useState(1);
-  const [filteredFacilities, setFilteredFacilities] = useState([]);
+  const [selectedFloor, setSelectedFloor] = useState<number>(1);
+  const [filteredFacilities, setFilteredFacilities] = useState<Facility[]>([]);
+  const [maxFloor, setMaxFloor] = useState<number>(1);
+  const [titleWidth, setTitleWidth] = useState(0);
+  const titleRef = useRef<HTMLDivElement>(null);
 
   // 건물 정보 찾기
   const buildingInfo = buildings.find((b) => b.id === buildingId);
   const buildingName = buildingInfo ? buildingInfo.name : "";
+
+  // 건물별 최대 층수 계산
+  useEffect(() => {
+    if (!buildingId) return;
+
+    const buildingFloors = facilities
+      .filter((facility) => facility.id.startsWith(buildingId))
+      .map((facility) => {
+        const floorNumber = parseInt(facility.id.slice(1, 2));
+        return isNaN(floorNumber) ? 0 : floorNumber;
+      });
+
+    const max = Math.max(...buildingFloors, 1);
+    setMaxFloor(max);
+    setSelectedFloor(1); // 건물 변경시 1층으로 초기화
+  }, [buildingId]);
 
   // ID와 이름 결합하여 표시 형식 만들기
   const displayName = buildingId
     ? `${buildingId} ${buildingName}`
     : "건물 정보 없음";
 
-  // 현재 건물 및 층에 맞는 시설 필터링
+  useEffect(() => {
+    if (titleRef.current) {
+      setTitleWidth(titleRef.current.offsetWidth);
+    }
+  }, [displayName]);
+
+  // 층, 검색어, 건물 변경 시 필터링
   useEffect(() => {
     if (!buildingId) return;
 
-    const floorFacilities = facilities.filter((facility) => {
-      // 현재 건물에 속하는지 확인
-      if (!facility.id.startsWith(buildingId)) return false;
+    if (searchRoom === "") {
+      // 검색어가 비어있으면 현재 선택된 층의 시설만 표시
+      const floorFacilities = facilities.filter((facility) => {
+        if (!facility.id.startsWith(buildingId)) return false;
+        const floorNumber = parseInt(facility.id.slice(1, 2));
+        return floorNumber === selectedFloor;
+      });
+      setFilteredFacilities(floorFacilities);
+    } else {
+      // 검색어가 있으면 호실 번호나 이름으로 검색
+      const searchResults = facilities.filter((facility) => {
+        if (!facility.id.startsWith(buildingId)) return false;
 
-      // 시설 ID에서 층 번호 추출
-      const floorMatch = facility.id.match(/^[A-Z]+(\d)/);
-      const facilityFloor = floorMatch ? parseInt(floorMatch[1], 10) : null;
+        // 호실 번호로 검색 (예: "101" 검색 시 "A101" 매칭)
+        const roomNumber = facility.id.slice(1).replace(/B$/, "");
+        const matchesRoomNumber = roomNumber.includes(searchRoom);
 
-      return facilityFloor === selectedFloor;
-    });
+        // 이름으로 검색
+        const matchesName = facility.name.includes(searchRoom);
 
-    setFilteredFacilities(floorFacilities);
-  }, [buildingId, selectedFloor]);
+        return matchesRoomNumber || matchesName;
+      });
+      setFilteredFacilities(searchResults);
+    }
+  }, [buildingId, selectedFloor, searchRoom]);
 
   // 시설 항목 클릭 핸들러
-  const handleFacilityClick = (facility) => {
-    // 호실 번호 추출
+  const handleFacilityClick = (facility: Facility) => {
     const roomNumber = facility.id.replace(new RegExp(`^${buildingId}`), "");
-    // 여기서 내비게이션 구현
+    // 내비게이션 구현
     console.log(`Navigate to: building=${buildingId}&facilities=${roomNumber}`);
   };
 
   return (
     <Stack height="100%">
-      <Stack gap={3} my={2}>
+      <Stack gap={6} mt={8}>
         {/* 메인 이미지 */}
         <Box height={"300px"} mx={5} bgcolor={theme.palette.info.main}>
           건물 이미지
@@ -81,11 +121,11 @@ const Detail = () => {
           </Typography>
           <Box
             sx={{
-              width: `${displayName.length * 20}px`, // 텍스트 길이에 맞게 조정
+              width: `${displayName.length * 25}px`,
               height: 4,
               mx: "auto",
               mt: 1,
-              bgcolor: "error.main", // 빨간색 테마 사용
+              bgcolor: "error.main",
               borderRadius: 2,
             }}
           />
@@ -97,53 +137,29 @@ const Detail = () => {
         </Box>
 
         {/* 층 선택 및 검색 */}
-        <Stack gap={6} mx={10}>
+        <Stack gap={2} mx={10}>
           <Select
             labelId="floor-select-label"
             id="floor-select"
             value={selectedFloor}
-            onChange={(e) => setSelectedFloor(e.target.value)}
+            onChange={(e) => setSelectedFloor(Number(e.target.value))}
           >
-            <MenuItem value={1}>1F</MenuItem>
-            <MenuItem value={2}>2F</MenuItem>
-            <MenuItem value={3}>3F</MenuItem>
-            <MenuItem value={4}>4F</MenuItem>
-            <MenuItem value={5}>5F</MenuItem>
+            {Array.from({ length: maxFloor }, (_, i) => (
+              <MenuItem key={i + 1} value={i + 1}>
+                {i + 1}F
+              </MenuItem>
+            ))}
           </Select>
 
-          <Box sx={{ width: "100%", maxWidth: 400, mx: "auto", mt: 2 }}>
+          {/* 층 검색 */}
+          <Box sx={{ width: "100%", mx: "auto", mt: 2 }}>
             <TextField
-              placeholder="호실을 입력해주세요."
+              placeholder="호실 번호를 입력해주세요."
               variant="outlined"
               value={searchRoom}
-              onChange={(e) => {
-                setSearchRoom(e.target.value);
-                if (e.target.value === "") {
-                  // 검색어가 비어있으면 기본 층별 시설로 돌아감
-                  const defaultFacilities = facilities.filter((facility) => {
-                    if (!facility.id.startsWith(buildingId)) return false;
-                    const floorMatch = facility.id.match(/^[A-Z]+(\d)/);
-                    const facilityFloor = floorMatch
-                      ? parseInt(floorMatch[1], 10)
-                      : null;
-                    return facilityFloor === selectedFloor;
-                  });
-                  setFilteredFacilities(defaultFacilities);
-                } else {
-                  // 입력 즉시 검색 실행 (검색 버튼 불필요)
-                  const searchResults = facilities.filter(
-                    (f) =>
-                      f.id.startsWith(buildingId) &&
-                      f.id.includes(e.target.value)
-                  );
-                  setFilteredFacilities(searchResults);
-                }
-              }}
+              onChange={(e) => setSearchRoom(e.target.value)}
               sx={{
                 width: "100%",
-                maxWidth: 400,
-                mx: "auto",
-                mt: 2,
                 backgroundColor: "#fff",
                 borderRadius: 10,
                 textAlign: "center",
@@ -188,7 +204,7 @@ const Detail = () => {
                       }}
                     >
                       <TableCell component="th" scope="row">
-                        {roomNumber}
+                        {facility.id.replace(/B$/, "")}
                       </TableCell>
                       <TableCell>{facility.name}</TableCell>
                     </TableRow>
@@ -208,9 +224,9 @@ const Detail = () => {
               px: 4,
               py: 1.5,
               borderRadius: 8,
-              backgroundColor: "rgba(175, 0, 42, 0.85)",
+              background: theme.palette.primary.main,
               "&:hover": {
-                backgroundColor: "rgba(175, 0, 42, 1)",
+                background: theme.palette.primary.main,
               },
             }}
           >
