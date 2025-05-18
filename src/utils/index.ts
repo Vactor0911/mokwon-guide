@@ -39,3 +39,47 @@ export const getItemUrl = (item: FacilityInterface): string => {
       return `/detail?building=${parsedId.charAt(0)}&facility=${item.id}`;
   }
 };
+
+/**
+ * 시설 ID에서 건물 코드를 추출하는 함수
+ * @param id 시설 ID
+ * @returns 건물 코드
+ */
+export const getBuildingId = (id: string): string => {
+  // 건물 ID에서 건물 코드 추출
+  const buildingId = id.slice(0, 3);
+
+  switch (buildingId) {
+    case "G1-":
+    case "O1-":
+      return buildingId.slice(0, 2);
+    default:
+      return buildingId.charAt(0);
+  }
+};
+
+/**
+ * 시설 ID에서 층수를 추출하는 함수
+ * @param id 시설 ID
+ * @returns 시설이 위치한 층수
+ */
+export const getFacilityFloor = (id: string): string => {
+  const buildingId = getBuildingId(id);
+  let floor = "";
+
+  switch (buildingId) {
+    case "G1":
+    case "O1":
+      floor = id.slice(3, 4);
+      break;
+    default:
+      floor = id.slice(1, 2);
+      break;
+  }
+
+  // 마지막 글자가 'B'인 경우
+  if (id.charAt(id.length - 1) === "B") {
+    return `B${floor}`;
+  }
+  return `${floor}F`;
+};

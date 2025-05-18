@@ -16,7 +16,7 @@ const Main = () => {
 
   return (
     <>
-      <Stack height="100%">
+      <Stack height="calc(100vh - 64px)">
         <MapViewer />
 
         {/* 드로어 테스트용 버튼 */}
