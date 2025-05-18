@@ -102,7 +102,7 @@ const Detail = () => {
 
             {/* 엘리베이터 & 화장실 아이콘 */}
             <Stack direction="row" justifyContent="center" alignItems="center" gap={1}>
-              {/* 엘리베이터 아이콘콘 */}
+              {/* 엘리베이터 아이콘 */}
               <Box
                 component="img"
                 src={ElevatorIcon}
