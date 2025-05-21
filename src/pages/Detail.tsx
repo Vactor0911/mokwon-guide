@@ -54,7 +54,8 @@ const Detail = () => {
 
     const newFacilities = findFacilitiesByFloor(buildingId, "1F");
     setFacilities(newFacilities);
-  }, [building?.id, building?.name, buildingId]);
+    console.log(newFacilities);
+  }, [building?.id, building?.name, buildingId, location]);
 
   // 층수 선택 메뉴 열기
   const handleFloorMenuOpen = useCallback(() => {
