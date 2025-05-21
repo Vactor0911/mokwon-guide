@@ -2,6 +2,7 @@ import { atom } from "jotai";
 import { atomWithStorage } from "jotai/utils";
 import { encryptedStorage } from "../utils/security";
 import { FacilityInterface } from "../utils/search";
+import { getBuildingFloors } from "../utils";
 
 // 좌측 상단 메뉴 아이콘 클릭 시 열리는 Drawer 상태
 export const isDrawerOpenAtom = atom(false);
@@ -21,3 +22,7 @@ export const searchHistoryAtom = atomWithStorage<string[]>(
   [],
   encryptedStorage
 );
+
+export const buildingFloorsAtom = atom<Record<string, string[]>>(
+  getBuildingFloors()
+); // 층수 상태

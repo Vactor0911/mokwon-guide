@@ -17,27 +17,44 @@ import {
   Typography,
 } from "@mui/material";
 import { useLocation } from "react-router";
-import N1 from "/images/building_images/n_1.jpg";
-import n1 from "/images/building_layouts/n_1.jpg";
 import ElevatorIcon from "../assets/icons/elevator.png";
 import WcIcon from "../assets/icons/wc.png";
 import { theme } from "../theme";
-import { useCallback, useRef, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import ExpandMoreRoundedIcon from "@mui/icons-material/ExpandMoreRounded";
-import Facilities from "../assets/facilities.json";
-import { getBuildingId, getFacilityFloor } from "../utils";
-import { FacilityInterface } from "../utils/search";
+import {
+  FacilityInterface,
+  findFacilitiesByFloor,
+  searchByKeyword,
+} from "../utils/search";
 import Footer from "../components/Footer";
+import { useAtomValue } from "jotai";
+import { buildingFloorsAtom } from "../states";
+import buildings from "../assets/buildings.json";
 
 const Detail = () => {
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
-  const building = queryParams.get("building");
+  const buildingId = queryParams.get("building") || "D";
+  const building = buildings.find((building) => building.id === buildingId);
 
+  const [buildingName, setBuildingName] = useState(""); // 건물명 상태
+  const floors = useAtomValue(buildingFloorsAtom); // 층수 상태
   const [floor, setFloor] = useState("1F"); // 건물 배치도 층수 상태
   const floorButtonElement = useRef<HTMLButtonElement>(null); // 층수 선택 버튼
   const [isFloorMenuOpen, setIsFloorMenuOpen] = useState(false); // 층수 선택 메뉴 상태
   const [facilities, setFacilities] = useState<FacilityInterface[]>([]); // 시설 정보 상태
+  const [keyword, setKeyword] = useState(""); // 검색어 상태
+
+  // 페이지 쿼리 파라미터 변경시 시설 정보 재검색
+  useEffect(() => {
+    setFloor("1F"); // 층수 초기화
+    setKeyword(""); // 검색어 초기화
+    setBuildingName(`${building?.id} ${building?.name}`);
+
+    const newFacilities = findFacilitiesByFloor(buildingId, "1F");
+    setFacilities(newFacilities);
+  }, [building?.id, building?.name, buildingId]);
 
   // 층수 선택 메뉴 열기
   const handleFloorMenuOpen = useCallback(() => {
@@ -56,52 +73,87 @@ const Detail = () => {
       setFloor(newFloor);
 
       // 선택한 층수에 해당하는 시설 정보 필터링
-      const newFacilities = Facilities.filter(
-        (facility) =>
-          getBuildingId(facility.id) === building &&
-          getFacilityFloor(facility.id) === newFloor
-      );
+      const newFacilities = findFacilitiesByFloor(buildingId, newFloor);
       setFacilities(newFacilities);
     },
-    [building]
+    [buildingId]
   );
+
+  // 호실 검색어 변경
+  const handleKeywordChange = useCallback(
+    (event: React.ChangeEvent<HTMLInputElement>) => {
+      const newKeyword = event.target.value;
+      setKeyword(newKeyword);
+
+      // 검색어에 해당하는 시설 정보 필터링
+      if (newKeyword.trim() === "") {
+        // 검색어가 없다면 종료
+        setFacilities(findFacilitiesByFloor(buildingId, floor));
+        return;
+      }
+      const newFacilities = searchByKeyword(newKeyword, 999, buildingId);
+
+      if (newFacilities.length === 0) {
+        setFacilities([{ id: "", name: "검색 결과가 없습니다." }]);
+        return;
+      }
+      setFacilities(newFacilities);
+    },
+    [buildingId, floor]
+  );
+
+  // 건물 배치도 이미지 URL 생성
+  const getBuildingLayoutImage = () => {
+    const imageUrl = `./images/building_layouts/${buildingId.toLowerCase()}_${floor
+      .replace("F", "")
+      .toLowerCase()}.jpg`;
+    return imageUrl;
+  };
 
   return (
     <>
       <Stack minHeight="100%" alignItems="center" py={2} pb={10} gap={5}>
-        {/* 건물 대표 이미지 */}
-        <Container maxWidth="md">
-          <Box component="img" src={N1} alt="N 학생회관" width="100%" />
-        </Container>
-
         {/* 건물명 */}
         <Typography
           variant="h2"
+          mt="5vh"
           sx={{
             position: "relative",
             "&:after": {
               content: '""',
               position: "absolute",
-              width: "120%",
+              width: "calc(100% + 40px)",
               height: "5px",
               bottom: "-16px",
-              left: "-10%",
+              left: "-20px",
               backgroundColor: theme.palette.primary.main,
               borderRadius: "50px",
             },
           }}
         >
-          N 학생회관
+          {buildingName}
         </Typography>
 
         {/* 건물 배치도 */}
-        <Container maxWidth="xl">
+        <Container maxWidth="md">
           <Stack alignItems="center" gap={1}>
-            {/* 건물 배치도 이미지 */}
-            <Box component="img" src={n1} alt="N 학생회관" width="100%" />
+            <Stack>
+              {/* 건물 배치도 이미지 */}
+              <Box
+                component="img"
+                src={getBuildingLayoutImage()}
+                alt={`${buildingName} 건물 배치도`}
+                width="100%"
+              />
+            </Stack>
 
             {/* 엘리베이터 & 화장실 아이콘 */}
-            <Stack direction="row" justifyContent="center" alignItems="center" gap={1}>
+            <Stack
+              direction="row"
+              justifyContent="center"
+              alignItems="center"
+              gap={1}
+            >
               {/* 엘리베이터 아이콘 */}
               <Box
                 component="img"
@@ -175,7 +227,7 @@ const Detail = () => {
               },
             }}
           >
-            {["1F", "2F", "3F", "4F"].map((floor) => (
+            {floors[buildingId].map((floor) => (
               <MenuItem
                 key={`floor-menu-${floor}`}
                 onClick={() => handleFloorChange(floor)}
@@ -205,8 +257,10 @@ const Detail = () => {
           <Paper elevation={3}>
             <TextField
               variant="outlined"
-              placeholder="호실을 입력하세요."
+              placeholder="검색할 호실을 입력하세요."
               fullWidth
+              value={keyword}
+              onChange={handleKeywordChange}
             />
           </Paper>
         </Stack>
@@ -227,6 +281,11 @@ const Detail = () => {
                     align="center"
                     sx={{
                       borderRight: `1px solid ${theme.palette.divider}`,
+                      width: {
+                        xs: "100px",
+                        sm: "150px",
+                        md: "200px",
+                      },
                     }}
                   >
                     <Typography variant="subtitle1" fontWeight="bold">

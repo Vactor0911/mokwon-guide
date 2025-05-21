@@ -1,4 +1,5 @@
 import { FacilityInterface } from "./search";
+import facilities from "../assets/facilities.json"; // 시설 데이터 가져오기
 
 /**
  * 문자열 변형 함수
@@ -78,8 +79,35 @@ export const getFacilityFloor = (id: string): string => {
   }
 
   // 마지막 글자가 'B'인 경우
-  if (id.charAt(id.length - 1) === "B") {
+  if (
+    id.charAt(id.length - 1) === "B" ||
+    id.split("B").length - Number(id.charAt(0) === "B") - 1 > 0
+  ) {
     return `B${floor}`;
   }
   return `${floor}F`;
+};
+
+/**
+ * 모든 건물의 층수를 반환하는 함수
+ * @returns 건물별 층수 배열
+ */
+export const getBuildingFloors = (): Record<string, string[]> => {
+  const floors: Record<string, string[]> = {};
+
+  facilities.forEach((facility) => {
+    const buildingId = getBuildingId(facility.id);
+
+    // 기존 건물 ID 키가 없는 경우
+    if (!(buildingId in floors)) {
+      floors[buildingId] = [];
+    }
+
+    const floor = getFacilityFloor(facility.id);
+    if (!floors[buildingId].includes(floor)) {
+      floors[buildingId].push(floor);
+    }
+  });
+
+  return floors;
 };
