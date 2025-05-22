@@ -111,3 +111,38 @@ export const getBuildingFloors = (): Record<string, string[]> => {
 
   return floors;
 };
+
+/**
+ * 위도와 경도를 지도 이미지의 좌표로 변환하는 함수
+ * @param lat 위도값
+ * @param lng 경도값
+ * @returns 변환된 좌표값
+ */
+export const geoToXY = (
+  lat: number,
+  lng: number,
+  isLargeScreen: boolean
+): [number, number] => {
+  // 위도와 경도 좌표를 기준점을 기준으로 회전
+  const angleRad = 277 * (Math.PI / 180); // 각도를 라디안으로 변환
+
+  // p1에서 p2를 기준으로 평행이동
+  const x0 = 36.327222;
+  const y0 = 127.338333;
+  const dx = lat - x0;
+  const dy = lng - y0;
+
+  // 회전 공식 적용
+  const rotatedX = dx * Math.cos(angleRad) - dy * Math.sin(angleRad);
+  const rotatedY = dx * Math.sin(angleRad) + dy * Math.cos(angleRad);
+
+  // 다시 기준점 위치로 이동
+  const mul = 340000
+
+  const finalX = -rotatedX * mul + 1059;
+  const finalY = rotatedY * mul + 1000;
+
+  const multiplier = isLargeScreen ? 0.5 : 0.25; // 지도 크기에 따라 배율 조정, map이 null이면 기본값 1 사용
+
+  return [finalY * multiplier, finalX * multiplier];
+};
