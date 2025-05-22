@@ -40,7 +40,7 @@ const MapViewer = () => {
     map?.setView(center, zoom);
   }, [map]);
 
-  const position = [36.329444, 127.339167];
+  const position = [36.329167, 127.337500];
 
   return (
     <MapContainer
@@ -48,7 +48,7 @@ const MapViewer = () => {
       bounds={bounds}
       maxBounds={maxBounds}
       maxBoundsViscosity={1.0}
-      maxZoom={2.5}
+      maxZoom={1.7}
       scrollWheelZoom={true}
       ref={setMap}
       css={{
