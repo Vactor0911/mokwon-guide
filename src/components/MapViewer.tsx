@@ -1,4 +1,4 @@
-import { ImageOverlay, MapContainer } from "react-leaflet";
+import { ImageOverlay, MapContainer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
 import { LatLngBoundsExpression, CRS } from "leaflet";
 import MapImage from "/images/map.png";
@@ -6,6 +6,7 @@ import { Button, useMediaQuery } from "@mui/material";
 import { theme } from "../theme";
 import { useCallback, useState } from "react";
 import MyLocationRoundedIcon from "@mui/icons-material/MyLocationRounded";
+import { geoToXY } from "../utils";
 
 const MapViewer = () => {
   const isLargeScreen = useMediaQuery(theme.breakpoints.up("sm"));
@@ -39,13 +40,15 @@ const MapViewer = () => {
     map?.setView(center, zoom);
   }, [map]);
 
+  const position = [36.329167, 127.337500];
+
   return (
     <MapContainer
       crs={CRS.Simple}
       bounds={bounds}
       maxBounds={maxBounds}
       maxBoundsViscosity={1.0}
-      maxZoom={2.5}
+      maxZoom={1.7}
       scrollWheelZoom={true}
       ref={setMap}
       css={{
@@ -71,6 +74,12 @@ const MapViewer = () => {
           목원대학교 목원뷰
         </a>'
       />
+
+      <Marker position={geoToXY(position[0], position[1], isLargeScreen)}>
+        <Popup>
+          {geoToXY(position[0], position[1], isLargeScreen).join(", ")}
+        </Popup>
+      </Marker>
 
       {/* 내 위치 버튼 */}
       <Button

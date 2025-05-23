@@ -148,6 +148,7 @@ const SearchDrawer = () => {
               }}
             />
 
+            {/* 검색어 초기화 버튼 */}
             <IconButton
               size="small"
               sx={{
