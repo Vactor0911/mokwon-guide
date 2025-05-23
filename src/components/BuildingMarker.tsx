@@ -3,6 +3,12 @@ import L from "leaflet";
 import { Marker } from "react-leaflet";
 import { theme } from "../theme";
 import { useCallback } from "react";
+import { useSetAtom } from "jotai";
+import {
+  buildingDetailDrawerBuildingAtom,
+  isBuildingDetailDrawerOpenAtom,
+} from "../states";
+import { searchById } from "../utils/search";
 
 interface BuildingMarkerProps {
   buildingId: string;
@@ -12,6 +18,12 @@ interface BuildingMarkerProps {
 
 const BuildingMarker = (props: BuildingMarkerProps) => {
   const { buildingId, position, isLargeScreen } = props;
+  const setIsBuildingDetailDrawerOpen = useSetAtom(
+    isBuildingDetailDrawerOpenAtom
+  );
+  const setBuildingDetailDrawerBuilding = useSetAtom(
+    buildingDetailDrawerBuildingAtom
+  );
 
   const calcPosition = useCallback(
     (position: LatLngExpression): LatLngExpression => {
@@ -27,6 +39,19 @@ const BuildingMarker = (props: BuildingMarkerProps) => {
     [isLargeScreen]
   );
 
+  const handleMarkerClick = useCallback(() => {
+    const buildingData = {
+      id: buildingId,
+      name: searchById(buildingId)?.name || "",
+    };
+    setBuildingDetailDrawerBuilding(buildingData);
+    setIsBuildingDetailDrawerOpen(true);
+  }, [
+    buildingId,
+    setBuildingDetailDrawerBuilding,
+    setIsBuildingDetailDrawerOpen,
+  ]);
+
   return (
     <Marker
       position={calcPosition(position)}
@@ -40,7 +65,10 @@ const BuildingMarker = (props: BuildingMarkerProps) => {
                     <h3 style="font-family: Noto Sans KR, sans-serif; font-weight: 700; color: white">${buildingId}</h3>
                 </div>`,
       })}
-    ></Marker>
+      eventHandlers={{
+        click: () => handleMarkerClick(),
+      }}
+    />
   );
 };
 

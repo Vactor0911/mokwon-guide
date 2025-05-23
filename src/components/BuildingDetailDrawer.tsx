@@ -11,6 +11,13 @@ import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import SearchRoundedIcon from "@mui/icons-material/SearchRounded";
 import RadioButtonCheckedRoundedIcon from "@mui/icons-material/RadioButtonCheckedRounded";
 import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
+import { useAtomValue, useSetAtom } from "jotai";
+import {
+  buildingDetailDrawerBuildingAtom,
+  isBuildingDetailDrawerOpenAtom,
+} from "../states";
+import { useCallback } from "react";
+import { useNavigate } from "react-router";
 
 interface BuildingDetailDrawerProps {
   isDrawerOpen: boolean;
@@ -19,6 +26,26 @@ interface BuildingDetailDrawerProps {
 
 const BuildingDetailDrawer = (props: BuildingDetailDrawerProps) => {
   const { isDrawerOpen, handleDrawerOpen } = props;
+
+  const navigate = useNavigate();
+
+  const buildingDetailDrawerBuilding = useAtomValue(
+    buildingDetailDrawerBuildingAtom
+  );
+
+  const setIsBuildingDetailDrawerOpen = useSetAtom(
+    isBuildingDetailDrawerOpenAtom
+  );
+
+  // 건물 대표 이미지 버튼 클릭
+  const handleBuildingImageClick = useCallback(() => {
+    setIsBuildingDetailDrawerOpen(false);
+    navigate(`/detail?building=${buildingDetailDrawerBuilding?.id ?? "A"}`);
+  }, [
+    buildingDetailDrawerBuilding?.id,
+    navigate,
+    setIsBuildingDetailDrawerOpen,
+  ]);
 
   return (
     <SwipeableDrawer
@@ -66,9 +93,11 @@ const BuildingDetailDrawer = (props: BuildingDetailDrawerProps) => {
         >
           {/* 건물 명칭 */}
           <Stack direction="row" gap={1} alignItems="center">
-            <Typography variant="h4">N</Typography>
+            <Typography variant="h4">
+              {buildingDetailDrawerBuilding?.id}
+            </Typography>
             <Typography variant="h5" fontWeight={400}>
-              학생회관
+              {buildingDetailDrawerBuilding?.name}
             </Typography>
           </Stack>
 
@@ -92,6 +121,7 @@ const BuildingDetailDrawer = (props: BuildingDetailDrawerProps) => {
         {/* 건물 대표 이미지 */}
         <Button
           color="info"
+          onClick={handleBuildingImageClick}
           sx={{
             position: "relative",
             padding: 0,
@@ -106,8 +136,9 @@ const BuildingDetailDrawer = (props: BuildingDetailDrawerProps) => {
           <Box
             component="img"
             src="/images/building_images/n_1.jpg"
-            alt=""
+            alt={`${buildingDetailDrawerBuilding?.name} 이미지`}
             width="100%"
+            minHeight={200}
           />
 
           {/* 더보기 라벨 */}
