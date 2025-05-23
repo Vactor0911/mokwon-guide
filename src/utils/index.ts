@@ -137,7 +137,7 @@ export const geoToXY = (
   const rotatedY = dx * Math.sin(angleRad) + dy * Math.cos(angleRad);
 
   // 다시 기준점 위치로 이동
-  const mul = 340000
+  const mul = 340000;
 
   const finalX = -rotatedX * mul + 1059;
   const finalY = rotatedY * mul + 1000;
