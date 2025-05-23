@@ -1,27 +1,119 @@
 [
-  { "id": "A101B", "name": "계단 강의실" },
-  { "id": "A102B", "name": "공동구" },
-  { "id": "A103B", "name": "미화원 휴게실" },
-  { "id": "A104B", "name": "쓰레기 집하장" },
-  { "id": "A105B", "name": "화장실" },
-  { "id": "A106B", "name": "강의실" },
-  { "id": "A107B", "name": "강의실 (중)" },
-  { "id": "A108B", "name": "펌프실" },
+  {
+    "id": "A101B",
+    "name": "계단 강의실",
+    "coordinates": { "leftTop": [725, 163], "rightBottom": [874, 396] }
+  },
+  {
+    "id": "A102B",
+    "name": "공동구",
+    "coordinates": { "leftTop": [855, 396], "rightBottom": [874, 448] }
+  },
+  {
+    "id": "A103B",
+    "name": "미화원 휴게실",
+    "coordinates": { "leftTop": [837, 449], "rightBottom": [868, 497] }
+  },
+  {
+    "id": "A104B",
+    "name": "쓰레기 집하장",
+    "coordinates": { "leftTop": [837, 499], "rightBottom": [867, 547] }
+  },
+  {
+    "id": "A105B",
+    "name": "화장실",
+    "coordinates": { "leftTop": [724, 587], "rightBottom": [850, 671] }
+  },
+  {
+    "id": "A106B",
+    "name": "강의실",
+    "coordinates": { "leftTop": [586, 587], "rightBottom": [724, 692] }
+  },
+  {
+    "id": "A107B",
+    "name": "강의실 (중)",
+    "coordinates": { "leftTop": [437, 547], "rightBottom": [584, 692] }
+  },
+  {
+    "id": "A108B",
+    "name": "펌프실",
+    "coordinates": { "leftTop": [683, 400], "rightBottom": [725, 442] }
+  },
 
-  { "id": "A101", "name": "교수연구실(권오훈)" },
-  { "id": "A102", "name": "교수연구실(김정희)" },
-  { "id": "A103", "name": "전국신학대학협의회(KAATS) 사무실" },
-  { "id": "A104", "name": "교수연구실(명예교수)" },
-  { "id": "A105", "name": "교수연구실" },
-  { "id": "A106", "name": "교수연구실(임동원)" },
-  { "id": "A107", "name": "화장실" },
-  { "id": "A108", "name": "경비실" },
-  { "id": "A109", "name": "시청각실" },
-  { "id": "A110", "name": "강의실/다문화전용강의실" },
-  { "id": "A111", "name": "강의실/다문화전용강의실" },
-  { "id": "A112", "name": "준비실" },
-  { "id": "A113", "name": "계단강의실" },
-  { "id": "A114", "name": "화장실" },
+
+
+  {
+    "id": "A101",
+    "name": "교수연구실(권오훈)",
+    "coordinates": { "leftTop": [421, 575], "rightBottom": [475, 682] }
+  },
+  {
+    "id": "A102",
+    "name": "교수연구실(김정희)",
+    "coordinates": { "leftTop": [476, 575], "rightBottom": [522, 682] }
+  },
+  {
+    "id": "A103",
+    "name": "전국신학대학협의회(KAATS) 사무실",
+    "coordinates": { "leftTop": [523, 575], "rightBottom": [570, 682] }
+  },
+  {
+    "id": "A104",
+    "name": "교수연구실(명예교수)",
+    "coordinates": { "leftTop": [572, 575], "rightBottom": [617, 682] }
+  },
+  {
+    "id": "A105",
+    "name": "교수연구실",
+    "coordinates": { "leftTop": [618, 575], "rightBottom": [665, 682] }
+  },
+  {
+    "id": "A106",
+    "name": "교수연구실(임동원)",
+    "coordinates": { "leftTop": [666, 575], "rightBottom": [708, 682] }
+  },
+  {
+    "id": "A107",
+    "name": "화장실",
+    "coordinates": { "leftTop": [710, 575], "rightBottom": [836, 661] }
+  },
+  {
+    "id": "A108",
+    "name": "경비실",
+    "coordinates": { "leftTop": [751, 340], "rightBottom": [859, 386] }
+  },
+  {
+    "id": "A109",
+    "name": "시청각실",
+    "coordinates": { "leftTop": [750, 152], "rightBottom": [860, 340] }
+  },
+  {
+    "id": "A110",
+    "name": "강의실/다문화전용강의실",
+    "coordinates": { "leftTop": [712, 3], "rightBottom": [860, 107] }
+  },
+  {
+    "id": "A111",
+    "name": "강의실/다문화전용강의실",
+    "coordinates": { "leftTop": [565, 3], "rightBottom": [710, 108] }
+  },
+  {
+    "id": "A112",
+    "name": "준비실",
+    "coordinates": { "leftTop": [47, 97], "rightBottom": [99, 150] }
+  },
+  {
+    "id": "A113",
+    "name": "계단강의실",
+    "coordinates": { "leftTop": [1, 152], "rightBottom": [238, 295] }
+  },
+  {
+    "id": "A114",
+    "name": "화장실",
+    "coordinates": { "leftTop": [1, 296], "rightBottom": [100, 388] }
+  },
+
+  
 
   { "id": "A201", "name": "신학대학장실" },
   { "id": "A202", "name": "신학과 사무실" },
