@@ -2090,224 +2090,1058 @@
     }
   },
 
-  { "id": "D101B", "name": "중식 조리실" },
-  { "id": "D102B", "name": "여자탈의실" },
-  { "id": "D103B", "name": "식음료제조실" },
-  { "id": "D104B", "name": "제과제빵실" },
-  { "id": "D105B", "name": "관리과 창고" },
-  { "id": "D106B", "name": "강사실" },
-  { "id": "D107B", "name": "외식조리·제과제빵학과 실습사무실" },
-  { "id": "D108B", "name": "서양조리실" },
-  { "id": "D109B", "name": "한식 조리실" },
-  { "id": "D110B", "name": "소모품 창고" },
-  { "id": "D111B", "name": "남자 탈의실" },
-  { "id": "D112B", "name": "기자재실" },
-  { "id": "D112-1B", "name": "기자재실" },
-  { "id": "D113B", "name": "펌프실" },
-  { "id": "D114B", "name": "여자 화장실" },
-  { "id": "D115B", "name": "남자 화장실" },
+  {
+    "id": "D101B",
+    "name": "중식 조리실",
+    "coordinates": { "leftTop": [40, 802], "rightBottom": [123, 992] }
+  },
+  {
+    "id": "D102B",
+    "name": "여자탈의실",
+    "coordinates": { "leftTop": [126, 910], "rightBottom": [157, 992] }
+  },
+  {
+    "id": "D103B",
+    "name": "식음료제조실",
+    "coordinates": { "leftTop": [160, 911], "rightBottom": [353, 992] }
+  },
+  {
+    "id": "D104B",
+    "name": "제과제빵실",
+    "coordinates": { "leftTop": [155, 759], "rightBottom": [352, 874] }
+  },
+  {
+    "id": "D105B",
+    "name": "관리과 창고",
+    "coordinates": { "leftTop": [356, 915], "rightBottom": [386, 952] }
+  },
+  {
+    "id": "D106B",
+    "name": "강사실",
+    "coordinates": { "leftTop": [389, 915], "rightBottom": [442, 955] }
+  },
+  {
+    "id": "D107B",
+    "name": "외식조리·제과제빵학과 실습사무실",
+    "coordinates": { "leftTop": [444, 916], "rightBottom": [502, 953] }
+  },
+  {
+    "id": "D108B",
+    "name": "서양조리실",
+    "coordinates": { "leftTop": [504, 725], "rightBottom": [652, 952] }
+  },
+  {
+    "id": "D109B",
+    "name": "한식 조리실",
+    "coordinates": { "leftTop": [655, 727], "rightBottom": [812, 920] }
+  },
+  {
+    "id": "D110B",
+    "name": "소모품 창고",
+    "coordinates": { "leftTop": [812, 800], "rightBottom": [888, 839] }
+  },
+  {
+    "id": "D111B",
+    "name": "남자 탈의실",
+    "coordinates": { "leftTop": [812, 752], "rightBottom": [888, 796] }
+  },
+  {
+    "id": "D112B",
+    "name": "기자재실",
+    "coordinates": { "leftTop": [813, 725], "rightBottom": [888, 748] }
+  },
+  {
+    "id": "D112-1B",
+    "name": "기자재실"
+  },
+  {
+    "id": "D113B",
+    "name": "펌프실",
+    "coordinates": { "leftTop": [429, 756], "rightBottom": [462, 836] }
+  },
+  {
+    "id": "D114B",
+    "name": "여자 화장실",
+    "coordinates": { "leftTop": [392, 794], "rightBottom": [428, 876] }
+  },
+  {
+    "id": "D115B",
+    "name": "남자 화장실",
+    "coordinates": { "leftTop": [356, 796], "rightBottom": [388, 875] }
+  },
 
-  { "id": "D101", "name": "건축학부 사무실" },
-  { "id": "D102", "name": "교수연구실(신현규)" },
-  { "id": "D103", "name": "교수연구실(백승효)" },
-  { "id": "D104", "name": "교수연구실(박선규)" },
-  { "id": "D105", "name": "건축재료연구실" },
-  { "id": "D106", "name": "미화원대기실" },
-  { "id": "D107", "name": "쓰레기집하장" },
-  { "id": "D108", "name": "건축학부-설계실" },
-  { "id": "D108-1", "name": "건축학부-설계실" },
-  { "id": "D109", "name": "계단강의실" },
-  { "id": "D110", "name": "건축재료실험실" },
-  { "id": "D111", "name": "건축구조실험실" },
-  { "id": "D111-1", "name": "실험준비실" },
-  { "id": "D112", "name": "건축학인증 자료실" },
-  { "id": "D113", "name": "건축학부-강의실" },
-  { "id": "D114", "name": "화장실(여)" },
-  { "id": "D115", "name": "화장실(남)" },
-  { "id": "D116", "name": "건축학부-모형제작실" },
-  { "id": "D116-1", "name": "첨단건축 설비 연구실(IBSL)" },
-  { "id": "D117", "name": "건축학부-CAD실" },
-  { "id": "D118", "name": "교수연구실(김일곤)" },
-  { "id": "D119", "name": "SW아카데미 상담실" },
-  { "id": "D120", "name": "교수연구실(조도은)" },
-  { "id": "D121", "name": "교수연구실(이대범)" },
-  { "id": "D122", "name": "교수연구실(계형산)" },
-  { "id": "D123", "name": "스포츠건강관리학과-건강교육 및 트레이닝 연구실" },
-  { "id": "D125", "name": "플라스틱성형실습실" },
-  { "id": "D126", "name": "보안실" },
-  { "id": "D127", "name": "신소재연구실 시간강사수업준비실" },
-  { "id": "D128", "name": "교수연구실(김기출)" },
-  { "id": "D129", "name": "하이브리드소재실험실" },
-  { "id": "D130", "name": "종합소재실습실" },
-  { "id": "D130-1A", "name": "제품소재디자인실" },
-  { "id": "D131", "name": "제품소재디자인실" },
-  { "id": "D132", "name": "고분자물성실험실" },
-  { "id": "D133", "name": "화장실(여)" },
-  { "id": "D134", "name": "화장실(남)" },
-  { "id": "D135", "name": "LINC 3.0 사업단 공용 장비실" },
-  { "id": "D136", "name": "조형예술학과-환경디자인전공" },
-  { "id": "D137", "name": "학생휴게실" },
+  {
+    "id": "D101",
+    "name": "건축학부 사무실",
+    "coordinates": { "leftTop": [68, 611], "rightBottom": [152, 687] }
+  },
+  {
+    "id": "D102",
+    "name": "교수연구실(신현규)",
+    "coordinates": { "leftTop": [69, 573], "rightBottom": [152, 609] }
+  },
+  {
+    "id": "D103",
+    "name": "교수연구실(백승효)",
+    "coordinates": { "leftTop": [68, 536], "rightBottom": [152, 570] }
+  },
+  {
+    "id": "D104",
+    "name": "교수연구실(박선규)",
+    "coordinates": { "leftTop": [69, 496], "rightBottom": [151, 532] }
+  },
+  {
+    "id": "D105",
+    "name": "건축재료연구실",
+    "coordinates": { "leftTop": [66, 455], "rightBottom": [152, 492] }
+  },
+  {
+    "id": "D106",
+    "name": "미화원대기실",
+    "coordinates": { "leftTop": [69, 417], "rightBottom": [93, 452] }
+  },
+  {
+    "id": "D107",
+    "name": "쓰레기집하장",
+    "coordinates": { "leftTop": [67, 387], "rightBottom": [111, 412] }
+  },
+  {
+    "id": "D108",
+    "name": "건축학부-설계실",
+    "coordinates": { "leftTop": [36, 189], "rightBottom": [152, 267] }
+  },
+  {
+    "id": "D108-1",
+    "name": "건축학부-설계실",
+    "coordinates": { "leftTop": [37, 305], "rightBottom": [152, 382] }
+  },
+  {
+    "id": "D109",
+    "name": "계단강의실",
+    "coordinates": { "leftTop": [189, 0], "rightBottom": [384, 109] }
+  },
+  {
+    "id": "D110",
+    "name": "건축재료실험실",
+    "coordinates": { "leftTop": [386, 0], "rightBottom": [533, 112] }
+  },
+  {
+    "id": "D111",
+    "name": "건축구조실험실",
+    "coordinates": { "leftTop": [576, 0], "rightBottom": [765, 111] }
+  },
+  {
+    "id": "D111-1",
+    "name": "실험준비실",
+    "coordinates": { "leftTop": [535, 29], "rightBottom": [573, 88] }
+  },
+  {
+    "id": "D112",
+    "name": "건축학인증 자료실",
+    "coordinates": { "leftTop": [384, 144], "rightBottom": [496, 228] }
+  },
+  {
+    "id": "D113",
+    "name": "건축학부-강의실",
+    "coordinates": { "leftTop": [268, 145], "rightBottom": [382, 226] }
+  },
+  {
+    "id": "D114",
+    "name": "화장실(여)",
+    "coordinates": { "leftTop": [230, 144], "rightBottom": [265, 227] }
+  },
+  {
+    "id": "D115",
+    "name": "화장실(남)",
+    "coordinates": { "leftTop": [184, 180], "rightBottom": [226, 264] }
+  },
+  {
+    "id": "D116",
+    "name": "건축학부-모형제작실",
+    "coordinates": { "leftTop": [181, 456], "rightBottom": [265, 492] }
+  },
+  {
+    "id": "D116-1",
+    "name": "첨단건축 설비 연구실(IBSL)",
+    "coordinates": { "leftTop": [182, 495], "rightBottom": [265, 532] }
+  },
+  {
+    "id": "D117",
+    "name": "건축학부-CAD실",
+    "coordinates": { "leftTop": [184, 536], "rightBottom": [266, 686] }
+  },
+  {
+    "id": "D118",
+    "name": "교수연구실(김일곤)",
+    "coordinates": { "leftTop": [69, 803], "rightBottom": [153, 838] }
+  },
+  {
+    "id": "D119",
+    "name": "SW아카데미 상담실",
+    "coordinates": { "leftTop": [68, 841], "rightBottom": [151, 878] }
+  },
+  {
+    "id": "D120",
+    "name": "교수연구실(조도은)",
+    "coordinates": { "leftTop": [68, 880], "rightBottom": [153, 917] }
+  },
+  {
+    "id": "D121",
+    "name": "교수연구실(이대범)",
+    "coordinates": { "leftTop": [68, 920], "rightBottom": [152, 953] }
+  },
+  {
+    "id": "D122",
+    "name": "교수연구실(계형산)",
+    "coordinates": { "leftTop": [67, 958], "rightBottom": [151, 993] }
+  },
+  {
+    "id": "D123",
+    "name": "스포츠건강관리학과-건강교육 및 트레이닝 연구실",
+    "coordinates": { "leftTop": [188, 909], "rightBottom": [266, 992] }
+  },
+  {
+    "id": "D125",
+    "name": "플라스틱성형실습실",
+    "coordinates": { "leftTop": [269, 909], "rightBottom": [381, 992] }
+  },
+  {
+    "id": "D126",
+    "name": "보안실",
+    "coordinates": { "leftTop": [534, 872], "rightBottom": [572, 954] }
+  },
+  {
+    "id": "D127",
+    "name": "신소재연구실 시간강사수업준비실",
+    "coordinates": { "leftTop": [574, 872], "rightBottom": [647, 952] }
+  },
+  {
+    "id": "D128",
+    "name": "교수연구실(김기출)",
+    "coordinates": { "leftTop": [649, 871], "rightBottom": [688, 952] }
+  },
+  {
+    "id": "D129",
+    "name": "하이브리드소재실험실",
+    "coordinates": { "leftTop": [689, 871], "rightBottom": [840, 953] }
+  },
+  {
+    "id": "D130",
+    "name": "종합소재실습실",
+    "coordinates": { "leftTop": [727, 724], "rightBottom": [880, 840] }
+  },
+  {
+    "id": "D130-1A",
+    "name": "제품소재디자인실",
+    "coordinates": { "leftTop": [883, 726], "rightBottom": [916, 838] }
+  },
+  {
+    "id": "D131",
+    "name": "제품소재디자인실",
+    "coordinates": { "leftTop": [613, 727], "rightBottom": [726, 838] }
+  },
+  {
+    "id": "D132",
+    "name": "고분자물성실험실",
+    "coordinates": { "leftTop": [535, 724], "rightBottom": [609, 838] }
+  },
+  {
+    "id": "D133",
+    "name": "화장실(여)",
+    "coordinates": { "leftTop": [420, 793], "rightBottom": [456, 875] }
+  },
+  {
+    "id": "D134",
+    "name": "화장실(남)",
+    "coordinates": { "leftTop": [386, 795], "rightBottom": [420, 873] }
+  },
+  {
+    "id": "D135",
+    "name": "LINC 3.0 사업단 공용 장비실",
+    "coordinates": { "leftTop": [308, 759], "rightBottom": [381, 876] }
+  },
+  {
+    "id": "D136",
+    "name": "조형예술학과-환경디자인전공",
+    "coordinates": { "leftTop": [184, 760], "rightBottom": [305, 876] }
+  },
+  {
+    "id": "D137",
+    "name": "학생휴게실",
+    "coordinates": { "leftTop": [193, 268], "rightBottom": [264, 381] }
+  },
 
-  { "id": "D201", "name": "교수연구실(이승용)" },
-  { "id": "D201-1", "name": "건축계획연구실" },
-  { "id": "D202", "name": "교수연구실(김연준)" },
-  { "id": "D202-1", "name": "건축설계실습실" },
-  { "id": "D204", "name": "교수연구실(이재연)" },
-  { "id": "D205", "name": "건축구조공학 연구실" },
-  { "id": "D206", "name": "건축학부-설계실" },
-  { "id": "D206-1", "name": "건축학부-설계실" },
-  { "id": "D207", "name": "건축학부-설계실" },
-  { "id": "D207-1", "name": "건축학부-설계실" },
-  { "id": "D207-2", "name": "모형제작실" },
-  { "id": "D208", "name": "건축학부-설계실" },
-  { "id": "D208-1", "name": "건축학부-설계실" },
-  { "id": "D209", "name": "교수연구실(이승재)" },
-  { "id": "D210", "name": "건축학부-설계실" },
-  { "id": "D210-1", "name": "건축학부-설계실" },
-  { "id": "D211", "name": "김정철홀" },
-  { "id": "D212", "name": "건축학부-강의실" },
-  { "id": "D213", "name": "화장실(여)" },
-  { "id": "D214", "name": "화장실(남)" },
-  { "id": "D215", "name": "건축학부-제1세미나실" },
-  { "id": "D216", "name": "전산구조공학 실습실" },
-  { "id": "D217", "name": "교수연구실(박재형)" },
-  { "id": "D218", "name": "건설관리연구실" },
-  { "id": "D219", "name": "교수연구실(신상엽)" },
-  { "id": "D220", "name": "건축공간구성실습실" },
-  { "id": "D221", "name": "교수연구실(박종성)" },
-  { "id": "D222", "name": "도시설계실습실" },
-  { "id": "D223", "name": "교수연구실(최정우)" },
-  { "id": "D224", "name": "도시공학과-교수연구실" },
-  { "id": "D225", "name": "도시계획실습실" },
-  { "id": "D226", "name": "교수연구실(최봉문)" },
-  { "id": "D227", "name": "스마트시티 실습실" },
-  { "id": "D228", "name": "공동기자재실" },
-  { "id": "D229", "name": "도시공학과사무실" },
-  { "id": "D230", "name": "도시공학과-세미나실" },
-  { "id": "D231", "name": "도시주택 실습실" },
-  { "id": "D232", "name": "스마트 자율주행 실습실" },
-  { "id": "D233", "name": "교수연구실(박은미)" },
-  { "id": "D234", "name": "교통공학실습실" },
-  { "id": "D235", "name": "교수연구실(김종하)" },
-  { "id": "D236", "name": "교수연구실(백승제)" },
-  { "id": "D237", "name": "도시공학과-2학년 설계실" },
-  { "id": "D238", "name": "도시공학과-3학년 설계실" },
-  { "id": "D239", "name": "화장실(여)" },
-  { "id": "D240", "name": "화장실(남)" },
-  { "id": "D241", "name": "도시공학과-강의실(도시정보분석)" },
-  { "id": "D242", "name": "도시공학과-4학년 설계실" },
+  {
+    "id": "D201",
+    "name": "교수연구실(이승용)",
+    "coordinates": { "leftTop": [56, 648], "rightBottom": [137, 686] }
+  },
+  {
+    "id": "D201-1",
+    "name": "건축계획연구실",
+    "coordinates": { "leftTop": [56, 611], "rightBottom": [140, 648] }
+  },
+  {
+    "id": "D202",
+    "name": "교수연구실(김연준)",
+    "coordinates": { "leftTop": [55, 572], "rightBottom": [139, 609] }
+  },
+  {
+    "id": "D202-1",
+    "name": "건축설계실습실",
+    "coordinates": { "leftTop": [56, 535], "rightBottom": [140, 569] }
+  },
+  {
+    "id": "D204",
+    "name": "교수연구실(이재연)",
+    "coordinates": { "leftTop": [57, 496], "rightBottom": [140, 533] }
+  },
+  {
+    "id": "D205",
+    "name": "건축구조공학 연구실",
+    "coordinates": { "leftTop": [57, 456], "rightBottom": [140, 492] }
+  },
+  {
+    "id": "D206",
+    "name": "건축학부-설계실",
+    "coordinates": { "leftTop": [26, 188], "rightBottom": [140, 265] }
+  },
+  {
+    "id": "D206-1",
+    "name": "건축학부-설계실",
+    "coordinates": { "leftTop": [25, 305], "rightBottom": [139, 381] }
+  },
+  {
+    "id": "D207",
+    "name": "건축학부-설계실",
+    "coordinates": { "leftTop": [257, 1], "rightBottom": [333, 111] }
+  },
+  {
+    "id": "D207-1",
+    "name": "건축학부-설계실",
+    "coordinates": { "leftTop": [144, 1], "rightBottom": [216, 112] }
+  },
+  {
+    "id": "D207-2",
+    "name": "모형제작실",
+    "coordinates": { "leftTop": [333, 0], "rightBottom": [373, 113] }
+  },
+  {
+    "id": "D208",
+    "name": "건축학부-설계실",
+    "coordinates": { "leftTop": [486, 0], "rightBottom": [562, 111] }
+  },
+  {
+    "id": "D208-1",
+    "name": "건축학부-설계실",
+    "coordinates": { "leftTop": [373, 0], "rightBottom": [445, 110] }
+  },
+  {
+    "id": "D209",
+    "name": "교수연구실(이승재)",
+    "coordinates": { "leftTop": [676, 145], "rightBottom": [710, 227] }
+  },
+  {
+    "id": "D210",
+    "name": "건축학부-설계실",
+    "coordinates": { "leftTop": [524, 144], "rightBottom": [636, 227] }
+  },
+  {
+    "id": "D210-1",
+    "name": "건축학부-설계실",
+    "coordinates": { "leftTop": [640, 144], "rightBottom": [674, 228] }
+  },
+  {
+    "id": "D211",
+    "name": "김정철홀",
+    "coordinates": { "leftTop": [374, 145], "rightBottom": [522, 227] }
+  },
+  {
+    "id": "D212",
+    "name": "건축학부-강의실",
+    "coordinates": { "leftTop": [257, 144], "rightBottom": [371, 226] }
+  },
+  {
+    "id": "D213",
+    "name": "화장실(여)",
+    "coordinates": { "leftTop": [218, 143], "rightBottom": [254, 228] }
+  },
+  {
+    "id": "D214",
+    "name": "화장실(남)",
+    "coordinates": { "leftTop": [173, 182], "rightBottom": [216, 264] }
+  },
+  {
+    "id": "D215",
+    "name": "건축학부-제1세미나실",
+    "coordinates": { "leftTop": [172, 266], "rightBottom": [254, 381] }
+  },
+  {
+    "id": "D216",
+    "name": "전산구조공학 실습실",
+    "coordinates": { "leftTop": [171, 455], "rightBottom": [254, 492] }
+  },
+  {
+    "id": "D217",
+    "name": "교수연구실(박재형)",
+    "coordinates": { "leftTop": [169, 496], "rightBottom": [254, 532] }
+  },
+  {
+    "id": "D218",
+    "name": "건설관리연구실",
+    "coordinates": { "leftTop": [172, 535], "rightBottom": [254, 570] }
+  },
+  {
+    "id": "D219",
+    "name": "교수연구실(신상엽)",
+    "coordinates": { "leftTop": [171, 572], "rightBottom": [254, 608] }
+  },
+  {
+    "id": "D220",
+    "name": "건축공간구성실습실",
+    "coordinates": { "leftTop": [169, 610], "rightBottom": [255, 644] }
+  },
+  {
+    "id": "D221",
+    "name": "교수연구실(박종성)",
+    "coordinates": { "leftTop": [171, 648], "rightBottom": [252, 686] }
+  },
+  {
+    "id": "D222",
+    "name": "도시설계실습실",
+    "coordinates": { "leftTop": [56, 801], "rightBottom": [139, 836] }
+  },
+  {
+    "id": "D223",
+    "name": "교수연구실(최정우)",
+    "coordinates": { "leftTop": [56, 840], "rightBottom": [139, 878] }
+  },
+  {
+    "id": "D224",
+    "name": "도시공학과-교수연구실",
+    "coordinates": { "leftTop": [56, 881], "rightBottom": [139, 916] }
+  },
+  {
+    "id": "D225",
+    "name": "도시계획실습실",
+    "coordinates": { "leftTop": [56, 920], "rightBottom": [139, 954] }
+  },
+  {
+    "id": "D226",
+    "name": "교수연구실(최봉문)",
+    "coordinates": { "leftTop": [56, 956], "rightBottom": [139, 992] }
+  },
+  {
+    "id": "D227",
+    "name": "스마트시티 실습실",
+    "coordinates": { "leftTop": [177, 909], "rightBottom": [216, 992] }
+  },
+  {
+    "id": "D228",
+    "name": "공동기자재실",
+    "coordinates": { "leftTop": [220, 910], "rightBottom": [291, 992] }
+  },
+  {
+    "id": "D229",
+    "name": "도시공학과사무실",
+    "coordinates": { "leftTop": [296, 910], "rightBottom": [370, 992] }
+  },
+  {
+    "id": "D230",
+    "name": "도시공학과-세미나실",
+    "coordinates": { "leftTop": [522, 871], "rightBottom": [596, 953] }
+  },
+  {
+    "id": "D231",
+    "name": "도시주택 실습실",
+    "coordinates": { "leftTop": [600, 871], "rightBottom": [634, 953] }
+  },
+  {
+    "id": "D232",
+    "name": "스마트 자율주행 실습실",
+    "coordinates": { "leftTop": [638, 873], "rightBottom": [675, 953] }
+  },
+  {
+    "id": "D233",
+    "name": "교수연구실(박은미)",
+    "coordinates": { "leftTop": [677, 872], "rightBottom": [711, 952] }
+  },
+  {
+    "id": "D234",
+    "name": "교통공학실습실",
+    "coordinates": { "leftTop": [715, 872], "rightBottom": [749, 952] }
+  },
+  {
+    "id": "D235",
+    "name": "교수연구실(김종하)",
+    "coordinates": { "leftTop": [753, 872], "rightBottom": [788, 952] }
+  },
+  {
+    "id": "D236",
+    "name": "교수연구실(백승제)",
+    "coordinates": { "leftTop": [790, 873], "rightBottom": [829, 952] }
+  },
+  {
+    "id": "D237",
+    "name": "도시공학과-2학년 설계실",
+    "coordinates": { "leftTop": [716, 725], "rightBottom": [904, 836] }
+  },
+  {
+    "id": "D238",
+    "name": "도시공학과-3학년 설계실",
+    "coordinates": { "leftTop": [523, 726], "rightBottom": [712, 837] }
+  },
+  {
+    "id": "D239",
+    "name": "화장실(여)",
+    "coordinates": { "leftTop": [409, 794], "rightBottom": [444, 874] }
+  },
+  {
+    "id": "D240",
+    "name": "화장실(남)",
+    "coordinates": { "leftTop": [372, 795], "rightBottom": [407, 876] }
+  },
+  {
+    "id": "D241",
+    "name": "도시공학과-강의실(도시정보분석)",
+    "coordinates": { "leftTop": [258, 758], "rightBottom": [368, 875] }
+  },
+  {
+    "id": "D242",
+    "name": "도시공학과-4학년 설계실",
+    "coordinates": { "leftTop": [171, 759], "rightBottom": [256, 874] }
+  },
 
-  { "id": "D301", "name": "사회안전학과 세미나실" },
+  {
+    "id": "D301",
+    "name": "사회안전학과 세미나실",
+    "coordinates": { "leftTop": [32, 572], "rightBottom": [115, 647] }
+  },
   { "id": "D301-1", "name": "IT융합소프트웨어실습실" },
-  { "id": "D302", "name": "클로스터계약 LAB. 사무실" },
-  { "id": "D303", "name": "교수연구실(윤보현)" },
-  { "id": "D304", "name": "교수연구실(구진희)" },
-  { "id": "D305", "name": "교수연구실(서용호)" },
-  { "id": "D306", "name": "지역선도 지능로봇 실습실" },
-  { "id": "D307", "name": "LINC 3.0 사업단 스마트 강의실" },
-  { "id": "D307-1", "name": "LINC 3.0 사업단 소회의실" },
-  { "id": "D308", "name": "로봇지능실험실" },
-  { "id": "D308-1", "name": "마이크로프로세서실험실" },
-  { "id": "D309", "name": "건축학부-설계실" },
-  { "id": "D310", "name": "건축학부-설계실" },
-  { "id": "D310-1", "name": "건축학부-학생회실" },
-  { "id": "D311", "name": "공과대학교학과 사무실" },
-  { "id": "D312", "name": "공과대학장실" },
-  { "id": "D313", "name": "로봇플랫폼 실험실" },
-  { "id": "D313-1", "name": "교수연구실(양정연)" },
-  { "id": "D314", "name": "로봇프로그래밍실습실" },
-  { "id": "D315", "name": "로봇설계실습실" },
-  { "id": "D316", "name": "화장실(여)" },
-  { "id": "D317", "name": "화장실(남)" },
-  { "id": "D318", "name": "북카페 (미화원 임시 휴게실)" },
-  { "id": "D319", "name": "LINC 3.0 사업단 단장실" },
-  { "id": "D320", "name": "LINC 3.0 사업단 행정실" },
-  { "id": "D321", "name": "교수연구실(송특섭)" },
-  { "id": "D322", "name": "교수연구실(강희조)" },
-  { "id": "D323", "name": "교수연구실(김윤호)" },
-  { "id": "D324", "name": "교수연구실(최재명)" },
-  { "id": "D325", "name": "교수연구실(여상수) / 창의연구학회" },
-  { "id": "D326", "name": "컴퓨터공학과-세미나실(강사휴게실)" },
-  { "id": "D327", "name": "고급컴퓨팅연구실" },
-  { "id": "D328", "name": "Fab-Lab 실습준비실" },
-  { "id": "D329", "name": "건축학부-강의실" },
-  { "id": "D330", "name": "도시공학과-강의실" },
-  { "id": "D331", "name": "공과대학학생회실" },
-  { "id": "D333", "name": "건축학부-설계실" },
-  { "id": "D334", "name": "도시공학과-1학년 설계실" },
-  { "id": "D335", "name": "화장실(여)" },
-  { "id": "D336", "name": "화장실(남)" },
-  { "id": "D337", "name": "Fab-Lab" },
+  {
+    "id": "D302",
+    "name": "클로스터계약 LAB. 사무실",
+    "coordinates": { "leftTop": [32, 536], "rightBottom": [116, 570] }
+  },
+  {
+    "id": "D303",
+    "name": "교수연구실(윤보현)",
+    "coordinates": { "leftTop": [34, 496], "rightBottom": [116, 531] }
+  },
+  {
+    "id": "D304",
+    "name": "교수연구실(구진희)",
+    "coordinates": { "leftTop": [33, 457], "rightBottom": [116, 491] }
+  },
+  {
+    "id": "D305",
+    "name": "교수연구실(서용호)",
+    "coordinates": { "leftTop": [2, 348], "rightBottom": [116, 381] }
+  },
+  {
+    "id": "D306",
+    "name": "지역선도 지능로봇 실습실",
+    "coordinates": { "leftTop": [0, 188], "rightBottom": [116, 342] }
+  },
+  {
+    "id": "D307",
+    "name": "LINC 3.0 사업단 스마트 강의실",
+    "coordinates": { "leftTop": [120, 1], "rightBottom": [216, 111] }
+  },
+  {
+    "id": "D307-1",
+    "name": "LINC 3.0 사업단 소회의실",
+    "coordinates": { "leftTop": [219, 4], "rightBottom": [270, 112] }
+  },
+  {
+    "id": "D308",
+    "name": "로봇지능실험실",
+    "coordinates": { "leftTop": [272, 2], "rightBottom": [386, 111] }
+  },
+  {
+    "id": "D308-1",
+    "name": "마이크로프로세서실험실",
+    "coordinates": { "leftTop": [388, 2], "rightBottom": [460, 110] }
+  },
+  {
+    "id": "D309",
+    "name": "건축학부-설계실",
+    "coordinates": { "leftTop": [464, 2], "rightBottom": [612, 110] }
+  },
+  {
+    "id": "D310",
+    "name": "건축학부-설계실",
+    "coordinates": { "leftTop": [616, 1], "rightBottom": [687, 111] }
+  },
+  {
+    "id": "D310-1",
+    "name": "건축학부-학생회실",
+    "coordinates": { "leftTop": [689, 0], "rightBottom": [730, 110] }
+  },
+  {
+    "id": "D311",
+    "name": "공과대학교학과 사무실",
+    "coordinates": { "leftTop": [616, 144], "rightBottom": [685, 228] }
+  },
+  {
+    "id": "D312",
+    "name": "공과대학장실",
+    "coordinates": { "leftTop": [540, 144], "rightBottom": [612, 226] }
+  },
+  {
+    "id": "D313",
+    "name": "로봇플랫폼 실험실",
+    "coordinates": { "leftTop": [500, 145], "rightBottom": [536, 227] }
+  },
+  {
+    "id": "D313-1",
+    "name": "교수연구실(양정연)",
+    "coordinates": { "leftTop": [463, 144], "rightBottom": [499, 226] }
+  },
+  {
+    "id": "D314",
+    "name": "로봇프로그래밍실습실",
+    "coordinates": { "leftTop": [349, 145], "rightBottom": [460, 227] }
+  },
+  {
+    "id": "D315",
+    "name": "로봇설계실습실",
+    "coordinates": { "leftTop": [234, 147], "rightBottom": [345, 225] }
+  },
+  {
+    "id": "D316",
+    "name": "화장실(여)",
+    "coordinates": { "leftTop": [194, 144], "rightBottom": [230, 226] }
+  },
+  {
+    "id": "D317",
+    "name": "화장실(남)",
+    "coordinates": { "leftTop": [148, 182], "rightBottom": [190, 263] }
+  },
+  {
+    "id": "D318",
+    "name": "북카페 (미화원 임시 휴게실)",
+    "coordinates": { "leftTop": [149, 267], "rightBottom": [228, 380] }
+  },
+  {
+    "id": "D319",
+    "name": "LINC 3.0 사업단 단장실",
+    "coordinates": { "leftTop": [147, 457], "rightBottom": [230, 492] }
+  },
+  {
+    "id": "D320",
+    "name": "LINC 3.0 사업단 행정실",
+    "coordinates": { "leftTop": [148, 496], "rightBottom": [230, 686] }
+  },
+  {
+    "id": "D321",
+    "name": "교수연구실(송특섭)",
+    "coordinates": { "leftTop": [32, 803], "rightBottom": [115, 836] }
+  },
+  {
+    "id": "D322",
+    "name": "교수연구실(강희조)",
+    "coordinates": { "leftTop": [32, 840], "rightBottom": [116, 876] }
+  },
+  {
+    "id": "D323",
+    "name": "교수연구실(김윤호)",
+    "coordinates": { "leftTop": [33, 881], "rightBottom": [116, 915] }
+  },
+  {
+    "id": "D324",
+    "name": "교수연구실(최재명)",
+    "coordinates": { "leftTop": [32, 917], "rightBottom": [116, 954] }
+  },
+  {
+    "id": "D325",
+    "name": "교수연구실(여상수) / 창의연구학회",
+    "coordinates": { "leftTop": [33, 957], "rightBottom": [116, 994] }
+  },
+  {
+    "id": "D326",
+    "name": "컴퓨터공학과-세미나실(강사휴게실)",
+    "coordinates": { "leftTop": [152, 910], "rightBottom": [231, 992] }
+  },
+  {
+    "id": "D327",
+    "name": "고급컴퓨팅연구실",
+    "coordinates": { "leftTop": [236, 909], "rightBottom": [346, 992] }
+  },
+  {
+    "id": "D328",
+    "name": "Fab-Lab 실습준비실",
+    "coordinates": { "leftTop": [349, 915], "rightBottom": [420, 953] }
+  },
+  {
+    "id": "D329",
+    "name": "건축학부-강의실",
+    "coordinates": { "leftTop": [496, 872], "rightBottom": [611, 953] }
+  },
+  {
+    "id": "D330",
+    "name": "도시공학과-강의실",
+    "coordinates": { "leftTop": [614, 872], "rightBottom": [726, 953] }
+  },
+  {
+    "id": "D331",
+    "name": "공과대학학생회실",
+    "coordinates": { "leftTop": [729, 873], "rightBottom": [807, 952] }
+  },
+  {
+    "id": "D333",
+    "name": "건축학부-설계실",
+    "coordinates": { "leftTop": [692, 724], "rightBottom": [880, 837] }
+  },
+  {
+    "id": "D334",
+    "name": "도시공학과-1학년 설계실",
+    "coordinates": { "leftTop": [497, 724], "rightBottom": [689, 836] }
+  },
+  {
+    "id": "D335",
+    "name": "화장실(여)",
+    "coordinates": { "leftTop": [385, 795], "rightBottom": [420, 873] }
+  },
+  {
+    "id": "D336",
+    "name": "화장실(남)",
+    "coordinates": { "leftTop": [350, 792], "rightBottom": [383, 875] }
+  },
+  {
+    "id": "D337",
+    "name": "Fab-Lab",
+    "coordinates": { "leftTop": [148, 760], "rightBottom": [345, 873] }
+  },
   { "id": "D338", "name": "여학생 휴게실" },
 
-  { "id": "D401", "name": "교수연구실(김정태)" },
-  { "id": "D402", "name": "전기전자공학과-외래강사실/세미나실" },
-  { "id": "D403", "name": "교수연구실(박세준)" },
-  { "id": "D404", "name": "교수연구실(임종관)" },
-  { "id": "D405", "name": "교수연구실(문상국)" },
-  { "id": "D406", "name": "로봇학과 사무실" },
-  { "id": "D407", "name": "임베디드시스템 실습실" },
-  { "id": "D407-1", "name": "서버실" },
-  { "id": "D408", "name": "LINC 3.0 사업단-산학연협력 교육실" },
-  { "id": "D408-A", "name": "교수연구실(박찬봉)" },
-  { "id": "D409", "name": "전기회로 실습실" },
-  { "id": "D409-1", "name": "리더십개발실" },
-  { "id": "D410", "name": "미디어스튜디오" },
-  { "id": "D410-1", "name": "소프트웨어개발실습실" },
-  { "id": "D411", "name": "캡스톤 강의실" },
-  { "id": "D412", "name": "전기전자공학과-강의실" },
-  { "id": "D413", "name": "전기전자공학과-강의실" },
-  { "id": "D414", "name": "전기전자공학과-강의실" },
-  { "id": "D415", "name": "화장실(여)" },
-  { "id": "D416", "name": "화장실(남)" },
-  { "id": "D417", "name": "캡스톤 작업실" },
-  { "id": "D419", "name": "지능로봇 연구실" },
-  { "id": "D420", "name": "시스템반도체실험실" },
-  { "id": "D422", "name": "컴퓨터공학 실습실1" },
-  { "id": "D423", "name": "컴퓨터공학 실습실3" },
-  { "id": "D424", "name": "컴퓨터공학과 학과사무실" },
-  { "id": "D425", "name": "공동훈련센터전용강의실" },
-  { "id": "D426", "name": "컴퓨터공학 강의실" },
-  { "id": "D427", "name": "교수연구실(박종수)" },
-  { "id": "D427-1", "name": "반도체설계실" },
-  { "id": "D428", "name": "컴퓨터공학 실습실4" },
-  { "id": "D427-1", "name": "반도체설계실" },
-  { "id": "D428", "name": "SW아카데미 실습실" },
-  { "id": "D429", "name": "컴퓨터공학 실습실4" },
-  { "id": "D430", "name": "화장실(여)" },
-  { "id": "D431", "name": "화장실(남)" },
-  { "id": "D432", "name": "컴퓨터공학 실습실2" },
-  { "id": "D432-1", "name": "SW아카데미(SW/AI창업멘토링실)" },
-  { "id": "D433", "name": "전기전자공학과 사무실" },
+  {
+    "id": "D401",
+    "name": "교수연구실(김정태)",
+    "coordinates": { "leftTop": [32, 648], "rightBottom": [115, 685] }
+  },
+  {
+    "id": "D402",
+    "name": "전기전자공학과-외래강사실/세미나실",
+    "coordinates": { "leftTop": [33, 612], "rightBottom": [114, 647] }
+  },
+  {
+    "id": "D403",
+    "name": "교수연구실(박세준)",
+    "coordinates": { "leftTop": [32, 573], "rightBottom": [115, 608] }
+  },
+  {
+    "id": "D404",
+    "name": "교수연구실(임종관)",
+    "coordinates": { "leftTop": [34, 535], "rightBottom": [115, 570] }
+  },
+  {
+    "id": "D405",
+    "name": "교수연구실(문상국)",
+    "coordinates": { "leftTop": [32, 496], "rightBottom": [115, 532] }
+  },
+  {
+    "id": "D406",
+    "name": "로봇학과 사무실",
+    "coordinates": { "leftTop": [32, 455], "rightBottom": [114, 492] }
+  },
+  {
+    "id": "D407",
+    "name": "임베디드시스템 실습실",
+    "coordinates": { "leftTop": [2, 233], "rightBottom": [116, 382] }
+  },
+  {
+    "id": "D407-1",
+    "name": "서버실",
+    "coordinates": { "leftTop": [0, 188], "rightBottom": [116, 228] }
+  },
+  {
+    "id": "D408",
+    "name": "LINC 3.0 사업단-산학연협력 교육실",
+    "coordinates": { "leftTop": [118, 0], "rightBottom": [308, 111] }
+  },
+  {
+    "id": "D408-A",
+    "name": "교수연구실(박찬봉)",
+    "coordinates": { "leftTop": [312, 1], "rightBottom": [347, 109] }
+  },
+  {
+    "id": "D409",
+    "name": "전기회로 실습실",
+    "coordinates": { "leftTop": [390, 3], "rightBottom": [537, 109] }
+  },
+  {
+    "id": "D409-1",
+    "name": "리더십개발실",
+    "coordinates": { "leftTop": [351, 0], "rightBottom": [384, 111] }
+  },
+  {
+    "id": "D410",
+    "name": "미디어스튜디오",
+    "coordinates": { "leftTop": [540, 2], "rightBottom": [612, 111] }
+  },
+  {
+    "id": "D410-1",
+    "name": "소프트웨어개발실습실",
+    "coordinates": { "leftTop": [617, 0], "rightBottom": [728, 109] }
+  },
+  {
+    "id": "D411",
+    "name": "캡스톤 강의실",
+    "coordinates": { "leftTop": [577, 144], "rightBottom": [685, 226] }
+  },
+  {
+    "id": "D412",
+    "name": "전기전자공학과-강의실",
+    "coordinates": { "leftTop": [464, 145], "rightBottom": [575, 227] }
+  },
+  {
+    "id": "D413",
+    "name": "전기전자공학과-강의실",
+    "coordinates": { "leftTop": [348, 145], "rightBottom": [459, 226] }
+  },
+  {
+    "id": "D414",
+    "name": "전기전자공학과-강의실",
+    "coordinates": { "leftTop": [232, 145], "rightBottom": [346, 228] }
+  },
+  {
+    "id": "D415",
+    "name": "화장실(여)",
+    "coordinates": { "leftTop": [194, 144], "rightBottom": [228, 226] }
+  },
+  {
+    "id": "D416",
+    "name": "화장실(남)",
+    "coordinates": { "leftTop": [148, 182], "rightBottom": [190, 264] }
+  },
+  {
+    "id": "D417",
+    "name": "캡스톤 작업실",
+    "coordinates": { "leftTop": [150, 268], "rightBottom": [230, 382] }
+  },
+  {
+    "id": "D419",
+    "name": "지능로봇 연구실",
+    "coordinates": { "leftTop": [145, 456], "rightBottom": [232, 569] }
+  },
+  {
+    "id": "D420",
+    "name": "시스템반도체실험실",
+    "coordinates": { "leftTop": [146, 575], "rightBottom": [228, 684] }
+  },
+  {
+    "id": "D422",
+    "name": "컴퓨터공학 실습실1",
+    "coordinates": { "leftTop": [32, 841], "rightBottom": [116, 992] }
+  },
+  {
+    "id": "D423",
+    "name": "컴퓨터공학 실습실3",
+    "coordinates": { "leftTop": [153, 909], "rightBottom": [232, 992] }
+  },
+  {
+    "id": "D424",
+    "name": "컴퓨터공학과 학과사무실",
+    "coordinates": { "leftTop": [349, 915], "rightBottom": [422, 952] }
+  },
+  {
+    "id": "D425",
+    "name": "공동훈련센터전용강의실",
+    "coordinates": { "leftTop": [496, 872], "rightBottom": [610, 953] }
+  },
+  {
+    "id": "D426",
+    "name": "컴퓨터공학 강의실",
+    "coordinates": { "leftTop": [615, 874], "rightBottom": [726, 955] }
+  },
+  {
+    "id": "D427",
+    "name": "교수연구실(박종수)",
+    "coordinates": { "leftTop": [728, 872], "rightBottom": [765, 952] }
+  },
+  {
+    "id": "D427-1",
+    "name": "반도체설계실",
+    "coordinates": { "leftTop": [768, 873], "rightBottom": [808, 953] }
+  },
+  {
+    "id": "D428",
+    "name": "컴퓨터공학 실습실4",
+    "coordinates": { "leftTop": [694, 724], "rightBottom": [880, 838] }
+  },
+  {
+    "id": "D428",
+    "name": "SW아카데미 실습실",
+    "coordinates": { "leftTop": [694, 724], "rightBottom": [880, 838] }
+  },
+  {
+    "id": "D429",
+    "name": "컴퓨터공학 실습실4",
+    "coordinates": { "leftTop": [497, 727], "rightBottom": [634, 839] }
+  },
+  {
+    "id": "D430",
+    "name": "화장실(여)",
+    "coordinates": { "leftTop": [385, 794], "rightBottom": [421, 876] }
+  },
+  {
+    "id": "D431",
+    "name": "화장실(남)",
+    "coordinates": { "leftTop": [350, 793], "rightBottom": [382, 876] }
+  },
+  {
+    "id": "D432",
+    "name": "컴퓨터공학 실습실2",
+    "coordinates": { "leftTop": [196, 758], "rightBottom": [344, 874] }
+  },
+  {
+    "id": "D432-1",
+    "name": "SW아카데미(SW/AI창업멘토링실)",
+    "coordinates": { "leftTop": [148, 758], "rightBottom": [193, 875] }
+  },
+  {
+    "id": "D433",
+    "name": "전기전자공학과 사무실",
+    "coordinates": { "leftTop": [163, 384], "rightBottom": [229, 451] }
+  },
 
-  { "id": "D501", "name": "교수연구실(조용희)" },
-  { "id": "D502", "name": "교수연구실(오상훈)" },
-  { "id": "D503", "name": "교수연구실(이현태)" },
-  { "id": "D504", "name": "교수연구실(박덕규)" },
-  { "id": "D505", "name": "교수연구실(민병원)" },
-  { "id": "D506", "name": "교수연구실(이상욱)" },
-  { "id": "D507", "name": "융합디지털미디어설계실" },
-  { "id": "D509", "name": "게임소프트웨어공학과-실험 준비실" },
-  { "id": "D510", "name": "스마트프로그래밍실습실" },
-  { "id": "D511", "name": "사물인터넷(IOT) 설계실" },
-  { "id": "D512", "name": "네트워크 및 시스템보안 실습실" },
-  { "id": "D513", "name": "게임소프트웨어공학과-강의실" },
-  { "id": "D514", "name": "프로젝트모듈실험실A" },
-  { "id": "D515", "name": "국제환경관측센터" },
-  { "id": "D516", "name": "네트워크실습실" },
-  { "id": "D517", "name": "Capstone-Design실" },
-  { "id": "D518", "name": "게임소프트웨어공학과-대학원 세미나실" },
-  { "id": "D519", "name": "학생자율실습실" },
-  { "id": "D519-1", "name": "교수연구실(연용호)" },
-  { "id": "D520", "name": "교수연구실(정윤수)" },
-  { "id": "D521", "name": "화장실(여)" },
-  { "id": "D522", "name": "화장실(여)" },
-  { "id": "D523", "name": "게임소프트웨어 연구실" },
-  { "id": "D524", "name": "게임소프트웨어공학과-강의실" },
-  { "id": "D525", "name": "게임소프트웨어 사무실" },
-  { "id": "D526", "name": "창의융합공작소" },
-  { "id": "D527", "name": "웨어러블디바이스랩" },
-  { "id": "D528", "name": "학생워크스페이스" },
+  {
+    "id": "D501",
+    "name": "교수연구실(조용희)",
+    "coordinates": { "topLeft": [32, 647], "bottomRight": [115, 686] }
+  },
+  {
+    "id": "D502",
+    "name": "교수연구실(오상훈)",
+    "coordinates": { "topLeft": [33, 610], "bottomRight": [115, 646] }
+  },
+  {
+    "id": "D503",
+    "name": "교수연구실(이현태)",
+    "coordinates": { "topLeft": [35, 573], "bottomRight": [114, 607] }
+  },
+  {
+    "id": "D504",
+    "name": "교수연구실(박덕규)",
+    "coordinates": { "topLeft": [33, 536], "bottomRight": [115, 568] }
+  },
+  {
+    "id": "D505",
+    "name": "교수연구실(민병원)",
+    "coordinates": { "topLeft": [32, 496], "bottomRight": [116, 530] }
+  },
+  {
+    "id": "D506",
+    "name": "교수연구실(이상욱)",
+    "coordinates": { "topLeft": [33, 456], "bottomRight": [116, 492] }
+  },
+  {
+    "id": "D507",
+    "name": "융합디지털미디어설계실",
+    "coordinates": { "topLeft": [2, 232], "bottomRight": [116, 380] }
+  },
+  {
+    "id": "D509",
+    "name": "게임소프트웨어공학과-실험 준비실",
+    "coordinates": { "topLeft": [3, 190], "bottomRight": [114, 228] }
+  },
+  {
+    "id": "D510",
+    "name": "스마트프로그래밍실습실",
+    "coordinates": { "topLeft": [118, 0], "bottomRight": [229, 109] }
+  },
+  {
+    "id": "D511",
+    "name": "사물인터넷(IOT) 설계실",
+    "coordinates": { "topLeft": [236, 1], "bottomRight": [346, 109] }
+  },
+  {
+    "id": "D512",
+    "name": "네트워크 및 시스템보안 실습실",
+    "coordinates": { "topLeft": [350, 0], "bottomRight": [460, 110] }
+  },
+  {
+    "id": "D513",
+    "name": "게임소프트웨어공학과-강의실",
+    "coordinates": { "topLeft": [463, 1], "bottomRight": [575, 109] }
+  },
+  {
+    "id": "D514",
+    "name": "프로젝트모듈실험실A",
+    "coordinates": { "topLeft": [576, 2], "bottomRight": [648, 110] }
+  },
+  {
+    "id": "D515",
+    "name": "국제환경관측센터",
+    "coordinates": { "topLeft": [654, 0], "bottomRight": [728, 109] }
+  },
+  {
+    "id": "D516",
+    "name": "네트워크실습실",
+    "coordinates": { "topLeft": [578, 147], "bottomRight": [684, 223] }
+  },
+  {
+    "id": "D517",
+    "name": "Capstone-Design실",
+    "coordinates": { "topLeft": [463, 146], "bottomRight": [573, 227] }
+  },
+  {
+    "id": "D518",
+    "name": "게임소프트웨어공학과-대학원 세미나실",
+    "coordinates": { "topLeft": [348, 146], "bottomRight": [460, 226] }
+  },
+  {
+    "id": "D519",
+    "name": "학생자율실습실",
+    "coordinates": { "topLeft": [273, 144], "bottomRight": [344, 228] }
+  },
+  { "id": "D519-1", "name": "교수연구실(연용호)", "coordinates": null },
+  {
+    "id": "D520",
+    "name": "교수연구실(정윤수)",
+    "coordinates": { "topLeft": [234, 144], "bottomRight": [267, 226] }
+  },
+  {
+    "id": "D521",
+    "name": "화장실(여)",
+    "coordinates": { "topLeft": [193, 144], "bottomRight": [228, 227] }
+  },
+  {
+    "id": "D522",
+    "name": "화장실(여)",
+    "coordinates": { "topLeft": [149, 182], "bottomRight": [191, 263] }
+  },
+  {
+    "id": "D523",
+    "name": "게임소프트웨어 연구실",
+    "coordinates": { "topLeft": [149, 268], "bottomRight": [233, 302] }
+  },
+  {
+    "id": "D524",
+    "name": "게임소프트웨어공학과-강의실",
+    "coordinates": { "topLeft": [149, 305], "bottomRight": [228, 380] }
+  },
+  {
+    "id": "D525",
+    "name": "게임소프트웨어 사무실",
+    "coordinates": { "topLeft": [146, 456], "bottomRight": [230, 532] }
+  },
+  {
+    "id": "D526",
+    "name": "창의융합공작소",
+    "coordinates": { "topLeft": [148, 532], "bottomRight": [231, 609] }
+  },
+  {
+    "id": "D527",
+    "name": "웨어러블디바이스랩",
+    "coordinates": { "topLeft": [147, 611], "bottomRight": [229, 686] }
+  },
+  {
+    "id": "D528",
+    "name": "학생워크스페이스",
+    "coordinates": { "topLeft": [164, 384], "bottomRight": [231, 452] }
+  },
 
   { "id": "E101", "name": "자료실" },
   { "id": "E102", "name": "관리처장실" },
