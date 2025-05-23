@@ -46,6 +46,15 @@ const Detail = () => {
   const [facilities, setFacilities] = useState<FacilityInterface[]>([]); // 시설 정보 상태
   const [keyword, setKeyword] = useState(""); // 검색어 상태
 
+  const [selectedFacility, setSelectedFacility] = useState<string | null>(null);
+
+  // 이미지 참조를 위한 ref 추가
+  const imageRef = useRef<HTMLImageElement>(null);
+  // 스케일 계수를 저장할 상태 추가
+  const [scaleFactor, setScaleFactor] = useState(1);
+  // 테두리 요소에 대한 ref 추가
+  const highlightBoxRef = useRef<HTMLDivElement>(null);
+
   // 페이지 쿼리 파라미터 변경시 시설 정보 재검색
   useEffect(() => {
     setFloor("1F"); // 층수 초기화
@@ -103,12 +112,61 @@ const Detail = () => {
   );
 
   // 건물 배치도 이미지 URL 생성
-  const getBuildingLayoutImage = () => {
+  const getBuildingLayoutImage = useCallback(() => {
     const imageUrl = `./images/building_layouts/${buildingId.toLowerCase()}_${floor
       .replace("F", "")
       .toLowerCase()}.jpg`;
     return imageUrl;
-  };
+  }, [buildingId, floor]);
+
+  // 이미지 로드 시 스케일 계수 계산
+  const handleImageLoad = useCallback(() => {
+    if (!imageRef.current) return;
+
+    // 렌더링된 이미지의 실제 너비
+    const renderedWidth = imageRef.current.clientWidth;
+
+    // 이미지의 원본 너비를 사용 (naturalWidth는 이미지 파일의 실제 픽셀 너비)
+    const originalWidth = imageRef.current.naturalWidth;
+
+    // 스케일 계수 계산 (안전장치: 원본 너비가 0인 경우 1로 설정)
+    const newScaleFactor =
+      originalWidth > 0 ? renderedWidth / originalWidth : 1;
+    setScaleFactor(newScaleFactor);
+  }, []);
+
+  // 호실 클릭 시 해당 호실로 스크롤 이동 및 테두리 표시
+  const handleFacilityClick = useCallback((facilityId: string) => {
+    setSelectedFacility(facilityId);
+
+    // 약간의 지연을 줘서 테두리가 생성된 후 스크롤하도록 함
+    setTimeout(() => {
+      // 테두리 요소가 생성되었으면 해당 위치로 스크롤
+      if (highlightBoxRef.current) {
+        // 화면 중앙에 위치하도록 스크롤 위치 계산
+        const rect = highlightBoxRef.current.getBoundingClientRect();
+        const scrollTop =
+          window.pageYOffset +
+          rect.top -
+          window.innerHeight / 2 +
+          rect.height / 2;
+
+        // 부드럽게 스크롤
+        window.scrollTo({
+          top: scrollTop,
+          behavior: "smooth",
+        });
+      }
+    }, 50);
+  }, []);
+
+  // 창 크기 변경 시 스케일 계수 재계산
+  useEffect(() => {
+    window.addEventListener("resize", handleImageLoad);
+    return () => {
+      window.removeEventListener("resize", handleImageLoad);
+    };
+  }, [handleImageLoad]);
 
   return (
     <>
@@ -136,15 +194,50 @@ const Detail = () => {
 
         {/* 건물 배치도 */}
         <Container maxWidth="md">
-          <Stack alignItems="center" gap={1}>
+          <Stack alignItems="center" gap={1} position="relative">
             <Stack>
               {/* 건물 배치도 이미지 */}
               <Box
                 component="img"
+                ref={imageRef} // ref 연결
                 src={getBuildingLayoutImage()}
                 alt={`${buildingName} 건물 배치도`}
                 width="100%"
+                onLoad={handleImageLoad} // 이미지 로드 시 핸들러 호출
               />
+              {/* 선택된 호실의 테두리 표시 */}
+              {selectedFacility && (
+                <Box
+                  ref={highlightBoxRef}
+                  sx={{
+                    position: "absolute",
+                    border: "3px solid red",
+                    borderRadius: "4px",
+                    pointerEvents: "none",
+                    zIndex: 10,
+                    transition: "all 0.3s ease-in-out",
+                    ...(() => {
+                      const facility = facilities.find(
+                        (f) => f.id === selectedFacility
+                      );
+                      if (!facility || !facility.coordinates) return {};
+                      const { leftTop, rightBottom } = facility.coordinates;
+
+                      // 스케일 계수 적용
+                      return {
+                        top: `${leftTop[1] * scaleFactor}px`,
+                        left: `${leftTop[0] * scaleFactor}px`,
+                        width: `${
+                          (rightBottom[0] - leftTop[0]) * scaleFactor
+                        }px`,
+                        height: `${
+                          (rightBottom[1] - leftTop[1]) * scaleFactor
+                        }px`,
+                      };
+                    })(),
+                  }}
+                />
+              )}
             </Stack>
 
             {/* 엘리베이터 & 화장실 아이콘 */}
@@ -303,6 +396,7 @@ const Detail = () => {
                 {facilities.map((facility) => (
                   <TableRow
                     key={facility.id}
+                    onClick={() => handleFacilityClick(facility.id)}
                     sx={{
                       cursor: "pointer",
                       "&:not(:hover) td:first-of-type": {
