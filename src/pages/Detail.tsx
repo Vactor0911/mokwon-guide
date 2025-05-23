@@ -31,12 +31,14 @@ import Footer from "../components/Footer";
 import { useAtomValue } from "jotai";
 import { buildingFloorsAtom } from "../states";
 import buildings from "../assets/buildings.json";
+import { getFacilityFloor } from "../utils";
 
 const Detail = () => {
   const location = useLocation();
   const queryParams = new URLSearchParams(location.search);
   const buildingId = queryParams.get("building") || "D";
   const building = buildings.find((building) => building.id === buildingId);
+  const facilityId = queryParams.get("facility");
 
   const [buildingName, setBuildingName] = useState(""); // 건물명 상태
   const floors = useAtomValue(buildingFloorsAtom); // 층수 상태
@@ -48,13 +50,13 @@ const Detail = () => {
 
   // 페이지 쿼리 파라미터 변경시 시설 정보 재검색
   useEffect(() => {
-    setFloor("1F"); // 층수 초기화
+    setFloor(facilityId ? getFacilityFloor(facilityId) : "1F"); // 층수 초기화
     setKeyword(""); // 검색어 초기화
     setBuildingName(`${building?.id} ${building?.name}`);
 
     const newFacilities = findFacilitiesByFloor(buildingId, "1F");
     setFacilities(newFacilities);
-  }, [building?.id, building?.name, buildingId, location]);
+  }, [building?.id, building?.name, buildingId, facilityId, location]);
 
   // 층수 선택 메뉴 열기
   const handleFloorMenuOpen = useCallback(() => {
