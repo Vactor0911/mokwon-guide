@@ -35,3 +35,5 @@ interface buildingDetailDrawerBuildingProps {
 } // 건물 상세 정보 Drawer에서 선택된 건물 객체 타입
 export const buildingDetailDrawerBuildingAtom =
   atom<buildingDetailDrawerBuildingProps | null>(null); // 건물 상세 정보 Drawer에서 선택된 건물 객체 상태
+
+export const selectedFacilityAtom = atom<FacilityInterface | null>(null); // 선택된 시설 상태

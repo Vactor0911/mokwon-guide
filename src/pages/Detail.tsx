@@ -16,7 +16,7 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import { useLocation } from "react-router";
+import { useSearchParams } from "react-router";
 import ElevatorIcon from "../assets/icons/elevator.png";
 import WcIcon from "../assets/icons/wc.png";
 import { theme } from "../theme";
@@ -28,35 +28,31 @@ import {
   searchByKeyword,
 } from "../utils/search";
 import Footer from "../components/Footer";
-import { useAtomValue } from "jotai";
-import { buildingFloorsAtom } from "../states";
+import { useAtom, useAtomValue } from "jotai";
+import { buildingFloorsAtom, selectedFacilityAtom } from "../states";
 import buildings from "../assets/buildings.json";
-import { getFacilityFloor } from "../utils";
+import { getBuildingLayoutImageUrl, getFacilityFloor } from "../utils";
+import BuildingLayoutViewer from "../components/BuildingLayoutViewer";
 
 const Detail = () => {
-  const location = useLocation();
-  const queryParams = new URLSearchParams(location.search);
-  const buildingId = queryParams.get("building") || "D";
-  const building = buildings.find((building) => building.id === buildingId);
-  const facilityId = queryParams.get("facility");
+  const [queryParams] = useSearchParams(); // URL 쿼리 파라미터
+  const buildingId = queryParams.get("building") || "A"; // 건물 ID
+  const facilityId = queryParams.get("facility"); // 시설 ID
+  const building = buildings.find((building) => building.id === buildingId); // 건물 객체
 
-  const [buildingName, setBuildingName] = useState(""); // 건물명 상태
-  const floors = useAtomValue(buildingFloorsAtom); // 층수 상태
+  const floors = useAtomValue(buildingFloorsAtom); // 전체 건물 층수 데이터
   const [floor, setFloor] = useState("1F"); // 건물 배치도 층수 상태
   const floorButtonElement = useRef<HTMLButtonElement>(null); // 층수 선택 버튼
   const [isFloorMenuOpen, setIsFloorMenuOpen] = useState(false); // 층수 선택 메뉴 상태
   const [facilities, setFacilities] = useState<FacilityInterface[]>([]); // 시설 정보 상태
   const [keyword, setKeyword] = useState(""); // 검색어 상태
-
-  // 페이지 쿼리 파라미터 변경시 시설 정보 재검색
-  useEffect(() => {
-    setFloor(facilityId ? getFacilityFloor(facilityId) : "1F"); // 층수 초기화
-    setKeyword(""); // 검색어 초기화
-    setBuildingName(`${building?.id} ${building?.name}`);
-
-    const newFacilities = findFacilitiesByFloor(buildingId, "1F");
-    setFacilities(newFacilities);
-  }, [building?.id, building?.name, buildingId, facilityId, location]);
+  const [selectedFacility, setSelectedFacility] = useAtom(selectedFacilityAtom); // 선택된 시설 상태
+  const facilityButtonElement = useRef<
+    Record<string, SVGPolygonElement | null>
+  >({});
+  const facilityItemElement = useRef<
+    Record<string, HTMLTableRowElement | null>
+  >({});
 
   // 층수 선택 메뉴 열기
   const handleFloorMenuOpen = useCallback(() => {
@@ -71,29 +67,27 @@ const Detail = () => {
   // 층수 선택
   const handleFloorChange = useCallback(
     (newFloor: string) => {
-      setIsFloorMenuOpen(false);
-      setFloor(newFloor);
+      setIsFloorMenuOpen(false); // 층수 선택 메뉴 닫기
+      setFloor(newFloor); // 층수 상태 업데이트
+      setSelectedFacility(null); // 선택된 시설 초기화
 
       // 선택한 층수에 해당하는 시설 정보 필터링
       const newFacilities = findFacilitiesByFloor(buildingId, newFloor);
       setFacilities(newFacilities);
     },
-    [buildingId]
+    [buildingId, setSelectedFacility]
   );
 
-  // 호실 검색어 변경
-  const handleKeywordChange = useCallback(
-    (event: React.ChangeEvent<HTMLInputElement>) => {
-      const newKeyword = event.target.value;
-      setKeyword(newKeyword);
-
+  // 호실 검색
+  const searchFacilities = useCallback(
+    (keyword: string) => {
       // 검색어에 해당하는 시설 정보 필터링
-      if (newKeyword.trim() === "") {
+      if (keyword.trim() === "") {
         // 검색어가 없다면 종료
         setFacilities(findFacilitiesByFloor(buildingId, floor));
         return;
       }
-      const newFacilities = searchByKeyword(newKeyword, 999, buildingId);
+      const newFacilities = searchByKeyword(keyword, 999, buildingId);
 
       if (newFacilities.length === 0) {
         setFacilities([{ id: "", name: "검색 결과가 없습니다." }]);
@@ -104,13 +98,46 @@ const Detail = () => {
     [buildingId, floor]
   );
 
-  // 건물 배치도 이미지 URL 생성
-  const getBuildingLayoutImage = () => {
-    const imageUrl = `./images/building_layouts/${buildingId.toLowerCase()}_${floor
-      .replace("F", "")
-      .toLowerCase()}.jpg`;
-    return imageUrl;
-  };
+  // 호실 검색어 변경
+  const handleKeywordChange = useCallback(
+    (event: React.ChangeEvent<HTMLInputElement>) => {
+      const newKeyword = event.target.value;
+      setKeyword(newKeyword);
+      searchFacilities(newKeyword);
+    },
+    [searchFacilities]
+  );
+
+  // 호실 정보 표 항목 클릭
+  const handleFacilityItemClick = useCallback(
+    (facility: FacilityInterface) => {
+      setTimeout(() => {
+        setFloor(getFacilityFloor(facility.id)); // 선택된 시설의 층수로 업데이트
+        setSelectedFacility(facility); // 선택된 시설 상태 업데이트
+
+        // 해당 시설 버튼으로 스크롤 이동
+        const facilityButton = facilityButtonElement.current[facility.id];
+        facilityButton?.scrollIntoView({ behavior: "smooth", block: "center" });
+      }, 1);
+    },
+    [setSelectedFacility]
+  );
+
+  // 페이지 쿼리 파라미터 변경시 시설 정보 재검색
+  useEffect(() => {
+    setKeyword(""); // 검색어 초기화
+    searchFacilities(""); // 검색 초기화
+  }, [buildingId, searchFacilities]);
+
+  // 초기 시설 정보 설정
+  useEffect(() => {
+    if (facilityId) {
+      const newFloor = getFacilityFloor(facilityId);
+      setFloor(newFloor);
+      return;
+    }
+    setFloor("1F"); // 기본 층수 설정
+  }, [buildingId, facilityId]);
 
   return (
     <>
@@ -133,21 +160,19 @@ const Detail = () => {
             },
           }}
         >
-          {buildingName}
+          {`${building?.id} ${building?.name}`}
         </Typography>
 
         {/* 건물 배치도 */}
         <Container maxWidth="md">
           <Stack alignItems="center" gap={1}>
-            <Stack>
-              {/* 건물 배치도 이미지 */}
-              <Box
-                component="img"
-                src={getBuildingLayoutImage()}
-                alt={`${buildingName} 건물 배치도`}
-                width="100%"
-              />
-            </Stack>
+            {/* 건물 배치도 이미지 */}
+            <BuildingLayoutViewer
+              imageUrl={getBuildingLayoutImageUrl(buildingId, floor)}
+              facilities={facilities}
+              facilityButtonsRef={facilityButtonElement}
+              facilityItemsRef={facilityItemElement}
+            />
 
             {/* 엘리베이터 & 화장실 아이콘 */}
             <Stack
@@ -305,28 +330,57 @@ const Detail = () => {
                 {facilities.map((facility) => (
                   <TableRow
                     key={facility.id}
+                    ref={(elem: HTMLTableRowElement | null) => {
+                      facilityItemElement.current[facility.id] = elem;
+                    }}
                     sx={{
                       cursor: "pointer",
+                      background:
+                        selectedFacility?.id === facility.id
+                          ? theme.palette.primary.main
+                          : "transparent",
                       "&:not(:hover) td:first-of-type": {
-                        background: "#fcfcfc",
+                        background:
+                          selectedFacility?.id === facility.id
+                            ? theme.palette.primary.main
+                            : "#fcfcfc",
                       },
                       "&:hover": {
-                        background: "#f5f5f5",
+                        background:
+                          selectedFacility?.id === facility.id
+                            ? theme.palette.primary.main
+                            : "#f5f5f5",
                       },
                     }}
+                    onClick={() => handleFacilityItemClick(facility)}
                   >
                     <TableCell
                       align="center"
                       sx={{
                         borderRight: `1px solid ${theme.palette.divider}`,
+                        color:
+                          selectedFacility?.id === facility.id
+                            ? "white"
+                            : "inherit",
                       }}
                     >
-                      <Typography variant="subtitle2" fontWeight="bold">
+                      <Typography
+                        variant="subtitle2"
+                        fontWeight="bold"
+                        color="inherit"
+                      >
                         {facility.id}
                       </Typography>
                     </TableCell>
-                    <TableCell>
-                      <Typography variant="subtitle2">
+                    <TableCell
+                      sx={{
+                        color:
+                          selectedFacility?.id === facility.id
+                            ? "white"
+                            : "inherit",
+                      }}
+                    >
+                      <Typography variant="subtitle2" color="inherit">
                         {facility.name}
                       </Typography>
                     </TableCell>
