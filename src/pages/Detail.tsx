@@ -30,6 +30,7 @@ import {
 import Footer from "../components/Footer";
 import { useAtom, useAtomValue } from "jotai";
 import { buildingFloorsAtom, selectedFacilityAtom } from "../states";
+import facilities from "../assets/facilities.json";
 import buildings from "../assets/buildings.json";
 import { getBuildingLayoutImageUrl, getFacilityFloor } from "../utils";
 import BuildingLayoutViewer from "../components/BuildingLayoutViewer";
@@ -44,7 +45,9 @@ const Detail = () => {
   const [floor, setFloor] = useState("1F"); // 건물 배치도 층수 상태
   const floorButtonElement = useRef<HTMLButtonElement>(null); // 층수 선택 버튼
   const [isFloorMenuOpen, setIsFloorMenuOpen] = useState(false); // 층수 선택 메뉴 상태
-  const [facilities, setFacilities] = useState<FacilityInterface[]>([]); // 시설 정보 상태
+  const [searchedFacilities, setSearchedFacilities] = useState<
+    FacilityInterface[]
+  >([]); // 시설 정보 상태
   const [keyword, setKeyword] = useState(""); // 검색어 상태
   const [selectedFacility, setSelectedFacility] = useAtom(selectedFacilityAtom); // 선택된 시설 상태
   const facilityButtonElement = useRef<
@@ -73,7 +76,7 @@ const Detail = () => {
 
       // 선택한 층수에 해당하는 시설 정보 필터링
       const newFacilities = findFacilitiesByFloor(buildingId, newFloor);
-      setFacilities(newFacilities);
+      setSearchedFacilities(newFacilities);
     },
     [buildingId, setSelectedFacility]
   );
@@ -84,16 +87,16 @@ const Detail = () => {
       // 검색어에 해당하는 시설 정보 필터링
       if (keyword.trim() === "") {
         // 검색어가 없다면 종료
-        setFacilities(findFacilitiesByFloor(buildingId, floor));
+        setSearchedFacilities(findFacilitiesByFloor(buildingId, floor));
         return;
       }
       const newFacilities = searchByKeyword(keyword, 999, buildingId);
 
       if (newFacilities.length === 0) {
-        setFacilities([{ id: "", name: "검색 결과가 없습니다." }]);
+        setSearchedFacilities([{ id: "", name: "검색 결과가 없습니다." }]);
         return;
       }
-      setFacilities(newFacilities);
+      setSearchedFacilities(newFacilities);
     },
     [buildingId, floor]
   );
@@ -112,15 +115,37 @@ const Detail = () => {
   const handleFacilityItemClick = useCallback(
     (facility: FacilityInterface) => {
       setTimeout(() => {
+        setKeyword(""); // 검색어 초기화
+        searchFacilities(""); // 검색 초기화
         setFloor(getFacilityFloor(facility.id)); // 선택된 시설의 층수로 업데이트
         setSelectedFacility(facility); // 선택된 시설 상태 업데이트
 
         // 해당 시설 버튼으로 스크롤 이동
         const facilityButton = facilityButtonElement.current[facility.id];
         facilityButton?.scrollIntoView({ behavior: "smooth", block: "center" });
+
+        setTimeout(() => {
+          // 표 스크롤이 중심으로 이동
+          const facilityItem = facilityItemElement.current[facility.id];
+          const container = facilityItem?.closest(
+            ".MuiTableContainer-root"
+          ) as HTMLElement;
+          if (container && facilityItem) {
+            const containerRect = container.getBoundingClientRect();
+            const itemRect = facilityItem.getBoundingClientRect();
+            const currentScrollTop = container.scrollTop;
+            const offset = itemRect.top - containerRect.top;
+            const newScrollTop =
+              currentScrollTop +
+              offset -
+              containerRect.height / 2 +
+              itemRect.height / 2;
+            container.scrollTo({ top: newScrollTop, behavior: "smooth" });
+          }
+        }, 1);
       }, 1);
     },
-    [setSelectedFacility]
+    [searchFacilities, setSelectedFacility]
   );
 
   // 페이지 쿼리 파라미터 변경시 시설 정보 재검색
@@ -169,7 +194,11 @@ const Detail = () => {
             {/* 건물 배치도 이미지 */}
             <BuildingLayoutViewer
               imageUrl={getBuildingLayoutImageUrl(buildingId, floor)}
-              facilities={facilities}
+              facilities={facilities.filter(
+                (facility) =>
+                  facility.id.startsWith(buildingId) &&
+                  getFacilityFloor(facility.id) === floor
+              )}
               facilityButtonsRef={facilityButtonElement}
               facilityItemsRef={facilityItemElement}
             />
@@ -327,7 +356,7 @@ const Detail = () => {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {facilities.map((facility) => (
+                {searchedFacilities.map((facility) => (
                   <TableRow
                     key={facility.id}
                     ref={(elem: HTMLTableRowElement | null) => {
