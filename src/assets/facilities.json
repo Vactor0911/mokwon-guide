@@ -40,6 +40,8 @@
     "coordinates": { "leftTop": [683, 400], "rightBottom": [725, 442] }
   },
 
+
+
   {
     "id": "A101",
     "name": "교수연구실(권오훈)",
@@ -111,1984 +113,343 @@
     "coordinates": { "leftTop": [1, 296], "rightBottom": [100, 388] }
   },
 
-  {
-    "id": "A201",
-    "name": "신학대학장실",
-    "coordinates": { "leftTop": [440, 575], "rightBottom": [538, 681] }
-  },
-  {
-    "id": "A202",
-    "name": "신학과 사무실",
-    "coordinates": { "leftTop": [540, 575], "rightBottom": [635, 681] }
-  },
-  {
-    "id": "A203",
-    "name": "교수연구실(이정순)",
-    "coordinates": { "leftTop": [636, 575], "rightBottom": [683, 681] }
-  },
-  {
-    "id": "A204",
-    "name": "신학대학교학과 사무실",
-    "coordinates": { "leftTop": [685, 577], "rightBottom": [729, 681] }
-  },
-  {
-    "id": "A205",
-    "name": "화장실",
-    "coordinates": { "leftTop": [729, 575], "rightBottom": [852, 659] }
-  },
-  {
-    "id": "A206",
-    "name": "학생회실",
-    "coordinates": { "leftTop": [768, 340], "rightBottom": [877, 435] }
-  },
-  {
-    "id": "A207",
-    "name": "학생휴게실",
-    "coordinates": { "leftTop": [768, 246], "rightBottom": [876, 338] }
-  },
-  {
-    "id": "A207-1",
-    "name": "학생휴게실 창고",
-    "coordinates": { "leftTop": [769, 150], "rightBottom": [876, 241] }
-  },
-  {
-    "id": "A208",
-    "name": "강의실",
-    "coordinates": { "leftTop": [730, 1], "rightBottom": [878, 108] }
-  },
-  {
-    "id": "A209",
-    "name": "다문화사회통합지도자사업단사무실",
-    "coordinates": { "leftTop": [636, 1], "rightBottom": [728, 106] }
-  },
-  {
-    "id": "A209-1",
-    "name": "다문화사회통합연구교육센터",
-    "coordinates": { "leftTop": [584, 1], "rightBottom": [634, 105] }
-  },
-  {
-    "id": "A210",
-    "name": "교수연구실 (나인선)",
-    "coordinates": { "leftTop": [682, 432], "rightBottom": [728, 534] }
-  },
-  {
-    "id": "A211",
-    "name": "신학대학여학생회실",
-    "coordinates": { "leftTop": [632, 432], "rightBottom": [680, 532] }
-  },
-  {
-    "id": "A212",
-    "name": "화장실",
-    "coordinates": { "leftTop": [1, 294], "rightBottom": [119, 387] }
-  },
-  {
-    "id": "A213",
-    "name": "목회교육원",
-    "coordinates": { "leftTop": [0, 192], "rightBottom": [117, 293] }
-  },
-  {
-    "id": "A213-1",
-    "name": "세미나실",
-    "coordinates": { "leftTop": [19, 151], "rightBottom": [118, 191] }
-  },
-  {
-    "id": "A214",
-    "name": "세미나실",
-    "coordinates": { "leftTop": [156, 152], "rightBottom": [255, 190] }
-  },
-  {
-    "id": "A215",
-    "name": "전희철기념 세미나실",
-    "coordinates": { "leftTop": [154, 192], "rightBottom": [275, 386] }
-  },
+  
 
-  {
-    "id": "A301",
-    "name": "웨슬리신학대학원장실",
-    "coordinates": { "leftTop": [440, 573], "rightBottom": [537, 680] }
-  },
-  {
-    "id": "A302",
-    "name": "웨슬리신학대학원사무실",
-    "coordinates": { "leftTop": [538, 575], "rightBottom": [635, 681] }
-  },
-  {
-    "id": "A303",
-    "name": "외래강사실",
-    "coordinates": { "leftTop": [636, 573], "rightBottom": [683, 680] }
-  },
-  {
-    "id": "A304",
-    "name": "교수연구실 (이효주)",
-    "coordinates": { "leftTop": [685, 575], "rightBottom": [728, 680] }
-  },
-  {
-    "id": "A305",
-    "name": "화장실",
-    "coordinates": { "leftTop": [727, 575], "rightBottom": [852, 659] }
-  },
-  {
-    "id": "A306",
-    "name": "웨슬리신학대학원생 원우회실",
-    "coordinates": { "leftTop": [769, 384], "rightBottom": [878, 435] }
-  },
-  {
-    "id": "A307",
-    "name": "웨슬리신학대학원생 휴게실",
-    "coordinates": { "leftTop": [769, 338], "rightBottom": [878, 381] }
-  },
-  {
-    "id": "A308",
-    "name": "선교훈련원 강의실",
-    "coordinates": { "leftTop": [768, 151], "rightBottom": [878, 337] }
-  },
-  {
-    "id": "A309",
-    "name": "강의실",
-    "coordinates": { "leftTop": [729, 0], "rightBottom": [878, 106] }
-  },
-  {
-    "id": "A310",
-    "name": "강의실",
-    "coordinates": { "leftTop": [582, 0], "rightBottom": [727, 106] }
-  },
-  {
-    "id": "A311",
-    "name": "선교훈련원/신학연구소",
-    "coordinates": { "leftTop": [682, 432], "rightBottom": [727, 534] }
-  },
-  {
-    "id": "A312",
-    "name": "선교훈련원장실",
-    "coordinates": { "leftTop": [633, 430], "rightBottom": [680, 532] }
-  },
-  {
-    "id": "A313",
-    "name": "준비실",
-    "coordinates": { "leftTop": [65, 96], "rightBottom": [212, 159] }
-  },
-  {
-    "id": "A314",
-    "name": "채플/다문화전용세미나실",
-    "coordinates": { "leftTop": [18, 150], "rightBottom": [256, 387] }
-  },
+  { "id": "A201", "name": "신학대학장실" },
+  { "id": "A202", "name": "신학과 사무실" },
+  { "id": "A203", "name": "교수연구실(이정순)" },
+  { "id": "A204", "name": "신학대학교학과 사무실" },
+  { "id": "A205", "name": "화장실" },
+  { "id": "A206", "name": "학생회실" },
+  { "id": "A207", "name": "학생휴게실" },
+  { "id": "A207-1", "name": "학생휴게실 창고" },
+  { "id": "A208", "name": "강의실" },
+  { "id": "A209", "name": "다문화사회통합지도자사업단사무실" },
+  { "id": "A209-1", "name": "다문화사회통합연구교육센터" },
+  { "id": "A210", "name": "교수연구실 (나인선)" },
+  { "id": "A211", "name": "신학대학여학생회실" },
+  { "id": "A212", "name": "화장실" },
+  { "id": "A213", "name": "목회교육원" },
+  { "id": "A213-1", "name": "세미나실" },
+  { "id": "A214", "name": "세미나실" },
+  { "id": "A215", "name": "전희철기념 세미나실" },
 
-  {
-    "id": "A401",
-    "name": "교수연구실(조은하)",
-    "coordinates": { "leftTop": [440, 575], "rightBottom": [494, 681] }
-  },
-  {
-    "id": "A402",
-    "name": "교수연구실(유장환)",
-    "coordinates": { "leftTop": [493, 574], "rightBottom": [540, 679] }
-  },
-  {
-    "id": "A403",
-    "name": "교수연구실(이희학)",
-    "coordinates": { "leftTop": [540, 575], "rightBottom": [587, 680] }
-  },
-  {
-    "id": "A404",
-    "name": "교수연구실(권진호)",
-    "coordinates": { "leftTop": [588, 574], "rightBottom": [633, 679] }
-  },
-  {
-    "id": "A405",
-    "name": "미래목회연구소/교수연구실(이성순)",
-    "coordinates": { "leftTop": [636, 575], "rightBottom": [680, 679] }
-  },
-  {
-    "id": "A406",
-    "name": "신학대학/신학대학원 기도실(여)",
-    "coordinates": { "leftTop": [683, 574], "rightBottom": [727, 679] }
-  },
-  {
-    "id": "A407",
-    "name": "화장실",
-    "coordinates": { "leftTop": [728, 574], "rightBottom": [853, 658] }
-  },
-  {
-    "id": "A408",
-    "name": "신학대학/신학대학원 기도실(남)",
-    "coordinates": { "leftTop": [768, 383], "rightBottom": [876, 434] }
-  },
-  {
-    "id": "A409",
-    "name": "온누리 찬양단",
-    "coordinates": { "leftTop": [768, 338], "rightBottom": [876, 381] }
-  },
-  {
-    "id": "A410",
-    "name": "강의실",
-    "coordinates": { "leftTop": [768, 151], "rightBottom": [876, 336] }
-  },
-  {
-    "id": "A411",
-    "name": "강의실",
-    "coordinates": { "leftTop": [729, 0], "rightBottom": [876, 105] }
-  },
-  {
-    "id": "A412",
-    "name": "강의실",
-    "coordinates": { "leftTop": [583, 0], "rightBottom": [727, 106] }
-  },
-  {
-    "id": "A413",
-    "name": "기계실",
-    "coordinates": { "leftTop": [79, 389], "rightBottom": [255, 432] }
-  },
-  {
-    "id": "A414",
-    "name": "채플/조명실",
-    "coordinates": { "leftTop": [0, 338], "rightBottom": [274, 386] }
-  },
+  { "id": "A301", "name": "웨슬리신학대학원장실" },
+  { "id": "A302", "name": "웨슬리신학대학원사무실" },
+  { "id": "A303", "name": "외래강사실" },
+  { "id": "A304", "name": "교수연구실 (이효주)" },
+  { "id": "A305", "name": "화장실" },
+  { "id": "A306", "name": "웨슬리신학대학원생 원우회실" },
+  { "id": "A307", "name": "웨슬리신학대학원생 휴게실" },
+  { "id": "A308", "name": "선교훈련원 강의실" },
+  { "id": "A309", "name": "강의실" },
+  { "id": "A310", "name": "강의실" },
+  { "id": "A311", "name": "선교훈련원/신학연구소" },
+  { "id": "A312", "name": "선교훈련원장실" },
+  { "id": "A313", "name": "준비실" },
+  { "id": "A314", "name": "채플/다문화전용세미나실" },
 
-  {
-    "id": "B101B",
-    "name": "연극연습실",
-    "coordinates": { "leftTop": [687, 131], "rightBottom": [771, 250] }
-  },
-  {
-    "id": "B102B",
-    "name": "소극장",
-    "coordinates": { "leftTop": [688, 253], "rightBottom": [771, 404] }
-  },
-  {
-    "id": "B103B",
-    "name": "로비",
-    "coordinates": { "leftTop": [804, 252], "rightBottom": [889, 326] }
-  },
-  {
-    "id": "B103B-1",
-    "name": "대기실",
-    "coordinates": { "leftTop": [804, 327], "rightBottom": [889, 366] }
-  },
-  {
-    "id": "B104B",
-    "name": "학생휴게실 및 스터디룸",
-    "coordinates": { "leftTop": [804, 131], "rightBottom": [891, 208] }
-  },
+  { "id": "A401", "name": "교수연구실(조은하)" },
+  { "id": "A402", "name": "교수연구실(유장환)" },
+  { "id": "A403", "name": "교수연구실(이희학)" },
+  { "id": "A404", "name": "교수연구실(권진호)" },
+  { "id": "A405", "name": "미래목회연구소/교수연구실(이성순)" },
+  { "id": "A406", "name": "신학대학/신학대학원 기도실(여)" },
+  { "id": "A407", "name": "화장실" },
+  { "id": "A408", "name": "신학대학/신학대학원 기도실(남)" },
+  { "id": "A409", "name": "온누리 찬양단" },
+  { "id": "A410", "name": "강의실" },
+  { "id": "A411", "name": "강의실" },
+  { "id": "A412", "name": "강의실" },
+  { "id": "A413", "name": "기계실" },
+  { "id": "A414", "name": "채플/조명실" },
 
-  {
-    "id": "B101",
-    "name": "역사학과 사무실",
-    "coordinates": { "leftTop": [391, 577], "rightBottom": [430, 660] }
-  },
-  {
-    "id": "B102",
-    "name": "교수연구실(원은석)",
-    "coordinates": { "leftTop": [432, 578], "rightBottom": [468, 659] }
-  },
-  {
-    "id": "B103",
-    "name": "교수연구실(장수경)",
-    "coordinates": { "leftTop": [471, 577], "rightBottom": [508, 659] }
-  },
-  {
-    "id": "B104",
-    "name": "혁신인재 강의실",
-    "coordinates": { "leftTop": [589, 578], "rightBottom": [824, 660] }
-  },
-  {
-    "id": "B104-1",
-    "name": "혁신인재 세미나실",
-    "coordinates": { "leftTop": [745, 614], "rightBottom": [825, 659] }
-  },
-  {
-    "id": "B105",
-    "name": "교수연구실(루퍼트,가렛)",
-    "coordinates": { "leftTop": [864, 498], "rightBottom": [948, 535] }
-  },
-  {
-    "id": "B106",
-    "name": "교수연구실(정옥희)",
-    "coordinates": { "leftTop": [862, 457], "rightBottom": [948, 497] }
-  },
-  {
-    "id": "B107",
-    "name": "강의실",
-    "coordinates": { "leftTop": [864, 339], "rightBottom": [948, 456] }
-  },
-  {
-    "id": "B107-1",
-    "name": "사회복지학과 PC ROOM",
-    "coordinates": { "leftTop": [863, 264], "rightBottom": [948, 338] }
-  },
-  {
-    "id": "B108",
-    "name": "사회복지학과 사무실",
-    "coordinates": { "leftTop": [864, 224], "rightBottom": [947, 262] }
-  },
-  {
-    "id": "B109",
-    "name": "문화콘텐츠대학 학생회실",
-    "coordinates": { "leftTop": [864, 143], "rightBottom": [947, 221] }
-  },
-  {
-    "id": "B110",
-    "name": "사회복지학과 강의실",
-    "coordinates": { "leftTop": [747, 143], "rightBottom": [829, 262] }
-  },
-  {
-    "id": "B111",
-    "name": "역사학과 강의실",
-    "coordinates": { "leftTop": [747, 340], "rightBottom": [829, 454] }
-  },
-  {
-    "id": "B112",
-    "name": "화장실(여)",
-    "coordinates": { "leftTop": [746, 457], "rightBottom": [831, 495] }
-  },
-  {
-    "id": "B113",
-    "name": "화장실(남)",
-    "coordinates": { "leftTop": [709, 497], "rightBottom": [796, 542] }
-  },
-  {
-    "id": "B114",
-    "name": "문화콘텐츠대학 스터디룸",
-    "coordinates": { "leftTop": [432, 458], "rightBottom": [508, 543] }
-  },
-  {
-    "id": "B115",
-    "name": "교수연구실(최정희)",
-    "coordinates": { "leftTop": [391, 458], "rightBottom": [429, 542] }
-  },
-  {
-    "id": "B116",
-    "name": "계단강의실",
-    "coordinates": { "leftTop": [68, 418], "rightBottom": [192, 614] }
-  },
-  {
-    "id": "B117",
-    "name": "교수연구실(권중돈)",
-    "coordinates": { "leftTop": [69, 380], "rightBottom": [153, 414] }
-  },
-  {
-    "id": "B118",
-    "name": "경비실",
-    "coordinates": { "leftTop": [68, 341], "rightBottom": [154, 378] }
-  },
-  {
-    "id": "B119",
-    "name": "미화원휴게실",
-    "coordinates": { "leftTop": [67, 299], "rightBottom": [94, 338] }
-  },
-  {
-    "id": "B120",
-    "name": "대학원 세미나실",
-    "coordinates": { "leftTop": [67, 184], "rightBottom": [155, 261] }
-  },
-  {
-    "id": "B121",
-    "name": "교수연구실(이현)",
-    "coordinates": { "leftTop": [69, 145], "rightBottom": [155, 181] }
-  },
-  {
-    "id": "B122",
-    "name": "교수연구실(이상우)",
-    "coordinates": { "leftTop": [67, 104], "rightBottom": [154, 143] }
-  },
-  {
-    "id": "B123",
-    "name": "교수연구실(최윤정)",
-    "coordinates": { "leftTop": [70, 66], "rightBottom": [154, 101] }
-  },
-  {
-    "id": "B124",
-    "name": "교수연구실(김동기)",
-    "coordinates": { "leftTop": [69, 24], "rightBottom": [155, 63] }
-  },
-  {
-    "id": "B125",
-    "name": "사회복지학과 강의실",
-    "coordinates": { "leftTop": [189, 26], "rightBottom": [272, 181] }
-  },
-  {
-    "id": "B126",
-    "name": "화장실",
-    "coordinates": { "leftTop": [189, 182], "rightBottom": [273, 262] }
-  },
-  {
-    "id": "B127",
-    "name": "기계실",
-    "coordinates": { "leftTop": [246, 342], "rightBottom": [272, 377] }
-  },
-  {
-    "id": "B128",
-    "name": "임대매장매점-목원마트",
-    "coordinates": { "leftTop": [588, 457], "rightBottom": [705, 542] }
-  },
-  {
-    "id": "B129",
-    "name": "미화원 휴게실",
-    "coordinates": { "leftTop": [863, 537], "rightBottom": [903, 609] }
-  },
+  { "id": "B101B", "name": "연극연습실" },
+  { "id": "B102B", "name": "소극장" },
+  { "id": "B103B", "name": "로비" },
+  { "id": "B103B-1", "name": "대기실" },
+  { "id": "B104B", "name": "학생휴게실 및 스터디룸" },
 
-  {
-    "id": "B201",
-    "name": "교수연구실(강연임)",
-    "coordinates": { "leftTop": [337, 565], "rightBottom": [377, 647] }
-  },
-  {
-    "id": "B202",
-    "name": "교수연구실(박철웅)",
-    "coordinates": { "leftTop": [379, 567], "rightBottom": [415, 648] }
-  },
-  {
-    "id": "B203",
-    "name": "교수연구실(케빈,놀란)",
-    "coordinates": { "leftTop": [418, 567], "rightBottom": [456, 648] }
-  },
-  {
-    "id": "B204",
-    "name": "교수연구실(송석랑)",
-    "coordinates": { "leftTop": [535, 566], "rightBottom": [575, 648] }
-  },
-  {
-    "id": "B204-1",
-    "name": "영어영문학과 PC ROOM",
-    "coordinates": { "leftTop": [575, 566], "rightBottom": [614, 649] }
-  },
-  {
-    "id": "B205",
-    "name": "북카페",
-    "coordinates": { "leftTop": [615, 566], "rightBottom": [772, 649] }
-  },
-  {
-    "id": "B206",
-    "name": "강의실",
-    "coordinates": { "leftTop": [810, 409], "rightBottom": [896, 524] }
-  },
-  {
-    "id": "B207",
-    "name": "강의실",
-    "coordinates": { "leftTop": [811, 253], "rightBottom": [895, 407] }
-  },
-  {
-    "id": "B208",
-    "name": "강의실(영어학과)",
-    "coordinates": { "leftTop": [810, 132], "rightBottom": [895, 250] }
-  },
-  {
-    "id": "B209",
-    "name": "강의실(영어학과)",
-    "coordinates": { "leftTop": [695, 133], "rightBottom": [777, 251] }
-  },
-  {
-    "id": "B210",
-    "name": "목원스마트스쿨 사무실",
-    "coordinates": { "leftTop": [694, 332], "rightBottom": [777, 443] }
-  },
-  {
-    "id": "B211",
-    "name": "화장실(여)",
-    "coordinates": { "leftTop": [695, 445], "rightBottom": [775, 484] }
-  },
-  {
-    "id": "B212",
-    "name": "화장실(남)",
-    "coordinates": { "leftTop": [655, 488], "rightBottom": [742, 531] }
-  },
-  {
-    "id": "B213",
-    "name": "영어학과 강의실",
-    "coordinates": { "leftTop": [538, 446], "rightBottom": [653, 531] }
-  },
-  {
-    "id": "B214",
-    "name": "자율학습실",
-    "coordinates": { "leftTop": [337, 447], "rightBottom": [455, 531] }
-  },
-  {
-    "id": "B215",
-    "name": "교수연구실(도중만)",
-    "coordinates": { "leftTop": [15, 566], "rightBottom": [101, 602] }
-  },
-  {
-    "id": "B216",
-    "name": "교수연구실(민웅기)",
-    "coordinates": { "leftTop": [15, 526], "rightBottom": [101, 564] }
-  },
-  {
-    "id": "B217",
-    "name": "교수연구실(천효범)",
-    "coordinates": { "leftTop": [15, 485], "rightBottom": [102, 523] }
-  },
-  {
-    "id": "B218",
-    "name": "교수연구실(이윤화)",
-    "coordinates": { "leftTop": [14, 447], "rightBottom": [101, 483] }
-  },
-  {
-    "id": "B219",
-    "name": "교수연구실(다니엘, 조엘)",
-    "coordinates": { "leftTop": [16, 408], "rightBottom": [102, 445] }
-  },
-  {
-    "id": "B220",
-    "name": "교수연구실(한상철)",
-    "coordinates": { "leftTop": [16, 369], "rightBottom": [102, 404] }
-  },
-  {
-    "id": "B221",
-    "name": "교수연구실(김병정)",
-    "coordinates": { "leftTop": [14, 328], "rightBottom": [100, 365] }
-  },
-  {
-    "id": "B222",
-    "name": "교수연구실(고유정)",
-    "coordinates": { "leftTop": [15, 210], "rightBottom": [101, 251] }
-  },
-  {
-    "id": "B223",
-    "name": "교수연구실(서태원)",
-    "coordinates": { "leftTop": [16, 174], "rightBottom": [101, 208] }
-  },
-  {
-    "id": "B224",
-    "name": "교수연구실(최혜진)",
-    "coordinates": { "leftTop": [16, 133], "rightBottom": [102, 172] }
-  },
-  {
-    "id": "B225",
-    "name": "교수연구실(이아람찬)",
-    "coordinates": { "leftTop": [15, 94], "rightBottom": [101, 130] }
-  },
-  {
-    "id": "B226",
-    "name": "교수연구실(서기자)",
-    "coordinates": { "leftTop": [16, 55], "rightBottom": [100, 91] }
-  },
-  {
-    "id": "B227",
-    "name": "교수연구실 (서정일)",
-    "coordinates": { "leftTop": [16, 12], "rightBottom": [100, 53] }
-  },
-  {
-    "id": "B228",
-    "name": "강의실(수업행동 분석실3)",
-    "coordinates": { "leftTop": [136, 13], "rightBottom": [219, 166] }
-  },
-  {
-    "id": "B229",
-    "name": "화장실",
-    "coordinates": { "leftTop": [135, 172], "rightBottom": [220, 247] }
-  },
-  {
-    "id": "B230",
-    "name": "문화콘텐츠대학 교학과",
-    "coordinates": { "leftTop": [136, 369], "rightBottom": [220, 445] }
-  },
-  {
-    "id": "B231",
-    "name": "학장실",
-    "coordinates": { "leftTop": [135, 445], "rightBottom": [219, 523] }
-  },
-  {
-    "id": "B232",
-    "name": "역사문화교류 인재양성센터",
-    "coordinates": { "leftTop": [136, 566], "rightBottom": [218, 601] }
-  },
-  {
-    "id": "B233",
-    "name": "교수연구실(러셀, 콜트월리)",
-    "coordinates": { "leftTop": [774, 567], "rightBottom": [848, 596] }
-  },
+  { "id": "B101", "name": "역사학과 사무실" },
+  { "id": "B102", "name": "교수연구실(원은석)" },
+  { "id": "B103", "name": "교수연구실(장수경)" },
+  { "id": "B104", "name": "혁신인재 강의실" },
+  { "id": "B104-1", "name": "혁신인재 세미나실" },
+  { "id": "B105", "name": "교수연구실(루퍼트,가렛)" },
+  { "id": "B106", "name": "교수연구실(정옥희)" },
+  { "id": "B107", "name": "강의실" },
+  { "id": "B107-1", "name": "사회복지학과 PC ROOM" },
+  { "id": "B108", "name": "사회복지학과 사무실" },
+  { "id": "B109", "name": "문화콘텐츠대학 학생회실" },
+  { "id": "B110", "name": "사회복지학과 강의실" },
+  { "id": "B111", "name": "역사학과 강의실" },
+  { "id": "B112", "name": "화장실(여)" },
+  { "id": "B113", "name": "화장실(남)" },
+  { "id": "B114", "name": "문화콘텐츠대학 스터디룸" },
+  { "id": "B115", "name": "교수연구실(최정희)" },
+  { "id": "B116", "name": "계단강의실" },
+  { "id": "B117", "name": "교수연구실(권중돈)" },
+  { "id": "B118", "name": "경비실" },
+  { "id": "B119", "name": "미화원휴게실" },
+  { "id": "B120", "name": "대학원 세미나실" },
+  { "id": "B121", "name": "교수연구실(이현)" },
+  { "id": "B122", "name": "교수연구실(이상우)" },
+  { "id": "B123", "name": "교수연구실(최윤정)" },
+  { "id": "B124", "name": "교수연구실(김동기)" },
+  { "id": "B125", "name": "사회복지학과 강의실" },
+  { "id": "B126", "name": "화장실" },
+  { "id": "B127", "name": "기계실" },
+  { "id": "B128", "name": "임대매장매점-목원마트" },
+  { "id": "B129", "name": "미화원 휴게실" },
 
-  {
-    "id": "B301",
-    "name": "교수연구실(백훈기)",
-    "coordinates": {
-      "leftTop": [337, 565],
-      "rightBottom": [377, 648]
-    }
-  },
-  {
-    "id": "B302",
-    "name": "영어학과 사무실",
-    "coordinates": {
-      "leftTop": [379, 566],
-      "rightBottom": [416, 648]
-    }
-  },
-  {
-    "id": "B303",
-    "name": "국제산업예술학부 사무실",
-    "coordinates": {
-      "leftTop": [418, 566],
-      "rightBottom": [456, 647]
-    }
-  },
-  {
-    "id": "B304",
-    "name": "영어학과 강의실",
-    "coordinates": {
-      "leftTop": [536, 568],
-      "rightBottom": [653, 647]
-    }
-  },
-  {
-    "id": "B305",
-    "name": "영어학과 강의실",
-    "coordinates": {
-      "leftTop": [657, 567],
-      "rightBottom": [771, 648]
-    }
-  },
-  {
-    "id": "B306",
-    "name": "강의실",
-    "coordinates": {
-      "leftTop": [810, 409],
-      "rightBottom": [895, 522]
-    }
-  },
-  {
-    "id": "B306-1",
-    "name": "휴게실"
-  },
-  {
-    "id": "B307-1",
-    "name": "영어학과 PC ROOM",
-    "coordinates": {
-      "leftTop": [811, 371],
-      "rightBottom": [894, 407]
-    }
-  },
-  {
-    "id": "B307-2",
-    "name": "연극영화영상학부 PC ROOM",
-    "coordinates": {
-      "leftTop": [811, 330],
-      "rightBottom": [895, 367]
-    }
-  },
-  {
-    "id": "B307-3",
-    "name": "역사학과 PC ROOM",
-    "coordinates": {
-      "leftTop": [810, 291],
-      "rightBottom": [896, 328]
-    }
-  },
-  {
-    "id": "B307-4",
-    "name": "연극영화영상학부 사무실",
-    "coordinates": {
-      "leftTop": [811, 253],
-      "rightBottom": [895, 288]
-    }
-  },
-  {
-    "id": "B308",
-    "name": "역사학과 강의실",
-    "coordinates": {
-      "leftTop": [812, 132],
-      "rightBottom": [893, 249]
-    }
-  },
-  {
-    "id": "B309",
-    "name": "사회복지학과 강의실",
-    "coordinates": {
-      "leftTop": [695, 132],
-      "rightBottom": [776, 250]
-    }
-  },
-  {
-    "id": "B309-1",
-    "name": "강의실",
-    "coordinates": {
-      "leftTop": [695, 255],
-      "rightBottom": [776, 328]
-    }
-  },
-  {
-    "id": "B310",
-    "name": "강의실",
-    "coordinates": {
-      "leftTop": [692, 331],
-      "rightBottom": [777, 443]
-    }
-  },
-  {
-    "id": "B311",
-    "name": "화장실 (여)",
-    "coordinates": {
-      "leftTop": [694, 446],
-      "rightBottom": [777, 482]
-    }
-  },
-  {
-    "id": "B312",
-    "name": "화장실 (남)",
-    "coordinates": {
-      "leftTop": [657, 488],
-      "rightBottom": [742, 531]
-    }
-  },
-  {
-    "id": "B313",
-    "name": "강의실",
-    "coordinates": {
-      "leftTop": [536, 447],
-      "rightBottom": [654, 531]
-    }
-  },
-  {
-    "id": "B314",
-    "name": "국제예술산업학부 강의실",
-    "coordinates": {
-      "leftTop": [338, 446],
-      "rightBottom": [454, 531]
-    }
-  },
-  {
-    "id": "B315",
-    "name": "교수연구실 (현승훈)",
-    "coordinates": {
-      "leftTop": [16, 566],
-      "rightBottom": [102, 602]
-    }
-  },
-  {
-    "id": "B316",
-    "name": "교수연구실 (이정호)",
-    "coordinates": {
-      "leftTop": [15, 525],
-      "rightBottom": [102, 564]
-    }
-  },
-  {
-    "id": "B317",
-    "name": "교수연구실 (오연희)",
-    "coordinates": {
-      "leftTop": [16, 485],
-      "rightBottom": [100, 522]
-    }
-  },
-  {
-    "id": "B318",
-    "name": "교수연구실 (황대현)",
-    "coordinates": {
-      "leftTop": [16, 446],
-      "rightBottom": [101, 482]
-    }
-  },
-  {
-    "id": "B319",
-    "name": "교수연구실 (황혜진)",
-    "coordinates": {
-      "leftTop": [14, 406],
-      "rightBottom": [100, 443]
-    }
-  },
-  {
-    "id": "B320",
-    "name": "교수연구실 (유경아)",
-    "coordinates": {
-      "leftTop": [16, 368],
-      "rightBottom": [101, 402]
-    }
-  },
-  {
-    "id": "B321",
-    "name": "교수연구실 (권국진)",
-    "coordinates": {
-      "leftTop": [15, 330],
-      "rightBottom": [99, 363]
-    }
-  },
-  {
-    "id": "B322",
-    "name": "교수연구실 (정해수)",
-    "coordinates": {
-      "leftTop": [15, 211],
-      "rightBottom": [100, 248]
-    }
-  },
-  {
-    "id": "B323",
-    "name": "교수연구실 (맥그로이)",
-    "coordinates": {
-      "leftTop": [16, 173],
-      "rightBottom": [102, 208]
-    }
-  },
-  {
-    "id": "B324",
-    "name": "교수연구실 (변승구)",
-    "coordinates": {
-      "leftTop": [16, 133],
-      "rightBottom": [101, 172]
-    }
-  },
-  {
-    "id": "B325",
-    "name": "교수연구실 (라더크, 벤자민)",
-    "coordinates": {
-      "leftTop": [16, 94],
-      "rightBottom": [101, 129]
-    }
-  },
-  {
-    "id": "B326",
-    "name": "교수연구실 (장온정)",
-    "coordinates": {
-      "leftTop": [14, 53],
-      "rightBottom": [102, 91]
-    }
-  },
-  {
-    "id": "B327",
-    "name": "교수연구실 (송임섭)",
-    "coordinates": {
-      "leftTop": [16, 13],
-      "rightBottom": [100, 52]
-    }
-  },
-  {
-    "id": "B328",
-    "name": "강의실",
-    "coordinates": {
-      "leftTop": [136, 12],
-      "rightBottom": [218, 167]
-    }
-  },
-  {
-    "id": "B329",
-    "name": "화장실",
-    "coordinates": {
-      "leftTop": [136, 170],
-      "rightBottom": [219, 249]
-    }
-  },
-  {
-    "id": "B330",
-    "name": "시청각실/멀티미디어실",
-    "coordinates": {
-      "leftTop": [135, 368],
-      "rightBottom": [220, 524]
-    }
-  },
-  {
-    "id": "B331",
-    "name": "강의실",
-    "coordinates": {
-      "leftTop": [157, 254],
-      "rightBottom": [220, 325]
-    }
-  },
-  {
-    "id": "B332",
-    "name": "휴게실",
-    "coordinates": {
-      "leftTop": [810, 525],
-      "rightBottom": [848, 599]
-    }
-  },
+  { "id": "B201", "name": "교수연구실(강연임)" },
+  { "id": "B202", "name": "교수연구실(박철웅)" },
+  { "id": "B203", "name": "교수연구실(케빈,놀란)" },
+  { "id": "B204", "name": "교수연구실(송석랑)" },
+  { "id": "B204-1", "name": "영어영문학과 PC ROOM" },
+  { "id": "B205", "name": "북카페" },
+  { "id": "B206", "name": "강의실" },
+  { "id": "B207", "name": "강의실" },
+  { "id": "B208", "name": "강의실(영어학과)" },
+  { "id": "B209", "name": "강의실(영어학과)" },
+  { "id": "B210", "name": "목원스마트스쿨 사무실" },
+  { "id": "B211", "name": "화장실(여)" },
+  { "id": "B212", "name": "화장실(남)" },
+  { "id": "B213", "name": "영어학과 강의실" },
+  { "id": "B214", "name": "자율학습실" },
+  { "id": "B215", "name": "교수연구실(도중만)" },
+  { "id": "B216", "name": "교수연구실(민웅기)" },
+  { "id": "B217", "name": "교수연구실(천효범)" },
+  { "id": "B218", "name": "교수연구실(이윤화)" },
+  { "id": "B219", "name": "교수연구실(다니엘, 조엘)" },
+  { "id": "B220", "name": "교수연구실(한상철)" },
+  { "id": "B221", "name": "교수연구실(김병정)" },
+  { "id": "B222", "name": "교수연구실(고유정)" },
+  { "id": "B223", "name": "교수연구실(서태원)" },
+  { "id": "B224", "name": "교수연구실(최혜진)" },
+  { "id": "B225", "name": "교수연구실(이아람찬)" },
+  { "id": "B226", "name": "교수연구실(서기자)" },
+  { "id": "B227", "name": "교수연구실 (서정일)" },
+  { "id": "B228", "name": "강의실(수업행동 분석실3)" },
+  { "id": "B229", "name": "화장실" },
+  { "id": "B230", "name": "문화콘텐츠대학 교학과" },
+  { "id": "B231", "name": "학장실" },
+  { "id": "B232", "name": "역사문화교류 인재양성센터" },
+  { "id": "B233", "name": "교수연구실(러셀, 콜트월리)" },
 
-  {
-    "id": "C101B",
-    "name": "폐기물저장실",
-    "coordinates": {
-      "leftTop": [397, 798],
-      "rightBottom": [469, 875]
-    }
-  },
-  {
-    "id": "C102B",
-    "name": "(공실)",
-    "coordinates": {
-      "leftTop": [471, 799],
-      "rightBottom": [507, 876]
-    }
-  },
-  {
-    "id": "C103B",
-    "name": "위험물",
-    "coordinates": {
-      "leftTop": [507, 800],
-      "rightBottom": [576, 875]
-    }
-  },
-  {
-    "id": "C104B",
-    "name": "관리과 4",
-    "coordinates": {
-      "leftTop": [580, 799],
-      "rightBottom": [687, 875]
-    }
-  },
-  {
-    "id": "C104-1B",
-    "name": "관리과 4-1",
-    "coordinates": {
-      "leftTop": [652, 831],
-      "rightBottom": [686, 875]
-    }
-  },
-  {
-    "id": "C105B",
-    "name": "펌프실",
-    "coordinates": {
-      "leftTop": [712, 833],
-      "rightBottom": [761, 877]
-    }
-  },
-  {
-    "id": "C106B",
-    "name": "관리과 6",
-    "coordinates": {
-      "leftTop": [754, 769],
-      "rightBottom": [829, 843]
-    }
-  },
-  {
-    "id": "C107B",
-    "name": "전기실",
-    "coordinates": {
-      "leftTop": [724, 626],
-      "rightBottom": [867, 766]
-    }
-  },
-  {
-    "id": "C108B",
-    "name": "관리과 8",
-    "coordinates": {
-      "leftTop": [650, 690],
-      "rightBottom": [722, 766]
-    }
-  },
-  {
-    "id": "C109B",
-    "name": "관리과 9",
-    "coordinates": {
-      "leftTop": [578, 688],
-      "rightBottom": [648, 765]
-    }
-  },
-  {
-    "id": "C110B",
-    "name": "(공실)",
-    "coordinates": {
-      "leftTop": [507, 688],
-      "rightBottom": [577, 766]
-    }
-  },
-  {
-    "id": "C111B",
-    "name": "(공실)",
-    "coordinates": {
-      "leftTop": [431, 690],
-      "rightBottom": [505, 764]
-    }
-  },
+  { "id": "B301", "name": "교수연구실(백훈기)" },
+  { "id": "B302", "name": "영어학과 사무실" },
+  { "id": "B303", "name": "국제산업예술학부 사무실" },
+  { "id": "B304", "name": "영어학과 강의실" },
+  { "id": "B305", "name": "영어학과 강의실" },
+  { "id": "B306", "name": "강의실" },
+  { "id": "B306-1", "name": "휴게실" },
+  { "id": "B307-1", "name": "영어학과 PC ROOM" },
+  { "id": "B307-2", "name": "연극영화영상학부 PC ROOM" },
+  { "id": "B307-3", "name": "역사학과 PC ROOM" },
+  { "id": "B307-4", "name": "연극영화영상학부 사무실" },
+  { "id": "B308", "name": "역사학과 강의실" },
+  { "id": "B309", "name": "사회복지학과 강의실" },
+  { "id": "B309-1", "name": "강의실" },
+  { "id": "B310", "name": "강의실" },
+  { "id": "B311", "name": "화장실 (여)" },
+  { "id": "B312", "name": "화장실 (남)" },
+  { "id": "B313", "name": "강의실" },
+  { "id": "B314", "name": "국제예술산업학부 강의실" },
+  { "id": "B315", "name": "교수연구실 (현승훈)" },
+  { "id": "B316", "name": "교수연구실 (이정호)" },
+  { "id": "B317", "name": "교수연구실 (오연희)" },
+  { "id": "B318", "name": "교수연구실 (황대현)" },
+  { "id": "B319", "name": "교수연구실 (황혜진)" },
+  { "id": "B320", "name": "교수연구실 (유경아)" },
+  { "id": "B321", "name": "교수연구실 (권국진)" },
+  { "id": "B322", "name": "교수연구실 (정해수)" },
+  { "id": "B323", "name": "교수연구실 (맥그로이)" },
+  { "id": "B324", "name": "교수연구실 (변승구)" },
+  { "id": "B325", "name": "교수연구실 (라더크, 벤자민)" },
+  { "id": "B326", "name": "교수연구실 (장온정)" },
+  { "id": "B327", "name": "교수연구실 (송임섭)" },
+  { "id": "B328", "name": "강의실" },
+  { "id": "B329", "name": "화장실" },
+  { "id": "B330", "name": "시청각실/멀티미디어실" },
+  { "id": "B331", "name": "강의실" },
+  { "id": "B332", "name": "휴게실" },
 
-  {
-    "id": "C101",
-    "name": "화장실",
-    "coordinates": {
-      "leftTop": [850, 45],
-      "rightBottom": [927, 114]
-    }
-  },
-  {
-    "id": "C102",
-    "name": "전공실험실",
-    "coordinates": {
-      "leftTop": [849, 116],
-      "rightBottom": [956, 261]
-    }
-  },
-  {
-    "id": "C103",
-    "name": "약품 및 화장품 분리, 분석 실험실",
-    "coordinates": {
-      "leftTop": [849, 264],
-      "rightBottom": [956, 335]
-    }
-  },
-  {
-    "id": "C104",
-    "name": "미화원휴게실",
-    "coordinates": {
-      "leftTop": [904, 340],
-      "rightBottom": [930, 375]
-    }
-  },
-  {
-    "id": "C105",
-    "name": "쓰레기집하장",
-    "coordinates": {
-      "leftTop": [888, 379],
-      "rightBottom": [929, 403]
-    }
-  },
-  {
-    "id": "C106",
-    "name": "화장품 제조실험실",
-    "coordinates": {
-      "leftTop": [850, 408],
-      "rightBottom": [955, 480]
-    }
-  },
-  {
-    "id": "C107",
-    "name": "공동기기실",
-    "coordinates": {
-      "leftTop": [849, 482],
-      "rightBottom": [956, 551]
-    }
-  },
-  {
-    "id": "C108",
-    "name": "생리활성 및 기능성물질연구실",
-    "coordinates": {
-      "leftTop": [850, 555],
-      "rightBottom": [955, 624]
-    }
-  },
-  {
-    "id": "C109",
-    "name": "계단강의실",
-    "coordinates": {
-      "leftTop": [808, 660],
-      "rightBottom": [919, 814]
-    }
-  },
-  {
-    "id": "C110",
-    "name": "강의실",
-    "coordinates": {
-      "leftTop": [634, 800],
-      "rightBottom": [739, 876]
-    }
-  },
-  {
-    "id": "C111",
-    "name": "강의실",
-    "coordinates": {
-      "leftTop": [488, 798],
-      "rightBottom": [559, 875]
-    }
-  },
-  {
-    "id": "C111-1",
-    "name": "강의실",
-    "coordinates": {
-      "leftTop": [561, 799],
-      "rightBottom": [632, 876]
-    }
-  },
-  {
-    "id": "C112",
-    "name": "초자실",
-    "coordinates": {
-      "leftTop": [411, 798],
-      "rightBottom": [487, 874]
-    }
-  },
-  {
-    "id": "C113",
-    "name": "기능성화장품 소재연구실",
-    "coordinates": {
-      "leftTop": [486, 689],
-      "rightBottom": [558, 766]
-    }
-  },
-  {
-    "id": "C113-1",
-    "name": "교수연구실(김보라)",
-    "coordinates": {
-      "leftTop": [560, 689],
-      "rightBottom": [594, 765]
-    }
-  },
-  {
-    "id": "C114",
-    "name": "강의실",
-    "coordinates": {
-      "leftTop": [597, 691],
-      "rightBottom": [700, 765]
-    }
-  },
-  {
-    "id": "C115",
-    "name": "화장실",
-    "coordinates": {
-      "leftTop": [702, 689],
-      "rightBottom": [775, 763]
-    }
-  },
-  {
-    "id": "C116",
-    "name": "대학원 세미나실",
-    "coordinates": {
-      "leftTop": [738, 555],
-      "rightBottom": [816, 621]
-    }
-  },
-  {
-    "id": "C117",
-    "name": "교수연구실(이상명)",
-    "coordinates": {
-      "leftTop": [739, 515],
-      "rightBottom": [816, 552]
-    }
-  },
-  {
-    "id": "C118",
-    "name": "교수연구실(송양헌)",
-    "coordinates": {
-      "leftTop": [740, 481],
-      "rightBottom": [817, 512]
-    }
-  },
-  {
-    "id": "C119",
-    "name": "교수연구실(양재찬)",
-    "coordinates": {
-      "leftTop": [740, 444],
-      "rightBottom": [816, 478]
-    }
-  },
-  {
-    "id": "C120",
-    "name": "화장품학과 사무실",
-    "coordinates": {
-      "leftTop": [740, 406],
-      "rightBottom": [817, 440]
-    }
-  },
-  {
-    "id": "C121",
-    "name": "경비실",
-    "coordinates": {
-      "leftTop": [740, 226],
-      "rightBottom": [818, 261]
-    }
-  },
-  {
-    "id": "C122",
-    "name": "실습강의실",
-    "coordinates": {
-      "leftTop": [740, 117],
-      "rightBottom": [817, 225]
-    }
-  },
-  {
-    "id": "C123",
-    "name": "보건안전대학 교학과 사무실",
-    "coordinates": {
-      "leftTop": [488, 12],
-      "rightBottom": [521, 86]
-    }
-  },
-  {
-    "id": "C124",
-    "name": "보건안전대 학장실",
-    "coordinates": {
-      "leftTop": [524, 12],
-      "rightBottom": [596, 86]
-    }
-  },
-  {
-    "id": "C125",
-    "name": "강의실",
-    "coordinates": {
-      "leftTop": [378, 12],
-      "rightBottom": [486, 88]
-    }
-  },
-  {
-    "id": "C126",
-    "name": "화장실",
-    "coordinates": {
-      "leftTop": [233, 11],
-      "rightBottom": [307, 86]
-    }
-  },
-  {
-    "id": "C127",
-    "name": "화장품 및 스킨케어실험실(여)",
-    "coordinates": {
-      "leftTop": [163, 13],
-      "rightBottom": [232, 87]
-    }
-  },
-  {
-    "id": "C128",
-    "name": "강의실",
-    "coordinates": {
-      "leftTop": [53, 10],
-      "rightBottom": [161, 87]
-    }
-  },
-  {
-    "id": "C130",
-    "name": "수치해석 및 응용실습실",
-    "coordinates": {
-      "leftTop": [53, 120],
-      "rightBottom": [230, 195]
-    }
-  },
-  {
-    "id": "C131",
-    "name": "교수연구실",
-    "coordinates": {
-      "leftTop": [233, 119],
-      "rightBottom": [270, 195]
-    }
-  },
-  {
-    "id": "C132",
-    "name": "전산실습실",
-    "coordinates": {
-      "leftTop": [376, 119],
-      "rightBottom": [521, 195]
-    }
-  },
-  {
-    "id": "C133",
-    "name": "교수연구실(김보애)",
-    "coordinates": {
-      "leftTop": [523, 119],
-      "rightBottom": [557, 196]
-    }
-  },
-  {
-    "id": "C134",
-    "name": "화장품 유효성 평가 실험실",
-    "coordinates": {
-      "leftTop": [560, 118],
-      "rightBottom": [631, 195]
-    }
-  },
-  {
-    "id": "C135",
-    "name": "메이크업 홍보관",
-    "coordinates": {
-      "leftTop": [740, 265],
-      "rightBottom": [807, 338]
-    }
-  },
-  {
-    "id": "C136",
-    "name": "임대매장（매점）",
-    "coordinates": {
-      "leftTop": [272, 119],
-      "rightBottom": [307, 195]
-    }
-  },
-  {
-    "id": "C137",
-    "name": "시약저장실",
-    "coordinates": {
-      "leftTop": [775, 43],
-      "rightBottom": [816, 88]
-    }
-  },
+  { "id": "C101B", "name": "폐기물저장실" },
+  { "id": "C102B", "name": "(공실)" },
+  { "id": "C103B", "name": "위험물" },
+  { "id": "C104B", "name": "관리과 4" },
+  { "id": "C104-1B", "name": "관리과 4-1" },
+  { "id": "C105B", "name": "펌프실" },
+  { "id": "C106B", "name": "관리과 6" },
+  { "id": "C107B", "name": "전기실" },
+  { "id": "C108B", "name": "관리과 8" },
+  { "id": "C109B", "name": "관리과 9" },
+  { "id": "C110B", "name": "(공실)" },
+  { "id": "C111B", "name": "(공실)" },
 
-  {
-    "id": "C201",
-    "name": "화장실",
-    "coordinates": { "leftTop": [796, 35], "rightBottom": [874, 104] }
-  },
-  {
-    "id": "C202",
-    "name": "응급구조학 실습실",
-    "coordinates": { "leftTop": [796, 106], "rightBottom": [903, 214] }
-  },
-  {
-    "id": "C203",
-    "name": "일반물리학 및 실험준비실",
-    "coordinates": { "leftTop": [798, 216], "rightBottom": [903, 252] }
-  },
-  {
-    "id": "C204",
-    "name": "교수연구실",
-    "coordinates": { "leftTop": [798, 254], "rightBottom": [904, 325] }
-  },
-  {
-    "id": "C204-1",
-    "name": "공작실",
-    "coordinates": { "leftTop": [855, 255], "rightBottom": [902, 286] }
-  },
-  {
-    "id": "C205",
-    "name": "나노원자현미경실",
-    "coordinates": { "leftTop": [797, 397], "rightBottom": [904, 448] }
-  },
-  {
-    "id": "C206",
-    "name": "미생물유전자원정보실",
-    "coordinates": { "leftTop": [798, 451], "rightBottom": [903, 502] }
-  },
-  {
-    "id": "C207-1/2",
-    "name": "세포발효공학실험실(세포배양준비실）",
-    "coordinates": { "leftTop": [797, 506], "rightBottom": [903, 554] }
-  },
-  {
-    "id": "C208",
-    "name": "표면 및 박막실험실",
-    "coordinates": { "leftTop": [797, 560], "rightBottom": [902, 613] }
-  },
-  {
-    "id": "C209",
-    "name": "암실/준비실",
-    "coordinates": { "leftTop": [797, 615], "rightBottom": [868, 647] }
-  },
-  {
-    "id": "C210",
-    "name": "외식조리·제과제빵학과 이론 강의실",
-    "coordinates": { "leftTop": [581, 789], "rightBottom": [686, 866] }
-  },
-  {
-    "id": "C211",
-    "name": "강의실",
-    "coordinates": { "leftTop": [472, 789], "rightBottom": [578, 866] }
-  },
-  {
-    "id": "C212",
-    "name": "교수연구실(박희억)",
-    "coordinates": { "leftTop": [433, 789], "rightBottom": [470, 864] }
-  },
-  {
-    "id": "C213",
-    "name": "기능성색소물질 및 단백질 연구실험실",
-    "coordinates": { "leftTop": [359, 787], "rightBottom": [433, 865] }
-  },
-  {
-    "id": "C214",
-    "name": "디지털",
-    "coordinates": { "leftTop": [434, 679], "rightBottom": [539, 756] }
-  },
-  {
-    "id": "C215",
-    "name": "지식재산관리실습실",
-    "coordinates": { "leftTop": [543, 679], "rightBottom": [612, 754] }
-  },
-  {
-    "id": "C216",
-    "name": "전자기기정비 및 기기실",
-    "coordinates": { "leftTop": [615, 679], "rightBottom": [648, 754] }
-  },
-  {
-    "id": "C217",
-    "name": "화장실",
-    "coordinates": { "leftTop": [650, 679], "rightBottom": [724, 756] }
-  },
-  {
-    "id": "C218",
-    "name": "교수연구실(김성수)",
-    "coordinates": { "leftTop": [687, 577], "rightBottom": [763, 611] }
-  },
-  {
-    "id": "C219",
-    "name": "교수 연구실(이기성)",
-    "coordinates": { "leftTop": [686, 544], "rightBottom": [764, 573] }
-  },
-  {
-    "id": "C220",
-    "name": "교수연구실(정명선)",
-    "coordinates": { "leftTop": [686, 506], "rightBottom": [764, 541] }
-  },
-  {
-    "id": "C221",
-    "name": "외식조리·제과제빵학과 사무실",
-    "coordinates": { "leftTop": [686, 470], "rightBottom": [762, 505] }
-  },
-  {
-    "id": "C222",
-    "name": "교수연구실(이성상)",
-    "coordinates": { "leftTop": [687, 433], "rightBottom": [763, 468] }
-  },
-  {
-    "id": "C223",
-    "name": "교수연구실(김승래, 이창성)",
-    "coordinates": { "leftTop": [688, 397], "rightBottom": [763, 430] }
-  },
-  {
-    "id": "C224",
-    "name": "지식재산교육선도대학사업단（회의실）",
-    "coordinates": { "leftTop": [686, 290], "rightBottom": [764, 324] }
-  },
-  {
-    "id": "C225",
-    "name": "지식재산교육선도대학사업단",
-    "coordinates": { "leftTop": [686, 253], "rightBottom": [762, 284] }
-  },
-  {
-    "id": "C226",
-    "name": "응급구조학과 사무실",
-    "coordinates": { "leftTop": [686, 216], "rightBottom": [764, 253] }
-  },
-  {
-    "id": "C227",
-    "name": "강의실",
-    "coordinates": { "leftTop": [687, 105], "rightBottom": [762, 212] }
-  },
-  {
-    "id": "C228",
-    "name": "교수연구실(한송이)",
-    "coordinates": { "leftTop": [507, 0], "rightBottom": [543, 76] }
-  },
-  {
-    "id": "C229",
-    "name": "미생물나노 소재학과 사무실",
-    "coordinates": { "leftTop": [471, 2], "rightBottom": [504, 74] }
-  },
-  {
-    "id": "C230",
-    "name": "수학과세미나실",
-    "coordinates": { "leftTop": [436, 1], "rightBottom": [468, 75] }
-  },
-  {
-    "id": "C231",
-    "name": "강의실",
-    "coordinates": { "leftTop": [326, 1], "rightBottom": [432, 74] }
-  },
-  {
-    "id": "C232",
-    "name": "화장실",
-    "coordinates": { "leftTop": [180, 0], "rightBottom": [254, 75] }
-  },
-  {
-    "id": "C233",
-    "name": "실습강의실",
-    "coordinates": { "leftTop": [110, 2], "rightBottom": [177, 76] }
-  },
-  {
-    "id": "C234",
-    "name": "보건의료관리학과 강의실",
-    "coordinates": { "leftTop": [0, 0], "rightBottom": [109, 76] }
-  },
-  {
-    "id": "C235",
-    "name": "교수연구실(이승호)",
-    "coordinates": { "leftTop": [1, 109], "rightBottom": [37, 184] }
-  },
-  {
-    "id": "C236",
-    "name": "교수연구실(이만섭)",
-    "coordinates": { "leftTop": [39, 108], "rightBottom": [71, 185] }
-  },
-  {
-    "id": "C237",
-    "name": "교수연구실",
-    "coordinates": { "leftTop": [75, 108], "rightBottom": [110, 185] }
-  },
-  {
-    "id": "C238",
-    "name": "시간강사실",
-    "coordinates": { "leftTop": [109, 108], "rightBottom": [145, 185] }
-  },
-  {
-    "id": "C239",
-    "name": "제2자료실",
-    "coordinates": { "leftTop": [147, 108], "rightBottom": [178, 183] }
-  },
-  {
-    "id": "C240",
-    "name": "조교실",
-    "coordinates": { "leftTop": [180, 107], "rightBottom": [215, 186] }
-  },
-  {
-    "id": "C241",
-    "name": "수학과 사무실",
-    "coordinates": { "leftTop": [220, 109], "rightBottom": [252, 184] }
-  },
-  {
-    "id": "C242",
-    "name": "보건의료관리학과 실습실",
-    "coordinates": { "leftTop": [323, 107], "rightBottom": [468, 185] }
-  },
-  {
-    "id": "C243",
-    "name": "보건안전대 에스라 세미나실",
-    "coordinates": { "leftTop": [469, 109], "rightBottom": [578, 185] }
-  },
+  { "id": "C101", "name": "화장실" },
+  { "id": "C102", "name": "전공실험실" },
+  { "id": "C103", "name": "약품 및 화장품 분리, 분석 실험실" },
+  { "id": "C104", "name": "미화원휴게실" },
+  { "id": "C105", "name": "쓰레기집하장" },
+  { "id": "C106", "name": "화장품 제조실험실" },
+  { "id": "C107", "name": "공동기기실" },
+  { "id": "C108", "name": "생리활성 및 기능성물질연구실" },
+  { "id": "C109", "name": "계단강의실" },
+  { "id": "C110", "name": "강의실" },
+  { "id": "C111", "name": "강의실" },
+  { "id": "C111-1", "name": "강의실" },
+  { "id": "C112", "name": "초자실" },
+  { "id": "C113", "name": "기능성화장품 소재연구실" },
+  { "id": "C113-1", "name": "교수연구실(김보라)" },
+  { "id": "C114", "name": "강의실" },
+  { "id": "C115", "name": "화장실" },
+  { "id": "C116", "name": "대학원 세미나실" },
+  { "id": "C117", "name": "교수연구실(이상명)" },
+  { "id": "C118", "name": "교수연구실(송양헌)" },
+  { "id": "C119", "name": "교수연구실(양재찬)" },
+  { "id": "C120", "name": "화장품학과 사무실" },
+  { "id": "C121", "name": "경비실" },
+  { "id": "C122", "name": "실습강의실" },
+  { "id": "C123", "name": "보건안전대학 교학과 사무실" },
+  { "id": "C124", "name": "보건안전대 학장실" },
+  { "id": "C125", "name": "강의실" },
+  { "id": "C126", "name": "화장실" },
+  { "id": "C127", "name": "화장품 및 스킨케어실험실(여)" },
+  { "id": "C128", "name": "강의실" },
+  { "id": "C130", "name": "수치해석 및 응용실습실" },
+  { "id": "C131", "name": "교수연구실" },
+  { "id": "C132", "name": "전산실습실" },
+  { "id": "C133", "name": "교수연구실(김보애)" },
+  { "id": "C134", "name": "화장품 유효성 평가 실험실" },
+  { "id": "C135", "name": "메이크업 홍보관" },
+  { "id": "C136", "name": "임대매장（매점）" },
+  { "id": "C137", "name": "시약저장실" },
 
-  {
-    "id": "C301",
-    "name": "화장실",
-    "coordinates": { "leftTop": [797, 34], "rightBottom": [873, 102] }
-  },
-  {
-    "id": "C302",
-    "name": "면역학 실험실",
-    "coordinates": { "leftTop": [798, 107], "rightBottom": [903, 180] }
-  },
-  {
-    "id": "C303",
-    "name": "강의실",
-    "coordinates": { "leftTop": [798, 182], "rightBottom": [901, 251] }
-  },
-  {
-    "id": "C304",
-    "name": "세포생물학 실험실",
-    "coordinates": { "leftTop": [798, 255], "rightBottom": [903, 324] }
-  },
-  {
-    "id": "C305",
-    "name": "강의실",
-    "coordinates": { "leftTop": [797, 398], "rightBottom": [902, 468] }
-  },
-  {
-    "id": "C306",
-    "name": "일반생물학 실험실",
-    "coordinates": { "leftTop": [798, 470], "rightBottom": [901, 542] }
-  },
-  {
-    "id": "C307",
-    "name": "세포배양실",
-    "coordinates": { "leftTop": [797, 544], "rightBottom": [903, 590] }
-  },
-  {
-    "id": "C308",
-    "name": "사육준비실",
-    "coordinates": { "leftTop": [796, 591], "rightBottom": [904, 612] }
-  },
-  {
-    "id": "C309",
-    "name": "계단강의실",
-    "coordinates": { "leftTop": [755, 650], "rightBottom": [868, 832] }
-  },
-  {
-    "id": "C310",
-    "name": "강의실",
-    "coordinates": { "leftTop": [581, 790], "rightBottom": [686, 863] }
-  },
-  {
-    "id": "C311",
-    "name": "식물생장 조절실",
-    "coordinates": { "leftTop": [560, 788], "rightBottom": [578, 865] }
-  },
-  {
-    "id": "C312",
-    "name": "REAL-TIME PCR실",
-    "coordinates": { "leftTop": [543, 788], "rightBottom": [555, 865] }
-  },
-  {
-    "id": "C313",
-    "name": "교수연구실(코럼, 조용림)",
-    "coordinates": { "leftTop": [507, 790], "rightBottom": [541, 864] }
-  },
-  {
-    "id": "C314",
-    "name": "교수연구실(알라，스즈끼미에)",
-    "coordinates": { "leftTop": [471, 789], "rightBottom": [503, 863] }
-  },
-  {
-    "id": "C315",
-    "name": "조교노동조합 사무실",
-    "coordinates": { "leftTop": [436, 789], "rightBottom": [468, 862] }
-  },
-  {
-    "id": "C316",
-    "name": "보건안전대학 학생회",
-    "coordinates": { "leftTop": [359, 789], "rightBottom": [433, 865] }
-  },
-  {
-    "id": "C317",
-    "name": "식물생명공학 실험실",
-    "coordinates": { "leftTop": [432, 679], "rightBottom": [505, 753] }
-  },
-  {
-    "id": "C318",
-    "name": "교수연구실(방현우)",
-    "coordinates": { "leftTop": [506, 679], "rightBottom": [539, 752] }
-  },
-  {
-    "id": "C319",
-    "name": "강사연구실",
-    "coordinates": { "leftTop": [544, 679], "rightBottom": [577, 755] }
-  },
-  {
-    "id": "C320",
-    "name": "건강관리학 실험실 I",
-    "coordinates": { "leftTop": [579, 678], "rightBottom": [648, 753] }
-  },
-  {
-    "id": "C321",
-    "name": "화장실",
-    "coordinates": { "leftTop": [649, 678], "rightBottom": [722, 754] }
-  },
-  {
-    "id": "C322",
-    "name": "식물생리학 실험실",
-    "coordinates": { "leftTop": [686, 543], "rightBottom": [765, 612] }
-  },
-  {
-    "id": "C323",
-    "name": "교수연구실(이상호)",
-    "coordinates": { "leftTop": [685, 505], "rightBottom": [764, 542] }
-  },
-  {
-    "id": "C324",
-    "name": "대학원 세미나실",
-    "coordinates": { "leftTop": [687, 471], "rightBottom": [762, 503] }
-  },
-  {
-    "id": "C325",
-    "name": "생명과학과 사무실",
-    "coordinates": { "leftTop": [686, 433], "rightBottom": [762, 467] }
-  },
-  {
-    "id": "C326",
-    "name": "현미경실",
-    "coordinates": { "leftTop": [687, 397], "rightBottom": [763, 430] }
-  },
-  {
-    "id": "C327",
-    "name": "형태학 실험실",
-    "coordinates": { "leftTop": [687, 252], "rightBottom": [764, 328] }
-  },
-  {
-    "id": "C328",
-    "name": "생화학분자생물학 실험실",
-    "coordinates": { "leftTop": [687, 214], "rightBottom": [764, 250] }
-  },
-  {
-    "id": "C329",
-    "name": "교수연구실(윤미정)",
-    "coordinates": { "leftTop": [686, 182], "rightBottom": [763, 214] }
-  },
-  {
-    "id": "C330",
-    "name": "생리학 실험실",
-    "coordinates": { "leftTop": [686, 106], "rightBottom": [764, 180] }
-  },
-  {
-    "id": "C331",
-    "name": "강의실",
-    "coordinates": { "leftTop": [436, 1], "rightBottom": [543, 76] }
-  },
-  {
-    "id": "C332",
-    "name": "실습강의실",
-    "coordinates": { "leftTop": [325, 2], "rightBottom": [431, 76] }
-  },
-  {
-    "id": "C333",
-    "name": "화장실",
-    "coordinates": { "leftTop": [181, 1], "rightBottom": [254, 77] }
-  },
-  {
-    "id": "C334",
-    "name": "원자력안전관리실험실",
-    "coordinates": { "leftTop": [111, 2], "rightBottom": [177, 75] }
-  },
-  {
-    "id": "C335",
-    "name": "소방안전학부 사무실",
-    "coordinates": { "leftTop": [77, 3], "rightBottom": [108, 75] }
-  },
-  {
-    "id": "C336",
-    "name": "화재자동감지경비장치실습실",
-    "coordinates": { "leftTop": [0, 2], "rightBottom": [73, 74] }
-  },
-  {
-    "id": "C337",
-    "name": "교수연구실(채진)",
-    "coordinates": { "leftTop": [0, 107], "rightBottom": [35, 183] }
-  },
-  {
-    "id": "C338",
-    "name": "교수연구실(임동균)",
-    "coordinates": { "leftTop": [38, 108], "rightBottom": [73, 184] }
-  },
-  {
-    "id": "C339",
-    "name": "교수연구실(김창길)",
-    "coordinates": { "leftTop": [75, 109], "rightBottom": [109, 185] }
-  },
-  {
-    "id": "C340",
-    "name": "소방안전학부 강사휴게실",
-    "coordinates": { "leftTop": [112, 110], "rightBottom": [144, 185] }
-  },
-  {
-    "id": "C341",
-    "name": "소방기계공학연구실",
-    "coordinates": { "leftTop": [147, 108], "rightBottom": [215, 183] }
-  },
-  {
-    "id": "C342",
-    "name": "교수연구실(구재현)",
-    "coordinates": { "leftTop": [221, 108], "rightBottom": [253, 183] }
-  },
-  {
-    "id": "C343",
-    "name": "강의실",
-    "coordinates": { "leftTop": [257, 110], "rightBottom": [323, 184] }
-  },
-  {
-    "id": "C344",
-    "name": "전산교육실습실",
-    "coordinates": { "leftTop": [322, 108], "rightBottom": [433, 184] }
-  },
-  {
-    "id": "C345",
-    "name": "대학원 강의실",
-    "coordinates": { "leftTop": [433, 109], "rightBottom": [468, 183] }
-  },
-  {
-    "id": "C346",
-    "name": "강의실",
-    "coordinates": { "leftTop": [471, 108], "rightBottom": [576, 183] }
-  },
-  {
-    "id": "C347",
-    "name": "학생 PC ROOM",
-    "coordinates": { "leftTop": [687, 328], "rightBottom": [761, 391] }
-  },
+  { "id": "C201", "name": "화장실" },
+  { "id": "C202", "name": "응급구조학 실습실" },
+  { "id": "C203", "name": "일반물리학 및 실험준비실" },
+  { "id": "C204", "name": "교수연구실" },
+  { "id": "C204-1", "name": "공작실" },
+  { "id": "C205", "name": "나노원자현미경실" },
+  { "id": "C206", "name": "미생물유전자원정보실" },
+  { "id": "C207-1/2", "name": "세포발효공학실험실(세포배양준비실）" },
+  { "id": "C208", "name": "표면 및 박막실험실" },
+  { "id": "C209", "name": "암실/준비실" },
+  { "id": "C210", "name": "외식조리·제과제빵학과 이론 강의실" },
+  { "id": "C211", "name": "강의실" },
+  { "id": "C212", "name": "교수연구실(박희억)" },
+  { "id": "C213", "name": "기능성색소물질 및 단백질 연구실험실" },
+  { "id": "C214", "name": "디지털" },
+  { "id": "C215", "name": "지식재산관리실습실" },
+  { "id": "C216", "name": "전자기기정비 및 기기실" },
+  { "id": "C217", "name": "화장실" },
+  { "id": "C218", "name": "교수연구실(김성수)" },
+  { "id": "C219", "name": "교수 연구실(이기성)" },
+  { "id": "C220", "name": "교수연구실(정명선)" },
+  { "id": "C221", "name": "외식조리·제과제빵학과 사무실" },
+  { "id": "C222", "name": "교수연구실(이성상)" },
+  { "id": "C223", "name": "교수연구실(김승래, 이창성)" },
+  { "id": "C224", "name": "지식재산교육선도대학사업단（회의실）" },
+  { "id": "C225", "name": "지식재산교육선도대학사업단" },
+  { "id": "C226", "name": "응급구조학과 사무실" },
+  { "id": "C227", "name": "강의실" },
+  { "id": "C228", "name": "교수연구실(한송이)" },
+  { "id": "C229", "name": "미생물나노 소재학과 사무실" },
+  { "id": "C230", "name": "수학과세미나실" },
+  { "id": "C231", "name": "강의실" },
+  { "id": "C232", "name": "화장실" },
+  { "id": "C233", "name": "실습강의실" },
+  { "id": "C234", "name": "보건의료관리학과 강의실" },
+  { "id": "C235", "name": "교수연구실(이승호)" },
+  { "id": "C236", "name": "교수연구실(이만섭)" },
+  { "id": "C237", "name": "교수연구실" },
+  { "id": "C238", "name": "시간강사실" },
+  { "id": "C239", "name": "제2자료실" },
+  { "id": "C240", "name": "조교실" },
+  { "id": "C241", "name": "수학과 사무실" },
+  { "id": "C242", "name": "보건의료관리학과 실습실" },
+  { "id": "C243", "name": "보건안전대 에스라 세미나실" },
 
-  {
-    "id": "C401",
-    "name": "화장실",
-    "coordinates": {
-      "leftTop": [438, -1],
-      "rightBottom": [516, 68]
-    }
-  },
-  {
-    "id": "C402",
-    "name": "식품학멀티실습실",
-    "coordinates": {
-      "leftTop": [439, 72],
-      "rightBottom": [545, 166]
-    }
-  },
-  {
-    "id": "C403",
-    "name": "식품분석실",
-    "coordinates": {
-      "leftTop": [438, 168],
-      "rightBottom": [545, 199]
-    }
-  },
-  {
-    "id": "C404",
-    "name": "식품학실습실",
-    "coordinates": {
-      "leftTop": [437, 201],
-      "rightBottom": [545, 291]
-    }
-  },
-  {
-    "id": "C405",
-    "name": "공동기기실",
-    "coordinates": {
-      "leftTop": [439, 363],
-      "rightBottom": [544, 434]
-    }
-  },
-  {
-    "id": "C406",
-    "name": "세균학실험실",
-    "coordinates": {
-      "leftTop": [439, 437],
-      "rightBottom": [545, 508]
-    }
-  },
-  {
-    "id": "C407",
-    "name": "분자생물학실험실",
-    "coordinates": {
-      "leftTop": [439, 510],
-      "rightBottom": [544, 576]
-    }
-  },
-  {
-    "id": "C408",
-    "name": "미래생명자원특성화사업단사무실",
-    "coordinates": {
-      "leftTop": [438, 581],
-      "rightBottom": [508, 614]
-    }
-  },
-  {
-    "id": "C409",
-    "name": "멀티미디어강의실",
-    "coordinates": {
-      "leftTop": [223, 754],
-      "rightBottom": [328, 829]
-    }
-  },
-  {
-    "id": "C410",
-    "name": "강의실",
-    "coordinates": {
-      "leftTop": [113, 754],
-      "rightBottom": [217, 830]
-    }
-  },
-  {
-    "id": "C411",
-    "name": "강의실",
-    "coordinates": {
-      "leftTop": [2, 755],
-      "rightBottom": [108, 828]
-    }
-  },
-  {
-    "id": "C412",
-    "name": "건강관리학실험실2",
-    "coordinates": {
-      "leftTop": [75, 644],
-      "rightBottom": [146, 720]
-    }
-  },
-  {
-    "id": "C413",
-    "name": "의생명복합유전자원정보실습실",
-    "coordinates": {
-      "leftTop": [150, 645],
-      "rightBottom": [180, 721]
-    }
-  },
-  {
-    "id": "C414",
-    "name": "증류수제조실",
-    "coordinates": {
-      "leftTop": [186, 646],
-      "rightBottom": [216, 717]
-    }
-  },
-  {
-    "id": "C415",
-    "name": "배양실",
-    "coordinates": {
-      "leftTop": [221, 644],
-      "rightBottom": [254, 719]
-    }
-  },
-  {
-    "id": "C415-1",
-    "name": "무균실",
-    "coordinates": {
-      "leftTop": [258, 646],
-      "rightBottom": [287, 679]
-    }
-  },
-  {
-    "id": "C415-2",
-    "name": "암실",
-    "coordinates": {
-      "leftTop": [258, 684],
-      "rightBottom": [290, 720]
-    }
-  },
-  {
-    "id": "C416",
-    "name": "화장실",
-    "coordinates": {
-      "leftTop": [293, 644],
-      "rightBottom": [362, 721]
-    }
-  },
-  {
-    "id": "C417",
-    "name": "교수연구실(정선효)",
-    "coordinates": {
-      "leftTop": [329, 542],
-      "rightBottom": [404, 577]
-    }
-  },
-  {
-    "id": "C418",
-    "name": "교수연구실(정상호)",
-    "coordinates": {
-      "leftTop": [328, 510],
-      "rightBottom": [404, 539]
-    }
-  },
-  {
-    "id": "C419",
-    "name": "교수연구실(박영두)",
-    "coordinates": {
-      "leftTop": [329, 473],
-      "rightBottom": [403, 507]
-    }
-  },
-  {
-    "id": "C420",
-    "name": "교수연구실(황경숙)",
-    "coordinates": {
-      "leftTop": [327, 436],
-      "rightBottom": [404, 468]
-    }
-  },
-  {
-    "id": "C421",
-    "name": "교수연구실(음진성)",
-    "coordinates": {
-      "leftTop": [324, 399],
-      "rightBottom": [403, 432]
-    }
-  },
-  {
-    "id": "C422",
-    "name": "식품제약학부 사무실",
-    "coordinates": {
-      "leftTop": [328, 362],
-      "rightBottom": [403, 395]
-    }
-  },
-  {
-    "id": "C423",
-    "name": "분자유전학실험실",
-    "coordinates": {
-      "leftTop": [327, 181],
-      "rightBottom": [404, 292]
-    }
-  },
-  {
-    "id": "C424",
-    "name": "미생물생태학연구실",
-    "coordinates": {
-      "leftTop": [327, 110],
-      "rightBottom": [403, 179]
-    }
-  },
-  {
-    "id": "C424-1",
-    "name": "현미경실",
-    "coordinates": {
-      "leftTop": [328, 72],
-      "rightBottom": [373, 108]
-    }
-  },
-  {
-    "id": "C424-2",
-    "name": "DNA 분석실",
-    "coordinates": {
-      "leftTop": [377, 72],
-      "rightBottom": [404, 108]
-    }
-  },
-  {
-    "id": "C424-3",
-    "name": "시약보관실",
-    "coordinates": {
-      "leftTop": [326, 45],
-      "rightBottom": [404, 70]
-    }
-  },
-  {
-    "id": "C425",
-    "name": "PC 룸/스터디 룸",
-    "coordinates": {
-      "leftTop": [328, 293],
-      "rightBottom": [403, 360]
-    }
-  },
+  { "id": "C301", "name": "화장실" },
+  { "id": "C302", "name": "면역학 실험실" },
+  { "id": "C303", "name": "강의실" },
+  { "id": "C304", "name": "세포생물학 실험실" },
+  { "id": "C305", "name": "강의실" },
+  { "id": "C306", "name": "일반생물학 실험실" },
+  { "id": "C307", "name": "세포배양실" },
+  { "id": "C308", "name": "사육준비실" },
+  { "id": "C309", "name": "계단강의실" },
+  { "id": "C310", "name": "강의실" },
+  { "id": "C311", "name": "식물생장 조절실" },
+  { "id": "C312", "name": "REAL-TIME PCR실" },
+  { "id": "C313", "name": "교수연구실(코럼, 조용림)" },
+  { "id": "C314", "name": "교수연구실(알라，스즈끼미에)" },
+  { "id": "C315", "name": "조교노동조합 사무실" },
+  { "id": "C316", "name": "보건안전대학 학생회" },
+  { "id": "C317", "name": "식물생명공학 실험실" },
+  { "id": "C318", "name": "교수연구실(방현우)" },
+  { "id": "C319", "name": "강사연구실" },
+  { "id": "C320", "name": "건강관리학 실험실 I" },
+  { "id": "C321", "name": "화장실" },
+  { "id": "C322", "name": "식물생리학 실험실" },
+  { "id": "C323", "name": "교수연구실(이상호)" },
+  { "id": "C324", "name": "대학원 세미나실" },
+  { "id": "C325", "name": "생명과학과 사무실" },
+  { "id": "C326", "name": "현미경실" },
+  { "id": "C327", "name": "형태학 실험실" },
+  { "id": "C328", "name": "생화학분자생물학 실험실" },
+  { "id": "C329", "name": "교수연구실(윤미정)" },
+  { "id": "C330", "name": "생리학 실험실" },
+  { "id": "C331", "name": "강의실" },
+  { "id": "C332", "name": "실습강의실" },
+  { "id": "C333", "name": "화장실" },
+  { "id": "C334", "name": "원자력안전관리실험실" },
+  { "id": "C335", "name": "소방안전학부 사무실" },
+  { "id": "C336", "name": "화재자동감지경비장치실습실" },
+  { "id": "C337", "name": "교수연구실(채진)" },
+  { "id": "C338", "name": "교수연구실(임동균)" },
+  { "id": "C339", "name": "교수연구실(김창길)" },
+  { "id": "C340", "name": "소방안전학부 강사휴게실" },
+  { "id": "C341", "name": "소방기계공학연구실" },
+  { "id": "C342", "name": "교수연구실(구재현)" },
+  { "id": "C343", "name": "강의실" },
+  { "id": "C344", "name": "전산교육실습실" },
+  { "id": "C345", "name": "대학원 강의실" },
+  { "id": "C346", "name": "강의실" },
+  { "id": "C347", "name": "학생 PC ROOM" },
+
+  { "id": "C401", "name": "화장실" },
+  { "id": "C402", "name": "식품학멀티실습실" },
+  { "id": "C403", "name": "식품분석실" },
+  { "id": "C404", "name": "식품학실습실" },
+  { "id": "C405", "name": "공동기기실" },
+  { "id": "C406", "name": "세균학실험실" },
+  { "id": "C407", "name": "분자생물학실험실" },
+  { "id": "C408", "name": "미래생명자원특성화사업단사무실" },
+  { "id": "C409", "name": "멀티미디어강의실" },
+  { "id": "C410", "name": "강의실" },
+  { "id": "C411", "name": "강의실" },
+  { "id": "C412", "name": "건강관리학실험실2" },
+  { "id": "C413", "name": "의생명복합유전자원정보실습실" },
+  { "id": "C414", "name": "증류수제조실" },
+  { "id": "C415", "name": "배양실" },
+  { "id": "C415-1", "name": "무균실" },
+  { "id": "C415-2", "name": "암실" },
+  { "id": "C416", "name": "화장실" },
+  { "id": "C417", "name": "교수연구실(정선효)" },
+  { "id": "C418", "name": "교수연구실(정상호)" },
+  { "id": "C419", "name": "교수연구실(박영두)" },
+  { "id": "C420", "name": "교수연구실(황경숙)" },
+  { "id": "C421", "name": "교수연구실(음진성)" },
+  { "id": "C422", "name": "식품제약학부 사무실" },
+  { "id": "C423", "name": "분자유전학실험실" },
+  { "id": "C424", "name": "미생물생태학연구실" },
+  { "id": "C424-1", "name": "현미경실" },
+  { "id": "C424-2", "name": "DNA 분석실" },
+  { "id": "C424-3", "name": "시약보관실" },
+  { "id": "C425", "name": "PC 룸/스터디 룸" },
 
   { "id": "D101B", "name": "중식 조리실" },
   { "id": "D102B", "name": "여자탈의실" },
