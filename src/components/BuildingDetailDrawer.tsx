@@ -11,7 +11,7 @@ import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import SearchRoundedIcon from "@mui/icons-material/SearchRounded";
 import RadioButtonCheckedRoundedIcon from "@mui/icons-material/RadioButtonCheckedRounded";
 import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
-import { useAtomValue, useSetAtom } from "jotai";
+import { useAtom, useAtomValue } from "jotai";
 import {
   buildingDetailDrawerBuildingAtom,
   isBuildingDetailDrawerOpenAtom,
@@ -19,21 +19,13 @@ import {
 import { useCallback } from "react";
 import { useNavigate } from "react-router";
 
-interface BuildingDetailDrawerProps {
-  isDrawerOpen: boolean;
-  handleDrawerOpen: (newIsDrawerOpen: boolean) => () => void;
-}
-
-const BuildingDetailDrawer = (props: BuildingDetailDrawerProps) => {
-  const { isDrawerOpen, handleDrawerOpen } = props;
-
+const BuildingDetailDrawer = () => {
   const navigate = useNavigate();
 
   const buildingDetailDrawerBuilding = useAtomValue(
     buildingDetailDrawerBuildingAtom
   );
-
-  const setIsBuildingDetailDrawerOpen = useSetAtom(
+  const [isBuildingDetailDrawerOpen, setIsBuildingDetailDrawerOpen] = useAtom(
     isBuildingDetailDrawerOpenAtom
   );
 
@@ -50,9 +42,9 @@ const BuildingDetailDrawer = (props: BuildingDetailDrawerProps) => {
   return (
     <SwipeableDrawer
       anchor="bottom"
-      open={isDrawerOpen}
-      onClose={handleDrawerOpen(false)}
-      onOpen={handleDrawerOpen(true)}
+      open={isBuildingDetailDrawerOpen}
+      onClose={() => setIsBuildingDetailDrawerOpen(false)}
+      onOpen={() => setIsBuildingDetailDrawerOpen(true)}
       swipeAreaWidth={56}
       disableSwipeToOpen
       sx={{
@@ -103,7 +95,7 @@ const BuildingDetailDrawer = (props: BuildingDetailDrawerProps) => {
 
           {/* 닫기 버튼 */}
           <IconButton
-            onClick={handleDrawerOpen(false)}
+            onClick={() => setIsBuildingDetailDrawerOpen(false)}
             sx={{
               padding: "4px",
               transform: "translateX(8px)",
@@ -136,7 +128,7 @@ const BuildingDetailDrawer = (props: BuildingDetailDrawerProps) => {
           <Box
             component="img"
             src={`/images/building_images/${buildingDetailDrawerBuilding?.id.toLowerCase()}.jpg`}
-            alt={`${buildingDetailDrawerBuilding?.name} 이미지`}
+            alt={`${buildingDetailDrawerBuilding?.name} 대표 이미지`}
             width="100%"
             minHeight={200}
           />

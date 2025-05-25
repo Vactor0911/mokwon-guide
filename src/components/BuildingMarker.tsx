@@ -22,6 +22,7 @@ const BuildingMarker = (props: BuildingMarkerProps) => {
     buildingDetailDrawerBuildingAtom
   );
 
+  // 건물 마커 클릭
   const handleMarkerClick = useCallback(() => {
     const buildingData = {
       id: buildingId,
