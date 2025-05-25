@@ -124,25 +124,23 @@ const Detail = () => {
         const facilityButton = facilityButtonElement.current[facility.id];
         facilityButton?.scrollIntoView({ behavior: "smooth", block: "center" });
 
-        setTimeout(() => {
-          // 표 스크롤이 중심으로 이동
-          const facilityItem = facilityItemElement.current[facility.id];
-          const container = facilityItem?.closest(
-            ".MuiTableContainer-root"
-          ) as HTMLElement;
-          if (container && facilityItem) {
-            const containerRect = container.getBoundingClientRect();
-            const itemRect = facilityItem.getBoundingClientRect();
-            const currentScrollTop = container.scrollTop;
-            const offset = itemRect.top - containerRect.top;
-            const newScrollTop =
-              currentScrollTop +
-              offset -
-              containerRect.height / 2 +
-              itemRect.height / 2;
-            container.scrollTo({ top: newScrollTop, behavior: "smooth" });
-          }
-        }, 1);
+        // 표 스크롤이 중심으로 이동
+        const facilityItem = facilityItemElement.current[facility.id];
+        const container = facilityItem?.closest(
+          ".MuiTableContainer-root"
+        ) as HTMLElement;
+        if (container && facilityItem) {
+          const containerRect = container.getBoundingClientRect();
+          const itemRect = facilityItem.getBoundingClientRect();
+          const currentScrollTop = container.scrollTop;
+          const offset = itemRect.top - containerRect.top;
+          const newScrollTop =
+            currentScrollTop +
+            offset -
+            containerRect.height / 2 +
+            itemRect.height / 2;
+          container.scrollTo({ top: newScrollTop, behavior: "smooth" });
+        }
       }, 1);
     },
     [searchFacilities, setSelectedFacility]
