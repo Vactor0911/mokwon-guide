@@ -6,8 +6,10 @@ import { useSetAtom } from "jotai";
 import { isDrawerOpenAtom, isSearchDrawerOpenAtom } from "../states";
 import DrawerMenu from "./DrawerMenu";
 import SearchDrawer from "./SearchDrawer";
+import { useNavigate } from "react-router";
 
 const Header = () => {
+  const navigate = useNavigate();
   const setIsDrawerOpen = useSetAtom(isDrawerOpenAtom); // 드로어 메뉴 열림 관련
   const setIsSearchDrawerOpen = useSetAtom(isSearchDrawerOpenAtom); // 검색 드로어 열림 관련
 
@@ -23,6 +25,11 @@ const Header = () => {
   const handleSearchDrawerOpen = useCallback(() => {
     setIsSearchDrawerOpen(true);
   }, [setIsSearchDrawerOpen]);
+
+  // 로고 클릭
+  const handleLogoClick = useCallback(() => {
+    navigate("/");
+  }, [navigate]);
 
   return (
     <>
@@ -42,7 +49,11 @@ const Header = () => {
           </IconButton>
 
           {/* 로고 */}
-          <Typography variant="h4" sx={{ color: "white" }}>
+          <Typography
+            variant="h4"
+            sx={{ color: "white", cursor: "pointer" }}
+            onClick={handleLogoClick}
+          >
             목원 길잡이
           </Typography>
 

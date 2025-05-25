@@ -11,7 +11,7 @@ const App = () => {
       <ThemeProvider theme={theme}>
         <BrowserRouter>
           <Header />
-          <Stack height="calc(100vh - 64px)">
+          <Stack minHeight="calc(100vh - 64px)">
             <Routes>
               <Route path="/" element={<Main />} />
               <Route path="/about" element={<About />} />

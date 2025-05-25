@@ -1,11 +1,20 @@
-import { ImageOverlay, MapContainer } from "react-leaflet";
+import { ImageOverlay, MapContainer, Marker, Popup } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
-import { LatLngBoundsExpression, CRS } from "leaflet";
+import { LatLngBoundsExpression, CRS, LatLngExpression } from "leaflet";
 import MapImage from "/images/map.png";
-import { Button, useMediaQuery } from "@mui/material";
+import {
+  Alert,
+  Button,
+  Snackbar,
+  SnackbarCloseReason,
+  useMediaQuery,
+} from "@mui/material";
 import { theme } from "../theme";
 import { useCallback, useState } from "react";
 import MyLocationRoundedIcon from "@mui/icons-material/MyLocationRounded";
+import { geoToXY } from "../utils";
+import buildings from "../assets/buildings.json";
+import BuildingMarker from "./BuildingMarker";
 
 const MapViewer = () => {
   const isLargeScreen = useMediaQuery(theme.breakpoints.up("sm"));
@@ -30,14 +39,71 @@ const MapViewer = () => {
         [960, 540],
       ];
 
-  // 내 위치 버튼 클릭
-  const [map, setMap] = useState<L.Map | null>(null);
-  const handleMyLocationClick = useCallback(() => {
-    const center: [number, number] = [500, 500];
-    const zoom = 0;
+  const [map, setMap] = useState<L.Map | null>(null); // 지도 객체
+  const [geoLocation, setGeoLocation] = useState<LatLngExpression>([-1, -1]); // 내 위치 좌표
+  const [isAlertOpen, setIsAlertOpen] = useState(false); // 경고창 열림 상태
+  const [alertMessage, setAlertMessage] = useState(""); // 경고창 메시지
 
-    map?.setView(center, zoom);
-  }, [map]);
+  // 경고창 열기
+  const handleAlertOpen = useCallback((newAlertMessage: string) => {
+    setAlertMessage(newAlertMessage);
+    setIsAlertOpen(true);
+  }, []);
+
+  // 경고창 닫기
+  const handleAlertClose = useCallback(
+    (_event: React.SyntheticEvent | Event, reason?: SnackbarCloseReason) => {
+      if (reason === "clickaway") {
+        return;
+      }
+
+      setIsAlertOpen(false);
+    },
+    []
+  );
+
+  // 내 위치 버튼 클릭
+  const handleMyLocationClick = useCallback(
+    (e: React.MouseEvent<HTMLButtonElement>) => {
+      e.stopPropagation();
+      e.preventDefault();
+
+      // 위치 정보 가져올 수 없음
+      if (!navigator.geolocation) {
+        handleAlertOpen(`위치 정보를 가져올 수 없습니다.`);
+        return;
+      }
+
+      // 위치 정보 가져오기
+      navigator.geolocation.getCurrentPosition(
+        (position) => {
+          const { latitude, longitude } = position.coords;
+          const newGeoLocation = geoToXY(latitude, longitude, isLargeScreen);
+          setGeoLocation(newGeoLocation);
+
+          // 지도 범위 내에 있는지 확인
+          const isInBounds = map?.getBounds().contains(newGeoLocation);
+          if (!isInBounds) {
+            handleAlertOpen("내 위치가 지도 범위를 벗어났습니다.");
+            return;
+          }
+
+          // leaflet 지도에서 내 위치 마커로 이동
+          const zoom = 0;
+          map?.setView(newGeoLocation, zoom);
+        },
+        () => {
+          handleAlertOpen(`위치 정보를 가져올 수 없습니다.`);
+        },
+        {
+          enableHighAccuracy: true,
+          timeout: 10000,
+          maximumAge: 0,
+        }
+      );
+    },
+    [handleAlertOpen, isLargeScreen, map]
+  );
 
   return (
     <MapContainer
@@ -45,7 +111,7 @@ const MapViewer = () => {
       bounds={bounds}
       maxBounds={maxBounds}
       maxBoundsViscosity={1.0}
-      maxZoom={2.5}
+      maxZoom={1.7}
       scrollWheelZoom={true}
       ref={setMap}
       css={{
@@ -70,7 +136,33 @@ const MapViewer = () => {
           <img src="/logo.png" alt="logo" height="14px" />
           목원대학교 목원뷰
         </a>'
-      />
+      >
+        {/* 건물 마커 */}
+        {buildings.map((building) => {
+          return (
+            <BuildingMarker
+              key={building.id}
+              buildingId={building.id}
+              position={[
+                building.marker_position[0],
+                building.marker_position[1],
+              ]}
+            isLargeScreen={isLargeScreen}
+            />
+          );
+        })}
+      </ImageOverlay>
+
+      {/* 내 위치 마커 */}
+      {map?.getBounds().contains(geoLocation) && (
+        <Marker position={[919, 100]}>
+          <Popup>
+            {Array.isArray(geoLocation)
+              ? geoLocation.join(", ")
+              : String(geoLocation)}
+          </Popup>
+        </Marker>
+      )}
 
       {/* 내 위치 버튼 */}
       <Button
@@ -90,6 +182,22 @@ const MapViewer = () => {
       >
         <MyLocationRoundedIcon />
       </Button>
+
+      {/* 경고창 */}
+      <Snackbar
+        open={isAlertOpen}
+        autoHideDuration={5000}
+        onClose={handleAlertClose}
+      >
+        <Alert
+          onClose={handleAlertClose}
+          severity="error"
+          variant="filled"
+          sx={{ width: "100%" }}
+        >
+          {alertMessage}
+        </Alert>
+      </Snackbar>
     </MapContainer>
   );
 };
