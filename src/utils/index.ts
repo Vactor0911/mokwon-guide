@@ -121,7 +121,6 @@ export const getBuildingFloors = (): Record<string, string[]> => {
 export const geoToXY = (
   lat: number,
   lng: number,
-  isLargeScreen: boolean
 ): [number, number] => {
   // 위도와 경도 좌표를 기준점을 기준으로 회전
   const angleRad = 277 * (Math.PI / 180); // 각도를 라디안으로 변환
@@ -142,7 +141,7 @@ export const geoToXY = (
   const finalX = -rotatedX * mul + 1059;
   const finalY = rotatedY * mul + 1000;
 
-  const multiplier = isLargeScreen ? 0.5 : 0.25; // 지도 크기에 따라 배율 조정, map이 null이면 기본값 1 사용
+  const multiplier = 0.25; // 화면 크기에 따라 조정할 배율
 
   return [finalY * multiplier, finalX * multiplier];
 };
