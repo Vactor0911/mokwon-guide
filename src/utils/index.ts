@@ -137,7 +137,7 @@ export const geoToXY = (
   const rotatedY = dx * Math.sin(angleRad) + dy * Math.cos(angleRad);
 
   // 다시 기준점 위치로 이동
-  const mul = 340000
+  const mul = 340000;
 
   const finalX = -rotatedX * mul + 1059;
   const finalY = rotatedY * mul + 1000;
@@ -145,4 +145,23 @@ export const geoToXY = (
   const multiplier = isLargeScreen ? 0.5 : 0.25; // 지도 크기에 따라 배율 조정, map이 null이면 기본값 1 사용
 
   return [finalY * multiplier, finalX * multiplier];
+};
+
+// 건물 배치도 이미지 URL을 반환하는 함수
+export const getBuildingLayoutImageUrl = (
+  buildingId: string,
+  floor: string
+) => {
+  // 건물 ID 및 층수 형식 변환
+  const formattedBuildingId = buildingId.toLowerCase();
+  let formattedFloor = floor.replace("F", "").toLowerCase();
+
+  // 특정 건물의 경우 층수 조정
+  if (buildingId === "T" && formattedFloor === "3") {
+    formattedFloor = "2";
+  }
+
+  // 이미지 URL 생성
+  const imageUrl = `./images/building_layouts/${formattedBuildingId}_${formattedFloor}.jpg`;
+  return imageUrl;
 };

@@ -8,6 +8,8 @@ import facilities from "../assets/facilities.json"; // 시설 데이터 가져�
 export interface FacilityInterface {
   id: string;
   name: string;
+  marker_position?: number[];
+  path?: number[][];
 }
 
 /**
