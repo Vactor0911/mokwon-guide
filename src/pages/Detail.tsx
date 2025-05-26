@@ -157,11 +157,31 @@ const Detail = () => {
     if (facilityId) {
       const newFloor = getFacilityFloor(facilityId);
       setFloor(newFloor);
+
+      // 검색창에서 온 경우 selectedFacility 유지
+      if (!selectedFacility) {
+        const facility = facilities.find((f) => f.id === facilityId);
+        if (facility) {
+          setSelectedFacility(facility);
+        }
+      }
+
       return;
     }
     setFloor("1F"); // 기본 층수 설정
-  }, [buildingId, facilityId]);
+  }, [buildingId, facilityId, selectedFacility, setSelectedFacility]);
 
+  // 페이지 쿼리 파라미터 변경시 시설 정보 재검색
+  useEffect(() => {
+    setKeyword(""); // 검색어 초기화
+    searchFacilities(""); // 검색 초기화
+
+    // facilityId가 있는 경우에만 selectedFacility 유지
+    if (!facilityId) {
+      setSelectedFacility(null);
+    }
+  }, [buildingId, facilityId, searchFacilities, setSelectedFacility]);
+  
   return (
     <>
       <Stack minHeight="100%" alignItems="center" py={2} pb={10} gap={5}>
