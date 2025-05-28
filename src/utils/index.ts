@@ -48,13 +48,16 @@ export const getItemUrl = (item: FacilityInterface): string => {
  */
 export const getBuildingId = (id: string): string => {
   // 건물 ID에서 건물 코드 추출
-  const buildingId = id.slice(0, 3);
+  const buildingId = id.slice(0, 2);
 
   switch (buildingId) {
-    case "G1-":
-    case "O1-":
-      return buildingId.slice(0, 2);
+    case "G1":
+    case "O1":
+      return buildingId;
     default:
+      if (buildingId.slice(0, 2) === "VS") {
+        return "V";
+      }
       return buildingId.charAt(0);
   }
 };
@@ -65,18 +68,24 @@ export const getBuildingId = (id: string): string => {
  * @returns 시설이 위치한 층수
  */
 export const getFacilityFloor = (id: string): string => {
-  const buildingId = getBuildingId(id);
+  const buildingId = id.slice(0, 2); // 건물 ID 추출
   let floor = "";
 
   switch (buildingId) {
     case "G1":
     case "O1":
-      floor = id.slice(3, 4);
+      floor = id.slice(3);
+      break;
+    case "VS":
+      floor = id.slice(2);
       break;
     default:
-      floor = id.slice(1, 2);
+      floor = id.slice(1);
       break;
   }
+
+  floor = floor.split("-")[0].replace("B", "");
+  floor = floor.slice(0, Math.ceil(floor.length / 3));
 
   // 마지막 글자가 'B'인 경우
   if (
@@ -127,7 +136,7 @@ export const geoToXY = (lat: number, lng: number): [number, number] => {
   const OFFSET_Y = 1000; // Y축 offset
 
   // 각도를 라디안으로 변환
-  const angleRad = ROTATION_ANGLE_DEGREES * (Math.PI / 180); 
+  const angleRad = ROTATION_ANGLE_DEGREES * (Math.PI / 180);
 
   // p1에서 p2를 기준으로 평행이동
   const dx = lat - BASE_LATITUDE;

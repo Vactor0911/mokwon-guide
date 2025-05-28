@@ -9,8 +9,8 @@ import {
 import { theme } from "../theme";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import SearchRoundedIcon from "@mui/icons-material/SearchRounded";
-import RadioButtonCheckedRoundedIcon from "@mui/icons-material/RadioButtonCheckedRounded";
-import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
+// import RadioButtonCheckedRoundedIcon from "@mui/icons-material/RadioButtonCheckedRounded";
+// import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
 import { useAtom, useAtomValue } from "jotai";
 import {
   buildingDetailDrawerBuildingAtom,
@@ -156,7 +156,7 @@ const BuildingDetailDrawer = () => {
         {/* 네비게이션 버튼 */}
         <Stack direction="row" justifyContent="flex-end" gap={2}>
           {/* 출발 */}
-          <Button
+          {/* <Button
             variant="contained"
             color="info"
             startIcon={<RadioButtonCheckedRoundedIcon color="secondary" />}
@@ -167,10 +167,10 @@ const BuildingDetailDrawer = () => {
             <Typography variant="h6" color="secondary">
               출발
             </Typography>
-          </Button>
+          </Button> */}
 
           {/* 도착 */}
-          <Button
+          {/* <Button
             variant="contained"
             color="secondary"
             startIcon={<LocationOnOutlinedIcon />}
@@ -179,7 +179,7 @@ const BuildingDetailDrawer = () => {
             }}
           >
             <Typography variant="h6">도착</Typography>
-          </Button>
+          </Button> */}
         </Stack>
       </Stack>
     </SwipeableDrawer>
