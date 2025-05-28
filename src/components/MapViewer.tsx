@@ -1,46 +1,28 @@
-import { ImageOverlay, MapContainer, Marker, Popup } from "react-leaflet";
+import { ImageOverlay, MapContainer } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
-import { LatLngBoundsExpression, CRS, LatLngExpression } from "leaflet";
+import { LatLngBoundsExpression, CRS } from "leaflet";
 import MapImage from "/images/map.png";
-import {
-  Alert,
-  Button,
-  Snackbar,
-  SnackbarCloseReason,
-  useMediaQuery,
-} from "@mui/material";
-import { theme } from "../theme";
+import { Alert, Button, Snackbar, SnackbarCloseReason } from "@mui/material";
 import { useCallback, useState } from "react";
 import MyLocationRoundedIcon from "@mui/icons-material/MyLocationRounded";
 import { geoToXY } from "../utils";
 import buildings from "../assets/buildings.json";
 import BuildingMarker from "./BuildingMarker";
+import CircularMarker from "./CircularMarker";
 
 const MapViewer = () => {
-  const isLargeScreen = useMediaQuery(theme.breakpoints.up("sm"));
+  const bounds: LatLngBoundsExpression = [
+    [0, 0],
+    [960, 540],
+  ];
 
-  const bounds: LatLngBoundsExpression = isLargeScreen
-    ? [
-        [0, 0],
-        [1920, 1080],
-      ]
-    : [
-        [0, 0],
-        [960, 540],
-      ];
-
-  const maxBounds: LatLngBoundsExpression = isLargeScreen
-    ? [
-        [0, -500],
-        [1920, 1580],
-      ]
-    : [
-        [0, 0],
-        [960, 540],
-      ];
+  const maxBounds: LatLngBoundsExpression = [
+    [0, -25],
+    [960, 565],
+  ];
 
   const [map, setMap] = useState<L.Map | null>(null); // 지도 객체
-  const [geoLocation, setGeoLocation] = useState<LatLngExpression>([-1, -1]); // 내 위치 좌표
+  const [geoLocation, setGeoLocation] = useState<number[] | null>(null); // 내 위치 좌표
   const [isAlertOpen, setIsAlertOpen] = useState(false); // 경고창 열림 상태
   const [alertMessage, setAlertMessage] = useState(""); // 경고창 메시지
 
@@ -78,7 +60,7 @@ const MapViewer = () => {
       navigator.geolocation.getCurrentPosition(
         (position) => {
           const { latitude, longitude } = position.coords;
-          const newGeoLocation = geoToXY(latitude, longitude, isLargeScreen);
+          const newGeoLocation = geoToXY(latitude, longitude);
           setGeoLocation(newGeoLocation);
 
           // 지도 범위 내에 있는지 확인
@@ -102,7 +84,7 @@ const MapViewer = () => {
         }
       );
     },
-    [handleAlertOpen, isLargeScreen, map]
+    [handleAlertOpen, map]
   );
 
   return (
@@ -144,25 +126,21 @@ const MapViewer = () => {
               key={building.id}
               buildingId={building.id}
               position={[
-                building.marker_position[0],
-                building.marker_position[1],
+                building.marker_position[0] * 0.5,
+                building.marker_position[1] * 0.5,
               ]}
-            isLargeScreen={isLargeScreen}
             />
           );
         })}
-      </ImageOverlay>
 
-      {/* 내 위치 마커 */}
-      {map?.getBounds().contains(geoLocation) && (
-        <Marker position={[919, 100]}>
-          <Popup>
-            {Array.isArray(geoLocation)
-              ? geoLocation.join(", ")
-              : String(geoLocation)}
-          </Popup>
-        </Marker>
-      )}
+        {/* 내 위치 마커 */}
+        {geoLocation && (
+          <CircularMarker
+            position={[geoLocation[0], geoLocation[1]]}
+            color="#1976d2"
+          />
+        )}
+      </ImageOverlay>
 
       {/* 내 위치 버튼 */}
       <Button

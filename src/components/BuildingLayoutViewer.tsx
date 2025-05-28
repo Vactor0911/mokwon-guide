@@ -48,6 +48,14 @@ const BuildingLayoutViewer = (props: BuildingLayoutImageProps) => {
   const size = useImageSize(imageUrl); // 건물 배치도 이미지 크기
   const [selectedFacility, setSelectedFacility] = useAtom(selectedFacilityAtom);
 
+  // 강제 리렌더링을 위한 state
+  const [forceUpdate, setForceUpdate] = useState(0);
+
+  // selectedFacility 변경 시 강제 리렌더링
+  useEffect(() => {
+    setForceUpdate((prev) => prev + 1);
+  }, [selectedFacility]);
+
   // 시설 버튼 클릭
   const handleFacilityButtonClick = useCallback(
     (facility: FacilityInterface) => {
@@ -76,31 +84,37 @@ const BuildingLayoutViewer = (props: BuildingLayoutImageProps) => {
           viewBox={`0 0 ${size.width} ${size.height}`}
           style={{ width: "100%", display: "block" }}
           preserveAspectRatio="xMidYMid meet"
+          key={forceUpdate} // 강제 리렌더링 키 추가
         >
           {/* 건물 배치도 이미지 */}
           <image href={imageUrl} width={size.width} height={size.height} />
 
           {/* 시설 버튼 */}
-          {facilities.map((facility) => (
-            <polygon
-              key={facility.id}
-              points={facility.path?.join()}
-              fill="transparent"
-              stroke={selectedFacility?.id === facility.id ? "red" : "none"}
-              strokeWidth="3"
-              onClick={() => handleFacilityButtonClick(facility)}
-              ref={(elem: SVGPolygonElement | null) => {
-                facilityButtonsRef.current[facility.id] = elem;
-              }}
-              css={{
-                pointerEvents: "all",
-                cursor: "pointer",
-                "&:hover": {
-                  stroke: "red",
-                },
-              }}
-            />
-          ))}
+          {facilities.map((facility) => {
+            // path 데이터가 없는 경우 렌더링하지 않음
+            if (!facility.path || facility.path.length === 0) return null;
+
+            return (
+              <polygon
+                key={facility.id}
+                points={facility.path.join()}
+                fill="transparent"
+                stroke={selectedFacility?.id === facility.id ? "red" : "none"}
+                strokeWidth="3"
+                onClick={() => handleFacilityButtonClick(facility)}
+                ref={(elem: SVGPolygonElement | null) => {
+                  facilityButtonsRef.current[facility.id] = elem;
+                }}
+                css={{
+                  pointerEvents: "all",
+                  cursor: "pointer",
+                  "&:hover": {
+                    stroke: "red",
+                  },
+                }}
+              />
+            );
+          })}
         </svg>
       </Box>
     </ClickAwayListener>

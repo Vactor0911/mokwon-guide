@@ -12,6 +12,7 @@ import {
   keywordAtom,
   searchHistoryAtom,
   searchResultAtom,
+  selectedFacilityAtom,
 } from "../states";
 import { FacilityInterface } from "../utils/search";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
@@ -62,23 +63,18 @@ const FacilityItemButton = (props: FacilityItemButtonProps) => {
   const navigate = useNavigate();
   const setKeyWord = useSetAtom(keywordAtom);
   const setSearchResult = useSetAtom(searchResultAtom);
+  const setSelectedFacility = useSetAtom(selectedFacilityAtom);
 
   const handleButtonClick = useCallback(() => {
     addSearchHistory(item);
     setIsSearchDrawerOpen(false);
     setKeyWord("");
     setSearchResult([]);
+    setSelectedFacility(item);
 
     const url = getItemUrl(item);
     navigate(url);
-  }, [
-    addSearchHistory,
-    item,
-    navigate,
-    setIsSearchDrawerOpen,
-    setKeyWord,
-    setSearchResult,
-  ]);
+  }, [addSearchHistory, item, navigate, setIsSearchDrawerOpen, setKeyWord, setSearchResult, setSelectedFacility]);
 
   // 검색 기록 삭제 버튼 마우스 진입
   const [isRippleDisabled, setIsRippleDisabled] = useState(false);

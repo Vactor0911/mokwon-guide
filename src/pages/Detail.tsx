@@ -124,25 +124,23 @@ const Detail = () => {
         const facilityButton = facilityButtonElement.current[facility.id];
         facilityButton?.scrollIntoView({ behavior: "smooth", block: "center" });
 
-        setTimeout(() => {
-          // 표 스크롤이 중심으로 이동
-          const facilityItem = facilityItemElement.current[facility.id];
-          const container = facilityItem?.closest(
-            ".MuiTableContainer-root"
-          ) as HTMLElement;
-          if (container && facilityItem) {
-            const containerRect = container.getBoundingClientRect();
-            const itemRect = facilityItem.getBoundingClientRect();
-            const currentScrollTop = container.scrollTop;
-            const offset = itemRect.top - containerRect.top;
-            const newScrollTop =
-              currentScrollTop +
-              offset -
-              containerRect.height / 2 +
-              itemRect.height / 2;
-            container.scrollTo({ top: newScrollTop, behavior: "smooth" });
-          }
-        }, 1);
+        // 표 스크롤이 중심으로 이동
+        const facilityItem = facilityItemElement.current[facility.id];
+        const container = facilityItem?.closest(
+          ".MuiTableContainer-root"
+        ) as HTMLElement;
+        if (container && facilityItem) {
+          const containerRect = container.getBoundingClientRect();
+          const itemRect = facilityItem.getBoundingClientRect();
+          const currentScrollTop = container.scrollTop;
+          const offset = itemRect.top - containerRect.top;
+          const newScrollTop =
+            currentScrollTop +
+            offset -
+            containerRect.height / 2 +
+            itemRect.height / 2;
+          container.scrollTo({ top: newScrollTop, behavior: "smooth" });
+        }
       }, 1);
     },
     [searchFacilities, setSelectedFacility]
@@ -159,11 +157,31 @@ const Detail = () => {
     if (facilityId) {
       const newFloor = getFacilityFloor(facilityId);
       setFloor(newFloor);
+
+      // 검색창에서 온 경우 selectedFacility 유지
+      if (!selectedFacility) {
+        const facility = facilities.find((f) => f.id === facilityId);
+        if (facility) {
+          setSelectedFacility(facility);
+        }
+      }
+
       return;
     }
     setFloor("1F"); // 기본 층수 설정
-  }, [buildingId, facilityId]);
+  }, [buildingId, facilityId, selectedFacility, setSelectedFacility]);
 
+  // 페이지 쿼리 파라미터 변경시 시설 정보 재검색
+  useEffect(() => {
+    setKeyword(""); // 검색어 초기화
+    searchFacilities(""); // 검색 초기화
+
+    // facilityId가 있는 경우에만 selectedFacility 유지
+    if (!facilityId) {
+      setSelectedFacility(null);
+    }
+  }, [buildingId, facilityId, searchFacilities, setSelectedFacility]);
+  
   return (
     <>
       <Stack minHeight="100%" alignItems="center" py={2} pb={10} gap={5}>

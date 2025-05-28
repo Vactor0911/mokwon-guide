@@ -118,31 +118,31 @@ export const getBuildingFloors = (): Record<string, string[]> => {
  * @param lng 경도값
  * @returns 변환된 좌표값
  */
-export const geoToXY = (
-  lat: number,
-  lng: number,
-  isLargeScreen: boolean
-): [number, number] => {
-  // 위도와 경도 좌표를 기준점을 기준으로 회전
-  const angleRad = 277 * (Math.PI / 180); // 각도를 라디안으로 변환
+export const geoToXY = (lat: number, lng: number): [number, number] => {
+  const ROTATION_ANGLE_DEGREES = 277; // 회전 각도 (도 단위)
+  const BASE_LATITUDE = 36.327222; // 기준점 위도
+  const BASE_LONGITUDE = 127.338333; // 기준점 경도
+  const SCALE_FACTOR = 340000; // 좌표 스케일링 팩터
+  const OFFSET_X = 1059; // X축 offset
+  const OFFSET_Y = 1000; // Y축 offset
+
+  // 각도를 라디안으로 변환
+  const angleRad = ROTATION_ANGLE_DEGREES * (Math.PI / 180); 
 
   // p1에서 p2를 기준으로 평행이동
-  const x0 = 36.327222;
-  const y0 = 127.338333;
-  const dx = lat - x0;
-  const dy = lng - y0;
+  const dx = lat - BASE_LATITUDE;
+  const dy = lng - BASE_LONGITUDE;
 
-  // 회전 공식 적용
+  // 위도와 경도 좌표를 기준점을 기준으로 회전
   const rotatedX = dx * Math.cos(angleRad) - dy * Math.sin(angleRad);
   const rotatedY = dx * Math.sin(angleRad) + dy * Math.cos(angleRad);
 
-  // 다시 기준점 위치로 이동
-  const mul = 340000;
+  // 실제 지도와 일치하도록 좌표 보정
+  const finalX = -rotatedX * SCALE_FACTOR + OFFSET_X;
+  const finalY = rotatedY * SCALE_FACTOR + OFFSET_Y;
 
-  const finalX = -rotatedX * mul + 1059;
-  const finalY = rotatedY * mul + 1000;
-
-  const multiplier = isLargeScreen ? 0.5 : 0.25; // 지도 크기에 따라 배율 조정, map이 null이면 기본값 1 사용
+  // 최종 좌표 보정
+  const multiplier = 0.25; // 화면 크기에 따라 조정할 배율
 
   return [finalY * multiplier, finalX * multiplier];
 };
