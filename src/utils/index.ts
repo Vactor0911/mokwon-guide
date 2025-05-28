@@ -86,7 +86,6 @@ export const getFacilityFloor = (id: string): string => {
 
   floor = floor.split("-")[0].replace("B", "");
   floor = floor.slice(0, Math.ceil(floor.length / 3));
-  console.log(floor, id);
 
   // 마지막 글자가 'B'인 경우
   if (

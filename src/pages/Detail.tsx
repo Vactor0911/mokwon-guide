@@ -63,9 +63,6 @@ const Detail = () => {
     Record<string, HTMLTableRowElement | null>
   >({});
 
-  
-  console.log(selectedFacility?.id);
-
   // 층수 선택 메뉴 열기
   const handleFloorMenuOpen = useCallback(() => {
     setIsFloorMenuOpen(true);
