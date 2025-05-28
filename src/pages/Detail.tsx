@@ -37,9 +37,13 @@ import BuildingLayoutViewer from "../components/BuildingLayoutViewer";
 
 const Detail = () => {
   const [queryParams] = useSearchParams(); // URL 쿼리 파라미터
-  const buildingId = queryParams.get("building") || "A"; // 건물 ID
-  const facilityId = queryParams.get("facility"); // 시설 ID
-  const building = buildings.find((building) => building.id === buildingId); // 건물 객체
+
+  const [buildingId, setBuildingId] = useState(
+    queryParams.get("building") || "A"
+  ); // 건물 ID
+  const [building, setBuilding] = useState(
+    buildings.find((building) => building.id === buildingId)
+  ); // 건물 객체
 
   const floors = useAtomValue(buildingFloorsAtom); // 전체 건물 층수 데이터
   const [floor, setFloor] = useState("1F"); // 건물 배치도 층수 상태
@@ -146,42 +150,41 @@ const Detail = () => {
     [searchFacilities, setSelectedFacility]
   );
 
-  // 페이지 쿼리 파라미터 변경시 시설 정보 재검색
+  // URL 쿼리 파라미터 변경 시 건물 및 시설 정보 업데이트
   useEffect(() => {
-    setKeyword(""); // 검색어 초기화
-    searchFacilities(""); // 검색 초기화
-  }, [buildingId, searchFacilities]);
+    const newBuildingId = queryParams.get("building") || "A";
+    const newFacilityId = queryParams.get("facility");
 
-  // 초기 시설 정보 설정
-  useEffect(() => {
-    if (facilityId) {
-      const newFloor = getFacilityFloor(facilityId);
-      setFloor(newFloor);
+    setBuildingId(newBuildingId); // 건물 ID
+    setBuilding(buildings.find((building) => building.id === newBuildingId)); // 건물 객체
 
-      // 검색창에서 온 경우 selectedFacility 유지
-      if (!selectedFacility) {
-        const facility = facilities.find((f) => f.id === facilityId);
-        if (facility) {
-          setSelectedFacility(facility);
-        }
+    let newFloor = "1F";
+    if (newFacilityId) {
+      newFloor = getFacilityFloor(newFacilityId); // 층
+
+      const newSelectedFacility = facilities.find(
+        (facility) => facility.id === newFacilityId
+      );
+      if (newSelectedFacility) {
+        setSelectedFacility(newSelectedFacility); // 선택된 시설 객체
+
+        setTimeout(() => {
+          // 해당 시설 버튼으로 스크롤 이동
+          const facilityButton =
+            facilityButtonElement.current[newSelectedFacility.id];
+          facilityButton?.scrollIntoView({
+            behavior: "smooth",
+            block: "center",
+          });
+        }, 500);
       }
-
-      return;
     }
-    setFloor("1F"); // 기본 층수 설정
-  }, [buildingId, facilityId, selectedFacility, setSelectedFacility]);
 
-  // 페이지 쿼리 파라미터 변경시 시설 정보 재검색
-  useEffect(() => {
     setKeyword(""); // 검색어 초기화
-    searchFacilities(""); // 검색 초기화
+    setFloor(newFloor);
+    setSearchedFacilities(findFacilitiesByFloor(newBuildingId, newFloor)); // 검색 초기화
+  }, [queryParams, setSelectedFacility]);
 
-    // facilityId가 있는 경우에만 selectedFacility 유지
-    if (!facilityId) {
-      setSelectedFacility(null);
-    }
-  }, [buildingId, facilityId, searchFacilities, setSelectedFacility]);
-  
   return (
     <>
       <Stack minHeight="100%" alignItems="center" py={2} pb={10} gap={5}>
