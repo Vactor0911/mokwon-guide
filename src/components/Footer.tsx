@@ -8,6 +8,7 @@ import {
   Typography,
 } from "@mui/material";
 import MokwonIcon from "../assets/icons/Mokwon.png";
+import GoogleFormsIcon from "../assets/icons/GoogleForms.svg";
 import GitHubIcon from "../assets/icons/Github.svg";
 import { theme } from "../theme";
 import LocalCafeIcon from "@mui/icons-material/LocalCafe";
@@ -31,6 +32,10 @@ const IconLinkButton = (props: IconLinkButtonProps) => {
           src={iconImage}
           alt={alt}
           width={{
+            xs: "40px",
+            sm: "50px",
+          }}
+          height={{
             xs: "40px",
             sm: "50px",
           }}
@@ -121,12 +126,9 @@ const Footer = () => {
 
           {/* 구글 폼 버튼 */}
           <IconLinkButton
-            iconImage={MokwonIcon}
+            iconImage={GoogleFormsIcon}
             alt="Google Form"
             tooltip="구글 폼"
-            style={{
-              transform: "translateY(2px)",
-            }}
             onClick={() => handleLinkButtonClick("/")}
           />
 
