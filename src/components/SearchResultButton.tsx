@@ -74,7 +74,15 @@ const FacilityItemButton = (props: FacilityItemButtonProps) => {
 
     const url = getItemUrl(item);
     navigate(url);
-  }, [addSearchHistory, item, navigate, setIsSearchDrawerOpen, setKeyWord, setSearchResult, setSelectedFacility]);
+  }, [
+    addSearchHistory,
+    item,
+    navigate,
+    setIsSearchDrawerOpen,
+    setKeyWord,
+    setSearchResult,
+    setSelectedFacility,
+  ]);
 
   // 검색 기록 삭제 버튼 마우스 진입
   const [isRippleDisabled, setIsRippleDisabled] = useState(false);
@@ -96,70 +104,77 @@ const FacilityItemButton = (props: FacilityItemButtonProps) => {
   }, [item.id, searchHistory, setSearchHistory]);
 
   return (
-    <Button
-      disableRipple={isRippleDisabled}
-      sx={{
-        px: 2,
-        borderRadius: 0,
-        borderBottom: "1px solid #d9d9d9",
-        "&:hover div.scroll-text, &:active  div.scroll-text": {
-          animation: "movingAnimation 5s linear infinite",
-        },
-      }}
-      onClick={handleButtonClick}
-      {...others}
+    <Stack
+      direction="row"
+      width="100%"
+      alignItems="center"
+      borderBottom="1px solid #d9d9d9"
+      px={2}
     >
-      <Stack
-        direction="row"
-        gap={2}
-        justifyContent="flex-start"
-        alignItems="center"
-        width="100%"
-        overflow="hidden"
+      <Button
+        disableRipple={isRippleDisabled}
+        sx={{
+          flex: 1,
+          borderRadius: 0,
+          "&:hover div.scroll-text, &:active  div.scroll-text": {
+            animation: "movingAnimation 5s linear infinite",
+          },
+        }}
+        onClick={handleButtonClick}
+        {...others}
       >
-        {/* 아이콘 */}
-        {item.id.length <= 2 ? (
-          <ApartmentRoundedIcon fontSize="large" color="secondary" />
-        ) : (
-          <LocationOnRoundedIcon fontSize="large" color="secondary" />
-        )}
+        <Stack
+          direction="row"
+          gap={2}
+          justifyContent="flex-start"
+          alignItems="center"
+          width="100%"
+          overflow="hidden"
+        >
+          {/* 아이콘 */}
+          {item.id.length <= 2 ? (
+            <ApartmentRoundedIcon fontSize="large" color="secondary" />
+          ) : (
+            <LocationOnRoundedIcon fontSize="large" color="secondary" />
+          )}
 
-        {/* 텍스트 */}
-        <Stack flex={1} overflow="hidden">
-          <HighLightedText
-            className="scroll-text"
-            text={item.name}
-            keyword={keyword}
-            variant="h6"
-            baseColor="black"
-          />
-          <HighLightedText
-            text={item.id}
-            keyword={keyword}
-            variant="subtitle2"
-            baseColor={grey[500]}
-          />
+          {/* 텍스트 */}
+          <Stack flex={1} overflow="hidden">
+            <HighLightedText
+              className="scroll-text"
+              text={item.name}
+              keyword={keyword}
+              variant="h6"
+              baseColor="black"
+            />
+            <HighLightedText
+              text={item.id}
+              keyword={keyword}
+              variant="subtitle2"
+              baseColor={grey[500]}
+            />
+          </Stack>
         </Stack>
+      </Button>
 
-        {/* 버튼 */}
-        {deleteBtn && (
-          <IconButton
-            sx={{
-              position: "relative",
-              zIndex: 5,
-            }}
-            onMouseEnter={() => handleRippleDisable(true)}
-            onMouseLeave={() => handleRippleDisable(false)}
-            onClick={(e) => {
-              e.stopPropagation();
-              handleDeleteHistoryButtonClick();
-            }}
-          >
-            <CloseRoundedIcon />
-          </IconButton>
-        )}
-      </Stack>
-    </Button>
+      {/* 버튼 */}
+      {deleteBtn && (
+        <IconButton
+          sx={{
+            position: "relative",
+            zIndex: 5,
+          }}
+          onMouseEnter={() => handleRippleDisable(true)}
+          onMouseLeave={() => handleRippleDisable(false)}
+          onClick={(e) => {
+            e.stopPropagation();
+            handleDeleteHistoryButtonClick();
+          }}
+        >
+          <CloseRoundedIcon />
+        </IconButton>
+      )}
+    </Stack>
   );
 };
 
