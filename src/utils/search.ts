@@ -1,4 +1,4 @@
-import { formatString, getBuildingId, getFacilityFloor } from ".";
+import { formatString, getFacilityFloor } from ".";
 import buildings from "../assets/buildings.json"; // 건물 데이터 가져오기
 import facilities from "../assets/facilities.json"; // 시설 데이터 가져오기
 
@@ -79,10 +79,8 @@ export const searchById = (id: string): FacilityInterface | undefined => {
  * @returns 검색한 건물의 층수에 위치한 시설 객체 배열
  */
 export const findFacilitiesByFloor = (buildingId: string, floor: string) => {
-  const result = facilities.filter(
-    (facility) =>
-      getBuildingId(facility.id) === buildingId &&
-      getFacilityFloor(facility.id) === floor
-  );
+  const result = facilities
+    .filter((facility) => facility.id.startsWith(buildingId))
+    .filter((facility) => getFacilityFloor(facility.id) === floor);
   return result;
 };

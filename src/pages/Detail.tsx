@@ -49,9 +49,11 @@ const Detail = () => {
   const [floor, setFloor] = useState("1F"); // 건물 배치도 층수 상태
   const floorButtonElement = useRef<HTMLButtonElement>(null); // 층수 선택 버튼
   const [isFloorMenuOpen, setIsFloorMenuOpen] = useState(false); // 층수 선택 메뉴 상태
-  const [searchedFacilities, setSearchedFacilities] = useState<
+  const [searchedFacilitiesByFloor, setSearchedFacilitiesByFloor] = useState<
     FacilityInterface[]
-  >([]); // 시설 정보 상태
+  >([]); // 층수에 해당하는 시설 정보 상태
+  const [searchedFacilitiesByKeyword, setSearchedFacilitiesByKeyword] =
+    useState<FacilityInterface[]>([]); // 검색어로 검색된 시설 정보 상태
   const [keyword, setKeyword] = useState(""); // 검색어 상태
   const [selectedFacility, setSelectedFacility] = useAtom(selectedFacilityAtom); // 선택된 시설 상태
   const facilityButtonElement = useRef<
@@ -77,10 +79,12 @@ const Detail = () => {
       setIsFloorMenuOpen(false); // 층수 선택 메뉴 닫기
       setFloor(newFloor); // 층수 상태 업데이트
       setSelectedFacility(null); // 선택된 시설 초기화
+      setKeyword(""); // 검색어 초기화
 
       // 선택한 층수에 해당하는 시설 정보 필터링
       const newFacilities = findFacilitiesByFloor(buildingId, newFloor);
-      setSearchedFacilities(newFacilities);
+      setSearchedFacilitiesByFloor(newFacilities);
+      setSearchedFacilitiesByKeyword(newFacilities);
     },
     [buildingId, setSelectedFacility]
   );
@@ -91,16 +95,20 @@ const Detail = () => {
       // 검색어에 해당하는 시설 정보 필터링
       if (keyword.trim() === "") {
         // 검색어가 없다면 종료
-        setSearchedFacilities(findFacilitiesByFloor(buildingId, floor));
+        setSearchedFacilitiesByKeyword(
+          findFacilitiesByFloor(buildingId, floor)
+        );
         return;
       }
       const newFacilities = searchByKeyword(keyword, 999, buildingId);
 
       if (newFacilities.length === 0) {
-        setSearchedFacilities([{ id: "", name: "검색 결과가 없습니다." }]);
+        setSearchedFacilitiesByKeyword([
+          { id: "", name: "검색 결과가 없습니다." },
+        ]);
         return;
       }
-      setSearchedFacilities(newFacilities);
+      setSearchedFacilitiesByKeyword(newFacilities);
     },
     [buildingId, floor]
   );
@@ -182,7 +190,9 @@ const Detail = () => {
 
     setKeyword(""); // 검색어 초기화
     setFloor(newFloor);
-    setSearchedFacilities(findFacilitiesByFloor(newBuildingId, newFloor)); // 검색 초기화
+    setSearchedFacilitiesByKeyword(
+      findFacilitiesByFloor(newBuildingId, newFloor)
+    ); // 검색 초기화
   }, [queryParams, setSelectedFacility]);
 
   return (
@@ -215,11 +225,7 @@ const Detail = () => {
             {/* 건물 배치도 이미지 */}
             <BuildingLayoutViewer
               imageUrl={getBuildingLayoutImageUrl(buildingId, floor)}
-              facilities={facilities.filter(
-                (facility) =>
-                  facility.id.startsWith(buildingId) &&
-                  getFacilityFloor(facility.id) === floor
-              )}
+              facilities={searchedFacilitiesByFloor}
               facilityButtonsRef={facilityButtonElement}
               facilityItemsRef={facilityItemElement}
             />
@@ -304,30 +310,33 @@ const Detail = () => {
               },
             }}
           >
-            {floors[buildingId].map((floor) => (
-              <MenuItem
-                key={`floor-menu-${floor}`}
-                onClick={() => handleFloorChange(floor)}
-                sx={{
-                  display: "flex",
-                  justifyContent: "center",
-                  background: theme.palette.secondary.main,
-                  color: "white",
-                  "&:hover": {
-                    color: "black",
-                  },
-                }}
-              >
-                <Typography
-                  variant="h6"
-                  fontWeight={500}
-                  textAlign="center"
-                  color="inherit"
+            {floors[buildingId]
+              .slice()
+              .sort((a, b) => a.length - b.length || a.localeCompare(b))
+              .map((floor) => (
+                <MenuItem
+                  key={`floor-menu-${floor}`}
+                  onClick={() => handleFloorChange(floor)}
+                  sx={{
+                    display: "flex",
+                    justifyContent: "center",
+                    background: theme.palette.secondary.main,
+                    color: "white",
+                    "&:hover": {
+                      color: "black",
+                    },
+                  }}
                 >
-                  {floor}
-                </Typography>
-              </MenuItem>
-            ))}
+                  <Typography
+                    variant="h6"
+                    fontWeight={500}
+                    textAlign="center"
+                    color="inherit"
+                  >
+                    {floor}
+                  </Typography>
+                </MenuItem>
+              ))}
           </Menu>
 
           {/* 호실 입력란 */}
@@ -377,7 +386,7 @@ const Detail = () => {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {searchedFacilities.map((facility) => (
+                {searchedFacilitiesByKeyword.map((facility) => (
                   <TableRow
                     key={facility.id}
                     ref={(elem: HTMLTableRowElement | null) => {
