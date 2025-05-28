@@ -82,7 +82,7 @@ const BuildingLayoutViewer = (props: BuildingLayoutImageProps) => {
       <Box width="100%" position="relative">
         <svg
           viewBox={`0 0 ${size.width} ${size.height}`}
-          style={{ width: "100%", display: "block" }}
+          style={{ width: "100%", display: "block", maxHeight: "70vh" }}
           preserveAspectRatio="xMidYMid meet"
           key={forceUpdate} // 강제 리렌더링 키 추가
         >
@@ -97,6 +97,8 @@ const BuildingLayoutViewer = (props: BuildingLayoutImageProps) => {
             return (
               <polygon
                 key={facility.id}
+                width={size.width}
+                height={size.height}
                 points={facility.path.join()}
                 fill="transparent"
                 stroke={selectedFacility?.id === facility.id ? "red" : "none"}

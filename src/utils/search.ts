@@ -79,8 +79,14 @@ export const searchById = (id: string): FacilityInterface | undefined => {
  * @returns 검색한 건물의 층수에 위치한 시설 객체 배열
  */
 export const findFacilitiesByFloor = (buildingId: string, floor: string) => {
+  let startWith = buildingId;
+
+  if (buildingId == "G1" || buildingId == "O1") {
+    startWith = buildingId + "-";
+  }
+
   const result = facilities
-    .filter((facility) => facility.id.startsWith(buildingId))
+    .filter((facility) => facility.id.startsWith(startWith))
     .filter((facility) => getFacilityFloor(facility.id) === floor);
   return result;
 };

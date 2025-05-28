@@ -63,6 +63,9 @@ const Detail = () => {
     Record<string, HTMLTableRowElement | null>
   >({});
 
+  
+  console.log(selectedFacility?.id);
+
   // 층수 선택 메뉴 열기
   const handleFloorMenuOpen = useCallback(() => {
     setIsFloorMenuOpen(true);
@@ -199,9 +202,14 @@ const Detail = () => {
 
     setKeyword(""); // 검색어 초기화
     setFloor(newFloor);
-    setSearchedFacilitiesByKeyword(
-      findFacilitiesByFloor(newBuildingId, newFloor)
-    ); // 검색 초기화
+
+    // 검색 초기화
+    const newSearchedFacilities = findFacilitiesByFloor(
+      newBuildingId,
+      newFloor
+    );
+    setSearchedFacilitiesByFloor(newSearchedFacilities);
+    setSearchedFacilitiesByKeyword(newSearchedFacilities);
   }, [moveTableToCenter, queryParams, setSelectedFacility]);
 
   return (
