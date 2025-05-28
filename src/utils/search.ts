@@ -26,7 +26,7 @@ export const searchByKeyword = (
 ): FacilityInterface[] => {
   if (!keyword.trim()) return []; // 빈 문자열 처리
 
-  const isFirstCharSpecial = /[^a-z0-9가-힣]/g.test(keyword.charAt(0));
+  const isFirstCharSpecial = /[^a-zA-Z0-9가-힣]/g.test(keyword.charAt(0));
   const formattedKeyword = formatString(keyword, isFirstCharSpecial);
 
   // 건물 검색
