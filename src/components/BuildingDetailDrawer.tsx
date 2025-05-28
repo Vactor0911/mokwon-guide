@@ -9,8 +9,8 @@ import {
 import { theme } from "../theme";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import SearchRoundedIcon from "@mui/icons-material/SearchRounded";
-import RadioButtonCheckedRoundedIcon from "@mui/icons-material/RadioButtonCheckedRounded";
-import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
+// import RadioButtonCheckedRoundedIcon from "@mui/icons-material/RadioButtonCheckedRounded";
+// import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
 import { useAtom, useAtomValue } from "jotai";
 import {
   buildingDetailDrawerBuildingAtom,
