@@ -1,4 +1,4 @@
-import { Button, ButtonProps, IconButton, Stack } from "@mui/material";
+import { Box, Button, ButtonProps, IconButton, Stack } from "@mui/material";
 import { getItemUrl } from "../utils";
 import ApartmentRoundedIcon from "@mui/icons-material/ApartmentRounded";
 import LocationOnRoundedIcon from "@mui/icons-material/LocationOnRounded";
@@ -104,17 +104,12 @@ const FacilityItemButton = (props: FacilityItemButtonProps) => {
   }, [item.id, searchHistory, setSearchHistory]);
 
   return (
-    <Stack
-      direction="row"
-      width="100%"
-      alignItems="center"
-      borderBottom="1px solid #d9d9d9"
-      px={2}
-    >
+    <Box width="100%" borderBottom="1px solid #d9d9d9" position="relative">
       <Button
+        fullWidth
         disableRipple={isRippleDisabled}
         sx={{
-          flex: 1,
+          px: 2,
           borderRadius: 0,
           "&:hover div.scroll-text, &:active  div.scroll-text": {
             animation: "movingAnimation 5s linear infinite",
@@ -161,7 +156,10 @@ const FacilityItemButton = (props: FacilityItemButtonProps) => {
       {deleteBtn && (
         <IconButton
           sx={{
-            position: "relative",
+            position: "absolute",
+            top: "50%",
+            right: 2,
+            transform: "translate(-50%, -50%)",
             zIndex: 5,
           }}
           onMouseEnter={() => handleRippleDisable(true)}
@@ -174,7 +172,7 @@ const FacilityItemButton = (props: FacilityItemButtonProps) => {
           <CloseRoundedIcon />
         </IconButton>
       )}
-    </Stack>
+    </Box>
   );
 };
 
