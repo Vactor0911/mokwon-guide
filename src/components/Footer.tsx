@@ -129,7 +129,11 @@ const Footer = () => {
             iconImage={GoogleFormsIcon}
             alt="Google Form"
             tooltip="구글 폼"
-            onClick={() => handleLinkButtonClick("/")}
+            onClick={() =>
+              handleLinkButtonClick(
+                "https://docs.google.com/forms/d/1_cw78MTL8nG2rP3Q93avoQO-mhJgmOYpZM9snBP9vPE/"
+              )
+            }
           />
 
           {/* 깃허브 리포지토리 버튼 */}
