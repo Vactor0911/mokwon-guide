@@ -181,20 +181,22 @@ const Detail = () => {
         (facility) => facility.id === newFacilityId
       );
       if (newSelectedFacility) {
-        Promise.resolve(() => {
-          setSelectedFacility(newSelectedFacility); // 선택된 시설 객체
-        }).then(() => {
-          // 해당 시설 버튼으로 스크롤 이동
-          const facilityButton =
-            facilityButtonElement.current[newSelectedFacility.id];
-          facilityButton?.scrollIntoView({
-            behavior: "smooth",
-            block: "center",
+        Promise.resolve()
+          .then(() => {
+            setSelectedFacility(newSelectedFacility); // 선택된 시설 객체
+          })
+          .then(() => {
+            // 해당 시설 버튼으로 스크롤 이동
+            const facilityButton =
+              facilityButtonElement.current[newSelectedFacility.id];
+            facilityButton?.scrollIntoView({
+              behavior: "smooth",
+              block: "center",
+            });
+            moveTableItemToTop(
+              facilityItemElement.current[newSelectedFacility.id]
+            ); // 표 스크롤 이동
           });
-          moveTableItemToTop(
-            facilityItemElement.current[newSelectedFacility.id]
-          ); // 표 스크롤 이동
-        });
       }
     }
 
