@@ -1,16 +1,6 @@
-import { formatString, getFacilityFloor } from ".";
+import { FacilityInterface, formatString } from ".";
 import buildings from "../assets/buildings.json"; // 건물 데이터 가져오기
 import facilities from "../assets/facilities.json"; // 시설 데이터 가져오기
-
-/**
- * 시설물 데이터 인터페이스
- */
-export interface FacilityInterface {
-  id: string;
-  name: string;
-  marker_position?: number[];
-  path?: number[][];
-}
 
 /**
  * 키워드로 건물과 시설을 검색하는 함수
@@ -79,14 +69,8 @@ export const searchById = (id: string): FacilityInterface | undefined => {
  * @returns 검색한 건물의 층수에 위치한 시설 객체 배열
  */
 export const findFacilitiesByFloor = (buildingId: string, floor: string) => {
-  let startWith = buildingId;
-
-  if (buildingId == "G1" || buildingId == "O1") {
-    startWith = buildingId + "-";
-  }
-
-  const result = facilities
-    .filter((facility) => facility.id.startsWith(startWith))
-    .filter((facility) => getFacilityFloor(facility.id) === floor);
+  const result = facilities.filter(
+    (facility) => facility.buildingId === buildingId && facility.floor === floor
+  );
   return result;
 };

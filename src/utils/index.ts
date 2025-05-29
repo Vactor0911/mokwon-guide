@@ -1,5 +1,16 @@
-import { FacilityInterface } from "./search";
 import facilities from "../assets/facilities.json"; // 시설 데이터 가져오기
+
+/**
+ * 시설물 데이터 인터페이스
+ */
+export interface FacilityInterface {
+  id: string;
+  name: string;
+  marker_position?: number[];
+  buildingId?: string;
+  floor?: string;
+  path?: number[][];
+}
 
 /**
  * 문자열 변형 함수
@@ -42,62 +53,6 @@ export const getItemUrl = (item: FacilityInterface): string => {
 };
 
 /**
- * 시설 ID에서 건물 코드를 추출하는 함수
- * @param id 시설 ID
- * @returns 건물 코드
- */
-export const getBuildingId = (id: string): string => {
-  // 건물 ID에서 건물 코드 추출
-  const buildingId = id.slice(0, 2);
-
-  switch (buildingId) {
-    case "G1":
-    case "O1":
-      return buildingId;
-    default:
-      if (buildingId.slice(0, 2) === "VS") {
-        return "V";
-      }
-      return buildingId.charAt(0);
-  }
-};
-
-/**
- * 시설 ID에서 층수를 추출하는 함수
- * @param id 시설 ID
- * @returns 시설이 위치한 층수
- */
-export const getFacilityFloor = (id: string): string => {
-  const buildingId = id.slice(0, 2); // 건물 ID 추출
-  let floor = "";
-
-  switch (buildingId) {
-    case "G1":
-    case "O1":
-      floor = id.slice(3);
-      break;
-    case "VS":
-      floor = id.slice(2);
-      break;
-    default:
-      floor = id.slice(1);
-      break;
-  }
-
-  floor = floor.split("-")[0].replace("B", "");
-  floor = floor.slice(0, Math.ceil(floor.length / 3));
-
-  // 마지막 글자가 'B'인 경우
-  if (
-    id.charAt(id.length - 1) === "B" ||
-    id.split("B").length - Number(id.charAt(0) === "B") - 1 > 0
-  ) {
-    return `B${floor}`;
-  }
-  return `${floor}F`;
-};
-
-/**
  * 모든 건물의 층수를 반환하는 함수
  * @returns 건물별 층수 배열
  */
@@ -105,16 +60,13 @@ export const getBuildingFloors = (): Record<string, string[]> => {
   const floors: Record<string, string[]> = {};
 
   facilities.forEach((facility) => {
-    const buildingId = getBuildingId(facility.id);
-
     // 기존 건물 ID 키가 없는 경우
-    if (!(buildingId in floors)) {
-      floors[buildingId] = [];
+    if (!(facility.buildingId in floors)) {
+      floors[facility.buildingId] = [];
     }
 
-    const floor = getFacilityFloor(facility.id);
-    if (!floors[buildingId].includes(floor)) {
-      floors[buildingId].push(floor);
+    if (!floors[facility.buildingId].includes(facility.floor)) {
+      floors[facility.buildingId].push(facility.floor);
     }
   });
 

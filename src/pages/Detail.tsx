@@ -23,8 +23,8 @@ import { theme } from "../theme";
 import { useCallback, useEffect, useRef, useState } from "react";
 import ExpandMoreRoundedIcon from "@mui/icons-material/ExpandMoreRounded";
 import {
-  FacilityInterface,
   findFacilitiesByFloor,
+  searchById,
   searchByKeyword,
 } from "../utils/search";
 import Footer from "../components/Footer";
@@ -33,8 +33,8 @@ import { buildingFloorsAtom, selectedFacilityAtom } from "../states";
 import facilities from "../assets/facilities.json";
 import buildings from "../assets/buildings.json";
 import {
+  FacilityInterface,
   getBuildingLayoutImageUrl,
-  getFacilityFloor,
   moveTableItemToTop,
 } from "../utils";
 import BuildingLayoutViewer from "../components/BuildingLayoutViewer";
@@ -70,7 +70,8 @@ const Detail = () => {
   // 층수 선택 메뉴 열기
   const handleFloorMenuOpen = useCallback(() => {
     setIsFloorMenuOpen(true);
-  }, []);
+    setSelectedFacility(null); // 선택된 시설 초기화
+  }, [setSelectedFacility]);
 
   // 층수 선택 메뉴 닫기
   const handleFloorMenuClose = useCallback(() => {
@@ -117,6 +118,10 @@ const Detail = () => {
     [buildingId, floor]
   );
 
+  const handleClearSelectedFacility = useCallback(() => {
+    setSelectedFacility(null); // 선택된 시설 초기화
+  }, [setSelectedFacility]);
+
   // 호실 검색어 변경
   const handleKeywordChange = useCallback(
     (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -130,21 +135,31 @@ const Detail = () => {
   // 호실 정보 표 항목 클릭
   const handleFacilityItemClick = useCallback(
     (facility: FacilityInterface) => {
-      setTimeout(() => {
-        setKeyword(""); // 검색어 초기화
-        searchFacilities(""); // 검색 초기화
-        setFloor(getFacilityFloor(facility.id)); // 선택된 시설의 층수로 업데이트
-        setSelectedFacility(facility); // 선택된 시설 상태 업데이트
+      setSelectedFacility(facility); // 선택된 시설 상태 업데이트
 
-        // 해당 시설 버튼으로 스크롤 이동
-        const facilityButton = facilityButtonElement.current[facility.id];
-        facilityButton?.scrollIntoView({ behavior: "smooth", block: "center" });
+      Promise.resolve()
+        .then(() => {
+          const newFloor = facility.floor || "1F"; // 시설의 층수 정보가 없으면 기본값으로 1F 설정
+          setFloor(newFloor);
+          setKeyword("");
 
-        // 표 스크롤 이동
-        moveTableItemToTop(facilityItemElement.current[facility.id]);
-      }, 1);
+          const newFacilities = findFacilitiesByFloor(buildingId, newFloor);
+          setSearchedFacilitiesByFloor(newFacilities);
+          setSearchedFacilitiesByKeyword(newFacilities);
+        })
+        .then(() => {
+          // 해당 시설 버튼으로 스크롤 이동
+          const facilityButton = facilityButtonElement.current[facility.id];
+          facilityButton?.scrollIntoView({
+            behavior: "smooth",
+            block: "center",
+          });
+
+          // 표 스크롤 이동
+          moveTableItemToTop(facilityItemElement.current[facility.id]);
+        });
     },
-    [searchFacilities, setSelectedFacility]
+    [buildingId, setSelectedFacility]
   );
 
   // URL 쿼리 파라미터 변경 시 건물 및 시설 정보 업데이트
@@ -157,7 +172,7 @@ const Detail = () => {
 
     let newFloor = "1F";
     if (newFacilityId) {
-      newFloor = getFacilityFloor(newFacilityId); // 층
+      newFloor = searchById(newFacilityId)?.floor || "1F"; // 층
       setSearchedFacilitiesByFloor(
         findFacilitiesByFloor(newBuildingId, newFloor)
       ); // 해당 층의 시설 정보 업데이트
@@ -166,9 +181,9 @@ const Detail = () => {
         (facility) => facility.id === newFacilityId
       );
       if (newSelectedFacility) {
-        setSelectedFacility(newSelectedFacility); // 선택된 시설 객체
-
-        setTimeout(() => {
+        Promise.resolve(() => {
+          setSelectedFacility(newSelectedFacility); // 선택된 시설 객체
+        }).then(() => {
           // 해당 시설 버튼으로 스크롤 이동
           const facilityButton =
             facilityButtonElement.current[newSelectedFacility.id];
@@ -179,7 +194,7 @@ const Detail = () => {
           moveTableItemToTop(
             facilityItemElement.current[newSelectedFacility.id]
           ); // 표 스크롤 이동
-        }, 500);
+        });
       }
     }
 
@@ -347,6 +362,7 @@ const Detail = () => {
               fullWidth
               value={keyword}
               onChange={handleKeywordChange}
+              onClick={handleClearSelectedFacility}
             />
           </Paper>
         </Stack>
