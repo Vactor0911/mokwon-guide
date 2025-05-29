@@ -8,6 +8,7 @@ export default defineConfig({
       jsxImportSource: "@emotion/react",
     }),
   ],
+  base: "/mokwon-guide/",
   server: {
     allowedHosts: ["0.tcp.jp.ngrok.io"],
   },
