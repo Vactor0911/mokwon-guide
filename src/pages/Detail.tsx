@@ -32,7 +32,11 @@ import { useAtom, useAtomValue } from "jotai";
 import { buildingFloorsAtom, selectedFacilityAtom } from "../states";
 import facilities from "../assets/facilities.json";
 import buildings from "../assets/buildings.json";
-import { getBuildingLayoutImageUrl, getFacilityFloor } from "../utils";
+import {
+  getBuildingLayoutImageUrl,
+  getFacilityFloor,
+  moveTableItemToTop,
+} from "../utils";
 import BuildingLayoutViewer from "../components/BuildingLayoutViewer";
 
 const Detail = () => {
@@ -123,26 +127,6 @@ const Detail = () => {
     [searchFacilities]
   );
 
-  // 호실 정보 표 스크롤 이동
-  const moveTableToCenter = useCallback((facility: FacilityInterface) => {
-    const facilityItem = facilityItemElement.current[facility.id];
-    const container = facilityItem?.closest(
-      ".MuiTableContainer-root"
-    ) as HTMLElement;
-    if (container && facilityItem) {
-      const containerRect = container.getBoundingClientRect();
-      const itemRect = facilityItem.getBoundingClientRect();
-      const currentScrollTop = container.scrollTop;
-      const offset = itemRect.top - containerRect.top;
-      const newScrollTop =
-        currentScrollTop +
-        offset -
-        containerRect.height / 2 +
-        itemRect.height / 2;
-      container.scrollTo({ top: newScrollTop, behavior: "smooth" });
-    }
-  }, []);
-
   // 호실 정보 표 항목 클릭
   const handleFacilityItemClick = useCallback(
     (facility: FacilityInterface) => {
@@ -156,11 +140,11 @@ const Detail = () => {
         const facilityButton = facilityButtonElement.current[facility.id];
         facilityButton?.scrollIntoView({ behavior: "smooth", block: "center" });
 
-        // 표 스크롤이 중심으로 이동
-        moveTableToCenter(facility);
+        // 표 스크롤 이동
+        moveTableItemToTop(facilityItemElement.current[facility.id]);
       }, 1);
     },
-    [moveTableToCenter, searchFacilities, setSelectedFacility]
+    [searchFacilities, setSelectedFacility]
   );
 
   // URL 쿼리 파라미터 변경 시 건물 및 시설 정보 업데이트
@@ -192,7 +176,9 @@ const Detail = () => {
             behavior: "smooth",
             block: "center",
           });
-          moveTableToCenter(newSelectedFacility); // 표 스크롤이 중심으로 이동
+          moveTableItemToTop(
+            facilityItemElement.current[newSelectedFacility.id]
+          ); // 표 스크롤 이동
         }, 500);
       }
     }
@@ -207,7 +193,7 @@ const Detail = () => {
     );
     setSearchedFacilitiesByFloor(newSearchedFacilities);
     setSearchedFacilitiesByKeyword(newSearchedFacilities);
-  }, [moveTableToCenter, queryParams, setSelectedFacility]);
+  }, [queryParams, setSelectedFacility]);
 
   return (
     <>

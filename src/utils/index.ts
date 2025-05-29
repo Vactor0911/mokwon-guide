@@ -174,3 +174,32 @@ export const getBuildingLayoutImageUrl = (
   const imageUrl = `./images/building_layouts/${formattedBuildingId}_${formattedFloor}.jpg`;
   return imageUrl;
 };
+
+/**
+ * 호실 정보 표의 특정 행이 상단으로 스크롤되도록 이동시키는 함수
+ * @param facilityItem 건물 상세 페이지 > 호실 정보 표의 행 요소
+ * @returns
+ */
+export const moveTableItemToTop = (
+  facilityItem: HTMLTableRowElement | null
+) => {
+  // 시설 아이템이 없으면 종료
+  if (!facilityItem) {
+    return;
+  }
+
+  // 부모 테이블 컨테이너 찾기
+  const container = facilityItem?.closest(
+    ".MuiTableContainer-root"
+  ) as HTMLElement;
+
+  // 스크롤 이동
+  if (container && facilityItem) {
+    const containerRect = container.getBoundingClientRect();
+    const itemRect = facilityItem.getBoundingClientRect();
+    const currentScrollTop = container.scrollTop;
+    const offset = itemRect.top - itemRect.height - containerRect.top;
+    const newScrollTop = currentScrollTop + offset;
+    container.scrollTo({ top: newScrollTop, behavior: "smooth" });
+  }
+};

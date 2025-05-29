@@ -3,6 +3,7 @@ import { FacilityInterface } from "../utils/search";
 import { Box, ClickAwayListener, Skeleton } from "@mui/material";
 import { useAtom } from "jotai";
 import { selectedFacilityAtom } from "../states";
+import { moveTableItemToTop } from "../utils";
 
 interface BuildingLayoutImageProps {
   imageUrl: string;
@@ -62,7 +63,8 @@ const BuildingLayoutViewer = (props: BuildingLayoutImageProps) => {
       setSelectedFacility(facility);
 
       const facilityItem = facilityItemsRef.current[facility.id];
-      facilityItem?.scrollIntoView({ behavior: "smooth", block: "center" });
+      facilityItem?.scrollIntoView({ behavior: "smooth", block: "start" });
+      moveTableItemToTop(facilityItem);
     },
     [facilityItemsRef, setSelectedFacility]
   );
