@@ -127,7 +127,7 @@ const BuildingDetailDrawer = () => {
           {/* 이미지 */}
           <Box
             component="img"
-            src={`/images/building_images/${buildingDetailDrawerBuilding?.id.toLowerCase()}.jpg`}
+            src={`./images/building_images/${buildingDetailDrawerBuilding?.id.toLowerCase()}.jpg`}
             alt={`${buildingDetailDrawerBuilding?.name} 대표 이미지`}
             width="100%"
             minHeight={200}
