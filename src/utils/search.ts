@@ -1,21 +1,11 @@
-import { formatString, getBuildingId, getFacilityFloor } from ".";
+import { FacilityInterface, formatString } from ".";
 import buildings from "../assets/buildings.json"; // 건물 데이터 가져오기
 import facilities from "../assets/facilities.json"; // 시설 데이터 가져오기
 
 /**
- * 검색 결과 인터페이스
- */
-export interface FacilityInterface {
-  id: string;
-  name: string;
-  marker_position?: number[];
-  path?: number[][];
-}
-
-/**
  * 키워드로 건물과 시설을 검색하는 함수
  * @param keyword 검색할 키워드
- * @param maxResults 최대 검색 결과 수 (기본값: 11)
+ * @param maxResults 최대 검색 결과 수 (기본값: 10)
  * @param buildingId 건물 ID : 특정 건물 내에서만 시설을 검색 (optional)
  * @returns 검색된 건물 및 시설 객체 배열
  */
@@ -26,7 +16,7 @@ export const searchByKeyword = (
 ): FacilityInterface[] => {
   if (!keyword.trim()) return []; // 빈 문자열 처리
 
-  const isFirstCharSpecial = /[^a-z0-9가-힣]/g.test(keyword.charAt(0));
+  const isFirstCharSpecial = /[^a-zA-Z0-9가-힣]/g.test(keyword.charAt(0));
   const formattedKeyword = formatString(keyword, isFirstCharSpecial);
 
   // 건물 검색
@@ -80,9 +70,7 @@ export const searchById = (id: string): FacilityInterface | undefined => {
  */
 export const findFacilitiesByFloor = (buildingId: string, floor: string) => {
   const result = facilities.filter(
-    (facility) =>
-      getBuildingId(facility.id) === buildingId &&
-      getFacilityFloor(facility.id) === floor
+    (facility) => facility.buildingId === buildingId && facility.floor === floor
   );
   return result;
 };

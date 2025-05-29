@@ -1,5 +1,16 @@
-import { FacilityInterface } from "./search";
 import facilities from "../assets/facilities.json"; // 시설 데이터 가져오기
+
+/**
+ * 시설물 데이터 인터페이스
+ */
+export interface FacilityInterface {
+  id: string;
+  name: string;
+  marker_position?: number[];
+  buildingId?: string;
+  floor?: string;
+  path?: number[][];
+}
 
 /**
  * 문자열 변형 함수
@@ -42,53 +53,6 @@ export const getItemUrl = (item: FacilityInterface): string => {
 };
 
 /**
- * 시설 ID에서 건물 코드를 추출하는 함수
- * @param id 시설 ID
- * @returns 건물 코드
- */
-export const getBuildingId = (id: string): string => {
-  // 건물 ID에서 건물 코드 추출
-  const buildingId = id.slice(0, 3);
-
-  switch (buildingId) {
-    case "G1-":
-    case "O1-":
-      return buildingId.slice(0, 2);
-    default:
-      return buildingId.charAt(0);
-  }
-};
-
-/**
- * 시설 ID에서 층수를 추출하는 함수
- * @param id 시설 ID
- * @returns 시설이 위치한 층수
- */
-export const getFacilityFloor = (id: string): string => {
-  const buildingId = getBuildingId(id);
-  let floor = "";
-
-  switch (buildingId) {
-    case "G1":
-    case "O1":
-      floor = id.slice(3, 4);
-      break;
-    default:
-      floor = id.slice(1, 2);
-      break;
-  }
-
-  // 마지막 글자가 'B'인 경우
-  if (
-    id.charAt(id.length - 1) === "B" ||
-    id.split("B").length - Number(id.charAt(0) === "B") - 1 > 0
-  ) {
-    return `B${floor}`;
-  }
-  return `${floor}F`;
-};
-
-/**
  * 모든 건물의 층수를 반환하는 함수
  * @returns 건물별 층수 배열
  */
@@ -96,16 +60,13 @@ export const getBuildingFloors = (): Record<string, string[]> => {
   const floors: Record<string, string[]> = {};
 
   facilities.forEach((facility) => {
-    const buildingId = getBuildingId(facility.id);
-
     // 기존 건물 ID 키가 없는 경우
-    if (!(buildingId in floors)) {
-      floors[buildingId] = [];
+    if (!(facility.buildingId in floors)) {
+      floors[facility.buildingId] = [];
     }
 
-    const floor = getFacilityFloor(facility.id);
-    if (!floors[buildingId].includes(floor)) {
-      floors[buildingId].push(floor);
+    if (!floors[facility.buildingId].includes(facility.floor)) {
+      floors[facility.buildingId].push(facility.floor);
     }
   });
 
@@ -118,31 +79,31 @@ export const getBuildingFloors = (): Record<string, string[]> => {
  * @param lng 경도값
  * @returns 변환된 좌표값
  */
-export const geoToXY = (
-  lat: number,
-  lng: number,
-  isLargeScreen: boolean
-): [number, number] => {
-  // 위도와 경도 좌표를 기준점을 기준으로 회전
-  const angleRad = 277 * (Math.PI / 180); // 각도를 라디안으로 변환
+export const geoToXY = (lat: number, lng: number): [number, number] => {
+  const ROTATION_ANGLE_DEGREES = 277; // 회전 각도 (도 단위)
+  const BASE_LATITUDE = 36.327222; // 기준점 위도
+  const BASE_LONGITUDE = 127.338333; // 기준점 경도
+  const SCALE_FACTOR = 340000; // 좌표 스케일링 팩터
+  const OFFSET_X = 1059; // X축 offset
+  const OFFSET_Y = 1000; // Y축 offset
+
+  // 각도를 라디안으로 변환
+  const angleRad = ROTATION_ANGLE_DEGREES * (Math.PI / 180);
 
   // p1에서 p2를 기준으로 평행이동
-  const x0 = 36.327222;
-  const y0 = 127.338333;
-  const dx = lat - x0;
-  const dy = lng - y0;
+  const dx = lat - BASE_LATITUDE;
+  const dy = lng - BASE_LONGITUDE;
 
-  // 회전 공식 적용
+  // 위도와 경도 좌표를 기준점을 기준으로 회전
   const rotatedX = dx * Math.cos(angleRad) - dy * Math.sin(angleRad);
   const rotatedY = dx * Math.sin(angleRad) + dy * Math.cos(angleRad);
 
-  // 다시 기준점 위치로 이동
-  const mul = 340000;
+  // 실제 지도와 일치하도록 좌표 보정
+  const finalX = -rotatedX * SCALE_FACTOR + OFFSET_X;
+  const finalY = rotatedY * SCALE_FACTOR + OFFSET_Y;
 
-  const finalX = -rotatedX * mul + 1059;
-  const finalY = rotatedY * mul + 1000;
-
-  const multiplier = isLargeScreen ? 0.5 : 0.25; // 지도 크기에 따라 배율 조정, map이 null이면 기본값 1 사용
+  // 최종 좌표 보정
+  const multiplier = 0.25; // 화면 크기에 따라 조정할 배율
 
   return [finalY * multiplier, finalX * multiplier];
 };
@@ -164,4 +125,33 @@ export const getBuildingLayoutImageUrl = (
   // 이미지 URL 생성
   const imageUrl = `./images/building_layouts/${formattedBuildingId}_${formattedFloor}.jpg`;
   return imageUrl;
+};
+
+/**
+ * 호실 정보 표의 특정 행이 상단으로 스크롤되도록 이동시키는 함수
+ * @param facilityItem 건물 상세 페이지 > 호실 정보 표의 행 요소
+ * @returns
+ */
+export const moveTableItemToTop = (
+  facilityItem: HTMLTableRowElement | null
+) => {
+  // 시설 아이템이 없으면 종료
+  if (!facilityItem) {
+    return;
+  }
+
+  // 부모 테이블 컨테이너 찾기
+  const container = facilityItem?.closest(
+    ".MuiTableContainer-root"
+  ) as HTMLElement;
+
+  // 스크롤 이동
+  if (container && facilityItem) {
+    const containerRect = container.getBoundingClientRect();
+    const itemRect = facilityItem.getBoundingClientRect();
+    const currentScrollTop = container.scrollTop;
+    const offset = itemRect.top - itemRect.height - containerRect.top;
+    const newScrollTop = currentScrollTop + offset;
+    container.scrollTo({ top: newScrollTop, behavior: "smooth" });
+  }
 };

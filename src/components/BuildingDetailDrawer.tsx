@@ -9,9 +9,9 @@ import {
 import { theme } from "../theme";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import SearchRoundedIcon from "@mui/icons-material/SearchRounded";
-import RadioButtonCheckedRoundedIcon from "@mui/icons-material/RadioButtonCheckedRounded";
-import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
-import { useAtomValue, useSetAtom } from "jotai";
+// import RadioButtonCheckedRoundedIcon from "@mui/icons-material/RadioButtonCheckedRounded";
+// import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
+import { useAtom, useAtomValue } from "jotai";
 import {
   buildingDetailDrawerBuildingAtom,
   isBuildingDetailDrawerOpenAtom,
@@ -19,21 +19,13 @@ import {
 import { useCallback } from "react";
 import { useNavigate } from "react-router";
 
-interface BuildingDetailDrawerProps {
-  isDrawerOpen: boolean;
-  handleDrawerOpen: (newIsDrawerOpen: boolean) => () => void;
-}
-
-const BuildingDetailDrawer = (props: BuildingDetailDrawerProps) => {
-  const { isDrawerOpen, handleDrawerOpen } = props;
-
+const BuildingDetailDrawer = () => {
   const navigate = useNavigate();
 
   const buildingDetailDrawerBuilding = useAtomValue(
     buildingDetailDrawerBuildingAtom
   );
-
-  const setIsBuildingDetailDrawerOpen = useSetAtom(
+  const [isBuildingDetailDrawerOpen, setIsBuildingDetailDrawerOpen] = useAtom(
     isBuildingDetailDrawerOpenAtom
   );
 
@@ -50,9 +42,9 @@ const BuildingDetailDrawer = (props: BuildingDetailDrawerProps) => {
   return (
     <SwipeableDrawer
       anchor="bottom"
-      open={isDrawerOpen}
-      onClose={handleDrawerOpen(false)}
-      onOpen={handleDrawerOpen(true)}
+      open={isBuildingDetailDrawerOpen}
+      onClose={() => setIsBuildingDetailDrawerOpen(false)}
+      onOpen={() => setIsBuildingDetailDrawerOpen(true)}
       swipeAreaWidth={56}
       disableSwipeToOpen
       sx={{
@@ -103,7 +95,7 @@ const BuildingDetailDrawer = (props: BuildingDetailDrawerProps) => {
 
           {/* 닫기 버튼 */}
           <IconButton
-            onClick={handleDrawerOpen(false)}
+            onClick={() => setIsBuildingDetailDrawerOpen(false)}
             sx={{
               padding: "4px",
               transform: "translateX(8px)",
@@ -135,8 +127,8 @@ const BuildingDetailDrawer = (props: BuildingDetailDrawerProps) => {
           {/* 이미지 */}
           <Box
             component="img"
-            src={`/images/building_images/${buildingDetailDrawerBuilding?.id.toLowerCase()}.jpg`}
-            alt={`${buildingDetailDrawerBuilding?.name} 이미지`}
+            src={`./images/building_images/${buildingDetailDrawerBuilding?.id.toLowerCase()}.jpg`}
+            alt={`${buildingDetailDrawerBuilding?.name} 대표 이미지`}
             width="100%"
             minHeight={200}
           />
@@ -164,7 +156,7 @@ const BuildingDetailDrawer = (props: BuildingDetailDrawerProps) => {
         {/* 네비게이션 버튼 */}
         <Stack direction="row" justifyContent="flex-end" gap={2}>
           {/* 출발 */}
-          <Button
+          {/* <Button
             variant="contained"
             color="info"
             startIcon={<RadioButtonCheckedRoundedIcon color="secondary" />}
@@ -175,10 +167,10 @@ const BuildingDetailDrawer = (props: BuildingDetailDrawerProps) => {
             <Typography variant="h6" color="secondary">
               출발
             </Typography>
-          </Button>
+          </Button> */}
 
           {/* 도착 */}
-          <Button
+          {/* <Button
             variant="contained"
             color="secondary"
             startIcon={<LocationOnOutlinedIcon />}
@@ -187,7 +179,7 @@ const BuildingDetailDrawer = (props: BuildingDetailDrawerProps) => {
             }}
           >
             <Typography variant="h6">도착</Typography>
-          </Button>
+          </Button> */}
         </Stack>
       </Stack>
     </SwipeableDrawer>

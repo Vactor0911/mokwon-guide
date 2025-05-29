@@ -23,8 +23,8 @@ import { theme } from "../theme";
 import { useCallback, useEffect, useRef, useState } from "react";
 import ExpandMoreRoundedIcon from "@mui/icons-material/ExpandMoreRounded";
 import {
-  FacilityInterface,
   findFacilitiesByFloor,
+  searchById,
   searchByKeyword,
 } from "../utils/search";
 import Footer from "../components/Footer";
@@ -32,22 +32,32 @@ import { useAtom, useAtomValue } from "jotai";
 import { buildingFloorsAtom, selectedFacilityAtom } from "../states";
 import facilities from "../assets/facilities.json";
 import buildings from "../assets/buildings.json";
-import { getBuildingLayoutImageUrl, getFacilityFloor } from "../utils";
+import {
+  FacilityInterface,
+  getBuildingLayoutImageUrl,
+  moveTableItemToTop,
+} from "../utils";
 import BuildingLayoutViewer from "../components/BuildingLayoutViewer";
 
 const Detail = () => {
   const [queryParams] = useSearchParams(); // URL 쿼리 파라미터
-  const buildingId = queryParams.get("building") || "A"; // 건물 ID
-  const facilityId = queryParams.get("facility"); // 시설 ID
-  const building = buildings.find((building) => building.id === buildingId); // 건물 객체
+
+  const [buildingId, setBuildingId] = useState(
+    queryParams.get("building") || "A"
+  ); // 건물 ID
+  const [building, setBuilding] = useState(
+    buildings.find((building) => building.id === buildingId)
+  ); // 건물 객체
 
   const floors = useAtomValue(buildingFloorsAtom); // 전체 건물 층수 데이터
   const [floor, setFloor] = useState("1F"); // 건물 배치도 층수 상태
   const floorButtonElement = useRef<HTMLButtonElement>(null); // 층수 선택 버튼
   const [isFloorMenuOpen, setIsFloorMenuOpen] = useState(false); // 층수 선택 메뉴 상태
-  const [searchedFacilities, setSearchedFacilities] = useState<
+  const [searchedFacilitiesByFloor, setSearchedFacilitiesByFloor] = useState<
     FacilityInterface[]
-  >([]); // 시설 정보 상태
+  >([]); // 층수에 해당하는 시설 정보 상태
+  const [searchedFacilitiesByKeyword, setSearchedFacilitiesByKeyword] =
+    useState<FacilityInterface[]>([]); // 검색어로 검색된 시설 정보 상태
   const [keyword, setKeyword] = useState(""); // 검색어 상태
   const [selectedFacility, setSelectedFacility] = useAtom(selectedFacilityAtom); // 선택된 시설 상태
   const facilityButtonElement = useRef<
@@ -60,7 +70,8 @@ const Detail = () => {
   // 층수 선택 메뉴 열기
   const handleFloorMenuOpen = useCallback(() => {
     setIsFloorMenuOpen(true);
-  }, []);
+    setSelectedFacility(null); // 선택된 시설 초기화
+  }, [setSelectedFacility]);
 
   // 층수 선택 메뉴 닫기
   const handleFloorMenuClose = useCallback(() => {
@@ -73,10 +84,12 @@ const Detail = () => {
       setIsFloorMenuOpen(false); // 층수 선택 메뉴 닫기
       setFloor(newFloor); // 층수 상태 업데이트
       setSelectedFacility(null); // 선택된 시설 초기화
+      setKeyword(""); // 검색어 초기화
 
       // 선택한 층수에 해당하는 시설 정보 필터링
       const newFacilities = findFacilitiesByFloor(buildingId, newFloor);
-      setSearchedFacilities(newFacilities);
+      setSearchedFacilitiesByFloor(newFacilities);
+      setSearchedFacilitiesByKeyword(newFacilities);
     },
     [buildingId, setSelectedFacility]
   );
@@ -87,19 +100,27 @@ const Detail = () => {
       // 검색어에 해당하는 시설 정보 필터링
       if (keyword.trim() === "") {
         // 검색어가 없다면 종료
-        setSearchedFacilities(findFacilitiesByFloor(buildingId, floor));
+        setSearchedFacilitiesByKeyword(
+          findFacilitiesByFloor(buildingId, floor)
+        );
         return;
       }
       const newFacilities = searchByKeyword(keyword, 999, buildingId);
 
       if (newFacilities.length === 0) {
-        setSearchedFacilities([{ id: "", name: "검색 결과가 없습니다." }]);
+        setSearchedFacilitiesByKeyword([
+          { id: "", name: "검색 결과가 없습니다." },
+        ]);
         return;
       }
-      setSearchedFacilities(newFacilities);
+      setSearchedFacilitiesByKeyword(newFacilities);
     },
     [buildingId, floor]
   );
+
+  const handleClearSelectedFacility = useCallback(() => {
+    setSelectedFacility(null); // 선택된 시설 초기화
+  }, [setSelectedFacility]);
 
   // 호실 검색어 변경
   const handleKeywordChange = useCallback(
@@ -114,55 +135,82 @@ const Detail = () => {
   // 호실 정보 표 항목 클릭
   const handleFacilityItemClick = useCallback(
     (facility: FacilityInterface) => {
-      setTimeout(() => {
-        setKeyword(""); // 검색어 초기화
-        searchFacilities(""); // 검색 초기화
-        setFloor(getFacilityFloor(facility.id)); // 선택된 시설의 층수로 업데이트
-        setSelectedFacility(facility); // 선택된 시설 상태 업데이트
+      setSelectedFacility(facility); // 선택된 시설 상태 업데이트
 
-        // 해당 시설 버튼으로 스크롤 이동
-        const facilityButton = facilityButtonElement.current[facility.id];
-        facilityButton?.scrollIntoView({ behavior: "smooth", block: "center" });
+      Promise.resolve()
+        .then(() => {
+          const newFloor = facility.floor || "1F"; // 시설의 층수 정보가 없으면 기본값으로 1F 설정
+          setFloor(newFloor);
+          setKeyword("");
 
-        setTimeout(() => {
-          // 표 스크롤이 중심으로 이동
-          const facilityItem = facilityItemElement.current[facility.id];
-          const container = facilityItem?.closest(
-            ".MuiTableContainer-root"
-          ) as HTMLElement;
-          if (container && facilityItem) {
-            const containerRect = container.getBoundingClientRect();
-            const itemRect = facilityItem.getBoundingClientRect();
-            const currentScrollTop = container.scrollTop;
-            const offset = itemRect.top - containerRect.top;
-            const newScrollTop =
-              currentScrollTop +
-              offset -
-              containerRect.height / 2 +
-              itemRect.height / 2;
-            container.scrollTo({ top: newScrollTop, behavior: "smooth" });
-          }
-        }, 1);
-      }, 1);
+          const newFacilities = findFacilitiesByFloor(buildingId, newFloor);
+          setSearchedFacilitiesByFloor(newFacilities);
+          setSearchedFacilitiesByKeyword(newFacilities);
+        })
+        .then(() => {
+          // 해당 시설 버튼으로 스크롤 이동
+          const facilityButton = facilityButtonElement.current[facility.id];
+          facilityButton?.scrollIntoView({
+            behavior: "smooth",
+            block: "center",
+          });
+
+          // 표 스크롤 이동
+          moveTableItemToTop(facilityItemElement.current[facility.id]);
+        });
     },
-    [searchFacilities, setSelectedFacility]
+    [buildingId, setSelectedFacility]
   );
 
-  // 페이지 쿼리 파라미터 변경시 시설 정보 재검색
+  // URL 쿼리 파라미터 변경 시 건물 및 시설 정보 업데이트
   useEffect(() => {
-    setKeyword(""); // 검색어 초기화
-    searchFacilities(""); // 검색 초기화
-  }, [buildingId, searchFacilities]);
+    const newBuildingId = queryParams.get("building") || "A";
+    const newFacilityId = queryParams.get("facility");
 
-  // 초기 시설 정보 설정
-  useEffect(() => {
-    if (facilityId) {
-      const newFloor = getFacilityFloor(facilityId);
-      setFloor(newFloor);
-      return;
+    setBuildingId(newBuildingId); // 건물 ID
+    setBuilding(buildings.find((building) => building.id === newBuildingId)); // 건물 객체
+
+    let newFloor = "1F";
+    if (newFacilityId) {
+      newFloor = searchById(newFacilityId)?.floor || "1F"; // 층
+      setSearchedFacilitiesByFloor(
+        findFacilitiesByFloor(newBuildingId, newFloor)
+      ); // 해당 층의 시설 정보 업데이트
+
+      const newSelectedFacility = facilities.find(
+        (facility) => facility.id === newFacilityId
+      );
+      if (newSelectedFacility) {
+        Promise.resolve()
+          .then(() => {
+            setSelectedFacility(newSelectedFacility); // 선택된 시설 객체
+          })
+          .then(() => {
+            // 해당 시설 버튼으로 스크롤 이동
+            const facilityButton =
+              facilityButtonElement.current[newSelectedFacility.id];
+            facilityButton?.scrollIntoView({
+              behavior: "smooth",
+              block: "center",
+            });
+            moveTableItemToTop(
+              facilityItemElement.current[newSelectedFacility.id]
+            ); // 표 스크롤 이동
+          });
+      }
     }
-    setFloor("1F"); // 기본 층수 설정
-  }, [buildingId, facilityId]);
+
+    setKeyword(""); // 검색어 초기화
+    setFloor(newFloor);
+
+    // 검색 초기화
+    const newSearchedFacilities = findFacilitiesByFloor(
+      newBuildingId,
+      newFloor
+    );
+    setSearchedFacilitiesByFloor(newSearchedFacilities);
+    setSearchedFacilitiesByKeyword(newSearchedFacilities);
+  }, [queryParams, setSelectedFacility]);
 
   return (
     <>
@@ -194,11 +242,7 @@ const Detail = () => {
             {/* 건물 배치도 이미지 */}
             <BuildingLayoutViewer
               imageUrl={getBuildingLayoutImageUrl(buildingId, floor)}
-              facilities={facilities.filter(
-                (facility) =>
-                  facility.id.startsWith(buildingId) &&
-                  getFacilityFloor(facility.id) === floor
-              )}
+              facilities={searchedFacilitiesByFloor}
               facilityButtonsRef={facilityButtonElement}
               facilityItemsRef={facilityItemElement}
             />
@@ -283,30 +327,33 @@ const Detail = () => {
               },
             }}
           >
-            {floors[buildingId].map((floor) => (
-              <MenuItem
-                key={`floor-menu-${floor}`}
-                onClick={() => handleFloorChange(floor)}
-                sx={{
-                  display: "flex",
-                  justifyContent: "center",
-                  background: theme.palette.secondary.main,
-                  color: "white",
-                  "&:hover": {
-                    color: "black",
-                  },
-                }}
-              >
-                <Typography
-                  variant="h6"
-                  fontWeight={500}
-                  textAlign="center"
-                  color="inherit"
+            {floors[buildingId]
+              .slice()
+              .sort((a, b) => a.length - b.length || a.localeCompare(b))
+              .map((floor) => (
+                <MenuItem
+                  key={`floor-menu-${floor}`}
+                  onClick={() => handleFloorChange(floor)}
+                  sx={{
+                    display: "flex",
+                    justifyContent: "center",
+                    background: theme.palette.secondary.main,
+                    color: "white",
+                    "&:hover": {
+                      color: "black",
+                    },
+                  }}
                 >
-                  {floor}
-                </Typography>
-              </MenuItem>
-            ))}
+                  <Typography
+                    variant="h6"
+                    fontWeight={500}
+                    textAlign="center"
+                    color="inherit"
+                  >
+                    {floor}
+                  </Typography>
+                </MenuItem>
+              ))}
           </Menu>
 
           {/* 호실 입력란 */}
@@ -317,6 +364,7 @@ const Detail = () => {
               fullWidth
               value={keyword}
               onChange={handleKeywordChange}
+              onClick={handleClearSelectedFacility}
             />
           </Paper>
         </Stack>
@@ -356,7 +404,7 @@ const Detail = () => {
                 </TableRow>
               </TableHead>
               <TableBody>
-                {searchedFacilities.map((facility) => (
+                {searchedFacilitiesByKeyword.map((facility) => (
                   <TableRow
                     key={facility.id}
                     ref={(elem: HTMLTableRowElement | null) => {

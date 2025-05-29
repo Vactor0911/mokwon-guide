@@ -9,7 +9,7 @@ const App = () => {
     <>
       <CssBaseline />
       <ThemeProvider theme={theme}>
-        <BrowserRouter>
+        <BrowserRouter basename="/mokwon-guide/">
           <Header />
           <Stack minHeight="calc(100vh - 64px)">
             <Routes>
