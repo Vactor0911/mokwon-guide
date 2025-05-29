@@ -59,12 +59,14 @@ const FacilityItemButton = (props: FacilityItemButtonProps) => {
     [searchHistory, setSearchHistory]
   );
 
-  // 버튼 클릭
   const navigate = useNavigate();
   const setKeyWord = useSetAtom(keywordAtom);
   const setSearchResult = useSetAtom(searchResultAtom);
   const setSelectedFacility = useSetAtom(selectedFacilityAtom);
 
+  const [isRippleDisabled, setIsRippleDisabled] = useState(false);
+
+  // 버튼 클릭
   const handleButtonClick = useCallback(() => {
     addSearchHistory(item);
     setIsSearchDrawerOpen(false);
@@ -85,8 +87,6 @@ const FacilityItemButton = (props: FacilityItemButtonProps) => {
   ]);
 
   // 검색 기록 삭제 버튼 마우스 진입
-  const [isRippleDisabled, setIsRippleDisabled] = useState(false);
-
   const handleRippleDisable = useCallback((newIsRippleDisabled: boolean) => {
     setIsRippleDisabled(newIsRippleDisabled);
   }, []);
@@ -102,6 +102,11 @@ const FacilityItemButton = (props: FacilityItemButtonProps) => {
     );
     setSearchHistory(newSearchHistory);
   }, [item.id, searchHistory, setSearchHistory]);
+
+  // item이 없을 경우 렌더 중단
+  if (!item) {
+    return null;
+  }
 
   return (
     <Box width="100%" borderBottom="1px solid #d9d9d9" position="relative">
