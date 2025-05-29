@@ -48,14 +48,6 @@ const BuildingLayoutViewer = (props: BuildingLayoutImageProps) => {
   const size = useImageSize(imageUrl); // 건물 배치도 이미지 크기
   const [selectedFacility, setSelectedFacility] = useAtom(selectedFacilityAtom);
 
-  // 강제 리렌더링을 위한 state
-  const [forceUpdate, setForceUpdate] = useState(0);
-
-  // selectedFacility 변경 시 강제 리렌더링
-  useEffect(() => {
-    setForceUpdate((prev) => prev + 1);
-  }, [selectedFacility]);
-
   // 시설 버튼 클릭
   const handleFacilityButtonClick = useCallback(
     (facility: FacilityInterface) => {
@@ -81,7 +73,7 @@ const BuildingLayoutViewer = (props: BuildingLayoutImageProps) => {
         viewBox={`0 0 ${size.width} ${size.height}`}
         style={{ width: "100%", display: "block", maxHeight: "70vh" }}
         preserveAspectRatio="xMidYMid meet"
-        key={forceUpdate} // 강제 리렌더링 키 추가
+        key={selectedFacility?.id || "default"} // 강제 리렌더링 키 추가
       >
         {/* 건물 배치도 이미지 */}
         <image href={imageUrl} width={size.width} height={size.height} />
