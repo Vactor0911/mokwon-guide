@@ -15,12 +15,13 @@ interface BuildingMarkerProps {
 
 const BuildingMarker = (props: BuildingMarkerProps) => {
   const { buildingId, position } = props;
+
   const setIsBuildingDetailDrawerOpen = useSetAtom(
     isBuildingDetailDrawerOpenAtom
-  );
+  ); // 건물 상세 드로어 열림 상태
   const setBuildingDetailDrawerBuilding = useSetAtom(
     buildingDetailDrawerBuildingAtom
-  );
+  ); // 건물 상세 드로어에 표시할 건물 정보
 
   // 건물 마커 클릭
   const handleMarkerClick = useCallback(() => {

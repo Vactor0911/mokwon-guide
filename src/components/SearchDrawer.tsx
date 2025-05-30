@@ -27,11 +27,11 @@ import DeleteRoundedIcon from "@mui/icons-material/DeleteRounded";
 const SearchDrawer = () => {
   const [isSearchDrawerOpen, setIsSearchDrawerOpen] = useAtom(
     isSearchDrawerOpenAtom
-  ); // 검색 드로어 열림 관련
+  ); // 검색 드로어 열림 상태
   const [keyword, setKeyword] = useAtom(keywordAtom); // 검색어
   const inputRef = useRef<HTMLInputElement>(null); // 검색란 ref
   const [searchResults, setSearchResults] = useAtom(searchResultAtom); // 검색 결과
-  const [searchHistory, setSearchHistory] = useAtom(searchHistoryAtom);
+  const [searchHistory, setSearchHistory] = useAtom(searchHistoryAtom); // 검색 기록
 
   // 검색 드로어 닫기
   const handleSearchDrawerClose = useCallback(() => {

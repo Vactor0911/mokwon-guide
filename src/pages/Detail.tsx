@@ -73,10 +73,10 @@ const Detail = () => {
   const [selectedFacility, setSelectedFacility] = useAtom(selectedFacilityAtom); // 선택된 시설 상태
   const facilityButtonElement = useRef<
     Record<string, SVGPolygonElement | null>
-  >({});
+  >({}); // 시설 버튼 요소 ref
   const facilityItemElement = useRef<
     Record<string, HTMLTableRowElement | null>
-  >({});
+  >({}); // 시설 정보 표 항목 요소 ref
 
   // 층수 선택 메뉴 열기
   const handleFloorMenuOpen = useCallback(() => {
@@ -312,6 +312,7 @@ const Detail = () => {
               display: "flex",
               height: "56px",
               borderRadius: "8px",
+              boxShadow: 3,
             }}
             ref={floorButtonElement}
             onClick={handleFloorMenuOpen}
@@ -382,7 +383,10 @@ const Detail = () => {
 
         {/* 호실 정보 표 */}
         <Container maxWidth="lg">
-          <TableContainer component={Paper} sx={{ maxHeight: "400px" }}>
+          <TableContainer
+            component={(props) => <Paper elevation={3} {...props} />}
+            sx={{ maxHeight: "400px" }}
+          >
             <Table stickyHeader>
               <TableHead>
                 <TableRow

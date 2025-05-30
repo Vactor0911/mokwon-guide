@@ -25,15 +25,15 @@ interface FacilityItemButtonProps extends ButtonProps {
 const FacilityItemButton = (props: FacilityItemButtonProps) => {
   const { item, keyword = "", deleteBtn, ...others } = props;
 
-  const navigate = useNavigate();
+  const navigate = useNavigate(); // 리다이렉트 네비게이션
 
   const setIsSearchDrawerOpen = useSetAtom(isSearchDrawerOpenAtom); // 검색 드로어 메뉴 열림림
   const [searchHistory, setSearchHistory] = useAtom(searchHistoryAtom); // 검색 기록
-  const setKeyWord = useSetAtom(keywordAtom);
-  const setSearchResult = useSetAtom(searchResultAtom);
-  const setSelectedFacility = useSetAtom(selectedFacilityAtom);
+  const setKeyWord = useSetAtom(keywordAtom); // 검색어
+  const setSearchResult = useSetAtom(searchResultAtom); // 검색 결과
+  const setSelectedFacility = useSetAtom(selectedFacilityAtom); // 선택된 시설
 
-  const [isRippleDisabled, setIsRippleDisabled] = useState(false);
+  const [isRippleDisabled, setIsRippleDisabled] = useState(false); // 검색 기록 버튼 리플 비활성화 상태
 
   /**
    * 검색 기록을 추가하는 함수

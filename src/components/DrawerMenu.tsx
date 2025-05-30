@@ -18,9 +18,10 @@ import Footer from "./Footer";
 import DrawerNavLink from "./DrawerNavLink";
 
 const DrawerMenu = () => {
-  // 드로어 메뉴 열림 관련
-  const [isDrawerOpen, setIsDrawerOpen] = useAtom(isDrawerOpenAtom);
+  const [isDrawerOpen, setIsDrawerOpen] = useAtom(isDrawerOpenAtom); // 드로어 열림 상태
+  const [isAccordionOpen, setIsAccordionOpen] = useState(false);
 
+  // 드로어 열림 상태 설정
   const handleIsDrawerOpen = useCallback(
     (newIsDrawerOpen: boolean) => () => {
       setIsDrawerOpen(newIsDrawerOpen);
@@ -28,13 +29,12 @@ const DrawerMenu = () => {
     [setIsDrawerOpen]
   );
 
-  // 아코디언 메뉴 열림 관련
-  const [isAccordionOpen, setIsAccordionOpen] = useState(false);
-
+  // 건물 상세 아코디언 토글
   const handleToggleAccordion = useCallback(() => {
     setIsAccordionOpen((prev) => !prev);
   }, []);
 
+  // 모든 드로어 및 아코디언 닫기
   const handleCloseAll = useCallback(() => {
     setIsDrawerOpen(false);
     setIsAccordionOpen(false);
@@ -70,6 +70,7 @@ const DrawerMenu = () => {
             justifyContent="space-between"
             alignItems="center"
           >
+            {/* 로고 */}
             <Typography
               variant="h4"
               sx={{
@@ -79,6 +80,7 @@ const DrawerMenu = () => {
               목원 길잡이
             </Typography>
 
+            {/* 닫기 버튼 */}
             <IconButton
               sx={{
                 color: "white",

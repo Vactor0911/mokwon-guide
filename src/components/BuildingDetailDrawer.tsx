@@ -19,22 +19,25 @@ import { useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 
 const BuildingDetailDrawer = () => {
-  const navigate = useNavigate();
+  const navigate = useNavigate(); // 리다이렉트 네비게이션
 
   const buildingDetailDrawerBuilding = useAtomValue(
     buildingDetailDrawerBuildingAtom
-  );
+  ); // 건물 상세 드로어에 표시할 건물 정보
   const [isBuildingDetailDrawerOpen, setIsBuildingDetailDrawerOpen] = useAtom(
     isBuildingDetailDrawerOpenAtom
-  );
+  ); // 건물 상세 드로어 열림 상태
 
-  const [imageSrc, setImageSrc] = useState<string | null>(null);
-  const [isImageLoaded, setIsImageLoaded] = useState(false);
-  const [isImageError, setIsImageError] = useState(false);
+  const [imageSrc, setImageSrc] = useState<string | null>(null); // 이미지 경로
+  const [isImageLoaded, setIsImageLoaded] = useState(false); // 이미지 로딩 여부
+  const [isImageError, setIsImageError] = useState(false); // 이미지 로딩 실패 여부
 
   // 이미지 경로 및 상태 초기화
   useEffect(() => {
-    if (!buildingDetailDrawerBuilding?.id) return;
+    // 건물 정보가 없으면 종료
+    if (!buildingDetailDrawerBuilding?.id) {
+      return;
+    }
 
     const newSrc = `./images/building_images/${buildingDetailDrawerBuilding.id.toLowerCase()}.jpg`;
     setImageSrc(newSrc);
@@ -42,11 +45,20 @@ const BuildingDetailDrawer = () => {
     setIsImageError(false);
   }, [buildingDetailDrawerBuilding?.id]);
 
-  // 이미지 클릭 → 상세 페이지 이동
+  // 닫기 버튼 클릭
+  const handleCloseButtonClick = useCallback(() => {
+    setIsBuildingDetailDrawerOpen(false);
+  }, [setIsBuildingDetailDrawerOpen]);
+
+  // 건물 대표 이미지 클릭
   const handleBuildingImageClick = useCallback(() => {
     setIsBuildingDetailDrawerOpen(false);
     navigate(`/detail?building=${buildingDetailDrawerBuilding?.id ?? "A"}`);
-  }, [buildingDetailDrawerBuilding, navigate, setIsBuildingDetailDrawerOpen]);
+  }, [
+    buildingDetailDrawerBuilding?.id,
+    navigate,
+    setIsBuildingDetailDrawerOpen,
+  ]);
 
   return (
     <SwipeableDrawer
@@ -86,6 +98,7 @@ const BuildingDetailDrawer = () => {
           justifyContent="space-between"
           color="white"
         >
+          {/* 건물명 */}
           <Stack direction="row" gap={1} alignItems="center">
             <Typography variant="h4">
               {buildingDetailDrawerBuilding?.id}
@@ -94,8 +107,10 @@ const BuildingDetailDrawer = () => {
               {buildingDetailDrawerBuilding?.name}
             </Typography>
           </Stack>
+
+          {/* 닫기 버튼 */}
           <IconButton
-            onClick={() => setIsBuildingDetailDrawerOpen(false)}
+            onClick={handleCloseButtonClick}
             sx={{ padding: "4px", transform: "translateX(8px)" }}
           >
             <CloseRoundedIcon fontSize="large" sx={{ color: "white" }} />
@@ -172,6 +187,7 @@ const BuildingDetailDrawer = () => {
         </Button>
 
         {/* 네비게이션 버튼 */}
+        {/* TODO: 추후에 개발할 예정 */}
         <Stack direction="row" justifyContent="flex-end" gap={2}>
           {/* 출발 */}
           {/* <Button
