@@ -62,7 +62,6 @@ const MapViewer = () => {
       },
       drag: () => {
         if (isLocationFollowing) {
-          console.log("위치 따라가기 중지");
           setIsLocationFollowing(false);
         }
       },
@@ -110,15 +109,8 @@ const MapViewer = () => {
         // 위치 갱신 및 지도 이동
         setGeoLocation(newGeoLocation);
         setIsLocationTracking(true);
-        console.log(
-          "위치 정보 갱신:",
-          newGeoLocation,
-          isLocationFollowingRef.current,
-          map
-        );
 
         if (isLocationFollowingRef.current && map.current) {
-          console.log("지도 이동");
           map.current.setView(newGeoLocation, zoomRef.current, {
             animate: true,
           });
@@ -159,7 +151,6 @@ const MapViewer = () => {
       e.preventDefault();
 
       const newIsLocationFollowing = !isLocationFollowing;
-      console.log("내 위치 따라가기 상태 변경:", newIsLocationFollowing);
       setIsLocationFollowing(newIsLocationFollowing);
       isLocationFollowingRef.current = newIsLocationFollowing;
 
