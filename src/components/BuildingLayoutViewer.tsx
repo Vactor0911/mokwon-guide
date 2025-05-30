@@ -46,7 +46,7 @@ const BuildingLayoutViewer = (props: BuildingLayoutImageProps) => {
   const { imageUrl, facilities, facilityButtonsRef, facilityItemsRef } = props;
 
   const size = useImageSize(imageUrl); // 건물 배치도 이미지 크기
-  const [selectedFacility, setSelectedFacility] = useAtom(selectedFacilityAtom);
+  const [selectedFacility, setSelectedFacility] = useAtom(selectedFacilityAtom); // 선택된 시설 정보
 
   // 시설 버튼 클릭
   const handleFacilityButtonClick = useCallback(
@@ -81,9 +81,12 @@ const BuildingLayoutViewer = (props: BuildingLayoutImageProps) => {
         {/* 시설 버튼 */}
         {facilities.map((facility) => {
           // path 데이터가 없는 경우 렌더링하지 않음
-          if (!facility.path || facility.path.length === 0) return null;
+          if (!facility.path || facility.path.length === 0) {
+            return null;
+          }
 
           return (
+            // 호실 테두리 버튼
             <polygon
               key={facility.id}
               width={size.width}
