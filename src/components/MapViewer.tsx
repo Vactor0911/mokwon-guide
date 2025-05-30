@@ -30,10 +30,12 @@ const MapViewer = () => {
     [960, 565],
   ]);
 
-  const [map, setMap] = useState<L.Map | null>(null); // 지도 객체
+  const map = useRef<L.Map | null>(null); // 지도 객체
   const [zoom, setZoom] = useState(0); // 지도 줌 레벨
+  const zoomRef = useRef(zoom); // 줌 레벨 참조
   const [isLocationTracking, setIsLocationTracking] = useState(true); // 실시간 위치 추적 상태
   const [isLocationFollowing, setIsLocationFollowing] = useState(false); // 실시간 위치 따라오기 상태
+  const isLocationFollowingRef = useRef(isLocationFollowing);
   const watchIdRef = useRef<number | null>(null); // 위치 추적 ID
   const [geoLocation, setGeoLocation] = useState<number[] | null>(null); // 내 위치 좌표
   const [isAlertOpen, setIsAlertOpen] = useState(false); // 경고창 열림 상태
@@ -46,16 +48,21 @@ const MapViewer = () => {
     useMapEvents({
       zoom: (e) => {
         setZoom(e.target.getZoom());
+        zoomRef.current = e.target.getZoom();
       },
       zoomend: (e) => {
         const currentZoom = e.target.getZoom();
         setZoom(currentZoom);
+        zoomRef.current = currentZoom;
         if (isLocationFollowing && geoLocation) {
-          map.setView(geoLocation as [number, number], currentZoom);
+          map.setView(geoLocation as [number, number], currentZoom, {
+            animate: true,
+          });
         }
       },
       drag: () => {
         if (isLocationFollowing) {
+          console.log("위치 따라가기 중지");
           setIsLocationFollowing(false);
         }
       },
@@ -103,8 +110,18 @@ const MapViewer = () => {
         // 위치 갱신 및 지도 이동
         setGeoLocation(newGeoLocation);
         setIsLocationTracking(true);
-        if (isLocationFollowing) {
-          map?.setView(newGeoLocation, zoom);
+        console.log(
+          "위치 정보 갱신:",
+          newGeoLocation,
+          isLocationFollowingRef.current,
+          map
+        );
+
+        if (isLocationFollowingRef.current && map.current) {
+          console.log("지도 이동");
+          map.current.setView(newGeoLocation, zoomRef.current, {
+            animate: true,
+          });
         }
       },
       // 위치 정보 가져오기 실패
@@ -122,7 +139,7 @@ const MapViewer = () => {
     );
 
     watchIdRef.current = id;
-  }, [handleAlertOpen, isLocationFollowing, map, zoom]);
+  }, [handleAlertOpen, map]);
 
   // 위치 추적 중지
   const stopLocationTracking = useCallback(() => {
@@ -140,19 +157,24 @@ const MapViewer = () => {
     (e: React.MouseEvent<HTMLButtonElement>) => {
       e.stopPropagation();
       e.preventDefault();
-      setIsLocationFollowing(!isLocationFollowing);
+
+      const newIsLocationFollowing = !isLocationFollowing;
+      console.log("내 위치 따라가기 상태 변경:", newIsLocationFollowing);
+      setIsLocationFollowing(newIsLocationFollowing);
+      isLocationFollowingRef.current = newIsLocationFollowing;
+
+      // 내 위치 따라가기를 켤 때 지도 이동
+      if (newIsLocationFollowing) {
+        map.current?.setView(geoLocation as [number, number], zoom, {
+          animate: true,
+        });
+      }
     },
-    [isLocationFollowing]
+    [geoLocation, isLocationFollowing, map, zoom]
   );
 
   // 컴포넌트 언마운트 시 위치 추적 중지
   useEffect(() => {
-    map?.on("dragend zoomend", () => {
-      if (isLocationFollowing && geoLocation) {
-        map.setView(geoLocation as [number, number], zoom);
-      }
-    });
-
     updateCurrentLocation();
 
     return () => {
@@ -183,7 +205,7 @@ const MapViewer = () => {
       zoom={zoom}
       maxZoom={1.7}
       scrollWheelZoom={true}
-      ref={setMap}
+      ref={map}
       css={{
         height: "100%",
         background: "#f0f0f0",
