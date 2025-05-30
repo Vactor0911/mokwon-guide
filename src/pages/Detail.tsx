@@ -39,6 +39,17 @@ import {
 } from "../utils";
 import BuildingLayoutViewer from "../components/BuildingLayoutViewer";
 
+// 문자열 형태의 층 값을 정수로 변환하는 함수
+const parseFloor = (floor: string): number => {
+  if (floor.startsWith("B")) {
+    // 지하층
+    return -parseInt(floor.slice(1), 10);
+  } else {
+    // 지상층
+    return parseInt(floor, 10);
+  }
+};
+
 const Detail = () => {
   const [queryParams] = useSearchParams(); // URL 쿼리 파라미터
 
@@ -329,7 +340,7 @@ const Detail = () => {
           >
             {floors[buildingId]
               .slice()
-              .sort((a, b) => a.length - b.length || a.localeCompare(b))
+              .sort((a, b) => parseFloor(a) - parseFloor(b))
               .map((floor) => (
                 <MenuItem
                   key={`floor-menu-${floor}`}

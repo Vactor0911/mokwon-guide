@@ -2,6 +2,7 @@ import {
   Box,
   Button,
   IconButton,
+  Skeleton,
   Stack,
   SwipeableDrawer,
   Typography,
@@ -9,14 +10,12 @@ import {
 import { theme } from "../theme";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import SearchRoundedIcon from "@mui/icons-material/SearchRounded";
-// import RadioButtonCheckedRoundedIcon from "@mui/icons-material/RadioButtonCheckedRounded";
-// import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
 import { useAtom, useAtomValue } from "jotai";
 import {
   buildingDetailDrawerBuildingAtom,
   isBuildingDetailDrawerOpenAtom,
 } from "../states";
-import { useCallback } from "react";
+import { useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 
 const BuildingDetailDrawer = () => {
@@ -29,15 +28,25 @@ const BuildingDetailDrawer = () => {
     isBuildingDetailDrawerOpenAtom
   );
 
-  // 건물 대표 이미지 버튼 클릭
+  const [imageSrc, setImageSrc] = useState<string | null>(null);
+  const [isImageLoaded, setIsImageLoaded] = useState(false);
+  const [isImageError, setIsImageError] = useState(false);
+
+  // 이미지 경로 및 상태 초기화
+  useEffect(() => {
+    if (!buildingDetailDrawerBuilding?.id) return;
+
+    const newSrc = `./images/building_images/${buildingDetailDrawerBuilding.id.toLowerCase()}.jpg`;
+    setImageSrc(newSrc);
+    setIsImageLoaded(false);
+    setIsImageError(false);
+  }, [buildingDetailDrawerBuilding?.id]);
+
+  // 이미지 클릭 → 상세 페이지 이동
   const handleBuildingImageClick = useCallback(() => {
     setIsBuildingDetailDrawerOpen(false);
     navigate(`/detail?building=${buildingDetailDrawerBuilding?.id ?? "A"}`);
-  }, [
-    buildingDetailDrawerBuilding?.id,
-    navigate,
-    setIsBuildingDetailDrawerOpen,
-  ]);
+  }, [buildingDetailDrawerBuilding, navigate, setIsBuildingDetailDrawerOpen]);
 
   return (
     <SwipeableDrawer
@@ -63,14 +72,8 @@ const BuildingDetailDrawer = () => {
         gap={1}
         sx={{
           background: theme.palette.primary.main,
-          borderTopLeftRadius: {
-            xs: 8,
-            sm: 16,
-          },
-          borderTopRightRadius: {
-            xs: 8,
-            sm: 16,
-          },
+          borderTopLeftRadius: { xs: 8, sm: 16 },
+          borderTopRightRadius: { xs: 8, sm: 16 },
           ".MuiButtonBase-root .MuiButton-startIcon > svg": {
             fontSize: "1.75em",
           },
@@ -83,7 +86,6 @@ const BuildingDetailDrawer = () => {
           justifyContent="space-between"
           color="white"
         >
-          {/* 건물 명칭 */}
           <Stack direction="row" gap={1} alignItems="center">
             <Typography variant="h4">
               {buildingDetailDrawerBuilding?.id}
@@ -92,21 +94,11 @@ const BuildingDetailDrawer = () => {
               {buildingDetailDrawerBuilding?.name}
             </Typography>
           </Stack>
-
-          {/* 닫기 버튼 */}
           <IconButton
             onClick={() => setIsBuildingDetailDrawerOpen(false)}
-            sx={{
-              padding: "4px",
-              transform: "translateX(8px)",
-            }}
+            sx={{ padding: "4px", transform: "translateX(8px)" }}
           >
-            <CloseRoundedIcon
-              fontSize="large"
-              sx={{
-                color: "white",
-              }}
-            />
+            <CloseRoundedIcon fontSize="large" sx={{ color: "white" }} />
           </IconButton>
         </Stack>
 
@@ -118,20 +110,46 @@ const BuildingDetailDrawer = () => {
             position: "relative",
             padding: 0,
             overflow: "hidden",
-            borderRadius: {
-              xs: "8px",
-              sm: "16px",
-            },
+            borderRadius: { xs: "8px", sm: "16px" },
           }}
         >
-          {/* 이미지 */}
-          <Box
-            component="img"
-            src={`./images/building_images/${buildingDetailDrawerBuilding?.id.toLowerCase()}.jpg`}
-            alt={`${buildingDetailDrawerBuilding?.name} 대표 이미지`}
-            width="100%"
-            minHeight={200}
-          />
+          {/* 로딩된 대표 이미지 */}
+          {imageSrc && !isImageError && (
+            <Box
+              component="img"
+              src={imageSrc}
+              alt={`${buildingDetailDrawerBuilding?.name} 대표 이미지`}
+              width="100%"
+              display={isImageLoaded ? "block" : "none"}
+              minHeight={200}
+              onLoad={() => setIsImageLoaded(true)}
+              onError={() => {
+                setIsImageLoaded(true);
+                setIsImageError(true);
+              }}
+            />
+          )}
+
+          {/* 이미지 로딩 실패 시 대체 메시지 */}
+          {isImageError && (
+            <Box
+              width="100%"
+              height={200}
+              display="flex"
+              justifyContent="center"
+              alignItems="center"
+              bgcolor="grey.300"
+            >
+              <Typography variant="subtitle1" color="textSecondary">
+                이미지를 불러올 수 없습니다.
+              </Typography>
+            </Box>
+          )}
+
+          {/* 로딩 중 스켈레톤 */}
+          {!isImageLoaded && !isImageError && (
+            <Skeleton variant="rectangular" width="100%" height={200} />
+          )}
 
           {/* 더보기 라벨 */}
           <Stack
