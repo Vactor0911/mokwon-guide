@@ -51,7 +51,6 @@ const MapViewer = () => {
         const currentZoom = e.target.getZoom();
         setZoom(currentZoom);
         if (isLocationFollowing && geoLocation) {
-          console.log("지도 이동");
           map.setView(geoLocation as [number, number], currentZoom);
         }
       },
@@ -102,7 +101,6 @@ const MapViewer = () => {
         const newGeoLocation = geoToXY(latitude, longitude);
 
         // 위치 갱신 및 지도 이동
-        console.log("위치 정보 갱신:", newGeoLocation);
         setGeoLocation(newGeoLocation);
         setIsLocationTracking(true);
         if (isLocationFollowing) {
@@ -150,7 +148,6 @@ const MapViewer = () => {
   // 컴포넌트 언마운트 시 위치 추적 중지
   useEffect(() => {
     map?.on("dragend zoomend", () => {
-      console.log("지도 이동");
       if (isLocationFollowing && geoLocation) {
         map.setView(geoLocation as [number, number], zoom);
       }
@@ -159,7 +156,6 @@ const MapViewer = () => {
     updateCurrentLocation();
 
     return () => {
-      console.log("unmount");
       stopLocationTracking();
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
@@ -172,7 +168,6 @@ const MapViewer = () => {
     }
 
     const intervalId = setInterval(() => {
-      console.log("위치 추적 재시도");
       updateCurrentLocation();
     }, 5000);
 
