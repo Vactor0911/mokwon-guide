@@ -54,7 +54,11 @@ const BuildingDetailDrawer = () => {
   const handleBuildingImageClick = useCallback(() => {
     setIsBuildingDetailDrawerOpen(false);
     navigate(`/detail?building=${buildingDetailDrawerBuilding?.id ?? "A"}`);
-  }, [buildingDetailDrawerBuilding, navigate, setIsBuildingDetailDrawerOpen]);
+  }, [
+    buildingDetailDrawerBuilding?.id,
+    navigate,
+    setIsBuildingDetailDrawerOpen,
+  ]);
 
   return (
     <SwipeableDrawer
