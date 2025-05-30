@@ -5,7 +5,7 @@ import MapViewer from "../components/MapViewer";
 const Main = () => {
   return (
     <>
-      <Stack height="calc(100vh - 64px)">
+      <Stack height="calc(calc(var(--vh, 1vh) * 100) - 64px)">
         <MapViewer />
       </Stack>
 

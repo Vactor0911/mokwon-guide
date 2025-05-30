@@ -17,7 +17,7 @@ const MapViewer = () => {
   ];
 
   const maxBounds: LatLngBoundsExpression = [
-    [0, -25],
+    [-100, -25],
     [960, 565],
   ];
 
@@ -115,7 +115,7 @@ const MapViewer = () => {
         url={MapImage}
         bounds={bounds}
         attribution='<a href="https://www.mokwon.ac.kr/view/html/sub05/0501.html" style="display: flex; align-items: center; gap: 4px;">
-          <img src="/logo.png" alt="logo" height="14px" />
+          <img src="./logo.png" alt="logo" height="14px" />
           목원대학교 목원뷰
         </a>'
       >
