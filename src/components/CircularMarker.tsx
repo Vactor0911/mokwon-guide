@@ -45,7 +45,7 @@ const CircularMarker = (props: CircularMarkerProps) => {
                         </div>`,
       })}
       eventHandlers={{
-        click: onClick || (() => {}),
+        ...(onClick && { click: onClick }),
       }}
     />
   );
