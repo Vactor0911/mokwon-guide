@@ -86,7 +86,6 @@ const MapViewer = () => {
           map?.setView(newGeoLocation, 0);
         }
         setIsLocationTracking(true);
-        console.log("현재 위치:", newGeoLocation);
       },
       () => {
         handleAlertOpen("위치 정보를 가져올 수 없습니다.");
