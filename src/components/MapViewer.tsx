@@ -4,11 +4,13 @@ import { LatLngBoundsExpression, CRS } from "leaflet";
 import MapImage from "/images/map.png";
 import { Alert, Button, Snackbar, SnackbarCloseReason } from "@mui/material";
 import { useCallback, useState } from "react";
+import LocationSearchingRoundedIcon from "@mui/icons-material/LocationSearchingRounded";
 import MyLocationRoundedIcon from "@mui/icons-material/MyLocationRounded";
 import { geoToXY } from "../utils";
 import buildings from "../assets/buildings.json";
 import BuildingMarker from "./BuildingMarker";
 import CircularMarker from "./CircularMarker";
+import { useEffect } from "react";
 
 const MapViewer = () => {
   // 지도 범위 설정
@@ -24,6 +26,7 @@ const MapViewer = () => {
   ];
 
   const [map, setMap] = useState<L.Map | null>(null); // 지도 객체
+  const [isLocationTracking, setIsLocationTracking] = useState(false); // 실시간 위치 추적 상태
   const [geoLocation, setGeoLocation] = useState<number[] | null>(null); // 내 위치 좌표
   const [isAlertOpen, setIsAlertOpen] = useState(false); // 경고창 열림 상태
   const [alertMessage, setAlertMessage] = useState(""); // 경고창 메시지
@@ -46,11 +49,55 @@ const MapViewer = () => {
     []
   );
 
+  // 현재 위치 정보 업데이트
+  const updateCurrentLocation = useCallback(() => {
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        const { latitude, longitude } = position.coords;
+        const newGeoLocation = geoToXY(latitude, longitude);
+
+        // 지도 범위 내에 있는지 확인
+        const isInBounds = map?.getBounds().contains(newGeoLocation);
+
+        // 현재 위치가 지도 범위 밖임
+        if (!isInBounds) {
+          handleAlertOpen("내 위치가 지도 범위를 벗어났습니다.");
+          setIsLocationTracking(false);
+          return;
+        }
+
+        // leaflet 지도에서 내 위치 마커로 이동
+        const zoom = 0;
+        map?.setView(newGeoLocation, zoom);
+        setGeoLocation(newGeoLocation);
+        setIsLocationTracking(true);
+      },
+      // 위치 정보 가져올 수 없음
+      () => {
+        handleAlertOpen(`위치 정보를 가져올 수 없습니다.`);
+        setIsLocationTracking(false);
+        return;
+      },
+      {
+        enableHighAccuracy: true,
+        timeout: 10000,
+        maximumAge: 0,
+      }
+    );
+  }, [handleAlertOpen, map]);
+
   // 내 위치 버튼 클릭
   const handleMyLocationClick = useCallback(
     (e: React.MouseEvent<HTMLButtonElement>) => {
       e.stopPropagation();
       e.preventDefault();
+
+      // 실시간 위치 추적 중이면 위치 추적 중지
+      if (isLocationTracking) {
+        setIsLocationTracking(false);
+        setGeoLocation(null);
+        return;
+      }
 
       // 위치 정보 가져올 수 없음
       if (!navigator.geolocation) {
@@ -58,36 +105,26 @@ const MapViewer = () => {
         return;
       }
 
-      // 위치 정보 가져오기
-      navigator.geolocation.getCurrentPosition(
-        (position) => {
-          const { latitude, longitude } = position.coords;
-          const newGeoLocation = geoToXY(latitude, longitude);
-          setGeoLocation(newGeoLocation);
-
-          // 지도 범위 내에 있는지 확인
-          const isInBounds = map?.getBounds().contains(newGeoLocation);
-          if (!isInBounds) {
-            handleAlertOpen("내 위치가 지도 범위를 벗어났습니다.");
-            return;
-          }
-
-          // leaflet 지도에서 내 위치 마커로 이동
-          const zoom = 0;
-          map?.setView(newGeoLocation, zoom);
-        },
-        () => {
-          handleAlertOpen(`위치 정보를 가져올 수 없습니다.`);
-        },
-        {
-          enableHighAccuracy: true,
-          timeout: 10000,
-          maximumAge: 0,
-        }
-      );
+      // 위치 추적 시도
+      updateCurrentLocation();
     },
-    [handleAlertOpen, map]
+    [handleAlertOpen, isLocationTracking, updateCurrentLocation]
   );
+
+  useEffect(() => {
+    // 실시간 위치 추적중이 아니면 종료
+    if (!isLocationTracking) {
+      return;
+    }
+
+    // 1초마다 현재 위치 업데이트
+    const interval = setInterval(() => {
+      updateCurrentLocation();
+    }, 1000);
+
+    // 클리너
+    return () => clearInterval(interval);
+  }, [isLocationTracking, updateCurrentLocation]);
 
   return (
     <MapContainer
@@ -160,7 +197,11 @@ const MapViewer = () => {
         }}
         onClick={handleMyLocationClick}
       >
-        <MyLocationRoundedIcon />
+        {isLocationTracking ? (
+          <MyLocationRoundedIcon />
+        ) : (
+          <LocationSearchingRoundedIcon />
+        )}
       </Button>
 
       {/* 경고창 */}
