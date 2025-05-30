@@ -47,10 +47,12 @@ const MapViewer = () => {
 
     useMapEvents({
       zoom: (e) => {
+        // 줌 레벨 변경 시 상태 업데이트
         setZoom(e.target.getZoom());
         zoomRef.current = e.target.getZoom();
       },
       zoomend: (e) => {
+        // 줌 레벨 업데이트 & 위치 따라가기
         const currentZoom = e.target.getZoom();
         setZoom(currentZoom);
         zoomRef.current = currentZoom;
@@ -60,9 +62,11 @@ const MapViewer = () => {
           });
         }
       },
-      drag: () => {
+      dragstart: () => {
+        // 드래그 시 위치 따라가기 중지
         if (isLocationFollowing) {
           setIsLocationFollowing(false);
+          isLocationFollowingRef.current = false;
         }
       },
     });
