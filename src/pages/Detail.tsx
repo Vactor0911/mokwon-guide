@@ -312,6 +312,7 @@ const Detail = () => {
               display: "flex",
               height: "56px",
               borderRadius: "8px",
+              boxShadow: 3,
             }}
             ref={floorButtonElement}
             onClick={handleFloorMenuOpen}
@@ -382,7 +383,10 @@ const Detail = () => {
 
         {/* 호실 정보 표 */}
         <Container maxWidth="lg">
-          <TableContainer component={Paper} sx={{ maxHeight: "400px" }}>
+          <TableContainer
+            component={(props) => <Paper elevation={3} {...props} />}
+            sx={{ maxHeight: "400px" }}
+          >
             <Table stickyHeader>
               <TableHead>
                 <TableRow
