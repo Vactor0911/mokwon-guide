@@ -9,7 +9,7 @@ import SearchDrawer from "./SearchDrawer";
 import { useNavigate } from "react-router";
 
 const Header = () => {
-  const navigate = useNavigate();
+  const navigate = useNavigate(); // 리다이렉트 네비게이션
   const setIsDrawerOpen = useSetAtom(isDrawerOpenAtom); // 드로어 메뉴 열림 관련
   const setIsSearchDrawerOpen = useSetAtom(isSearchDrawerOpenAtom); // 검색 드로어 열림 관련
 

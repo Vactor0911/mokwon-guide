@@ -16,6 +16,7 @@ const HighLightedText = (props: HighlightedTextProps) => {
   // 키워드 기반 하이라이트 할 문자 인덱스 추출
   const [results, setResults] = useState<boolean[]>([]);
 
+  // 키워드가 변경될 때마다 리렌더링
   useEffect(() => {
     let counter = 0;
     const newResults: boolean[] = [];
@@ -47,7 +48,7 @@ const HighLightedText = (props: HighlightedTextProps) => {
     }
   }, [text]);
 
-  const overflow = childWidth > containerWidth;
+  const overflow = childWidth > containerWidth; // 오버플로우 여부 판단
 
   // 렌더링할 텍스트 요소
   const content = text.split("").map((char, index) => (

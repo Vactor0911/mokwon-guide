@@ -11,11 +11,13 @@ import BuildingMarker from "./BuildingMarker";
 import CircularMarker from "./CircularMarker";
 
 const MapViewer = () => {
+  // 지도 범위 설정
   const bounds: LatLngBoundsExpression = [
     [0, 0],
     [960, 540],
   ];
 
+  // 지도 최대 범위 설정
   const maxBounds: LatLngBoundsExpression = [
     [-100, -25],
     [960, 565],

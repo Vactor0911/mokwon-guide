@@ -5,6 +5,7 @@ import MapViewer from "../components/MapViewer";
 const Main = () => {
   return (
     <>
+      {/* 지도 뷰어 */}
       <Stack height="calc(calc(var(--vh, 1vh) * 100) - 64px)">
         <MapViewer />
       </Stack>

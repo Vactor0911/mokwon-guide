@@ -21,6 +21,7 @@ interface IconLinkButtonProps extends ButtonProps {
   style?: React.CSSProperties;
 }
 
+// 아이콘 링크 버튼 컴포넌트
 const IconLinkButton = (props: IconLinkButtonProps) => {
   const { iconImage, alt, tooltip, onClick, ...others } = props;
 
@@ -47,6 +48,7 @@ const IconLinkButton = (props: IconLinkButtonProps) => {
 };
 
 const Footer = () => {
+  // 링크 버튼 클릭
   const handleLinkButtonClick = useCallback((url: string) => {
     window.location.href = url;
   }, []);
