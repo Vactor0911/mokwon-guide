@@ -1,5 +1,5 @@
 import { Box, Button, ButtonProps, IconButton, Stack } from "@mui/material";
-import { getItemUrl } from "../utils";
+import { FacilityInterface, getItemUrl } from "../utils";
 import ApartmentRoundedIcon from "@mui/icons-material/ApartmentRounded";
 import LocationOnRoundedIcon from "@mui/icons-material/LocationOnRounded";
 import { grey } from "@mui/material/colors";
@@ -14,7 +14,6 @@ import {
   searchResultAtom,
   selectedFacilityAtom,
 } from "../states";
-import { FacilityInterface } from "../utils/search";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 
 interface FacilityItemButtonProps extends ButtonProps {
