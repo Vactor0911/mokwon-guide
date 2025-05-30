@@ -1,9 +1,10 @@
-import { ImageOverlay, MapContainer } from "react-leaflet";
+import { ImageOverlay, MapContainer, useMapEvents } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
-import { LatLngBoundsExpression, CRS } from "leaflet";
+import L, { CRS, LatLngBounds } from "leaflet";
 import MapImage from "/images/map.png";
 import { Alert, Button, Snackbar, SnackbarCloseReason } from "@mui/material";
 import { useCallback, useRef, useState } from "react";
+import LocationDisabledRoundedIcon from "@mui/icons-material/LocationDisabledRounded";
 import LocationSearchingRoundedIcon from "@mui/icons-material/LocationSearchingRounded";
 import MyLocationRoundedIcon from "@mui/icons-material/MyLocationRounded";
 import { geoToXY } from "../utils";
@@ -14,23 +15,39 @@ import { useEffect } from "react";
 
 const MapViewer = () => {
   // 지도 범위 설정
-  const bounds: LatLngBoundsExpression = [
+  const bounds: LatLngBounds = L.latLngBounds([
     [0, 0],
     [960, 540],
-  ];
+  ]);
 
   // 지도 최대 범위 설정
-  const maxBounds: LatLngBoundsExpression = [
+  const maxBounds: LatLngBounds = L.latLngBounds([
     [-100, -25],
     [960, 565],
-  ];
+  ]);
 
   const [map, setMap] = useState<L.Map | null>(null); // 지도 객체
+  const [zoom, setZoom] = useState(0); // 지도 줌 레벨
+  const [isLocationLoading, setIsLocationLoading] = useState(false); // 위치 로딩 상태
   const [isLocationTracking, setIsLocationTracking] = useState(false); // 실시간 위치 추적 상태
+  const [isLocationFollowing, setIsLocationFollowing] = useState(false); // 실시간 위치 따라오기 상태
   const watchIdRef = useRef<number | null>(null); // 위치 추적 ID
   const [geoLocation, setGeoLocation] = useState<number[] | null>(null); // 내 위치 좌표
   const [isAlertOpen, setIsAlertOpen] = useState(false); // 경고창 열림 상태
   const [alertMessage, setAlertMessage] = useState(""); // 경고창 메시지
+
+  // 줌 이벤트 리스너
+  const ZoomListener = () => {
+    useMapEvents({
+      zoom: (e) => {
+        setZoom(e.target.getZoom());
+      },
+      zoomend: (e) => {
+        setZoom(e.target.getZoom());
+      },
+    });
+    return null;
+  };
 
   // 경고창 열기
   const handleAlertOpen = useCallback((newAlertMessage: string) => {
@@ -55,6 +72,7 @@ const MapViewer = () => {
     if (!navigator.geolocation) {
       handleAlertOpen("위치 정보를 가져올 수 없습니다.");
       setIsLocationTracking(false);
+      setIsLocationFollowing(false);
       return;
     }
 
@@ -69,11 +87,12 @@ const MapViewer = () => {
         const newGeoLocation = geoToXY(latitude, longitude);
 
         // 지도 범위 내에 있는지 확인
-        const isInBounds = map?.getBounds().contains(newGeoLocation);
+        const isInBounds = bounds.contains(newGeoLocation);
 
         if (!isInBounds) {
           handleAlertOpen("내 위치가 지도 범위를 벗어났습니다.");
           setIsLocationTracking(false);
+          setIsLocationFollowing(false);
           navigator.geolocation.clearWatch(id);
           watchIdRef.current = null;
           return;
@@ -81,15 +100,15 @@ const MapViewer = () => {
 
         // 위치 갱신 및 지도 이동
         setGeoLocation(newGeoLocation);
-        if (!isLocationTracking) {
-          // 최초 1회만 지도 이동
-          map?.setView(newGeoLocation, 0);
-        }
         setIsLocationTracking(true);
+        if (isLocationFollowing) {
+          map?.setView(newGeoLocation, zoom);
+        }
       },
       () => {
         handleAlertOpen("위치 정보를 가져올 수 없습니다.");
         setIsLocationTracking(false);
+        setIsLocationFollowing(false);
         watchIdRef.current = null;
       },
       {
@@ -100,7 +119,7 @@ const MapViewer = () => {
     );
 
     watchIdRef.current = id;
-  }, [handleAlertOpen, isLocationTracking, map]);
+  }, [bounds, handleAlertOpen, isLocationFollowing, map]);
 
   // 위치 추적 중지
   const stopLocationTracking = useCallback(() => {
@@ -109,6 +128,7 @@ const MapViewer = () => {
       watchIdRef.current = null;
     }
     setIsLocationTracking(false);
+    setIsLocationFollowing(false);
     setGeoLocation(null);
   }, []);
 
@@ -117,14 +137,23 @@ const MapViewer = () => {
     (e: React.MouseEvent<HTMLButtonElement>) => {
       e.stopPropagation();
       e.preventDefault();
+      setIsLocationLoading(true);
 
-      if (isLocationTracking) {
+      if (isLocationTracking && isLocationFollowing) {
         stopLocationTracking();
       } else {
+        setIsLocationFollowing(isLocationTracking);
         updateCurrentLocation();
       }
+
+      setIsLocationLoading(false);
     },
-    [isLocationTracking, stopLocationTracking, updateCurrentLocation]
+    [
+      isLocationFollowing,
+      isLocationTracking,
+      stopLocationTracking,
+      updateCurrentLocation,
+    ]
   );
 
   // 컴포넌트 언마운트 시 위치 추적 중지
@@ -140,6 +169,7 @@ const MapViewer = () => {
       bounds={bounds}
       maxBounds={maxBounds}
       maxBoundsViscosity={1.0}
+      zoom={zoom}
       maxZoom={1.7}
       scrollWheelZoom={true}
       ref={setMap}
@@ -189,10 +219,14 @@ const MapViewer = () => {
         )}
       </ImageOverlay>
 
+      {/* 줌 이벤트 리스너 */}
+      <ZoomListener />
+
       {/* 내 위치 버튼 */}
       <Button
         variant="contained"
         color="secondary"
+        loading={isLocationLoading}
         sx={{
           padding: "8px",
           minWidth: "0",
@@ -206,9 +240,13 @@ const MapViewer = () => {
         onClick={handleMyLocationClick}
       >
         {isLocationTracking ? (
-          <MyLocationRoundedIcon />
+          isLocationFollowing ? (
+            <MyLocationRoundedIcon />
+          ) : (
+            <LocationSearchingRoundedIcon />
+          )
         ) : (
-          <LocationSearchingRoundedIcon />
+          <LocationDisabledRoundedIcon />
         )}
       </Button>
 
