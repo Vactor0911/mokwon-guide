@@ -17,7 +17,7 @@ const MapViewer = () => {
   ];
 
   const maxBounds: LatLngBoundsExpression = [
-    [0, -25],
+    [-100, -25],
     [960, 565],
   ];
 
