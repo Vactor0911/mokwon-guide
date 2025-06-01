@@ -1,7 +1,7 @@
 import { CssBaseline, Stack, ThemeProvider } from "@mui/material";
 import { theme } from "./theme";
-import { BrowserRouter, Route, Routes } from "react-router";
-import { About, Detail, Main } from "./pages";
+import { BrowserRouter, Navigate, Route, Routes } from "react-router";
+import { Detail, Main } from "./pages";
 import Header from "./components/Header";
 import { useEffect } from "react";
 
@@ -29,8 +29,8 @@ const App = () => {
           <Stack minHeight="calc(100vh - 64px)">
             <Routes>
               <Route path="/" element={<Main />} />
-              <Route path="/about" element={<About />} />
               <Route path="/detail/*" element={<Detail />} />
+              <Route path="*" element={<Navigate to={"/"} />} />
             </Routes>
           </Stack>
         </BrowserRouter>

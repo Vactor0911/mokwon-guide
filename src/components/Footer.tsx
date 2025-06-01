@@ -1,17 +1,8 @@
-import {
-  Box,
-  Button,
-  ButtonProps,
-  IconButton,
-  Stack,
-  Tooltip,
-  Typography,
-} from "@mui/material";
+import { Box, ButtonProps, IconButton, Stack, Tooltip } from "@mui/material";
 import MokwonIcon from "../assets/icons/Mokwon.png";
 import GoogleFormsIcon from "../assets/icons/GoogleForms.svg";
 import GitHubIcon from "../assets/icons/Github.svg";
 import { theme } from "../theme";
-import LocalCafeIcon from "@mui/icons-material/LocalCafe";
 import { useCallback } from "react";
 
 interface IconLinkButtonProps extends ButtonProps {
@@ -50,7 +41,7 @@ const IconLinkButton = (props: IconLinkButtonProps) => {
 const Footer = () => {
   // 링크 버튼 클릭
   const handleLinkButtonClick = useCallback((url: string) => {
-    window.location.href = url;
+    window.open(url, "_blank", "noopener,noreferrer");
   }, []);
 
   return (
@@ -62,34 +53,6 @@ const Footer = () => {
       }}
     >
       <Stack width="100%" maxWidth="500px" spacing={2}>
-        {/* Buy me a coffee 버튼 */}
-        <Button
-          startIcon={
-            <LocalCafeIcon
-              sx={{
-                color: "black",
-              }}
-            />
-          }
-          sx={{
-            background: "#F2F484",
-            borderRadius: "50px",
-          }}
-        >
-          <Typography
-            variant="h5"
-            color="black"
-            sx={{
-              fontSize: {
-                xs: "0.85rem",
-                sm: "1.25rem",
-              },
-            }}
-          >
-            개발자에게 따뜻한 커피 한 잔 사주기
-          </Typography>
-        </Button>
-
         {/* 외부 링크 컨테이너 */}
         <Stack
           direction="row"

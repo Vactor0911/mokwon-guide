@@ -9,6 +9,7 @@ import L, { CRS, LatLngBounds } from "leaflet";
 import MapImage from "/images/map.png";
 import { Alert, Button, Snackbar, SnackbarCloseReason } from "@mui/material";
 import { useCallback, useRef, useState } from "react";
+import GpsOffRoundedIcon from "@mui/icons-material/GpsOffRounded";
 import LocationSearchingRoundedIcon from "@mui/icons-material/LocationSearchingRounded";
 import MyLocationRoundedIcon from "@mui/icons-material/MyLocationRounded";
 import { geoToXY } from "../utils";
@@ -97,6 +98,7 @@ const MapViewer = () => {
       handleAlertOpen("위치 정보를 가져올 수 없습니다.");
       setIsLocationTracking(false);
       setIsLocationFollowing(false);
+      setGeoLocation(null);
       return;
     }
 
@@ -125,6 +127,7 @@ const MapViewer = () => {
         handleAlertOpen("위치 정보를 가져올 수 없습니다.");
         setIsLocationTracking(false);
         setIsLocationFollowing(false);
+        setGeoLocation(null);
         watchIdRef.current = null;
       },
       {
@@ -154,6 +157,12 @@ const MapViewer = () => {
       e.stopPropagation();
       e.preventDefault();
 
+      // 위치 추적이 비활성화 상태면 위치 정보 업데이트
+      if (!isLocationTracking) {
+        updateCurrentLocation();
+        return;
+      }
+
       const newIsLocationFollowing = !isLocationFollowing;
       setIsLocationFollowing(newIsLocationFollowing);
       isLocationFollowingRef.current = newIsLocationFollowing;
@@ -165,7 +174,13 @@ const MapViewer = () => {
         });
       }
     },
-    [geoLocation, isLocationFollowing, map, zoom]
+    [
+      geoLocation,
+      isLocationFollowing,
+      isLocationTracking,
+      updateCurrentLocation,
+      zoom,
+    ]
   );
 
   // 컴포넌트 언마운트 시 위치 추적 중지
@@ -177,19 +192,6 @@ const MapViewer = () => {
     };
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
-
-  // 내 위치 탐색 실패시 5초마다 재시도
-  useEffect(() => {
-    if (isLocationTracking) {
-      return;
-    }
-
-    const intervalId = setInterval(() => {
-      updateCurrentLocation();
-    }, 5000);
-
-    return () => clearInterval(intervalId);
-  }, [isLocationTracking, updateCurrentLocation]);
 
   return (
     <MapContainer
@@ -254,7 +256,7 @@ const MapViewer = () => {
       <Button
         variant="contained"
         color="secondary"
-        loading={!isLocationTracking}
+        loading={isLocationTracking && !geoLocation}
         sx={{
           padding: "8px",
           minWidth: "0",
@@ -267,10 +269,14 @@ const MapViewer = () => {
         }}
         onClick={handleMyLocationClick}
       >
-        {isLocationFollowing ? (
-          <MyLocationRoundedIcon />
+        {isLocationTracking ? (
+          isLocationFollowing ? (
+            <MyLocationRoundedIcon />
+          ) : (
+            <LocationSearchingRoundedIcon />
+          )
         ) : (
-          <LocationSearchingRoundedIcon />
+          <GpsOffRoundedIcon />
         )}
       </Button>
 
