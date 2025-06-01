@@ -93,24 +93,39 @@ const DrawerMenu = () => {
 
           {/* 페이지 네비게이션 */}
           <Stack spacing={3}>
-            {[
-              { to: "/", text: "교내 지도" },
-              { to: "/about", text: "소개" },
-            ].map((data, index) => (
-              <DrawerNavLink to={data.to} onClick={handleCloseAll} key={index}>
-                <Typography
-                  variant="h5"
-                  color="white"
-                  sx={{
-                    cursor: "pointer",
-                  }}
-                >
-                  {data.text}
-                </Typography>
-              </DrawerNavLink>
-            ))}
+            {/* 교내 지도 */}
+            <DrawerNavLink to="/" onClick={handleCloseAll}>
+              <Typography
+                variant="h5"
+                color="white"
+                sx={{
+                  cursor: "pointer",
+                }}
+              >
+                교내 지도
+              </Typography>
+            </DrawerNavLink>
 
-            {/* 건물 상세 버튼 */}
+            {/* 소개 */}
+            <Typography
+              variant="h5"
+              color="white"
+              onClick={() => {
+                handleCloseAll();
+                window.open(
+                  "https://github.com/Vactor0911/mokwon-guide",
+                  "_blank",
+                  "noopener,noreferrer"
+                );
+              }}
+              sx={{
+                cursor: "pointer",
+              }}
+            >
+              소개
+            </Typography>
+
+            {/* 건물 상세 */}
             <Stack
               direction="row"
               justifyContent="space-between"
@@ -134,7 +149,6 @@ const DrawerMenu = () => {
                 }}
               />
             </Stack>
-
             {/* 건물 상세 컨테이너 */}
             <Collapse in={isAccordionOpen}>
               <Stack

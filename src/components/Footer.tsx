@@ -41,7 +41,7 @@ const IconLinkButton = (props: IconLinkButtonProps) => {
 const Footer = () => {
   // 링크 버튼 클릭
   const handleLinkButtonClick = useCallback((url: string) => {
-    window.location.href = url;
+    window.open(url, "_blank", "noopener,noreferrer");
   }, []);
 
   return (
