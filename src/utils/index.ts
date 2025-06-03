@@ -95,8 +95,14 @@ export const geoToXY = (lat: number, lng: number): [number, number] => {
   const dy = lng - BASE_LONGITUDE;
 
   // 위도와 경도 좌표를 기준점을 기준으로 회전
-  const rotatedX = dx * Math.cos(angleRad) - dy * Math.sin(angleRad);
-  const rotatedY = dx * Math.sin(angleRad) + dy * Math.cos(angleRad);
+  let rotatedX = dx * Math.cos(angleRad) - dy * Math.sin(angleRad);
+  let rotatedY = dx * Math.sin(angleRad) + dy * Math.cos(angleRad);
+
+  // 1차 좌표 보정
+  if (rotatedX > 0 && rotatedY < 0.0038) {
+    rotatedX -= rotatedX * 0.2;
+  }
+  rotatedY += Math.abs(rotatedY) * 0.04;
 
   // 실제 지도와 일치하도록 좌표 보정
   const finalX = -rotatedX * SCALE_FACTOR + OFFSET_X;
