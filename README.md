@@ -1,4 +1,4 @@
-ㅁ# 🗺️ 목원 길잡이
+# 🗺️ 목원 길잡이
 
 <div align="center">
     <div style="display: flex; flex-direction: column;">
