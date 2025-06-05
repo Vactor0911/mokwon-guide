@@ -1,6 +1,15 @@
-import { Box, ButtonProps, IconButton, Stack, Tooltip } from "@mui/material";
+import {
+  Box,
+  Button,
+  ButtonProps,
+  IconButton,
+  Stack,
+  Tooltip,
+  Typography,
+} from "@mui/material";
 import MokwonIcon from "../assets/icons/Mokwon.png";
-import GoogleFormsIcon from "../assets/icons/GoogleForms.svg";
+import MokwonViewIcon from "../assets/icons/MokwonView.png";
+import CampaignRoundedIcon from "@mui/icons-material/CampaignRounded";
 import GitHubIcon from "../assets/icons/Github.svg";
 import { theme } from "../theme";
 import { useCallback } from "react";
@@ -9,7 +18,7 @@ interface IconLinkButtonProps extends ButtonProps {
   iconImage: string;
   alt: string;
   tooltip: string;
-  style?: React.CSSProperties;
+  sx?: React.CSSProperties;
 }
 
 // 아이콘 링크 버튼 컴포넌트
@@ -53,6 +62,32 @@ const Footer = () => {
       }}
     >
       <Stack width="100%" maxWidth="500px" spacing={2}>
+        {/* 구글폼 버튼 */}
+        <Button
+          color="inherit"
+          sx={{
+            padding: "4px",
+            background: "#f2f484",
+            borderRadius: "50px",
+          }}
+          onClick={() =>
+            handleLinkButtonClick(
+              "https://docs.google.com/forms/d/1_cw78MTL8nG2rP3Q93avoQO-mhJgmOYpZM9snBP9vPE/"
+            )
+          }
+        >
+          <CampaignRoundedIcon
+            sx={{
+              mr: 1,
+            }}
+          />
+
+          {/* 구글폼 문구 */}
+          <Typography variant="h6" color="black">
+            소중한 의견을 남겨주세요!
+          </Typography>
+        </Button>
+
         {/* 외부 링크 컨테이너 */}
         <Stack
           direction="row"
@@ -68,7 +103,7 @@ const Footer = () => {
             iconImage={MokwonIcon}
             alt="Mokwon University"
             tooltip="목원대학교"
-            style={{
+            sx={{
               transform: "translateY(2px)",
             }}
             onClick={() =>
@@ -81,7 +116,7 @@ const Footer = () => {
             iconImage={MokwonIcon}
             alt="Mokwon University Computer Science"
             tooltip="목원대학교 컴퓨터공학과"
-            style={{
+            sx={{
               transform: "translateY(2px)",
             }}
             onClick={() =>
@@ -89,16 +124,20 @@ const Footer = () => {
             }
           />
 
-          {/* 구글 폼 버튼 */}
+          {/* 목원뷰 버튼 */}
           <IconLinkButton
-            iconImage={GoogleFormsIcon}
-            alt="Google Form"
-            tooltip="구글 폼"
+            iconImage={MokwonViewIcon}
+            alt="Mokwon View"
+            tooltip="목원뷰"
             onClick={() =>
               handleLinkButtonClick(
                 "https://docs.google.com/forms/d/1_cw78MTL8nG2rP3Q93avoQO-mhJgmOYpZM9snBP9vPE/"
               )
             }
+            sx={{
+              height: "auto",
+              transform: "scale(1.2)",
+            }}
           />
 
           {/* 깃허브 리포지토리 버튼 */}
