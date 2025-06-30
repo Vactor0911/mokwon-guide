@@ -131,9 +131,10 @@ const HighLightedText = (props: HighlightedTextProps) => {
         color={color}
         sx={{
           "&.scroll-text-active": {
-            animation: `${movingAnimation} ${
-              overflowedWidth / 50
-            }s linear infinite`,
+            animation:
+              overflowedWidth > 0
+                ? `${movingAnimation} ${overflowedWidth / 50 + 2}s linear infinite`
+                : "none",
           },
         }}
       >
