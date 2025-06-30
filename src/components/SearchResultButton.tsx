@@ -146,7 +146,7 @@ const FacilityItemButton = (props: FacilityItemButtonProps) => {
           )}
 
           {/* 텍스트 */}
-          <Stack flex={1} overflow="hidden">
+          <Stack flex={1} overflow="hidden" marginRight={deleteBtn ? 5 : 0}>
             <HighLightedText
               className={`scroll-text-${isMouseHover ? "active" : ""}`}
               text={item.name}
@@ -170,8 +170,8 @@ const FacilityItemButton = (props: FacilityItemButtonProps) => {
           sx={{
             position: "absolute",
             top: "50%",
-            right: 2,
-            transform: "translate(-50%, -50%)",
+            right: 0,
+            transform: "translate(-25%, -50%)",
             zIndex: 5,
           }}
           onMouseEnter={() => handleRippleDisable(true)}
