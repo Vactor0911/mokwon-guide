@@ -1,38 +1,15 @@
-import { Color, Stack, Typography, TypographyVariant } from "@mui/material";
+import { keyframes, Stack, Typography, TypographyProps } from "@mui/material";
 import { theme } from "../theme";
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useCallback, useLayoutEffect, useMemo, useRef, useState } from "react";
 
-interface HighlightedTextProps {
+interface HighlightedTextProps extends TypographyProps {
   text: string;
   keyword: string;
-  variant: TypographyVariant;
-  baseColor: string | Color;
   className?: string;
 }
 
 const HighLightedText = (props: HighlightedTextProps) => {
-  const { text, keyword, variant, baseColor, className } = props;
-
-  // 키워드 기반 하이라이트 할 문자 인덱스 추출
-  const [results, setResults] = useState<boolean[]>([]);
-
-  // 키워드가 변경될 때마다 리렌더링
-  useEffect(() => {
-    let counter = 0;
-    const newResults: boolean[] = [];
-
-    for (let i = 0; i < text.length; i++) {
-      const isMatched =
-        text.charAt(i).trim().toLowerCase() ===
-        keyword.charAt(counter).toLowerCase();
-      newResults.push(isMatched);
-      if (isMatched) {
-        counter++;
-      }
-    }
-
-    setResults(newResults);
-  }, [keyword, text]);
+  const { text, keyword, className, variant, color } = props;
 
   // container와 child 텍스트의 너비를 측정하기 위한 ref
   const containerRef = useRef<HTMLDivElement>(null);
@@ -48,56 +25,121 @@ const HighLightedText = (props: HighlightedTextProps) => {
     }
   }, [text]);
 
-  const overflow = childWidth > containerWidth; // 오버플로우 여부 판단
+  const overflowedWidth = useMemo(
+    () => childWidth - containerWidth,
+    [childWidth, containerWidth]
+  ); // 오버플로우된 너비
+
+  const movingAnimation = useMemo(
+    () =>
+      keyframes({
+        "0%": { transform: "translateX(0px)" },
+        "50%": { transform: `translateX(-${overflowedWidth}px)` },
+        "100%": { transform: `translateX(-${overflowedWidth}px)` },
+      }),
+    [overflowedWidth]
+  );
+
+  const hasKeyword = useCallback(() => {
+    // 키워드가 없다면
+    if (!keyword) {
+      return false;
+    }
+
+    // 텍스트 내에 키워드가 포함되어 있는지 확인
+    const formattedText = text.toLowerCase().replace(/[^a-zA-Z0-9가-힣]/g, "");
+    const formattedKeyword = keyword
+      .toLowerCase()
+      .replace(/[^a-zA-Z0-9가-힣]/g, "");
+    return formattedText.includes(formattedKeyword);
+  }, [keyword, text]);
 
   // 렌더링할 텍스트 요소
-  const content = text.split("").map((char, index) => (
-    <Typography
-      key={`search-result-${text}-${index}`}
-      variant={variant}
-      sx={{
-        color: results[index] ? theme.palette.primary.main : String(baseColor),
-      }}
-    >
-      {char}
-    </Typography>
-  ));
+  const content = useMemo(() => {
+    // 키워드가 없거나 키워드가 포함되지 않으면 원본 텍스트 그대로 반환
+    if (!keyword || !hasKeyword()) {
+      return text;
+    }
+
+    // 키워드에 맞게 텍스트 분할
+    const splittedText: React.ReactNode[] = [];
+    let keywordIndex = 0;
+    let temp = "";
+    let matchKeyword = true;
+    const loweredText = text.toLowerCase();
+    const loweredKeyword = keyword.toLowerCase();
+
+    for (let i = 0; i < text.length; i++) {
+      // 텍스트와 키워드 비교
+      const isEqual = loweredText[i] === loweredKeyword[keywordIndex];
+
+      if (isEqual === matchKeyword) {
+        // 키워드 인덱스 증가
+        if (matchKeyword) {
+          keywordIndex++;
+        }
+      } else {
+        // 일치하지 않는 경우
+        if (temp) {
+          splittedText.push(
+            <span
+              key={`highlighted-text-${splittedText.length}`}
+              style={{
+                color: matchKeyword ? theme.palette.primary.main : "inherit",
+              }}
+            >
+              {temp}
+            </span>
+          );
+          temp = "";
+        }
+        matchKeyword = !matchKeyword;
+
+        if (isEqual) {
+          keywordIndex++;
+        }
+      }
+
+      temp += text[i];
+    }
+
+    // 마지막 남은 텍스트 처리
+    if (temp) {
+      splittedText.push(
+        <span
+          key={`highlighted-text-${splittedText.length}`}
+          style={{
+            color: matchKeyword ? theme.palette.primary.main : "inherit",
+          }}
+        >
+          {temp}
+        </span>
+      );
+    }
+
+    return splittedText;
+  }, [hasKeyword, keyword, text]);
 
   return (
     // 스크롤 루트 컨테이너
-    <Stack
-      ref={containerRef}
-      direction="row"
-      overflow="hidden"
-      sx={{ position: "relative" }}
-    >
-      {/* 스크롤 대상 컨테이너 */}
-      <Stack
-        className={overflow ? className : ""}
-        direction="row"
+    <Stack ref={containerRef} direction="row" overflow="hidden">
+      <Typography
+        ref={childRef}
+        className={className}
+        whiteSpace="nowrap"
+        variant={variant}
+        color={color}
         sx={{
-          display: "flex",
-          width: overflow ? childWidth * 2 : "auto",
-          ...(overflow && {
-            "@keyframes movingAnimation": {
-              from: { transform: "translateX(0px)" },
-              to: { transform: `translateX(calc(-${childWidth}px - 32px))` },
-            },
-          }),
+          "&.scroll-text-active": {
+            animation:
+              overflowedWidth > 0
+                ? `${movingAnimation} ${overflowedWidth / 50 + 2}s linear infinite`
+                : "none",
+          },
         }}
       >
-        {/* 원본 텍스트 */}
-        <Stack ref={childRef} direction="row" sx={{ flexShrink: 0 }}>
-          {content}
-        </Stack>
-
-        {/* 오버플로우시 보여질 복제 텍스트 */}
-        {overflow && (
-          <Stack direction="row" ml="32px" sx={{ flexShrink: 0 }}>
-            {content}
-          </Stack>
-        )}
-      </Stack>
+        {content}
+      </Typography>
     </Stack>
   );
 };

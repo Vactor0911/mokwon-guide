@@ -34,6 +34,7 @@ const FacilityItemButton = (props: FacilityItemButtonProps) => {
   const setSelectedFacility = useSetAtom(selectedFacilityAtom); // 선택된 시설
 
   const [isRippleDisabled, setIsRippleDisabled] = useState(false); // 검색 기록 버튼 리플 비활성화 상태
+  const [isTextAnimationActive, setIsTextAnimationActive] = useState(false); // 텍스트 애니메이션 활성화 상태
 
   /**
    * 검색 기록을 추가하는 함수
@@ -115,10 +116,12 @@ const FacilityItemButton = (props: FacilityItemButtonProps) => {
         sx={{
           px: 2,
           borderRadius: 0,
-          "&:hover div.scroll-text, &:active  div.scroll-text": {
-            animation: "movingAnimation 5s linear infinite",
-          },
         }}
+        onMouseEnter={() => setIsTextAnimationActive(true)}
+        onMouseLeave={() => setIsTextAnimationActive(false)}
+        onTouchStart={() => setIsTextAnimationActive(true)}
+        onTouchEnd={() => setIsTextAnimationActive(false)}
+        onTouchCancel={() => setIsTextAnimationActive(false)}
         onClick={handleButtonClick}
         {...others}
       >
@@ -138,19 +141,19 @@ const FacilityItemButton = (props: FacilityItemButtonProps) => {
           )}
 
           {/* 텍스트 */}
-          <Stack flex={1} overflow="hidden">
+          <Stack flex={1} overflow="hidden" marginRight={deleteBtn ? 5 : 0}>
             <HighLightedText
-              className="scroll-text"
+              className={`scroll-text${isTextAnimationActive ? "-active" : ""}`}
               text={item.name}
               keyword={keyword}
               variant="h6"
-              baseColor="black"
+              color="black"
             />
             <HighLightedText
               text={item.id}
               keyword={keyword}
               variant="subtitle2"
-              baseColor={grey[500]}
+              color={grey[500]}
             />
           </Stack>
         </Stack>
@@ -162,8 +165,8 @@ const FacilityItemButton = (props: FacilityItemButtonProps) => {
           sx={{
             position: "absolute",
             top: "50%",
-            right: 2,
-            transform: "translate(-50%, -50%)",
+            right: 0,
+            transform: "translate(-25%, -50%)",
             zIndex: 5,
           }}
           onMouseEnter={() => handleRippleDisable(true)}
