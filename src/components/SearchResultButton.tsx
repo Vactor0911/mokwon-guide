@@ -34,6 +34,7 @@ const FacilityItemButton = (props: FacilityItemButtonProps) => {
   const setSelectedFacility = useSetAtom(selectedFacilityAtom); // 선택된 시설
 
   const [isRippleDisabled, setIsRippleDisabled] = useState(false); // 검색 기록 버튼 리플 비활성화 상태
+  const [isMouseHover, setIsMouseHover] = useState(false); // 마우스 오버 상태
 
   /**
    * 검색 기록을 추가하는 함수
@@ -102,6 +103,14 @@ const FacilityItemButton = (props: FacilityItemButtonProps) => {
     setSearchHistory(newSearchHistory);
   }, [item.id, searchHistory, setSearchHistory]);
 
+  const handleMouseEnter = useCallback(() => {
+    setIsMouseHover(true);
+  }, []);
+
+  const handleMouseLeave = useCallback(() => {
+    setIsMouseHover(false);
+  }, []);
+
   // item이 없을 경우 렌더 중단
   if (!item) {
     return null;
@@ -115,10 +124,9 @@ const FacilityItemButton = (props: FacilityItemButtonProps) => {
         sx={{
           px: 2,
           borderRadius: 0,
-          "&:hover div.scroll-text, &:active  div.scroll-text": {
-            animation: "movingAnimation 5s linear infinite",
-          },
         }}
+        onMouseEnter={handleMouseEnter}
+        onMouseLeave={handleMouseLeave}
         onClick={handleButtonClick}
         {...others}
       >
@@ -140,17 +148,17 @@ const FacilityItemButton = (props: FacilityItemButtonProps) => {
           {/* 텍스트 */}
           <Stack flex={1} overflow="hidden">
             <HighLightedText
-              className="scroll-text"
+              className={`scroll-text-${isMouseHover ? "active" : ""}`}
               text={item.name}
               keyword={keyword}
               variant="h6"
-              baseColor="black"
+              color="black"
             />
             <HighLightedText
               text={item.id}
               keyword={keyword}
               variant="subtitle2"
-              baseColor={grey[500]}
+              color={grey[500]}
             />
           </Stack>
         </Stack>
