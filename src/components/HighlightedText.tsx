@@ -25,20 +25,19 @@ const HighLightedText = (props: HighlightedTextProps) => {
     }
   }, [text]);
 
-  const overflowedWitdh = useMemo(
+  const overflowedWidth = useMemo(
     () => childWidth - containerWidth,
     [childWidth, containerWidth]
-  ); // 오버플로우 여부 판단
-  console.log(text, overflowedWitdh);
+  ); // 오버플로우된 너비
 
   const movingAnimation = useMemo(
     () =>
       keyframes({
         "0%": { transform: "translateX(0px)" },
-        "50%": { transform: `translateX(-${overflowedWitdh}px)` },
-        "100%": { transform: `translateX(-${overflowedWitdh}px)` },
+        "50%": { transform: `translateX(-${overflowedWidth}px)` },
+        "100%": { transform: `translateX(-${overflowedWidth}px)` },
       }),
-    [overflowedWitdh]
+    [overflowedWidth]
   );
 
   const hasKeyword = useCallback(() => {
@@ -132,9 +131,10 @@ const HighLightedText = (props: HighlightedTextProps) => {
         color={color}
         sx={{
           "&.scroll-text-active": {
-            animation: `${movingAnimation} ${
-              overflowedWitdh / 50
-            }s linear infinite`,
+            animation:
+              overflowedWidth > 0
+                ? `${movingAnimation} ${overflowedWidth / 50 + 2}s linear infinite`
+                : "none",
           },
         }}
       >
