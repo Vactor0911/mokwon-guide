@@ -25,7 +25,7 @@ const HighLightedText = (props: HighlightedTextProps) => {
     }
   }, [text]);
 
-  const overflowedWitdh = useMemo(
+  const overflowedWidth = useMemo(
     () => childWidth - containerWidth,
     [childWidth, containerWidth]
   ); // 오버플로우된 너비
@@ -34,10 +34,10 @@ const HighLightedText = (props: HighlightedTextProps) => {
     () =>
       keyframes({
         "0%": { transform: "translateX(0px)" },
-        "50%": { transform: `translateX(-${overflowedWitdh}px)` },
-        "100%": { transform: `translateX(-${overflowedWitdh}px)` },
+        "50%": { transform: `translateX(-${overflowedWidth}px)` },
+        "100%": { transform: `translateX(-${overflowedWidth}px)` },
       }),
-    [overflowedWitdh]
+    [overflowedWidth]
   );
 
   const hasKeyword = useCallback(() => {
@@ -132,7 +132,7 @@ const HighLightedText = (props: HighlightedTextProps) => {
         sx={{
           "&.scroll-text-active": {
             animation: `${movingAnimation} ${
-              overflowedWitdh / 50
+              overflowedWidth / 50
             }s linear infinite`,
           },
         }}
