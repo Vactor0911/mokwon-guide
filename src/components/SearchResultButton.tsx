@@ -148,7 +148,7 @@ const FacilityItemButton = (props: FacilityItemButtonProps) => {
           {/* 텍스트 */}
           <Stack flex={1} overflow="hidden" marginRight={deleteBtn ? 5 : 0}>
             <HighLightedText
-              className={`scroll-text-${isMouseHover ? "active" : ""}`}
+              className={`scroll-text${isMouseHover ? "-active" : ""}`}
               text={item.name}
               keyword={keyword}
               variant="h6"
