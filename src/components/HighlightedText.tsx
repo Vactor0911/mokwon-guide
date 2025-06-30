@@ -28,8 +28,7 @@ const HighLightedText = (props: HighlightedTextProps) => {
   const overflowedWitdh = useMemo(
     () => childWidth - containerWidth,
     [childWidth, containerWidth]
-  ); // 오버플로우 여부 판단
-  console.log(text, overflowedWitdh);
+  ); // 오버플로우된 너비
 
   const movingAnimation = useMemo(
     () =>
