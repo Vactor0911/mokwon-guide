@@ -8,6 +8,7 @@ import {
   Typography,
 } from "@mui/material";
 import MokwonIcon from "../assets/icons/Mokwon.png";
+import ComputerEngineeringIcon from "../assets/icons/dept-computer-engineering.png";
 import MokwonViewIcon from "../assets/icons/MokwonView.png";
 import CampaignRoundedIcon from "@mui/icons-material/CampaignRounded";
 import GitHubIcon from "../assets/icons/Github.svg";
@@ -113,10 +114,13 @@ const Footer = () => {
 
           {/* 목원대학교 컴공과 버튼 */}
           <IconLinkButton
-            iconImage={MokwonIcon}
-            alt="Mokwon University Computer Science"
+            iconImage={ComputerEngineeringIcon}
+            alt="Mokwon University Computer Engineering"
             tooltip="목원대학교 컴퓨터공학과"
             sx={{
+              padding: 0.5,
+              backgroundColor: "#ac1d3d",
+              borderRadius: "50%",
               transform: "translateY(2px)",
             }}
             onClick={() =>
@@ -131,7 +135,7 @@ const Footer = () => {
             tooltip="목원뷰"
             onClick={() =>
               handleLinkButtonClick(
-                "https://docs.google.com/forms/d/1_cw78MTL8nG2rP3Q93avoQO-mhJgmOYpZM9snBP9vPE/"
+                "https://www.mokwon.ac.kr/view/html/sub05/0501.html"
               )
             }
             sx={{
