@@ -121,7 +121,6 @@ const Footer = () => {
               padding: 0.5,
               backgroundColor: "#ac1d3d",
               borderRadius: "50%",
-              transform: "translateY(2px)",
             }}
             onClick={() =>
               handleLinkButtonClick("https://mokwon.ac.kr/computer/")
