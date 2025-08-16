@@ -140,8 +140,9 @@ const Footer = () => {
               )
             }
             sx={{
-              height: "auto",
-              transform: "scale(1.2)",
+              padding: 0.25,
+              backgroundColor: "white",
+              borderRadius: "50%",
             }}
           />
 
