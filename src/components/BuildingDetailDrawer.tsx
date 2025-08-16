@@ -6,8 +6,8 @@ import {
   Stack,
   SwipeableDrawer,
   Typography,
+  useTheme,
 } from "@mui/material";
-import { theme } from "../theme";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import SearchRoundedIcon from "@mui/icons-material/SearchRounded";
 import { useAtom, useAtomValue } from "jotai";
@@ -20,6 +20,7 @@ import { useNavigate } from "react-router";
 
 const BuildingDetailDrawer = () => {
   const navigate = useNavigate(); // 리다이렉트 네비게이션
+  const theme = useTheme();
 
   const buildingDetailDrawerBuilding = useAtomValue(
     buildingDetailDrawerBuildingAtom

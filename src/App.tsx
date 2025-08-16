@@ -1,5 +1,5 @@
 import { CssBaseline, Stack, ThemeProvider } from "@mui/material";
-import { theme } from "./theme";
+import { theme } from "./utils/theme";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router";
 import { Detail, Main } from "./pages";
 import Header from "./components/Header";

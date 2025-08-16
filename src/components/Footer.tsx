@@ -6,13 +6,13 @@ import {
   Stack,
   Tooltip,
   Typography,
+  useTheme,
 } from "@mui/material";
 import MokwonIcon from "../assets/icons/Mokwon.png";
 import ComputerEngineeringIcon from "../assets/icons/dept-computer-engineering.png";
 import MokwonViewIcon from "../assets/icons/MokwonView.png";
 import CampaignRoundedIcon from "@mui/icons-material/CampaignRounded";
 import GitHubIcon from "../assets/icons/Github.svg";
-import { theme } from "../theme";
 import { useCallback } from "react";
 
 interface IconLinkButtonProps extends ButtonProps {
@@ -49,6 +49,8 @@ const IconLinkButton = (props: IconLinkButtonProps) => {
 };
 
 const Footer = () => {
+  const theme = useTheme();
+
   // 링크 버튼 클릭
   const handleLinkButtonClick = useCallback((url: string) => {
     window.open(url, "_blank", "noopener,noreferrer");
