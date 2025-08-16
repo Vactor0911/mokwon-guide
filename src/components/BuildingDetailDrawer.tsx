@@ -17,6 +17,8 @@ import {
 } from "../states";
 import { useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router";
+import RadioButtonCheckedRoundedIcon from "@mui/icons-material/RadioButtonCheckedRounded";
+import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
 
 const BuildingDetailDrawer = () => {
   const navigate = useNavigate(); // 리다이렉트 네비게이션
@@ -188,10 +190,9 @@ const BuildingDetailDrawer = () => {
         </Button>
 
         {/* 네비게이션 버튼 */}
-        {/* TODO: 추후에 개발할 예정 */}
-        <Stack direction="row" justifyContent="flex-end" gap={2}>
+        <Stack direction="row" justifyContent="flex-end" marginTop={1} gap={2}>
           {/* 출발 */}
-          {/* <Button
+          <Button
             variant="contained"
             color="info"
             startIcon={<RadioButtonCheckedRoundedIcon color="secondary" />}
@@ -202,10 +203,10 @@ const BuildingDetailDrawer = () => {
             <Typography variant="h6" color="secondary">
               출발
             </Typography>
-          </Button> */}
+          </Button>
 
           {/* 도착 */}
-          {/* <Button
+          <Button
             variant="contained"
             color="secondary"
             startIcon={<LocationOnOutlinedIcon />}
@@ -214,7 +215,7 @@ const BuildingDetailDrawer = () => {
             }}
           >
             <Typography variant="h6">도착</Typography>
-          </Button> */}
+          </Button>
         </Stack>
       </Stack>
     </SwipeableDrawer>
