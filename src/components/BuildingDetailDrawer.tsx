@@ -71,11 +71,16 @@ const BuildingDetailDrawer = () => {
       onOpen={() => setIsBuildingDetailDrawerOpen(true)}
       swipeAreaWidth={56}
       disableSwipeToOpen
-      sx={{
-        "& > .MuiPaper-root": {
-          alignItems: "center",
-          background: "transparent",
-          boxShadow: "none",
+      slotProps={{
+        paper: {
+          sx: {
+            width: "min-content",
+            margin: "0 auto",
+            transform: "translateX(-50%)",
+            alignItems: "center",
+            background: "transparent",
+            boxShadow: "none",
+          },
         },
       }}
     >
