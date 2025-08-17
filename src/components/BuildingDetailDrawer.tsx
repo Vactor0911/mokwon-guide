@@ -14,6 +14,7 @@ import { useAtom, useAtomValue } from "jotai";
 import {
   buildingDetailDrawerBuildingAtom,
   isBuildingDetailDrawerOpenAtom,
+  routeAtom,
 } from "../states";
 import { useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router";
@@ -34,6 +35,7 @@ const BuildingDetailDrawer = () => {
   const [imageSrc, setImageSrc] = useState<string | null>(null); // 이미지 경로
   const [isImageLoaded, setIsImageLoaded] = useState(false); // 이미지 로딩 여부
   const [isImageError, setIsImageError] = useState(false); // 이미지 로딩 실패 여부
+  const [route, setRoute] = useAtom(routeAtom); // 네비게이션 경로 상태
 
   // 이미지 경로 및 상태 초기화
   useEffect(() => {
@@ -61,6 +63,38 @@ const BuildingDetailDrawer = () => {
     buildingDetailDrawerBuilding?.id,
     navigate,
     setIsBuildingDetailDrawerOpen,
+  ]);
+
+  // 출발 버튼 클릭
+  const handleOriginButtonClick = useCallback(() => {
+    const newRoute = {
+      origin: `${buildingDetailDrawerBuilding?.id} ${buildingDetailDrawerBuilding?.name}`,
+      destination: route.destination,
+    };
+    setRoute(newRoute);
+    setIsBuildingDetailDrawerOpen(false);
+  }, [
+    buildingDetailDrawerBuilding?.id,
+    buildingDetailDrawerBuilding?.name,
+    route.destination,
+    setIsBuildingDetailDrawerOpen,
+    setRoute,
+  ]);
+
+  // 도착 버튼 클릭
+  const handleDestinationButtonClick = useCallback(() => {
+    const newRoute = {
+      origin: route.origin,
+      destination: `${buildingDetailDrawerBuilding?.id} ${buildingDetailDrawerBuilding?.name}`,
+    };
+    setRoute(newRoute);
+    setIsBuildingDetailDrawerOpen(false);
+  }, [
+    buildingDetailDrawerBuilding?.id,
+    buildingDetailDrawerBuilding?.name,
+    route.origin,
+    setIsBuildingDetailDrawerOpen,
+    setRoute,
   ]);
 
   return (
@@ -204,6 +238,7 @@ const BuildingDetailDrawer = () => {
             sx={{
               borderRadius: "50px",
             }}
+            onClick={handleOriginButtonClick}
           >
             <Typography variant="h6" color="secondary">
               출발
@@ -218,6 +253,7 @@ const BuildingDetailDrawer = () => {
             sx={{
               borderRadius: "50px",
             }}
+            onClick={handleDestinationButtonClick}
           >
             <Typography variant="h6">도착</Typography>
           </Button>

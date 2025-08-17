@@ -34,7 +34,12 @@ const Header = () => {
   return (
     <>
       {/* 헤더 */}
-      <AppBar position="relative">
+      <AppBar
+        position="relative"
+        sx={{
+          zIndex: 1100,
+        }}
+      >
         <Toolbar sx={{ justifyContent: "space-between", boxShadow: 3 }}>
           {/* 메뉴 버튼 */}
           <IconButton
