@@ -45,7 +45,7 @@ export const buildingDetailDrawerBuildingAtom =
 export const selectedFacilityAtom = atom<FacilityInterface | null>(null);
 
 // 네비게이션 경로 상태
-export const routeAtom = atom<{
+export const pointAtom = atom<{
   origin: string;
   destination: string;
 }>({

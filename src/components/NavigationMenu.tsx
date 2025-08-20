@@ -9,7 +9,7 @@ import {
   useTheme,
 } from "@mui/material";
 import { useAtom } from "jotai";
-import { routeAtom } from "../states";
+import { pointAtom } from "../states";
 import SwapVertRoundedIcon from "@mui/icons-material/SwapVertRounded";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import TripOriginRoundedIcon from "@mui/icons-material/TripOriginRounded";
@@ -24,7 +24,7 @@ const NavigationMenu = () => {
 
   const [swapButtonAngle, setSwapButtonAngle] = useState(0);
 
-  const [route, setRoute] = useAtom(routeAtom);
+  const [point, setPoint] = useAtom(pointAtom);
   const options = BuildingData.map(
     (building) => `${building.id} ${building.name}`
   );
@@ -35,42 +35,42 @@ const NavigationMenu = () => {
     setSwapButtonAngle((prev) => prev + 180);
 
     // 지점 교체
-    setRoute((prev) => ({
+    setPoint((prev) => ({
       origin: prev.destination,
       destination: prev.origin,
     }));
-  }, [setRoute]);
+  }, [setPoint]);
 
   // 닫기 버튼 클릭
   const handleCloseButtonClick = useCallback(() => {
-    setRoute({ origin: "", destination: "" });
-  }, [setRoute]);
+    setPoint({ origin: "", destination: "" });
+  }, [setPoint]);
 
   // 출발지 변경
   const handleOriginChange = useCallback(
     (_event: React.SyntheticEvent, value: string | null) => {
-      setRoute((prev) => ({
+      setPoint((prev) => ({
         ...prev,
         origin: value ?? "",
       }));
     },
-    [setRoute]
+    [setPoint]
   );
 
   // 도착지 변경
   const handleDestinationChange = useCallback(
     (_event: React.SyntheticEvent, value: string | null) => {
-      setRoute((prev) => ({
+      setPoint((prev) => ({
         ...prev,
         destination: value ?? "",
       }));
     },
-    [setRoute]
+    [setPoint]
   );
 
   return (
     <Slide
-      in={!!route.origin || !!route.destination}
+      in={!!point.origin || !!point.destination}
       direction="down"
       mountOnEnter
       unmountOnExit
@@ -103,7 +103,7 @@ const NavigationMenu = () => {
               <Autocomplete
                 fullWidth
                 options={options}
-                value={route.origin}
+                value={point.origin}
                 onChange={handleOriginChange}
                 renderInput={(params) => (
                   <TextField
@@ -133,7 +133,7 @@ const NavigationMenu = () => {
               <Autocomplete
                 fullWidth
                 options={options}
-                value={route.destination}
+                value={point.destination}
                 onChange={handleDestinationChange}
                 renderInput={(params) => (
                   <TextField
@@ -166,6 +166,7 @@ const NavigationMenu = () => {
 
         {/* 길찾기 결과 */}
         <Stack
+          height={p}
           direction="row"
           justifyContent="space-evenly"
           alignItems="center"

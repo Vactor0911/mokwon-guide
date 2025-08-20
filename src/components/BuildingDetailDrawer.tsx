@@ -14,7 +14,7 @@ import { useAtom, useAtomValue } from "jotai";
 import {
   buildingDetailDrawerBuildingAtom,
   isBuildingDetailDrawerOpenAtom,
-  routeAtom,
+  pointAtom,
 } from "../states";
 import { useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router";
@@ -35,7 +35,7 @@ const BuildingDetailDrawer = () => {
   const [imageSrc, setImageSrc] = useState<string | null>(null); // 이미지 경로
   const [isImageLoaded, setIsImageLoaded] = useState(false); // 이미지 로딩 여부
   const [isImageError, setIsImageError] = useState(false); // 이미지 로딩 실패 여부
-  const [route, setRoute] = useAtom(routeAtom); // 네비게이션 경로 상태
+  const [point, setPoint] = useAtom(pointAtom); // 네비게이션 경로 상태
 
   // 이미지 경로 및 상태 초기화
   useEffect(() => {
@@ -69,32 +69,32 @@ const BuildingDetailDrawer = () => {
   const handleOriginButtonClick = useCallback(() => {
     const newRoute = {
       origin: `${buildingDetailDrawerBuilding?.id} ${buildingDetailDrawerBuilding?.name}`,
-      destination: route.destination,
+      destination: point.destination,
     };
-    setRoute(newRoute);
+    setPoint(newRoute);
     setIsBuildingDetailDrawerOpen(false);
   }, [
     buildingDetailDrawerBuilding?.id,
     buildingDetailDrawerBuilding?.name,
-    route.destination,
+    point.destination,
     setIsBuildingDetailDrawerOpen,
-    setRoute,
+    setPoint,
   ]);
 
   // 도착 버튼 클릭
   const handleDestinationButtonClick = useCallback(() => {
     const newRoute = {
-      origin: route.origin,
+      origin: point.origin,
       destination: `${buildingDetailDrawerBuilding?.id} ${buildingDetailDrawerBuilding?.name}`,
     };
-    setRoute(newRoute);
+    setPoint(newRoute);
     setIsBuildingDetailDrawerOpen(false);
   }, [
     buildingDetailDrawerBuilding?.id,
     buildingDetailDrawerBuilding?.name,
-    route.origin,
+    point.origin,
     setIsBuildingDetailDrawerOpen,
-    setRoute,
+    setPoint,
   ]);
 
   return (
