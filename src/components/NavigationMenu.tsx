@@ -23,7 +23,6 @@ const NavigationMenu = () => {
   const theme = useTheme();
 
   const [swapButtonAngle, setSwapButtonAngle] = useState(0);
-
   const [point, setPoint] = useAtom(pointAtom);
   const options = BuildingData.map(
     (building) => `${building.id} ${building.name}`
@@ -80,7 +79,6 @@ const NavigationMenu = () => {
         padding={1}
         borderRadius={4}
         border={`3px solid ${theme.palette.primary.main}`}
-        gap={1}
       >
         {/* 지점 선택 */}
         <Stack direction="row" alignItems="center" gap={1}>
@@ -166,12 +164,17 @@ const NavigationMenu = () => {
 
         {/* 길찾기 결과 */}
         <Stack
-          height={p}
+          height={point.origin && point.destination ? "30px" : 0}
+          marginTop={point.origin && point.destination ? 1 : 0}
           direction="row"
           justifyContent="space-evenly"
           alignItems="center"
           color="text.secondary"
           gap={2}
+          overflow="hidden"
+          sx={{
+            transition: "all 0.3s ease-in-out",
+          }}
         >
           {/* 도보 */}
           <Stack direction="row" alignItems="center" gap={0.5}>
