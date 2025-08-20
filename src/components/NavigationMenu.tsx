@@ -15,12 +15,14 @@ import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import TripOriginRoundedIcon from "@mui/icons-material/TripOriginRounded";
 import FlagRoundedIcon from "@mui/icons-material/FlagRounded";
 import BuildingData from "../assets/buildings.json";
-import { useCallback } from "react";
+import { useCallback, useState } from "react";
 import DirectionsWalkRoundedIcon from "@mui/icons-material/DirectionsWalkRounded";
 import ElectricScooterRoundedIcon from "@mui/icons-material/ElectricScooterRounded";
 
 const NavigationMenu = () => {
   const theme = useTheme();
+
+  const [swapButtonAngle, setSwapButtonAngle] = useState(0);
 
   const [route, setRoute] = useAtom(routeAtom);
   const options = BuildingData.map(
@@ -29,6 +31,10 @@ const NavigationMenu = () => {
 
   // 지점 교체 버튼 클릭
   const handleSwapButtonClick = useCallback(() => {
+    // 애니메이션 실행
+    setSwapButtonAngle((prev) => prev + 180);
+
+    // 지점 교체
     setRoute((prev) => ({
       origin: prev.destination,
       destination: prev.origin,
@@ -80,7 +86,13 @@ const NavigationMenu = () => {
         <Stack direction="row" alignItems="center" gap={1}>
           {/* 지점 교체 버튼 */}
           <IconButton size="small" onClick={handleSwapButtonClick}>
-            <SwapVertRoundedIcon fontSize="large" />
+            <SwapVertRoundedIcon
+              fontSize="large"
+              sx={{
+                transform: `rotate(${swapButtonAngle}deg)`,
+                transition: "transform 0.3s ease-in-out",
+              }}
+            />
           </IconButton>
 
           {/* 지점 컨테이너 */}
