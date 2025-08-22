@@ -7,22 +7,21 @@ import {
   useMapEvents,
 } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
-import L, { CRS, LatLngBounds } from "leaflet";
+import L, { CRS, LatLngBounds, LatLngExpression } from "leaflet";
 import MapImage from "/images/map.png";
 import { Alert, Button, Snackbar, SnackbarCloseReason } from "@mui/material";
 import { useCallback, useRef, useState } from "react";
 import GpsOffRoundedIcon from "@mui/icons-material/GpsOffRounded";
 import LocationSearchingRoundedIcon from "@mui/icons-material/LocationSearchingRounded";
 import MyLocationRoundedIcon from "@mui/icons-material/MyLocationRounded";
-import { geoToXY } from "../utils";
+import { findNodeByBuildingId, geoToXY } from "../utils";
 import buildings from "../assets/buildings.json";
 import BuildingMarker from "./BuildingMarker";
 import CircularMarker from "./CircularMarker";
 import { useEffect } from "react";
 import PointMarker from "./PointMarker";
 import { useAtomValue } from "jotai";
-import { pathAtom } from "../states";
-import TestRoute from "./TestRoute";
+import { pathAtom, pointAtom } from "../states";
 
 const MapViewer = () => {
   // 지도 범위 설정
@@ -47,6 +46,7 @@ const MapViewer = () => {
   const [geoLocation, setGeoLocation] = useState<number[] | null>(null); // 내 위치 좌표
   const [isAlertOpen, setIsAlertOpen] = useState(false); // 경고창 열림 상태
   const [alertMessage, setAlertMessage] = useState(""); // 경고창 메시지
+  const point = useAtomValue(pointAtom);
   const path = useAtomValue(pathAtom);
 
   // 지도 이벤트 리스너
@@ -261,37 +261,34 @@ const MapViewer = () => {
       <LayerGroup>
         <Polyline
           pathOptions={{ color: "#1976d2", weight: 6 * (zoom + 1) }}
-          positions={(path?.path ?? []).map((p) => {
-            return [(3840 - p[1]) * 0.25, p[0] * 0.25];
-          })}
+          positions={(path?.path as LatLngExpression[]) || []}
         />
 
         <Polyline
           pathOptions={{ color: "white", weight: 2 * (zoom + 1) }}
-          positions={(path?.path ?? []).map((p) => {
-            return [(3840 - p[1]) * 0.25, p[0] * 0.25];
-          })}
+          positions={(path?.path as LatLngExpression[]) || []}
         />
 
-        <PointMarker
-          position={
-            path?.path && path.path.length > 0
-              ? [(3840 - path.path[0][1]) * 0.25, path.path[0][0] * 0.25]
-              : undefined
-          }
-          type="origin"
-        />
-        <PointMarker
-          position={
-            path?.path && path.path.length > 0
-              ? [
-                  (3840 - path.path[path.path.length - 1][1]) * 0.25,
-                  path.path[path.path.length - 1][0] * 0.25,
-                ]
-              : undefined
-          }
-          type="destination"
-        />
+        {/* 출발지 마커 */}
+        {point.origin && (
+          <PointMarker
+            position={
+              findNodeByBuildingId(point.origin.split(" ")[0])?.position || []
+            }
+            type="origin"
+          />
+        )}
+
+        {/* 도착지 마커 */}
+        {point.destination && (
+          <PointMarker
+            position={
+              findNodeByBuildingId(point.destination.split(" ")[0])?.position ||
+              []
+            }
+            type="destination"
+          />
+        )}
       </LayerGroup>
 
       {/* 지도 이벤트 리스너 */}
@@ -340,7 +337,6 @@ const MapViewer = () => {
           {alertMessage}
         </Alert>
       </Snackbar>
-      <TestRoute />
     </MapContainer>
   );
 };

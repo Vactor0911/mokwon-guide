@@ -8,16 +8,18 @@ import {
   Typography,
   useTheme,
 } from "@mui/material";
-import { useAtom } from "jotai";
-import { pointAtom } from "../states";
+import { useAtom, useSetAtom } from "jotai";
+import { pathAtom, pointAtom } from "../states";
 import SwapVertRoundedIcon from "@mui/icons-material/SwapVertRounded";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import TripOriginRoundedIcon from "@mui/icons-material/TripOriginRounded";
 import FlagRoundedIcon from "@mui/icons-material/FlagRounded";
 import BuildingData from "../assets/buildings.json";
-import { useCallback, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import DirectionsWalkRoundedIcon from "@mui/icons-material/DirectionsWalkRounded";
 import ElectricScooterRoundedIcon from "@mui/icons-material/ElectricScooterRounded";
+import { findShortestPath } from "../utils/navigate";
+import { findNodeByBuildingId } from "../utils";
 
 const NavigationMenu = () => {
   const theme = useTheme();
@@ -27,6 +29,7 @@ const NavigationMenu = () => {
   const options = BuildingData.map(
     (building) => `${building.id} ${building.name}`
   );
+  const setPath = useSetAtom(pathAtom);
 
   // 지점 교체 버튼 클릭
   const handleSwapButtonClick = useCallback(() => {
@@ -66,6 +69,42 @@ const NavigationMenu = () => {
     },
     [setPoint]
   );
+
+  // 경로 계산
+  useEffect(() => {
+    // 출발지 혹은 도착지가 비어있다면 종료
+    if (!point.origin || !point.destination) {
+      setPath(null);
+      return;
+    }
+
+    // 출발지 및 도착지 정보 추출
+    const originXY = findNodeByBuildingId(point.origin.split(" ")[0])?.position;
+    const destinationNodeId = findNodeByBuildingId(
+      point.destination.split(" ")[0]
+    )?.id;
+
+    if (!originXY || !destinationNodeId) {
+      setPath(null);
+      return;
+    }
+
+    // 경로 계산
+    const result = findShortestPath(originXY, destinationNodeId);
+
+    if (result) {
+      const newPath = {
+        path: result.positions,
+        distance: result.distance,
+      };
+      setPath(newPath);
+    } else {
+      setPath({
+        path: [],
+        distance: -1,
+      });
+    }
+  }, [point.origin, point.destination, setPath]);
 
   return (
     <Slide

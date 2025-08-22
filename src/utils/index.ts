@@ -1,4 +1,5 @@
-import facilities from "../assets/facilities.json"; // 시설 데이터 가져오기
+import facilities from "../assets/facilities.json"; // 시설 데이터
+import nodes from "../assets/nodes.json"; // 노드 데이터
 
 /**
  * 시설물 데이터 인터페이스
@@ -160,4 +161,46 @@ export const moveTableItemToTop = (
     const newScrollTop = currentScrollTop + offset;
     container.scrollTo({ top: newScrollTop, behavior: "smooth" });
   }
+};
+
+const dictBuildingNode: Record<string, number> = {
+  A: 900,
+  B: 901,
+  C: 902,
+  D: 903,
+  E: 904,
+  F: 905,
+  G: 906,
+  G1: 907,
+  I: 908,
+  J: 909,
+  K: 910,
+  M: 911,
+  N: 912,
+  O: 913,
+  O1: 914,
+  P: 915,
+  R: 916,
+  T: 917,
+  U: 918,
+  V: 919,
+  W: 920,
+};
+
+/**
+ * 건물 ID에 해당하는 노드를 찾는 함수
+ * @param buildingId 건물 ID
+ * @returns 건물 ID에 해당하는 노드 객체
+ */
+export const findNodeByBuildingId = (buildingId: string) => {
+  return nodes.find((node) => node.id === dictBuildingNode[buildingId]);
+};
+
+/**
+ * 노드 ID에 해당하는 노드를 찾는 함수
+ * @param nodeId 노드 ID
+ * @returns 노드 ID를 가진 노드 객체
+ */
+export const findNodeById = (nodeId: number) => {
+  return nodes.find((node) => node.id === nodeId);
 };

@@ -1,3 +1,5 @@
+import nodes from "../assets/nodes.json";
+
 // ---------- 타입 정의 ----------
 export interface Neighbor {
   id: number;
@@ -35,18 +37,18 @@ const indexNodes = (nodes: Node[]): NodeMap => {
 /** 출발 좌표와 가장 가까운 노드 */
 export function findNearestNode(
   nodes: Node[],
-  startXY: [number, number]
-): { node: Node | null; dist: number } {
+  originXY: number[]
+): { node: Node | null; distance: number } {
   let best: Node | null = null;
   let bestD = Infinity;
   for (const n of nodes) {
-    const d = hypot2D(startXY[0], startXY[1], n.position[0], n.position[1]);
+    const d = hypot2D(originXY[0], originXY[1], n.position[0], n.position[1]);
     if (d < bestD) {
       bestD = d;
       best = n;
     }
   }
-  return { node: best, dist: bestD };
+  return { node: best, distance: bestD };
 }
 
 /** 엣지 비용: distance 있으면 사용, 없으면 좌표 거리 */
@@ -184,17 +186,19 @@ export function aStar(
  * @returns PathResult | null
  */
 export function findShortestPath(
-  startXY: [number, number],
-  goalId: number,
-  nodes: Node[]
+  originXY: number[],
+  destinationNodeId: number
 ): PathResult | null {
-  const { node: nearest, dist: snapDist } = findNearestNode(nodes, startXY);
+  const { node: nearest, distance: snapDist } = findNearestNode(
+    nodes,
+    originXY
+  );
   if (!nearest) return null;
 
-  const res = aStar(nodes, nearest.id, goalId);
+  const res = aStar(nodes, nearest.id, destinationNodeId);
   if (!res) return null;
 
-  const positions: number[][] = [startXY, ...res.path.map((n) => n.position)];
+  const positions: number[][] = [originXY, ...res.path.map((n) => n.position)];
   const distance = snapDist + res.distance;
 
   return { positions, distance };
