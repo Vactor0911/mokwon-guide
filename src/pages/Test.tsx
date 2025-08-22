@@ -27,7 +27,7 @@ const Test = () => {
             const x = e.clientX - rect.left;
             const y = e.clientY - rect.top;
             console.log(
-              `Clicked position: x=${Math.round(x)}, y=${Math.round(y)}`
+              `Clicked position: lat=${(3840 - Math.round(y)) * 0.25}, lng=${Math.round(x) * 0.25}`
             );
           }}
           sx={{
