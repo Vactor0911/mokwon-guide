@@ -55,10 +55,10 @@ const Test = () => {
                 <>
                   <line
                     key={`line-${node.id}-${neighborNode.id}`}
-                    x1={node.position[0]}
-                    y1={node.position[1]}
-                    x2={neighborNode.position[0]}
-                    y2={neighborNode.position[1]}
+                    x1={node.position[1] * 4}
+                    y1={Math.abs(3840 - node.position[0] * 4)}
+                    x2={neighborNode.position[1] * 4}
+                    y2={Math.abs(3840 - neighborNode.position[0] * 4)}
                     stroke={
                       neighborNode.neighbors.find((n) => n.id === node.id)
                         ? "aqua"
@@ -69,8 +69,15 @@ const Test = () => {
 
                   <text
                     key={`label-${neighborNode.id}`}
-                    x={(neighborNode.position[0] + node.position[0]) * 0.5}
-                    y={(neighborNode.position[1] + node.position[1]) * 0.5}
+                    x={
+                      (neighborNode.position[1] * 4 + node.position[1] * 4) *
+                      0.5
+                    }
+                    y={
+                      (Math.abs(3840 - neighborNode.position[0] * 4) +
+                        Math.abs(3840 - node.position[0] * 4)) *
+                      0.5
+                    }
                     fontSize="10"
                     textAnchor="middle"
                     fill="magenta"
@@ -86,8 +93,8 @@ const Test = () => {
           {Nodes.map((node) => [
             <text
               key={`label-${node.id}`}
-              x={node.position[0] - 5}
-              y={node.position[1] - 5}
+              x={node.position[1] * 4 - 5}
+              y={Math.abs(3840 - node.position[0] * 4 - 5)}
               fontSize="12"
               textAnchor="middle"
               fill={node.id >= 900 ? "yellow" : "orange"}
@@ -97,8 +104,8 @@ const Test = () => {
 
             <circle
               key={`node-${node.id}`}
-              cx={node.position[0]}
-              cy={node.position[1]}
+              cx={node.position[1] * 4}
+              cy={Math.abs(3840 - node.position[0] * 4)}
               r="5"
               fill="aqua"
               css={{
