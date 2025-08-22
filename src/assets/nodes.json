@@ -1250,7 +1250,8 @@
     "position": [268.0, 123.0],
     "neighbors": [
       { "id": 133, "distance": 19.5 },
-      { "id": 149, "distance": 32.41 }
+      { "id": 149, "distance": 32.41 },
+      { "id": 197, "distance": 18.81 }
     ]
   },
   {
@@ -1358,7 +1359,8 @@
     "position": [341.25, 145.25],
     "neighbors": [
       { "id": 150, "distance": 11.85 },
-      { "id": 161, "distance": 31.32 }
+      { "id": 161, "distance": 31.32 },
+      { "id": 194, "distance": 23.92 }
     ]
   },
   {
@@ -1366,7 +1368,8 @@
     "position": [371.25, 154.25],
     "neighbors": [
       { "id": 160, "distance": 31.32 },
-      { "id": 162, "distance": 30.68 }
+      { "id": 162, "distance": 30.68 },
+      { "id": 194, "distance": 16.85 }
     ]
   },
   {
@@ -1447,6 +1450,7 @@
       { "id": 159, "distance": 41.0 },
       { "id": 905, "distance": 16.0 },
       { "id": 190, "distance": 17.24 },
+      { "id": 195, "distance": 19.42 },
       { "id": 916, "distance": 28.43 }
     ]
   },
@@ -1612,6 +1616,7 @@
     "neighbors": [
       { "id": 136, "distance": 23.5 },
       { "id": 170, "distance": 17.24 },
+      { "id": 195, "distance": 21.71 },
       { "id": 916, "distance": 18.51 }
     ]
   },
@@ -1633,6 +1638,49 @@
       { "id": 110, "distance": 17.75 },
       { "id": 113, "distance": 13.98 },
       { "id": 919, "distance": 48.42 }
+    ]
+  },
+  {
+    "id": 193,
+    "position": [358.5, 183.75],
+    "neighbors": [
+      { "id": 194, "distance": 20.55 },
+      { "id": 904, "distance": 10.9 }
+    ]
+  },
+  {
+    "id": 194,
+    "position": [357, 163.25],
+    "neighbors": [
+      { "id": 160, "distance": 23.92 },
+      { "id": 161, "distance": 16.85 },
+      { "id": 193, "distance": 20.55 }
+    ]
+  },
+  {
+    "id": 195,
+    "position": [277.5, 173.0],
+    "neighbors": [
+      { "id": 170, "distance": 19.42 },
+      { "id": 190, "distance": 21.71 },
+      { "id": 196, "distance": 17.4 },
+      { "id": 905, "distance": 11.0 }
+    ]
+  },
+  {
+    "id": 196,
+    "position": [275.25, 155.75],
+    "neighbors": [
+      { "id": 195, "distance": 17.4 },
+      { "id": 197, "distance": 15.13 }
+    ]
+  },
+  {
+    "id": 197,
+    "position": [269.5, 141.75],
+    "neighbors": [
+      { "id": 196, "distance": 15.13 },
+      { "id": 148, "distance": 18.81 }
     ]
   },
   {
@@ -1674,13 +1722,17 @@
     "position": [365.0, 192.5],
     "neighbors": [
       { "id": 153, "distance": 32.25 },
-      { "id": 154, "distance": 33.02 }
+      { "id": 154, "distance": 33.02 },
+      { "id": 193, "distance": 10.9 }
     ]
   },
   {
     "id": 905,
     "position": [288.5, 173.0],
-    "neighbors": [{ "id": 170, "distance": 16.0 }]
+    "neighbors": [
+      { "id": 170, "distance": 16.0 },
+      { "id": 195, "distance": 11.0 }
+    ]
   },
   {
     "id": 906,
