@@ -908,7 +908,7 @@
       { "id": 108, "distance": 71.69 },
       { "id": 110, "distance": 70.6 },
       { "id": 113, "distance": 67.91 },
-      { "id": 919, "distance": 256.56 }
+      { "id": 192, "distance": 63.51 }
     ]
   },
   {
@@ -917,7 +917,8 @@
     "neighbors": [
       { "id": 109, "distance": 70.6 },
       { "id": 111, "distance": 83.49 },
-      { "id": 113, "distance": 116.11 },
+      { "id": 191, "distance": 69.01 },
+      { "id": 192, "distance": 71.01 },
       { "id": 919, "distance": 242.43 }
     ]
   },
@@ -927,8 +928,7 @@
     "neighbors": [
       { "id": 110, "distance": 83.49 },
       { "id": 112, "distance": 80.65 },
-      { "id": 919, "distance": 275.77 },
-      { "id": 920, "distance": 104.17 }
+      { "id": 191, "distance": 73.38 }
     ]
   },
   {
@@ -946,7 +946,7 @@
     "position": [639, 3486],
     "neighbors": [
       { "id": 109, "distance": 67.91 },
-      { "id": 110, "distance": 116.11 },
+      { "id": 192, "distance": 55.9 },
       { "id": 910, "distance": 82.76 }
     ]
   },
@@ -1614,6 +1614,26 @@
     ]
   },
   {
+    "id": 191,
+    "position": [530, 3378],
+    "neighbors": [
+      { "id": 110, "distance": 69.01 },
+      { "id": 111, "distance": 73.38 },
+      { "id": 919, "distance": 203.04 },
+      { "id": 920, "distance": 104.02 }
+    ]
+  },
+  {
+    "id": 192,
+    "position": [598, 3448],
+    "neighbors": [
+      { "id": 109, "distance": 63.51 },
+      { "id": 110, "distance": 71.01 },
+      { "id": 113, "distance": 55.9 },
+      { "id": 919, "distance": 193.67 }
+    ]
+  },
+  {
     "id": 900,
     "position": [1340, 2468],
     "neighbors": [
@@ -1753,14 +1773,14 @@
     "id": 919,
     "position": [440, 3560],
     "neighbors": [
-      { "id": 109, "distance": 256.56 },
       { "id": 110, "distance": 242.43 },
-      { "id": 111, "distance": 275.77 }
+      { "id": 191, "distance": 203.04 },
+      { "id": 192, "distance": 193.67 }
     ]
   },
   {
     "id": 920,
     "position": [448, 3314],
-    "neighbors": [{ "id": 111, "distance": 104.17 }]
+    "neighbors": [{ "id": 191, "distance": 104.02 }]
   }
 ]
