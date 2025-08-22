@@ -1,5 +1,10 @@
-import { keyframes, Stack, Typography, TypographyProps } from "@mui/material";
-import { theme } from "../theme";
+import {
+  keyframes,
+  Stack,
+  Typography,
+  TypographyProps,
+  useTheme,
+} from "@mui/material";
 import { useCallback, useLayoutEffect, useMemo, useRef, useState } from "react";
 
 interface HighlightedTextProps extends TypographyProps {
@@ -10,6 +15,8 @@ interface HighlightedTextProps extends TypographyProps {
 
 const HighLightedText = (props: HighlightedTextProps) => {
   const { text, keyword, className, variant, color } = props;
+
+  const theme = useTheme();
 
   // container와 child 텍스트의 너비를 측정하기 위한 ref
   const containerRef = useRef<HTMLDivElement>(null);
@@ -133,7 +140,9 @@ const HighLightedText = (props: HighlightedTextProps) => {
           "&.scroll-text-active": {
             animation:
               overflowedWidth > 0
-                ? `${movingAnimation} ${overflowedWidth / 50 + 2}s linear infinite`
+                ? `${movingAnimation} ${
+                    overflowedWidth / 50 + 2
+                  }s linear infinite`
                 : "none",
           },
         }}

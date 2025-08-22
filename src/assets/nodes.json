@@ -1,0 +1,1842 @@
+[
+  {
+    "id": 1,
+    "position": [57.0, 260.0],
+    "neighbors": [{ "id": 2, "distance": 19.66 }]
+  },
+  {
+    "id": 2,
+    "position": [76.5, 262.5],
+    "neighbors": [
+      { "id": 1, "distance": 19.66 },
+      { "id": 3, "distance": 21.71 }
+    ]
+  },
+  {
+    "id": 3,
+    "position": [98.0, 265.5],
+    "neighbors": [
+      { "id": 2, "distance": 21.71 },
+      { "id": 4, "distance": 26.51 },
+      { "id": 52, "distance": 21.89 },
+      { "id": 105, "distance": 17.6 }
+    ]
+  },
+  {
+    "id": 4,
+    "position": [124.5, 266.25],
+    "neighbors": [
+      { "id": 3, "distance": 26.51 },
+      { "id": 5, "distance": 27.5 }
+    ]
+  },
+  {
+    "id": 5,
+    "position": [152.0, 266.5],
+    "neighbors": [
+      { "id": 4, "distance": 27.5 },
+      { "id": 6, "distance": 27.75 },
+      { "id": 53, "distance": 22.32 },
+      { "id": 114, "distance": 14.85 }
+    ]
+  },
+  {
+    "id": 6,
+    "position": [179.75, 266.25],
+    "neighbors": [
+      { "id": 5, "distance": 27.75 },
+      { "id": 7, "distance": 25.5 },
+      { "id": 114, "distance": 17.9 }
+    ]
+  },
+  {
+    "id": 7,
+    "position": [205.25, 265.75],
+    "neighbors": [
+      { "id": 6, "distance": 25.5 },
+      { "id": 8, "distance": 22.51 }
+    ]
+  },
+  {
+    "id": 8,
+    "position": [227.75, 265.25],
+    "neighbors": [
+      { "id": 7, "distance": 22.51 },
+      { "id": 9, "distance": 12.0 }
+    ]
+  },
+  {
+    "id": 9,
+    "position": [239.75, 265.0],
+    "neighbors": [
+      { "id": 8, "distance": 12.0 },
+      { "id": 10, "distance": 8.17 },
+      { "id": 16, "distance": 7.99 }
+    ]
+  },
+  {
+    "id": 10,
+    "position": [243.0, 272.5],
+    "neighbors": [
+      { "id": 9, "distance": 8.17 },
+      { "id": 11, "distance": 8.14 }
+    ]
+  },
+  {
+    "id": 11,
+    "position": [250.75, 275.0],
+    "neighbors": [
+      { "id": 10, "distance": 8.14 },
+      { "id": 12, "distance": 6.71 },
+      { "id": 63, "distance": 18.25 }
+    ]
+  },
+  {
+    "id": 12,
+    "position": [256.75, 272.0],
+    "neighbors": [
+      { "id": 11, "distance": 6.71 },
+      { "id": 13, "distance": 8.4 }
+    ]
+  },
+  {
+    "id": 13,
+    "position": [260.0, 264.25],
+    "neighbors": [
+      { "id": 12, "distance": 8.4 },
+      { "id": 14, "distance": 8.39 },
+      { "id": 17, "distance": 10.76 }
+    ]
+  },
+  {
+    "id": 14,
+    "position": [256.25, 256.75],
+    "neighbors": [
+      { "id": 13, "distance": 8.39 },
+      { "id": 15, "distance": 7.59 }
+    ]
+  },
+  {
+    "id": 15,
+    "position": [249.0, 254.5],
+    "neighbors": [
+      { "id": 14, "distance": 7.59 },
+      { "id": 16, "distance": 7.16 },
+      { "id": 134, "distance": 9.75 }
+    ]
+  },
+  {
+    "id": 16,
+    "position": [242.5, 257.5],
+    "neighbors": [
+      { "id": 9, "distance": 7.99 },
+      { "id": 15, "distance": 7.16 }
+    ]
+  },
+  {
+    "id": 17,
+    "position": [270.75, 263.75],
+    "neighbors": [
+      { "id": 13, "distance": 10.76 },
+      { "id": 18, "distance": 23.0 }
+    ]
+  },
+  {
+    "id": 18,
+    "position": [293.75, 263.75],
+    "neighbors": [
+      { "id": 17, "distance": 23.0 },
+      { "id": 19, "distance": 24.75 }
+    ]
+  },
+  {
+    "id": 19,
+    "position": [318.5, 263.75],
+    "neighbors": [
+      { "id": 18, "distance": 24.75 },
+      { "id": 20, "distance": 19.0 }
+    ]
+  },
+  {
+    "id": 20,
+    "position": [337.5, 263.75],
+    "neighbors": [
+      { "id": 19, "distance": 19.0 },
+      { "id": 21, "distance": 14.02 },
+      { "id": 151, "distance": 18.66 },
+      { "id": 167, "distance": 25.78 }
+    ]
+  },
+  {
+    "id": 21,
+    "position": [342.75, 276.75],
+    "neighbors": [
+      { "id": 20, "distance": 14.02 },
+      { "id": 22, "distance": 16.99 },
+      { "id": 167, "distance": 24.97 }
+    ]
+  },
+  {
+    "id": 22,
+    "position": [352.0, 291.0],
+    "neighbors": [
+      { "id": 21, "distance": 16.99 },
+      { "id": 23, "distance": 16.09 },
+      { "id": 167, "distance": 30.64 },
+      { "id": 171, "distance": 29.26 }
+    ]
+  },
+  {
+    "id": 23,
+    "position": [365.5, 299.75],
+    "neighbors": [
+      { "id": 22, "distance": 16.09 },
+      { "id": 24, "distance": 19.69 },
+      { "id": 171, "distance": 24.97 }
+    ]
+  },
+  {
+    "id": 24,
+    "position": [385.0, 302.5],
+    "neighbors": [
+      { "id": 23, "distance": 19.69 },
+      { "id": 25, "distance": 21.25 },
+      { "id": 168, "distance": 18.4 }
+    ]
+  },
+  {
+    "id": 25,
+    "position": [406.25, 302.5],
+    "neighbors": [
+      { "id": 24, "distance": 21.25 },
+      { "id": 26, "distance": 21.76 },
+      { "id": 168, "distance": 14.71 }
+    ]
+  },
+  {
+    "id": 26,
+    "position": [428.0, 301.75],
+    "neighbors": [
+      { "id": 25, "distance": 21.76 },
+      { "id": 27, "distance": 21.04 },
+      { "id": 79, "distance": 21.75 },
+      { "id": 164, "distance": 25.0 }
+    ]
+  },
+  {
+    "id": 27,
+    "position": [449.0, 300.5],
+    "neighbors": [
+      { "id": 26, "distance": 21.04 },
+      { "id": 28, "distance": 21.75 }
+    ]
+  },
+  {
+    "id": 28,
+    "position": [470.75, 300.25],
+    "neighbors": [
+      { "id": 27, "distance": 21.75 },
+      { "id": 29, "distance": 21.75 }
+    ]
+  },
+  {
+    "id": 29,
+    "position": [492.5, 300.0],
+    "neighbors": [
+      { "id": 28, "distance": 21.75 },
+      { "id": 30, "distance": 21.75 }
+    ]
+  },
+  {
+    "id": 30,
+    "position": [514.25, 300.0],
+    "neighbors": [
+      { "id": 29, "distance": 21.75 },
+      { "id": 31, "distance": 17.5 },
+      { "id": 84, "distance": 20.0 }
+    ]
+  },
+  {
+    "id": 31,
+    "position": [531.75, 299.75],
+    "neighbors": [
+      { "id": 30, "distance": 17.5 },
+      { "id": 32, "distance": 18.75 }
+    ]
+  },
+  {
+    "id": 32,
+    "position": [550.5, 299.5],
+    "neighbors": [
+      { "id": 31, "distance": 18.75 },
+      { "id": 33, "distance": 22.25 },
+      { "id": 85, "distance": 26.8 }
+    ]
+  },
+  {
+    "id": 33,
+    "position": [572.75, 299.5],
+    "neighbors": [
+      { "id": 32, "distance": 22.25 },
+      { "id": 34, "distance": 6.01 },
+      { "id": 86, "distance": 25.5 }
+    ]
+  },
+  {
+    "id": 34,
+    "position": [578.75, 299.25],
+    "neighbors": [
+      { "id": 33, "distance": 6.01 },
+      { "id": 35, "distance": 18.5 },
+      { "id": 180, "distance": 19.0 },
+      { "id": 182, "distance": 26.17 }
+    ]
+  },
+  {
+    "id": 35,
+    "position": [597.25, 299.0],
+    "neighbors": [
+      { "id": 34, "distance": 18.5 },
+      { "id": 36, "distance": 15.0 }
+    ]
+  },
+  {
+    "id": 36,
+    "position": [612.25, 299.0],
+    "neighbors": [
+      { "id": 35, "distance": 15.0 },
+      { "id": 37, "distance": 6.5 },
+      { "id": 901, "distance": 36.52 }
+    ]
+  },
+  {
+    "id": 37,
+    "position": [618.75, 299.0],
+    "neighbors": [
+      { "id": 36, "distance": 6.5 },
+      { "id": 38, "distance": 20.0 },
+      { "id": 87, "distance": 24.5 },
+      { "id": 901, "distance": 36.88 }
+    ]
+  },
+  {
+    "id": 38,
+    "position": [638.75, 299.0],
+    "neighbors": [
+      { "id": 37, "distance": 20.0 },
+      { "id": 39, "distance": 20.25 },
+      { "id": 183, "distance": 21.71 }
+    ]
+  },
+  {
+    "id": 39,
+    "position": [659.0, 298.75],
+    "neighbors": [
+      { "id": 38, "distance": 20.25 },
+      { "id": 40, "distance": 21.0 }
+    ]
+  },
+  {
+    "id": 40,
+    "position": [680.0, 298.75],
+    "neighbors": [
+      { "id": 39, "distance": 21.0 },
+      { "id": 41, "distance": 19.25 },
+      { "id": 94, "distance": 22.01 },
+      { "id": 189, "distance": 23.05 }
+    ]
+  },
+  {
+    "id": 41,
+    "position": [699.25, 298.75],
+    "neighbors": [
+      { "id": 40, "distance": 19.25 },
+      { "id": 42, "distance": 20.5 }
+    ]
+  },
+  {
+    "id": 42,
+    "position": [719.75, 298.75],
+    "neighbors": [
+      { "id": 41, "distance": 20.5 },
+      { "id": 43, "distance": 20.5 }
+    ]
+  },
+  {
+    "id": 43,
+    "position": [740.25, 298.75],
+    "neighbors": [
+      { "id": 42, "distance": 20.5 },
+      { "id": 44, "distance": 20.5 }
+    ]
+  },
+  {
+    "id": 44,
+    "position": [760.75, 298.75],
+    "neighbors": [
+      { "id": 43, "distance": 20.5 },
+      { "id": 45, "distance": 21.25 },
+      { "id": 103, "distance": 30.5 }
+    ]
+  },
+  {
+    "id": 45,
+    "position": [782.0, 298.75],
+    "neighbors": [
+      { "id": 44, "distance": 21.25 },
+      { "id": 46, "distance": 17.22 }
+    ]
+  },
+  {
+    "id": 46,
+    "position": [798.75, 294.75],
+    "neighbors": [
+      { "id": 45, "distance": 17.22 },
+      { "id": 47, "distance": 15.0 }
+    ]
+  },
+  {
+    "id": 47,
+    "position": [813.75, 294.5],
+    "neighbors": [
+      { "id": 46, "distance": 15.0 },
+      { "id": 48, "distance": 19.29 }
+    ]
+  },
+  {
+    "id": 48,
+    "position": [833.0, 295.75],
+    "neighbors": [
+      { "id": 47, "distance": 19.29 },
+      { "id": 49, "distance": 14.0 }
+    ]
+  },
+  {
+    "id": 49,
+    "position": [847.0, 296.0],
+    "neighbors": [
+      { "id": 48, "distance": 14.0 },
+      { "id": 50, "distance": 18.17 }
+    ]
+  },
+  {
+    "id": 50,
+    "position": [865.0, 298.5],
+    "neighbors": [
+      { "id": 49, "distance": 18.17 },
+      { "id": 51, "distance": 20.93 }
+    ]
+  },
+  {
+    "id": 51,
+    "position": [885.75, 301.25],
+    "neighbors": [{ "id": 50, "distance": 20.93 }]
+  },
+  {
+    "id": 52,
+    "position": [95.5, 287.25],
+    "neighbors": [
+      { "id": 3, "distance": 21.89 },
+      { "id": 908, "distance": 31.9 }
+    ]
+  },
+  {
+    "id": 53,
+    "position": [157.0, 288.25],
+    "neighbors": [
+      { "id": 5, "distance": 22.32 },
+      { "id": 54, "distance": 22.74 }
+    ]
+  },
+  {
+    "id": 54,
+    "position": [162.75, 310.25],
+    "neighbors": [
+      { "id": 53, "distance": 22.74 },
+      { "id": 55, "distance": 23.33 }
+    ]
+  },
+  {
+    "id": 55,
+    "position": [170.5, 332.25],
+    "neighbors": [
+      { "id": 54, "distance": 23.33 },
+      { "id": 56, "distance": 23.33 }
+    ]
+  },
+  {
+    "id": 56,
+    "position": [178.25, 354.25],
+    "neighbors": [
+      { "id": 55, "distance": 23.33 },
+      { "id": 57, "distance": 23.0 }
+    ]
+  },
+  {
+    "id": 57,
+    "position": [201.25, 354.0],
+    "neighbors": [
+      { "id": 56, "distance": 23.0 },
+      { "id": 58, "distance": 23.01 }
+    ]
+  },
+  {
+    "id": 58,
+    "position": [224.25, 354.5],
+    "neighbors": [
+      { "id": 57, "distance": 23.01 },
+      { "id": 59, "distance": 16.78 }
+    ]
+  },
+  {
+    "id": 59,
+    "position": [223.25, 371.25],
+    "neighbors": [
+      { "id": 58, "distance": 16.78 },
+      { "id": 60, "distance": 11.28 },
+      { "id": 65, "distance": 27.75 },
+      { "id": 917, "distance": 23.28 }
+    ]
+  },
+  {
+    "id": 60,
+    "position": [225.75, 382.25],
+    "neighbors": [
+      { "id": 59, "distance": 11.28 },
+      { "id": 61, "distance": 9.85 }
+    ]
+  },
+  {
+    "id": 61,
+    "position": [231.5, 390.25],
+    "neighbors": [
+      { "id": 60, "distance": 9.85 },
+      { "id": 62, "distance": 11.98 }
+    ]
+  },
+  {
+    "id": 62,
+    "position": [242.5, 395.0],
+    "neighbors": [
+      { "id": 61, "distance": 11.98 },
+      { "id": 66, "distance": 8.5 },
+      { "id": 67, "distance": 9.19 }
+    ]
+  },
+  {
+    "id": 63,
+    "position": [251.0, 293.25],
+    "neighbors": [
+      { "id": 11, "distance": 18.25 },
+      { "id": 64, "distance": 40.0 }
+    ]
+  },
+  {
+    "id": 64,
+    "position": [251.0, 333.25],
+    "neighbors": [
+      { "id": 63, "distance": 40.0 },
+      { "id": 65, "distance": 38.0 }
+    ]
+  },
+  {
+    "id": 65,
+    "position": [251.0, 371.25],
+    "neighbors": [
+      { "id": 59, "distance": 27.75 },
+      { "id": 64, "distance": 38.0 },
+      { "id": 66, "distance": 24.0 }
+    ]
+  },
+  {
+    "id": 66,
+    "position": [251.0, 395.25],
+    "neighbors": [
+      { "id": 62, "distance": 8.5 },
+      { "id": 65, "distance": 24.0 },
+      { "id": 67, "distance": 3.25 }
+    ]
+  },
+  {
+    "id": 67,
+    "position": [251.0, 398.5],
+    "neighbors": [
+      { "id": 62, "distance": 9.19 },
+      { "id": 66, "distance": 3.25 },
+      { "id": 68, "distance": 28.76 }
+    ]
+  },
+  {
+    "id": 68,
+    "position": [279.75, 397.75],
+    "neighbors": [
+      { "id": 67, "distance": 28.76 },
+      { "id": 69, "distance": 26.01 }
+    ]
+  },
+  {
+    "id": 69,
+    "position": [305.75, 397.0],
+    "neighbors": [
+      { "id": 68, "distance": 26.01 },
+      { "id": 70, "distance": 36.26 }
+    ]
+  },
+  {
+    "id": 70,
+    "position": [342.0, 396.25],
+    "neighbors": [
+      { "id": 69, "distance": 36.26 },
+      { "id": 71, "distance": 25.25 }
+    ]
+  },
+  {
+    "id": 71,
+    "position": [367.25, 396.0],
+    "neighbors": [
+      { "id": 70, "distance": 25.25 },
+      { "id": 72, "distance": 6.82 }
+    ]
+  },
+  {
+    "id": 72,
+    "position": [373.25, 392.75],
+    "neighbors": [
+      { "id": 71, "distance": 6.82 },
+      { "id": 73, "distance": 7.78 }
+    ]
+  },
+  {
+    "id": 73,
+    "position": [378.75, 387.25],
+    "neighbors": [
+      { "id": 72, "distance": 7.78 },
+      { "id": 74, "distance": 16.48 }
+    ]
+  },
+  {
+    "id": 74,
+    "position": [381.5, 371.0],
+    "neighbors": [
+      { "id": 73, "distance": 16.48 },
+      { "id": 75, "distance": 16.23 }
+    ]
+  },
+  {
+    "id": 75,
+    "position": [384.25, 355.0],
+    "neighbors": [
+      { "id": 74, "distance": 16.23 },
+      { "id": 76, "distance": 9.06 }
+    ]
+  },
+  {
+    "id": 76,
+    "position": [390.0, 348.0],
+    "neighbors": [
+      { "id": 75, "distance": 9.06 },
+      { "id": 77, "distance": 8.73 }
+    ]
+  },
+  {
+    "id": 77,
+    "position": [398.0, 344.5],
+    "neighbors": [
+      { "id": 76, "distance": 8.73 },
+      { "id": 78, "distance": 8.0 }
+    ]
+  },
+  {
+    "id": 78,
+    "position": [406.0, 344.25],
+    "neighbors": [
+      { "id": 77, "distance": 8.0 },
+      { "id": 80, "distance": 22.25 }
+    ]
+  },
+  {
+    "id": 79,
+    "position": [428.25, 323.5],
+    "neighbors": [
+      { "id": 26, "distance": 21.75 },
+      { "id": 80, "distance": 20.75 }
+    ]
+  },
+  {
+    "id": 80,
+    "position": [428.25, 344.25],
+    "neighbors": [
+      { "id": 78, "distance": 22.25 },
+      { "id": 79, "distance": 20.75 },
+      { "id": 81, "distance": 25.25 }
+    ]
+  },
+  {
+    "id": 81,
+    "position": [453.5, 344.0],
+    "neighbors": [
+      { "id": 80, "distance": 25.25 },
+      { "id": 82, "distance": 25.0 }
+    ]
+  },
+  {
+    "id": 82,
+    "position": [478.5, 343.5],
+    "neighbors": [
+      { "id": 81, "distance": 25.0 },
+      { "id": 83, "distance": 13.48 }
+    ]
+  },
+  {
+    "id": 83,
+    "position": [488.75, 334.75],
+    "neighbors": [
+      { "id": 82, "distance": 13.48 },
+      { "id": 913, "distance": 20.1 },
+      { "id": 914, "distance": 26.01 }
+    ]
+  },
+  {
+    "id": 84,
+    "position": [514.5, 320.0],
+    "neighbors": [
+      { "id": 30, "distance": 20.0 },
+      { "id": 913, "distance": 23.09 }
+    ]
+  },
+  {
+    "id": 85,
+    "position": [558.75, 325.0],
+    "neighbors": [
+      { "id": 32, "distance": 26.8 },
+      { "id": 906, "distance": 17.0 }
+    ]
+  },
+  {
+    "id": 86,
+    "position": [572.75, 325.0],
+    "neighbors": [
+      { "id": 33, "distance": 25.5 },
+      { "id": 906, "distance": 10.0 }
+    ]
+  },
+  {
+    "id": 87,
+    "position": [618.75, 323.5],
+    "neighbors": [
+      { "id": 37, "distance": 24.5 },
+      { "id": 88, "distance": 24.5 }
+    ]
+  },
+  {
+    "id": 88,
+    "position": [618.75, 348.0],
+    "neighbors": [
+      { "id": 87, "distance": 24.5 },
+      { "id": 89, "distance": 25.5 }
+    ]
+  },
+  {
+    "id": 89,
+    "position": [618.75, 373.5],
+    "neighbors": [
+      { "id": 88, "distance": 25.5 },
+      { "id": 90, "distance": 5.0 }
+    ]
+  },
+  {
+    "id": 90,
+    "position": [621.75, 377.5],
+    "neighbors": [
+      { "id": 89, "distance": 5.0 },
+      { "id": 91, "distance": 26.03 }
+    ]
+  },
+  {
+    "id": 91,
+    "position": [647.75, 378.75],
+    "neighbors": [
+      { "id": 90, "distance": 26.03 },
+      { "id": 92, "distance": 23.0 },
+      { "id": 93, "distance": 25.0 }
+    ]
+  },
+  {
+    "id": 92,
+    "position": [647.75, 355.75],
+    "neighbors": [
+      { "id": 91, "distance": 23.0 },
+      { "id": 902, "distance": 12.97 }
+    ]
+  },
+  {
+    "id": 93,
+    "position": [672.75, 378.75],
+    "neighbors": [
+      { "id": 91, "distance": 25.0 },
+      { "id": 96, "distance": 25.0 }
+    ]
+  },
+  {
+    "id": 94,
+    "position": [679.25, 320.75],
+    "neighbors": [
+      { "id": 40, "distance": 22.01 },
+      { "id": 95, "distance": 24.25 }
+    ]
+  },
+  {
+    "id": 95,
+    "position": [679.25, 345.0],
+    "neighbors": [
+      { "id": 94, "distance": 24.25 },
+      { "id": 97, "distance": 18.5 },
+      { "id": 902, "distance": 24.25 }
+    ]
+  },
+  {
+    "id": 96,
+    "position": [697.75, 379.25],
+    "neighbors": [
+      { "id": 93, "distance": 25.0 },
+      { "id": 97, "distance": 34.25 },
+      { "id": 98, "distance": 25.0 }
+    ]
+  },
+  {
+    "id": 97,
+    "position": [697.75, 345.0],
+    "neighbors": [
+      { "id": 95, "distance": 18.5 },
+      { "id": 96, "distance": 34.25 },
+      { "id": 903, "distance": 27.25 }
+    ]
+  },
+  {
+    "id": 98,
+    "position": [722.75, 379.25],
+    "neighbors": [
+      { "id": 96, "distance": 25.0 },
+      { "id": 99, "distance": 24.0 }
+    ]
+  },
+  {
+    "id": 99,
+    "position": [746.75, 379.25],
+    "neighbors": [
+      { "id": 98, "distance": 24.0 },
+      { "id": 100, "distance": 7.35 }
+    ]
+  },
+  {
+    "id": 100,
+    "position": [753.75, 377.0],
+    "neighbors": [
+      { "id": 99, "distance": 7.35 },
+      { "id": 101, "distance": 11.72 }
+    ]
+  },
+  {
+    "id": 101,
+    "position": [760.25, 367.25],
+    "neighbors": [
+      { "id": 100, "distance": 11.72 },
+      { "id": 102, "distance": 19.0 }
+    ]
+  },
+  {
+    "id": 102,
+    "position": [760.25, 348.25],
+    "neighbors": [
+      { "id": 101, "distance": 19.0 },
+      { "id": 103, "distance": 19.01 }
+    ]
+  },
+  {
+    "id": 103,
+    "position": [760.75, 329.25],
+    "neighbors": [
+      { "id": 44, "distance": 30.5 },
+      { "id": 102, "distance": 19.01 },
+      { "id": 104, "distance": 29.25 }
+    ]
+  },
+  {
+    "id": 104,
+    "position": [731.5, 329.25],
+    "neighbors": [
+      { "id": 103, "distance": 29.25 },
+      { "id": 903, "distance": 17.04 }
+    ]
+  },
+  {
+    "id": 105,
+    "position": [94.5, 248.25],
+    "neighbors": [
+      { "id": 3, "distance": 17.6 },
+      { "id": 106, "distance": 24.76 }
+    ]
+  },
+  {
+    "id": 106,
+    "position": [95.0, 223.5],
+    "neighbors": [
+      { "id": 105, "distance": 24.76 },
+      { "id": 107, "distance": 24.51 }
+    ]
+  },
+  {
+    "id": 107,
+    "position": [95.5, 199.0],
+    "neighbors": [
+      { "id": 106, "distance": 24.51 },
+      { "id": 108, "distance": 18.92 },
+      { "id": 122, "distance": 20.72 }
+    ]
+  },
+  {
+    "id": 108,
+    "position": [98.0, 180.25],
+    "neighbors": [
+      { "id": 107, "distance": 18.92 },
+      { "id": 109, "distance": 17.92 },
+      { "id": 122, "distance": 20.67 }
+    ]
+  },
+  {
+    "id": 109,
+    "position": [105.0, 163.75],
+    "neighbors": [
+      { "id": 108, "distance": 17.92 },
+      { "id": 110, "distance": 17.65 },
+      { "id": 113, "distance": 16.98 },
+      { "id": 192, "distance": 15.88 }
+    ]
+  },
+  {
+    "id": 110,
+    "position": [115.75, 149.75],
+    "neighbors": [
+      { "id": 109, "distance": 17.65 },
+      { "id": 111, "distance": 20.87 },
+      { "id": 191, "distance": 17.25 },
+      { "id": 192, "distance": 17.75 },
+      { "id": 919, "distance": 60.61 }
+    ]
+  },
+  {
+    "id": 111,
+    "position": [133.0, 138.0],
+    "neighbors": [
+      { "id": 110, "distance": 20.87 },
+      { "id": 112, "distance": 20.16 },
+      { "id": 191, "distance": 18.34 }
+    ]
+  },
+  {
+    "id": 112,
+    "position": [152.0, 131.25],
+    "neighbors": [
+      { "id": 111, "distance": 20.16 },
+      { "id": 120, "distance": 12.04 },
+      { "id": 123, "distance": 14.56 },
+      { "id": 129, "distance": 11.86 }
+    ]
+  },
+  {
+    "id": 113,
+    "position": [88.5, 159.75],
+    "neighbors": [
+      { "id": 109, "distance": 16.98 },
+      { "id": 192, "distance": 13.98 },
+      { "id": 910, "distance": 20.69 }
+    ]
+  },
+  {
+    "id": 114,
+    "position": [164.0, 257.75],
+    "neighbors": [
+      { "id": 5, "distance": 14.85 },
+      { "id": 6, "distance": 17.9 },
+      { "id": 115, "distance": 19.5 }
+    ]
+  },
+  {
+    "id": 115,
+    "position": [164.0, 238.25],
+    "neighbors": [
+      { "id": 114, "distance": 19.5 },
+      { "id": 116, "distance": 30.37 }
+    ]
+  },
+  {
+    "id": 116,
+    "position": [161.25, 208.0],
+    "neighbors": [
+      { "id": 115, "distance": 30.37 },
+      { "id": 117, "distance": 16.8 },
+      { "id": 144, "distance": 12.25 }
+    ]
+  },
+  {
+    "id": 117,
+    "position": [160.0, 191.25],
+    "neighbors": [
+      { "id": 116, "distance": 16.8 },
+      { "id": 118, "distance": 7.5 },
+      { "id": 121, "distance": 21.25 }
+    ]
+  },
+  {
+    "id": 118,
+    "position": [160.0, 183.75],
+    "neighbors": [
+      { "id": 117, "distance": 7.5 },
+      { "id": 119, "distance": 21.75 },
+      { "id": 139, "distance": 23.75 }
+    ]
+  },
+  {
+    "id": 119,
+    "position": [160.0, 162.0],
+    "neighbors": [
+      { "id": 118, "distance": 21.75 },
+      { "id": 120, "distance": 21.75 }
+    ]
+  },
+  {
+    "id": 120,
+    "position": [160.0, 140.25],
+    "neighbors": [
+      { "id": 119, "distance": 21.75 },
+      { "id": 112, "distance": 12.04 },
+      { "id": 123, "distance": 23.78 },
+      { "id": 129, "distance": 15.85 }
+    ]
+  },
+  {
+    "id": 121,
+    "position": [138.75, 191.5],
+    "neighbors": [
+      { "id": 117, "distance": 21.25 },
+      { "id": 122, "distance": 23.76 }
+    ]
+  },
+  {
+    "id": 122,
+    "position": [115.0, 192.0],
+    "neighbors": [
+      { "id": 107, "distance": 20.72 },
+      { "id": 108, "distance": 20.67 },
+      { "id": 121, "distance": 23.76 }
+    ]
+  },
+  {
+    "id": 123,
+    "position": [155.0, 117.0],
+    "neighbors": [
+      { "id": 112, "distance": 14.56 },
+      { "id": 120, "distance": 23.78 },
+      { "id": 124, "distance": 18.49 },
+      { "id": 129, "distance": 10.09 }
+    ]
+  },
+  {
+    "id": 124,
+    "position": [152.0, 98.75],
+    "neighbors": [
+      { "id": 123, "distance": 18.49 },
+      { "id": 125, "distance": 13.48 }
+    ]
+  },
+  {
+    "id": 125,
+    "position": [143.25, 88.5],
+    "neighbors": [
+      { "id": 124, "distance": 13.48 },
+      { "id": 126, "distance": 12.31 }
+    ]
+  },
+  {
+    "id": 126,
+    "position": [132.0, 83.5],
+    "neighbors": [
+      { "id": 125, "distance": 12.31 },
+      { "id": 127, "distance": 15.21 }
+    ]
+  },
+  {
+    "id": 127,
+    "position": [117.0, 81.0],
+    "neighbors": [
+      { "id": 126, "distance": 15.21 },
+      { "id": 128, "distance": 18.28 }
+    ]
+  },
+  {
+    "id": 128,
+    "position": [98.75, 80.0],
+    "neighbors": [{ "id": 127, "distance": 18.28 }]
+  },
+  {
+    "id": 129,
+    "position": [161.75, 124.5],
+    "neighbors": [
+      { "id": 112, "distance": 11.86 },
+      { "id": 120, "distance": 15.85 },
+      { "id": 123, "distance": 10.09 },
+      { "id": 130, "distance": 14.02 }
+    ]
+  },
+  {
+    "id": 130,
+    "position": [175.75, 123.75],
+    "neighbors": [
+      { "id": 129, "distance": 14.02 },
+      { "id": 131, "distance": 27.75 },
+      { "id": 146, "distance": 13.0 }
+    ]
+  },
+  {
+    "id": 131,
+    "position": [203.5, 123.25],
+    "neighbors": [
+      { "id": 130, "distance": 27.75 },
+      { "id": 132, "distance": 18.0 },
+      { "id": 143, "distance": 15.77 },
+      { "id": 147, "distance": 12.5 }
+    ]
+  },
+  {
+    "id": 132,
+    "position": [221.5, 123.0],
+    "neighbors": [
+      { "id": 131, "distance": 18.0 },
+      { "id": 133, "distance": 27.0 }
+    ]
+  },
+  {
+    "id": 133,
+    "position": [248.5, 123.0],
+    "neighbors": [
+      { "id": 132, "distance": 27.0 },
+      { "id": 138, "distance": 34.5 },
+      { "id": 148, "distance": 19.5 }
+    ]
+  },
+  {
+    "id": 134,
+    "position": [249.0, 244.75],
+    "neighbors": [
+      { "id": 15, "distance": 9.75 },
+      { "id": 135, "distance": 25.25 },
+      { "id": 145, "distance": 52.91 }
+    ]
+  },
+  {
+    "id": 135,
+    "position": [249.0, 219.5],
+    "neighbors": [
+      { "id": 134, "distance": 25.25 },
+      { "id": 136, "distance": 25.25 },
+      { "id": 145, "distance": 46.5 }
+    ]
+  },
+  {
+    "id": 136,
+    "position": [248.5, 194.25],
+    "neighbors": [
+      { "id": 135, "distance": 25.25 },
+      { "id": 137, "distance": 10.5 },
+      { "id": 190, "distance": 23.5 }
+    ]
+  },
+  {
+    "id": 137,
+    "position": [248.5, 183.75],
+    "neighbors": [
+      { "id": 136, "distance": 10.5 },
+      { "id": 138, "distance": 26.25 },
+      { "id": 141, "distance": 26.75 }
+    ]
+  },
+  {
+    "id": 138,
+    "position": [248.5, 157.5],
+    "neighbors": [
+      { "id": 133, "distance": 34.5 },
+      { "id": 137, "distance": 26.25 }
+    ]
+  },
+  {
+    "id": 139,
+    "position": [183.75, 183.75],
+    "neighbors": [
+      { "id": 118, "distance": 23.75 },
+      { "id": 140, "distance": 23.75 }
+    ]
+  },
+  {
+    "id": 140,
+    "position": [207.5, 183.75],
+    "neighbors": [
+      { "id": 139, "distance": 23.75 },
+      { "id": 141, "distance": 14.25 },
+      { "id": 142, "distance": 22.75 },
+      { "id": 912, "distance": 14.63 }
+    ]
+  },
+  {
+    "id": 141,
+    "position": [221.75, 183.75],
+    "neighbors": [
+      { "id": 137, "distance": 26.75 },
+      { "id": 140, "distance": 14.25 },
+      { "id": 915, "distance": 26.25 }
+    ]
+  },
+  {
+    "id": 142,
+    "position": [207.5, 161.0],
+    "neighbors": [
+      { "id": 140, "distance": 22.75 },
+      { "id": 143, "distance": 22.5 }
+    ]
+  },
+  {
+    "id": 143,
+    "position": [207.5, 138.5],
+    "neighbors": [
+      { "id": 131, "distance": 15.77 },
+      { "id": 142, "distance": 22.5 }
+    ]
+  },
+  {
+    "id": 144,
+    "position": [173.5, 208.0],
+    "neighbors": [
+      { "id": 116, "distance": 12.25 },
+      { "id": 145, "distance": 31.2 }
+    ]
+  },
+  {
+    "id": 145,
+    "position": [202.5, 219.5],
+    "neighbors": [
+      { "id": 134, "distance": 52.91 },
+      { "id": 135, "distance": 46.5 },
+      { "id": 144, "distance": 31.2 },
+      { "id": 912, "distance": 22.0 }
+    ]
+  },
+  {
+    "id": 146,
+    "position": [175.75, 110.75],
+    "neighbors": [
+      { "id": 130, "distance": 13.0 },
+      { "id": 918, "distance": 18.27 }
+    ]
+  },
+  {
+    "id": 147,
+    "position": [203.5, 110.75],
+    "neighbors": [
+      { "id": 131, "distance": 12.5 },
+      { "id": 918, "distance": 24.3 }
+    ]
+  },
+  {
+    "id": 148,
+    "position": [268.0, 123.0],
+    "neighbors": [
+      { "id": 133, "distance": 19.5 },
+      { "id": 149, "distance": 32.41 },
+      { "id": 197, "distance": 18.81 }
+    ]
+  },
+  {
+    "id": 149,
+    "position": [298.75, 133.25],
+    "neighbors": [
+      { "id": 148, "distance": 32.41 },
+      { "id": 150, "distance": 32.49 }
+    ]
+  },
+  {
+    "id": 150,
+    "position": [329.5, 143.75],
+    "neighbors": [
+      { "id": 149, "distance": 32.49 },
+      { "id": 159, "distance": 45.25 },
+      { "id": 160, "distance": 11.85 }
+    ]
+  },
+  {
+    "id": 151,
+    "position": [343.25, 246.0],
+    "neighbors": [
+      { "id": 20, "distance": 18.66 },
+      { "id": 152, "distance": 15.57 },
+      { "id": 167, "distance": 25.93 }
+    ]
+  },
+  {
+    "id": 152,
+    "position": [351.0, 232.5],
+    "neighbors": [
+      { "id": 151, "distance": 15.57 },
+      { "id": 153, "distance": 16.0 },
+      { "id": 157, "distance": 15.05 },
+      { "id": 167, "distance": 32.4 }
+    ]
+  },
+  {
+    "id": 153,
+    "position": [365.0, 224.75],
+    "neighbors": [
+      { "id": 152, "distance": 16.0 },
+      { "id": 154, "distance": 16.62 },
+      { "id": 157, "distance": 24.25 },
+      { "id": 904, "distance": 32.25 }
+    ]
+  },
+  {
+    "id": 154,
+    "position": [381.25, 221.25],
+    "neighbors": [
+      { "id": 153, "distance": 16.62 },
+      { "id": 155, "distance": 23.25 },
+      { "id": 169, "distance": 22.22 },
+      { "id": 904, "distance": 33.02 }
+    ]
+  },
+  {
+    "id": 155,
+    "position": [404.5, 221.0],
+    "neighbors": [
+      { "id": 154, "distance": 23.25 },
+      { "id": 156, "distance": 23.5 },
+      { "id": 169, "distance": 15.46 }
+    ]
+  },
+  {
+    "id": 156,
+    "position": [428.0, 221.0],
+    "neighbors": [
+      { "id": 155, "distance": 23.5 },
+      { "id": 165, "distance": 25.0 },
+      { "id": 166, "distance": 24.26 }
+    ]
+  },
+  {
+    "id": 157,
+    "position": [341.0, 221.25],
+    "neighbors": [
+      { "id": 152, "distance": 15.05 },
+      { "id": 153, "distance": 24.25 },
+      { "id": 158, "distance": 11.63 }
+    ]
+  },
+  {
+    "id": 158,
+    "position": [329.5, 219.5],
+    "neighbors": [
+      { "id": 157, "distance": 11.63 },
+      { "id": 159, "distance": 30.5 }
+    ]
+  },
+  {
+    "id": 159,
+    "position": [329.5, 189.0],
+    "neighbors": [
+      { "id": 158, "distance": 30.5 },
+      { "id": 150, "distance": 45.25 },
+      { "id": 170, "distance": 41.0 }
+    ]
+  },
+  {
+    "id": 160,
+    "position": [341.25, 145.25],
+    "neighbors": [
+      { "id": 150, "distance": 11.85 },
+      { "id": 161, "distance": 31.32 },
+      { "id": 194, "distance": 23.92 }
+    ]
+  },
+  {
+    "id": 161,
+    "position": [371.25, 154.25],
+    "neighbors": [
+      { "id": 160, "distance": 31.32 },
+      { "id": 162, "distance": 30.68 },
+      { "id": 194, "distance": 16.85 }
+    ]
+  },
+  {
+    "id": 162,
+    "position": [400.25, 164.25],
+    "neighbors": [
+      { "id": 161, "distance": 30.68 },
+      { "id": 163, "distance": 28.56 }
+    ]
+  },
+  {
+    "id": 163,
+    "position": [427.0, 174.25],
+    "neighbors": [
+      { "id": 162, "distance": 28.56 },
+      { "id": 166, "distance": 22.5 },
+      { "id": 172, "distance": 18.03 }
+    ]
+  },
+  {
+    "id": 164,
+    "position": [428.0, 276.75],
+    "neighbors": [
+      { "id": 26, "distance": 25.0 },
+      { "id": 165, "distance": 30.75 }
+    ]
+  },
+  {
+    "id": 165,
+    "position": [428.0, 246.0],
+    "neighbors": [
+      { "id": 156, "distance": 25.0 },
+      { "id": 164, "distance": 30.75 }
+    ]
+  },
+  {
+    "id": 166,
+    "position": [427.25, 196.75],
+    "neighbors": [
+      { "id": 156, "distance": 24.26 },
+      { "id": 163, "distance": 22.5 }
+    ]
+  },
+  {
+    "id": 167,
+    "position": [363.25, 262.5],
+    "neighbors": [
+      { "id": 20, "distance": 25.78 },
+      { "id": 21, "distance": 24.97 },
+      { "id": 22, "distance": 30.64 },
+      { "id": 151, "distance": 25.93 },
+      { "id": 152, "distance": 32.4 },
+      { "id": 911, "distance": 35.25 }
+    ]
+  },
+  {
+    "id": 168,
+    "position": [398.5, 290.0],
+    "neighbors": [
+      { "id": 24, "distance": 18.4 },
+      { "id": 25, "distance": 14.71 },
+      { "id": 911, "distance": 27.5 }
+    ]
+  },
+  {
+    "id": 169,
+    "position": [398.5, 235.25],
+    "neighbors": [
+      { "id": 154, "distance": 22.22 },
+      { "id": 155, "distance": 15.46 },
+      { "id": 911, "distance": 27.25 }
+    ]
+  },
+  {
+    "id": 170,
+    "position": [288.5, 189.0],
+    "neighbors": [
+      { "id": 159, "distance": 41.0 },
+      { "id": 905, "distance": 16.0 },
+      { "id": 190, "distance": 17.24 },
+      { "id": 195, "distance": 19.42 },
+      { "id": 916, "distance": 28.43 }
+    ]
+  },
+  {
+    "id": 171,
+    "position": [351.25, 320.25],
+    "neighbors": [
+      { "id": 22, "distance": 29.26 },
+      { "id": 23, "distance": 24.97 },
+      { "id": 900, "distance": 16.9 }
+    ]
+  },
+  {
+    "id": 172,
+    "position": [445.0, 175.25],
+    "neighbors": [
+      { "id": 163, "distance": 18.03 },
+      { "id": 173, "distance": 23.54 }
+    ]
+  },
+  {
+    "id": 173,
+    "position": [468.0, 170.25],
+    "neighbors": [
+      { "id": 172, "distance": 23.54 },
+      { "id": 174, "distance": 22.9 }
+    ]
+  },
+  {
+    "id": 174,
+    "position": [490.5, 166.0],
+    "neighbors": [
+      { "id": 173, "distance": 22.9 },
+      { "id": 175, "distance": 17.84 }
+    ]
+  },
+  {
+    "id": 175,
+    "position": [508.25, 164.25],
+    "neighbors": [
+      { "id": 174, "distance": 17.84 },
+      { "id": 176, "distance": 19.66 }
+    ]
+  },
+  {
+    "id": 176,
+    "position": [527.75, 166.75],
+    "neighbors": [
+      { "id": 175, "distance": 19.66 },
+      { "id": 177, "distance": 18.26 }
+    ]
+  },
+  {
+    "id": 177,
+    "position": [545.0, 172.75],
+    "neighbors": [
+      { "id": 176, "distance": 18.26 },
+      { "id": 178, "distance": 19.97 }
+    ]
+  },
+  {
+    "id": 178,
+    "position": [561.5, 184.0],
+    "neighbors": [
+      { "id": 177, "distance": 19.97 },
+      { "id": 179, "distance": 22.82 }
+    ]
+  },
+  {
+    "id": 179,
+    "position": [577.0, 200.75],
+    "neighbors": [
+      { "id": 178, "distance": 22.82 },
+      { "id": 181, "distance": 39.76 },
+      { "id": 184, "distance": 36.77 }
+    ]
+  },
+  {
+    "id": 180,
+    "position": [578.75, 280.25],
+    "neighbors": [
+      { "id": 34, "distance": 19.0 },
+      { "id": 181, "distance": 39.76 },
+      { "id": 182, "distance": 18.0 }
+    ]
+  },
+  {
+    "id": 181,
+    "position": [578.0, 240.5],
+    "neighbors": [
+      { "id": 179, "distance": 39.76 },
+      { "id": 180, "distance": 39.76 }
+    ]
+  },
+  {
+    "id": 182,
+    "position": [596.75, 280.25],
+    "neighbors": [
+      { "id": 34, "distance": 26.17 },
+      { "id": 180, "distance": 18.0 },
+      { "id": 901, "distance": 24.41 }
+    ]
+  },
+  {
+    "id": 183,
+    "position": [627.0, 280.75],
+    "neighbors": [
+      { "id": 38, "distance": 21.71 },
+      { "id": 901, "distance": 22.7 }
+    ]
+  },
+  {
+    "id": 184,
+    "position": [613.0, 208.25],
+    "neighbors": [
+      { "id": 179, "distance": 36.77 },
+      { "id": 185, "distance": 23.5 }
+    ]
+  },
+  {
+    "id": 185,
+    "position": [635.0, 216.5],
+    "neighbors": [
+      { "id": 184, "distance": 23.5 },
+      { "id": 186, "distance": 23.5 }
+    ]
+  },
+  {
+    "id": 186,
+    "position": [657.0, 224.75],
+    "neighbors": [
+      { "id": 185, "distance": 23.5 },
+      { "id": 187, "distance": 21.58 }
+    ]
+  },
+  {
+    "id": 187,
+    "position": [672.75, 239.5],
+    "neighbors": [
+      { "id": 186, "distance": 21.58 },
+      { "id": 188, "distance": 15.19 }
+    ]
+  },
+  {
+    "id": 188,
+    "position": [681.0, 252.25],
+    "neighbors": [
+      { "id": 187, "distance": 15.19 },
+      { "id": 189, "distance": 23.51 }
+    ]
+  },
+  {
+    "id": 189,
+    "position": [681.5, 275.75],
+    "neighbors": [
+      { "id": 40, "distance": 23.05 },
+      { "id": 188, "distance": 23.51 }
+    ]
+  },
+  {
+    "id": 190,
+    "position": [272.0, 194.0],
+    "neighbors": [
+      { "id": 136, "distance": 23.5 },
+      { "id": 170, "distance": 17.24 },
+      { "id": 195, "distance": 21.71 },
+      { "id": 916, "distance": 18.51 }
+    ]
+  },
+  {
+    "id": 191,
+    "position": [115.5, 132.5],
+    "neighbors": [
+      { "id": 110, "distance": 17.25 },
+      { "id": 111, "distance": 18.34 },
+      { "id": 192, "distance": 24.4 },
+      { "id": 919, "distance": 50.76 },
+      { "id": 920, "distance": 26.0 }
+    ]
+  },
+  {
+    "id": 192,
+    "position": [98.0, 149.5],
+    "neighbors": [
+      { "id": 109, "distance": 15.88 },
+      { "id": 110, "distance": 17.75 },
+      { "id": 113, "distance": 13.98 },
+      { "id": 191, "distance": 24.4 },
+      { "id": 919, "distance": 48.42 }
+    ]
+  },
+  {
+    "id": 193,
+    "position": [358.5, 183.75],
+    "neighbors": [
+      { "id": 194, "distance": 20.55 },
+      { "id": 904, "distance": 10.9 }
+    ]
+  },
+  {
+    "id": 194,
+    "position": [357, 163.25],
+    "neighbors": [
+      { "id": 160, "distance": 23.92 },
+      { "id": 161, "distance": 16.85 },
+      { "id": 193, "distance": 20.55 }
+    ]
+  },
+  {
+    "id": 195,
+    "position": [277.5, 173.0],
+    "neighbors": [
+      { "id": 170, "distance": 19.42 },
+      { "id": 190, "distance": 21.71 },
+      { "id": 196, "distance": 17.4 },
+      { "id": 905, "distance": 11.0 }
+    ]
+  },
+  {
+    "id": 196,
+    "position": [275.25, 155.75],
+    "neighbors": [
+      { "id": 195, "distance": 17.4 },
+      { "id": 197, "distance": 15.13 }
+    ]
+  },
+  {
+    "id": 197,
+    "position": [269.5, 141.75],
+    "neighbors": [
+      { "id": 196, "distance": 15.13 },
+      { "id": 148, "distance": 18.81 }
+    ]
+  },
+  {
+    "id": 900,
+    "position": [343.0, 335.0],
+    "neighbors": [
+      { "id": 171, "distance": 16.9 },
+      { "id": 909, "distance": 42.5 }
+    ]
+  },
+  {
+    "id": 901,
+    "position": [613.5, 262.5],
+    "neighbors": [
+      { "id": 36, "distance": 36.52 },
+      { "id": 37, "distance": 36.88 },
+      { "id": 182, "distance": 24.41 },
+      { "id": 183, "distance": 22.7 }
+    ]
+  },
+  {
+    "id": 902,
+    "position": [655.0, 345.0],
+    "neighbors": [
+      { "id": 92, "distance": 12.97 },
+      { "id": 95, "distance": 24.25 }
+    ]
+  },
+  {
+    "id": 903,
+    "position": [725.0, 345.0],
+    "neighbors": [
+      { "id": 97, "distance": 27.25 },
+      { "id": 104, "distance": 17.04 }
+    ]
+  },
+  {
+    "id": 904,
+    "position": [365.0, 192.5],
+    "neighbors": [
+      { "id": 153, "distance": 32.25 },
+      { "id": 154, "distance": 33.02 },
+      { "id": 193, "distance": 10.9 }
+    ]
+  },
+  {
+    "id": 905,
+    "position": [288.5, 173.0],
+    "neighbors": [
+      { "id": 170, "distance": 16.0 },
+      { "id": 195, "distance": 11.0 }
+    ]
+  },
+  {
+    "id": 906,
+    "position": [572.5, 335.0],
+    "neighbors": [
+      { "id": 85, "distance": 17.0 },
+      { "id": 86, "distance": 10.0 },
+      { "id": 907, "distance": 33.0 }
+    ]
+  },
+  {
+    "id": 907,
+    "position": [572.5, 368.0],
+    "neighbors": [{ "id": 906, "distance": 33.0 }]
+  },
+  {
+    "id": 908,
+    "position": [115.0, 312.5],
+    "neighbors": [{ "id": 52, "distance": 31.9 }]
+  },
+  {
+    "id": 909,
+    "position": [343.0, 377.5],
+    "neighbors": [{ "id": 900, "distance": 42.5 }]
+  },
+  {
+    "id": 910,
+    "position": [73.5, 174.0],
+    "neighbors": [{ "id": 113, "distance": 20.69 }]
+  },
+  {
+    "id": 911,
+    "position": [398.5, 262.5],
+    "neighbors": [
+      { "id": 167, "distance": 35.25 },
+      { "id": 168, "distance": 27.5 },
+      { "id": 169, "distance": 27.25 }
+    ]
+  },
+  {
+    "id": 912,
+    "position": [202.5, 197.5],
+    "neighbors": [
+      { "id": 140, "distance": 14.63 },
+      { "id": 145, "distance": 22.0 }
+    ]
+  },
+  {
+    "id": 913,
+    "position": [507.5, 342.0],
+    "neighbors": [
+      { "id": 83, "distance": 20.1 },
+      { "id": 84, "distance": 23.09 },
+      { "id": 914, "distance": 21.91 }
+    ]
+  },
+  {
+    "id": 914,
+    "position": [495.0, 360.0],
+    "neighbors": [
+      { "id": 83, "distance": 26.01 },
+      { "id": 913, "distance": 21.91 }
+    ]
+  },
+  {
+    "id": 915,
+    "position": [221.5, 157.5],
+    "neighbors": [{ "id": 141, "distance": 26.25 }]
+  },
+  {
+    "id": 916,
+    "position": [272.5, 212.5],
+    "neighbors": [
+      { "id": 170, "distance": 28.43 },
+      { "id": 190, "distance": 18.51 }
+    ]
+  },
+  {
+    "id": 917,
+    "position": [200.0, 370.0],
+    "neighbors": [{ "id": 59, "distance": 23.28 }]
+  },
+  {
+    "id": 918,
+    "position": [185.0, 95.0],
+    "neighbors": [
+      { "id": 146, "distance": 18.27 },
+      { "id": 147, "distance": 24.3 }
+    ]
+  },
+  {
+    "id": 919,
+    "position": [70.0, 110.0],
+    "neighbors": [
+      { "id": 110, "distance": 60.61 },
+      { "id": 191, "distance": 50.76 },
+      { "id": 192, "distance": 48.42 }
+    ]
+  },
+  {
+    "id": 920,
+    "position": [131.5, 112.0],
+    "neighbors": [{ "id": 191, "distance": 26.0 }]
+  }
+]

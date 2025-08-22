@@ -1,9 +1,10 @@
 import { CssBaseline, Stack, ThemeProvider } from "@mui/material";
-import { theme } from "./theme";
+import { theme } from "./utils/theme";
 import { BrowserRouter, Navigate, Route, Routes } from "react-router";
 import { Detail, Main } from "./pages";
 import Header from "./components/Header";
 import { useEffect } from "react";
+import Test from "./pages/Test";
 
 const App = () => {
   const setVh = () => {
@@ -30,6 +31,7 @@ const App = () => {
             <Routes>
               <Route path="/" element={<Main />} />
               <Route path="/detail/*" element={<Detail />} />
+              <Route path="/test" element={<Test />} />
               <Route path="*" element={<Navigate to={"/"} />} />
             </Routes>
           </Stack>

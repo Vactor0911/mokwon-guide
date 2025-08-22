@@ -1,9 +1,8 @@
-import { Color } from "@mui/material";
+import { Color, useTheme } from "@mui/material";
 import { LatLngExpression } from "leaflet";
 import L from "leaflet";
 import { useCallback } from "react";
 import { Marker } from "react-leaflet";
-import { theme } from "../theme";
 
 interface CircularMarkerProps {
   title?: string;
@@ -13,6 +12,8 @@ interface CircularMarkerProps {
 }
 
 const CircularMarker = (props: CircularMarkerProps) => {
+  const theme = useTheme();
+
   const {
     title = "",
     color = theme.palette.primary.main,

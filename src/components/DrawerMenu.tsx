@@ -6,8 +6,8 @@ import {
   IconButton,
   Stack,
   Typography,
+  useTheme,
 } from "@mui/material";
-import { theme } from "../theme";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import { useCallback, useState } from "react";
@@ -18,6 +18,8 @@ import Footer from "./Footer";
 import DrawerNavLink from "./DrawerNavLink";
 
 const DrawerMenu = () => {
+  const theme = useTheme();
+
   const [isDrawerOpen, setIsDrawerOpen] = useAtom(isDrawerOpenAtom); // 드로어 열림 상태
   const [isAccordionOpen, setIsAccordionOpen] = useState(false);
 

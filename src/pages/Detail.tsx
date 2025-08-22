@@ -15,11 +15,11 @@ import {
   TableRow,
   TextField,
   Typography,
+  useTheme,
 } from "@mui/material";
 import { useSearchParams } from "react-router";
 import ElevatorIcon from "../assets/icons/elevator.png";
 import WcIcon from "../assets/icons/wc.png";
-import { theme } from "../theme";
 import { useCallback, useEffect, useRef, useState } from "react";
 import ExpandMoreRoundedIcon from "@mui/icons-material/ExpandMoreRounded";
 import {
@@ -52,6 +52,7 @@ const parseFloor = (floor: string): number => {
 
 const Detail = () => {
   const [queryParams] = useSearchParams(); // URL 쿼리 파라미터
+  const theme = useTheme();
 
   const [buildingId, setBuildingId] = useState(
     queryParams.get("building") || "A"

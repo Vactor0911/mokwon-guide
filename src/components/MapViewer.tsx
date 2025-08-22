@@ -1,22 +1,34 @@
 import {
   ImageOverlay,
+  LayerGroup,
   MapContainer,
+  Polyline,
   useMap,
   useMapEvents,
 } from "react-leaflet";
 import "leaflet/dist/leaflet.css";
-import L, { CRS, LatLngBounds } from "leaflet";
+import L, { CRS, LatLngBounds, LatLngExpression } from "leaflet";
 import MapImage from "/images/map.png";
-import { Alert, Button, Snackbar, SnackbarCloseReason } from "@mui/material";
+import {
+  Alert,
+  Button,
+  Snackbar,
+  SnackbarCloseReason,
+  Zoom,
+} from "@mui/material";
 import { useCallback, useRef, useState } from "react";
 import GpsOffRoundedIcon from "@mui/icons-material/GpsOffRounded";
 import LocationSearchingRoundedIcon from "@mui/icons-material/LocationSearchingRounded";
 import MyLocationRoundedIcon from "@mui/icons-material/MyLocationRounded";
-import { geoToXY } from "../utils";
+import { findNodeByBuildingId, geoToXY } from "../utils";
 import buildings from "../assets/buildings.json";
 import BuildingMarker from "./BuildingMarker";
 import CircularMarker from "./CircularMarker";
 import { useEffect } from "react";
+import PointMarker from "./PointMarker";
+import { useAtom, useAtomValue } from "jotai";
+import { isNavigationMenuOpenAtom, pathAtom, pointAtom } from "../states";
+import NavigationIcon from "@mui/icons-material/Navigation";
 
 const MapViewer = () => {
   // 지도 범위 설정
@@ -41,6 +53,11 @@ const MapViewer = () => {
   const [geoLocation, setGeoLocation] = useState<number[] | null>(null); // 내 위치 좌표
   const [isAlertOpen, setIsAlertOpen] = useState(false); // 경고창 열림 상태
   const [alertMessage, setAlertMessage] = useState(""); // 경고창 메시지
+  const [isNavigationMenuOpen, setIsNavigationMenuOpen] = useAtom(
+    isNavigationMenuOpenAtom
+  );
+  const point = useAtomValue(pointAtom);
+  const path = useAtomValue(pathAtom);
 
   // 지도 이벤트 리스너
   const MapEventListener = () => {
@@ -193,6 +210,11 @@ const MapViewer = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
+  // 길찾기 메뉴 버튼 클릭
+  const handleNavigationButtonClick = useCallback(() => {
+    setIsNavigationMenuOpen(true);
+  }, [setIsNavigationMenuOpen]);
+
   return (
     <MapContainer
       crs={CRS.Simple}
@@ -218,6 +240,7 @@ const MapViewer = () => {
           },
       }}
     >
+      {/* 지도 이미지 오버레이 */}
       <ImageOverlay
         url={MapImage}
         bounds={bounds}
@@ -249,8 +272,63 @@ const MapViewer = () => {
         )}
       </ImageOverlay>
 
+      {/* 경로 이미지 오버레이 */}
+      <LayerGroup>
+        <Polyline
+          pathOptions={{ color: "#1976d2", weight: 6 * (zoom + 1) }}
+          positions={(path?.path as LatLngExpression[]) || []}
+        />
+
+        <Polyline
+          pathOptions={{ color: "white", weight: 2 * (zoom + 1) }}
+          positions={(path?.path as LatLngExpression[]) || []}
+        />
+
+        {/* 출발지 마커 */}
+        {point.origin && (
+          <PointMarker
+            position={
+              findNodeByBuildingId(point.origin.split(" ")[0])?.position || []
+            }
+            type="origin"
+          />
+        )}
+
+        {/* 도착지 마커 */}
+        {point.destination && (
+          <PointMarker
+            position={
+              findNodeByBuildingId(point.destination.split(" ")[0])?.position ||
+              []
+            }
+            type="destination"
+          />
+        )}
+      </LayerGroup>
+
       {/* 지도 이벤트 리스너 */}
       <MapEventListener />
+
+      {/* 길찾기 메뉴 버튼 */}
+      <Zoom in={!isNavigationMenuOpen}>
+        <Button
+          variant="contained"
+          color="secondary"
+          sx={{
+            padding: "8px",
+            minWidth: "0",
+            borderRadius: "50%",
+            color: "white",
+            position: "absolute",
+            top: "20px",
+            right: "20px",
+            zIndex: 1000,
+          }}
+          onClick={handleNavigationButtonClick}
+        >
+          <NavigationIcon />
+        </Button>
+      </Zoom>
 
       {/* 내 위치 따라가기 버튼 */}
       <Button

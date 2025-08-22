@@ -6,20 +6,25 @@ import {
   Stack,
   SwipeableDrawer,
   Typography,
+  useTheme,
 } from "@mui/material";
-import { theme } from "../theme";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import SearchRoundedIcon from "@mui/icons-material/SearchRounded";
-import { useAtom, useAtomValue } from "jotai";
+import { useAtom, useAtomValue, useSetAtom } from "jotai";
 import {
   buildingDetailDrawerBuildingAtom,
   isBuildingDetailDrawerOpenAtom,
+  isNavigationMenuOpenAtom,
+  pointAtom,
 } from "../states";
 import { useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router";
+import RadioButtonCheckedRoundedIcon from "@mui/icons-material/RadioButtonCheckedRounded";
+import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
 
 const BuildingDetailDrawer = () => {
   const navigate = useNavigate(); // 리다이렉트 네비게이션
+  const theme = useTheme();
 
   const buildingDetailDrawerBuilding = useAtomValue(
     buildingDetailDrawerBuildingAtom
@@ -31,6 +36,8 @@ const BuildingDetailDrawer = () => {
   const [imageSrc, setImageSrc] = useState<string | null>(null); // 이미지 경로
   const [isImageLoaded, setIsImageLoaded] = useState(false); // 이미지 로딩 여부
   const [isImageError, setIsImageError] = useState(false); // 이미지 로딩 실패 여부
+  const setIsNavigationMenuOpen = useSetAtom(isNavigationMenuOpenAtom);
+  const [point, setPoint] = useAtom(pointAtom); // 네비게이션 경로 상태
 
   // 이미지 경로 및 상태 초기화
   useEffect(() => {
@@ -60,6 +67,42 @@ const BuildingDetailDrawer = () => {
     setIsBuildingDetailDrawerOpen,
   ]);
 
+  // 출발 버튼 클릭
+  const handleOriginButtonClick = useCallback(() => {
+    const newRoute = {
+      origin: `${buildingDetailDrawerBuilding?.id} ${buildingDetailDrawerBuilding?.name}`,
+      destination: point.destination,
+    };
+    setPoint(newRoute);
+    setIsBuildingDetailDrawerOpen(false);
+    setIsNavigationMenuOpen(true);
+  }, [
+    buildingDetailDrawerBuilding?.id,
+    buildingDetailDrawerBuilding?.name,
+    point.destination,
+    setIsBuildingDetailDrawerOpen,
+    setIsNavigationMenuOpen,
+    setPoint,
+  ]);
+
+  // 도착 버튼 클릭
+  const handleDestinationButtonClick = useCallback(() => {
+    const newRoute = {
+      origin: point.origin,
+      destination: `${buildingDetailDrawerBuilding?.id} ${buildingDetailDrawerBuilding?.name}`,
+    };
+    setPoint(newRoute);
+    setIsBuildingDetailDrawerOpen(false);
+    setIsNavigationMenuOpen(true);
+  }, [
+    buildingDetailDrawerBuilding?.id,
+    buildingDetailDrawerBuilding?.name,
+    point.origin,
+    setIsBuildingDetailDrawerOpen,
+    setIsNavigationMenuOpen,
+    setPoint,
+  ]);
+
   return (
     <SwipeableDrawer
       anchor="bottom"
@@ -68,11 +111,16 @@ const BuildingDetailDrawer = () => {
       onOpen={() => setIsBuildingDetailDrawerOpen(true)}
       swipeAreaWidth={56}
       disableSwipeToOpen
-      sx={{
-        "& > .MuiPaper-root": {
-          alignItems: "center",
-          background: "transparent",
-          boxShadow: "none",
+      slotProps={{
+        paper: {
+          sx: {
+            width: "min-content",
+            margin: "0 auto",
+            transform: "translateX(-50%)",
+            alignItems: "center",
+            background: "transparent",
+            boxShadow: "none",
+          },
         },
       }}
     >
@@ -187,33 +235,34 @@ const BuildingDetailDrawer = () => {
         </Button>
 
         {/* 네비게이션 버튼 */}
-        {/* TODO: 추후에 개발할 예정 */}
-        <Stack direction="row" justifyContent="flex-end" gap={2}>
+        <Stack direction="row" justifyContent="flex-end" marginTop={1} gap={2}>
           {/* 출발 */}
-          {/* <Button
+          <Button
             variant="contained"
             color="info"
             startIcon={<RadioButtonCheckedRoundedIcon color="secondary" />}
             sx={{
               borderRadius: "50px",
             }}
+            onClick={handleOriginButtonClick}
           >
             <Typography variant="h6" color="secondary">
               출발
             </Typography>
-          </Button> */}
+          </Button>
 
           {/* 도착 */}
-          {/* <Button
+          <Button
             variant="contained"
             color="secondary"
             startIcon={<LocationOnOutlinedIcon />}
             sx={{
               borderRadius: "50px",
             }}
+            onClick={handleDestinationButtonClick}
           >
             <Typography variant="h6">도착</Typography>
-          </Button> */}
+          </Button>
         </Stack>
       </Stack>
     </SwipeableDrawer>

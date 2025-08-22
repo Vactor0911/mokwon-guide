@@ -6,6 +6,7 @@ import {
   InputBase,
   Stack,
   Typography,
+  useTheme,
 } from "@mui/material";
 import { useAtom } from "jotai";
 import {
@@ -16,7 +17,6 @@ import {
 } from "../states";
 import { useCallback, useRef } from "react";
 import ArrowForwardIosRoundedIcon from "@mui/icons-material/ArrowForwardIosRounded";
-import { theme } from "../theme";
 import SearchRoundedIcon from "@mui/icons-material/SearchRounded";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import { grey } from "@mui/material/colors";
@@ -25,6 +25,8 @@ import FacilityItemButton from "./SearchResultButton";
 import DeleteRoundedIcon from "@mui/icons-material/DeleteRounded";
 
 const SearchDrawer = () => {
+  const theme = useTheme();
+
   const [isSearchDrawerOpen, setIsSearchDrawerOpen] = useAtom(
     isSearchDrawerOpenAtom
   ); // 검색 드로어 열림 상태
