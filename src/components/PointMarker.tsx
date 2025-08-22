@@ -43,22 +43,40 @@ const PointMarker = (props: PointMarkerProps) => {
 
   // 건물 마커 클릭
   const handleMarkerClick = useCallback(() => {
-    if (!point.origin || point.origin === "내 위치") {
-      return;
+    let buildingData;
+    if (type === "origin") {
+      if (!point.origin || point.origin === "내 위치") {
+        return;
+      }
+
+      // 건물 상세 대화상자 열기
+      const origin = point.origin.split(" ");
+      buildingData = {
+        id: origin[0],
+        name: origin.slice(1).join(" "),
+      };
+    } else {
+      if (!point.destination) {
+        return;
+      }
+
+      // 건물 상세 대화상자 열기
+      const destination = point.destination.split(" ");
+      buildingData = {
+        id: destination[0],
+        name: destination.slice(1).join(" "),
+      };
     }
 
-    // 건물 상세 대화상자 열기
-    const origin = point.origin.split(" ");
-    const buildingData = {
-      id: origin[0],
-      name: origin.slice(1).join(" "),
-    };
-    setBuildingDetailDrawerBuilding(buildingData);
-    setIsBuildingDetailDrawerOpen(true);
+    if (buildingData) {
+      setBuildingDetailDrawerBuilding(buildingData);
+      setIsBuildingDetailDrawerOpen(true);
+    }
   }, [
     point.origin,
     setBuildingDetailDrawerBuilding,
     setIsBuildingDetailDrawerOpen,
+    type,
   ]);
 
   return (
