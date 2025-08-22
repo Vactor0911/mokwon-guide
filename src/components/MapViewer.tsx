@@ -1,6 +1,8 @@
 import {
   ImageOverlay,
+  LayerGroup,
   MapContainer,
+  Polyline,
   useMap,
   useMapEvents,
 } from "react-leaflet";
@@ -17,6 +19,10 @@ import buildings from "../assets/buildings.json";
 import BuildingMarker from "./BuildingMarker";
 import CircularMarker from "./CircularMarker";
 import { useEffect } from "react";
+import PointMarker from "./PointMarker";
+import { useAtomValue } from "jotai";
+import { pathAtom } from "../states";
+import TestRoute from "./TestRoute";
 
 const MapViewer = () => {
   // 지도 범위 설정
@@ -41,6 +47,7 @@ const MapViewer = () => {
   const [geoLocation, setGeoLocation] = useState<number[] | null>(null); // 내 위치 좌표
   const [isAlertOpen, setIsAlertOpen] = useState(false); // 경고창 열림 상태
   const [alertMessage, setAlertMessage] = useState(""); // 경고창 메시지
+  const path = useAtomValue(pathAtom);
 
   // 지도 이벤트 리스너
   const MapEventListener = () => {
@@ -218,6 +225,7 @@ const MapViewer = () => {
           },
       }}
     >
+      {/* 지도 이미지 오버레이 */}
       <ImageOverlay
         url={MapImage}
         bounds={bounds}
@@ -248,6 +256,43 @@ const MapViewer = () => {
           />
         )}
       </ImageOverlay>
+
+      {/* 경로 이미지 오버레이 */}
+      <LayerGroup>
+        <Polyline
+          pathOptions={{ color: "#1976d2", weight: 6 * (zoom + 1) }}
+          positions={(path?.path ?? []).map((p) => {
+            return [(3840 - p[1]) * 0.25, p[0] * 0.25];
+          })}
+        />
+
+        <Polyline
+          pathOptions={{ color: "white", weight: 2 * (zoom + 1) }}
+          positions={(path?.path ?? []).map((p) => {
+            return [(3840 - p[1]) * 0.25, p[0] * 0.25];
+          })}
+        />
+
+        <PointMarker
+          position={
+            path?.path && path.path.length > 0
+              ? [(3840 - path.path[0][1]) * 0.25, path.path[0][0] * 0.25]
+              : undefined
+          }
+          type="origin"
+        />
+        <PointMarker
+          position={
+            path?.path && path.path.length > 0
+              ? [
+                  (3840 - path.path[path.path.length - 1][1]) * 0.25,
+                  path.path[path.path.length - 1][0] * 0.25,
+                ]
+              : undefined
+          }
+          type="destination"
+        />
+      </LayerGroup>
 
       {/* 지도 이벤트 리스너 */}
       <MapEventListener />
@@ -295,6 +340,7 @@ const MapViewer = () => {
           {alertMessage}
         </Alert>
       </Snackbar>
+      <TestRoute />
     </MapContainer>
   );
 };
