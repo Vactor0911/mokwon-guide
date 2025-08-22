@@ -44,6 +44,9 @@ export const buildingDetailDrawerBuildingAtom =
 // 선택된 시설 상태
 export const selectedFacilityAtom = atom<FacilityInterface | null>(null);
 
+// 길찾기 메뉴 열림 상태
+export const isNavigationMenuOpenAtom = atom(false);
+
 // 길찾기 지점 상태
 export const pointAtom = atom<{
   origin: string;

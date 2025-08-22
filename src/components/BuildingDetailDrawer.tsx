@@ -10,10 +10,11 @@ import {
 } from "@mui/material";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import SearchRoundedIcon from "@mui/icons-material/SearchRounded";
-import { useAtom, useAtomValue } from "jotai";
+import { useAtom, useAtomValue, useSetAtom } from "jotai";
 import {
   buildingDetailDrawerBuildingAtom,
   isBuildingDetailDrawerOpenAtom,
+  isNavigationMenuOpenAtom,
   pointAtom,
 } from "../states";
 import { useCallback, useEffect, useState } from "react";
@@ -35,6 +36,7 @@ const BuildingDetailDrawer = () => {
   const [imageSrc, setImageSrc] = useState<string | null>(null); // 이미지 경로
   const [isImageLoaded, setIsImageLoaded] = useState(false); // 이미지 로딩 여부
   const [isImageError, setIsImageError] = useState(false); // 이미지 로딩 실패 여부
+  const setIsNavigationMenuOpen = useSetAtom(isNavigationMenuOpenAtom);
   const [point, setPoint] = useAtom(pointAtom); // 네비게이션 경로 상태
 
   // 이미지 경로 및 상태 초기화
@@ -73,11 +75,13 @@ const BuildingDetailDrawer = () => {
     };
     setPoint(newRoute);
     setIsBuildingDetailDrawerOpen(false);
+    setIsNavigationMenuOpen(true);
   }, [
     buildingDetailDrawerBuilding?.id,
     buildingDetailDrawerBuilding?.name,
     point.destination,
     setIsBuildingDetailDrawerOpen,
+    setIsNavigationMenuOpen,
     setPoint,
   ]);
 
@@ -89,11 +93,13 @@ const BuildingDetailDrawer = () => {
     };
     setPoint(newRoute);
     setIsBuildingDetailDrawerOpen(false);
+    setIsNavigationMenuOpen(true);
   }, [
     buildingDetailDrawerBuilding?.id,
     buildingDetailDrawerBuilding?.name,
     point.origin,
     setIsBuildingDetailDrawerOpen,
+    setIsNavigationMenuOpen,
     setPoint,
   ]);
 

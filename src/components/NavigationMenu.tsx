@@ -9,7 +9,7 @@ import {
   useTheme,
 } from "@mui/material";
 import { useAtom } from "jotai";
-import { pathAtom, pointAtom } from "../states";
+import { isNavigationMenuOpenAtom, pathAtom, pointAtom } from "../states";
 import SwapVertRoundedIcon from "@mui/icons-material/SwapVertRounded";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import TripOriginRoundedIcon from "@mui/icons-material/TripOriginRounded";
@@ -25,6 +25,9 @@ const NavigationMenu = () => {
   const theme = useTheme();
 
   const [swapButtonAngle, setSwapButtonAngle] = useState(0);
+  const [isNavigationMenuOpen, setIsNavigationMenuOpen] = useAtom(
+    isNavigationMenuOpenAtom
+  );
   const [point, setPoint] = useAtom(pointAtom);
   const options = BuildingData.map(
     (building) => `${building.id} ${building.name}`
@@ -46,7 +49,8 @@ const NavigationMenu = () => {
   // 닫기 버튼 클릭
   const handleCloseButtonClick = useCallback(() => {
     setPoint({ origin: "", destination: "" });
-  }, [setPoint]);
+    setIsNavigationMenuOpen(false);
+  }, [setIsNavigationMenuOpen, setPoint]);
 
   // 출발지 변경
   const handleOriginChange = useCallback(
@@ -108,7 +112,7 @@ const NavigationMenu = () => {
 
   return (
     <Slide
-      in={!!point.origin || !!point.destination}
+      in={isNavigationMenuOpen}
       direction="down"
       mountOnEnter
       unmountOnExit
@@ -203,7 +207,11 @@ const NavigationMenu = () => {
 
         {/* 길찾기 결과 */}
         <Stack
-          height={point.origin && point.destination ? "30px" : 0}
+          height={
+            isNavigationMenuOpen && point.origin && point.destination
+              ? "30px"
+              : 0
+          }
           marginTop={point.origin && point.destination ? 1 : 0}
           direction="row"
           justifyContent="space-evenly"
