@@ -1,0 +1,120 @@
+import { Box, Stack } from "@mui/material";
+import Map from "/images/map.png";
+import Nodes from "../assets/nodes.json";
+
+const Test = () => {
+  return (
+    <Stack alignItems="center">
+      <Box position="relative">
+        <Box
+          component="img"
+          src={Map}
+          position="absolute"
+          left={0}
+          top={0}
+          width="2160px"
+          height="3840px"
+        />
+
+        <Box
+          position="absolute"
+          left={0}
+          top={0}
+          width="2160px"
+          height="3840px"
+          onClick={(e) => {
+            const rect = e.currentTarget.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            console.log(
+              `Clicked position: x=${Math.round(x)}, y=${Math.round(y)}`
+            );
+          }}
+          sx={{
+            cursor: "crosshair",
+            zIndex: 20,
+          }}
+        />
+
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          viewBox="0 0 2160 3840"
+          width="2160px"
+          height="3840px"
+          css={{
+            position: "relative",
+            zIndex: 10,
+          }}
+        >
+          {/* 선 */}
+          {Nodes.map((node) => [
+            ...node.neighbors.map((neighbor) => {
+              const neighborNode = Nodes.find((n) => n.id === neighbor.id);
+              if (!neighborNode) return null;
+              return (
+                <>
+                  <line
+                    key={`line-${node.id}-${neighborNode.id}`}
+                    x1={node.position[0]}
+                    y1={node.position[1]}
+                    x2={neighborNode.position[0]}
+                    y2={neighborNode.position[1]}
+                    stroke={
+                      neighborNode.neighbors.find((n) => n.id === node.id)
+                        ? "aqua"
+                        : "red"
+                    }
+                    strokeWidth="1"
+                  />
+
+                  <text
+                    key={`label-${neighborNode.id}`}
+                    x={(neighborNode.position[0] + node.position[0]) * 0.5}
+                    y={(neighborNode.position[1] + node.position[1]) * 0.5}
+                    fontSize="10"
+                    textAnchor="middle"
+                    fill="magenta"
+                  >
+                    {neighbor.distance}
+                  </text>
+                </>
+              );
+            }),
+          ])}
+
+          {/* 노드 */}
+          {Nodes.map((node) => [
+            <text
+              key={`label-${node.id}`}
+              x={node.position[0] - 5}
+              y={node.position[1] - 5}
+              fontSize="12"
+              textAnchor="middle"
+              fill={node.id >= 900 ? "yellow" : "orange"}
+            >
+              {node.id}
+            </text>,
+
+            <circle
+              key={`node-${node.id}`}
+              cx={node.position[0]}
+              cy={node.position[1]}
+              r="5"
+              fill="aqua"
+              css={{
+                "&:hover": {
+                  fill: "blue",
+                },
+              }}
+              onClick={() => {
+                console.log(`Node ${node.id} => ${node.neighbors.join(", ")}`);
+              }}
+            />,
+          ])}
+        </svg>
+      </Box>
+    </Stack>
+  );
+};
+
+export default Test;
