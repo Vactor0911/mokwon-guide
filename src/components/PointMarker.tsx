@@ -73,6 +73,7 @@ const PointMarker = (props: PointMarkerProps) => {
       setIsBuildingDetailDrawerOpen(true);
     }
   }, [
+    point.destination,
     point.origin,
     setBuildingDetailDrawerBuilding,
     setIsBuildingDetailDrawerOpen,
@@ -85,7 +86,7 @@ const PointMarker = (props: PointMarkerProps) => {
       icon={L.divIcon({
         className: "custom-icon",
         iconSize: [26, 26],
-        iconAnchor: [13, 39],
+        iconAnchor: [13, 38],
         html: `
           <div style="
             width: 26px;
@@ -102,12 +103,12 @@ const PointMarker = (props: PointMarkerProps) => {
 
             <div style="
               position: absolute;
-              bottom: -60%;
+              bottom: -55%;
               left: 50%;
               width: 0;
               height: 0;
-              border: 10px solid transparent;
-              border-top: 15px solid white;
+              border: 12px solid transparent;
+              border-top: 18px solid white;
               border-bottom: 0;
               transform: translateX(-50%);
               z-index: -1;
