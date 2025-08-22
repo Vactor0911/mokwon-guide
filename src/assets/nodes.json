@@ -1626,6 +1626,7 @@
     "neighbors": [
       { "id": 110, "distance": 17.25 },
       { "id": 111, "distance": 18.34 },
+      { "id": 192, "distance": 24.4 },
       { "id": 919, "distance": 50.76 },
       { "id": 920, "distance": 26.0 }
     ]
@@ -1637,6 +1638,7 @@
       { "id": 109, "distance": 15.88 },
       { "id": 110, "distance": 17.75 },
       { "id": 113, "distance": 13.98 },
+      { "id": 191, "distance": 24.4 },
       { "id": 919, "distance": 48.42 }
     ]
   },
