@@ -204,3 +204,14 @@ export const findNodeByBuildingId = (buildingId: string) => {
 export const findNodeById = (nodeId: number) => {
   return nodes.find((node) => node.id === nodeId);
 };
+
+/**
+ * 이동 시간을 계산하는 함수
+ * @param distance 이동 거리 (m)
+ * @param kph 시속 (km/h)
+ * @returns 이동 시간 (분)
+ */
+export const calcTravelTime = (distance: number, kph: number) => {
+  const minutes = (distance * 18) / (kph * 300);
+  return Math.round(minutes);
+};

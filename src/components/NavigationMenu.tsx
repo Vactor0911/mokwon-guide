@@ -8,7 +8,7 @@ import {
   Typography,
   useTheme,
 } from "@mui/material";
-import { useAtom, useSetAtom } from "jotai";
+import { useAtom } from "jotai";
 import { pathAtom, pointAtom } from "../states";
 import SwapVertRoundedIcon from "@mui/icons-material/SwapVertRounded";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
@@ -19,7 +19,7 @@ import { useCallback, useEffect, useState } from "react";
 import DirectionsWalkRoundedIcon from "@mui/icons-material/DirectionsWalkRounded";
 import ElectricScooterRoundedIcon from "@mui/icons-material/ElectricScooterRounded";
 import { findShortestPath } from "../utils/navigate";
-import { findNodeByBuildingId } from "../utils";
+import { calcTravelTime, findNodeByBuildingId } from "../utils";
 
 const NavigationMenu = () => {
   const theme = useTheme();
@@ -29,7 +29,7 @@ const NavigationMenu = () => {
   const options = BuildingData.map(
     (building) => `${building.id} ${building.name}`
   );
-  const setPath = useSetAtom(pathAtom);
+  const [path, setPath] = useAtom(pathAtom);
 
   // 지점 교체 버튼 클릭
   const handleSwapButtonClick = useCallback(() => {
@@ -95,7 +95,7 @@ const NavigationMenu = () => {
     if (result) {
       const newPath = {
         path: result.positions,
-        distance: result.distance,
+        distance: Math.round(result.distance * 1.28),
       };
       setPath(newPath);
     } else {
@@ -215,26 +215,32 @@ const NavigationMenu = () => {
             transition: "all 0.3s ease-in-out",
           }}
         >
-          {/* 도보 */}
-          <Stack direction="row" alignItems="center" gap={0.5}>
-            <DirectionsWalkRoundedIcon />
-            <Typography variant="subtitle1" fontWeight="bold">
-              10분
-            </Typography>
-          </Stack>
+          {path && path?.path && path?.distance ? (
+            <>
+              {/* 도보 */}
+              <Stack direction="row" alignItems="center" gap={0.5}>
+                <DirectionsWalkRoundedIcon />
+                <Typography variant="subtitle1" fontWeight="bold">
+                  {`${calcTravelTime(path.distance, 4)}분`}
+                </Typography>
+              </Stack>
 
-          {/* 전동 킥보드 */}
-          <Stack direction="row" alignItems="center" gap={0.5}>
-            <ElectricScooterRoundedIcon />
-            <Typography variant="subtitle1" fontWeight="bold">
-              3분
-            </Typography>
-          </Stack>
+              {/* 전동 킥보드 */}
+              <Stack direction="row" alignItems="center" gap={0.5}>
+                <ElectricScooterRoundedIcon />
+                <Typography variant="subtitle1" fontWeight="bold">
+                  {`${calcTravelTime(path.distance, 15)}분`}
+                </Typography>
+              </Stack>
 
-          {/* 이동 거리 */}
-          <Typography variant="subtitle1" fontWeight="bold">
-            500m
-          </Typography>
+              {/* 이동 거리 */}
+              <Typography variant="subtitle1" fontWeight="bold">
+                {`${path.distance}m`}
+              </Typography>
+            </>
+          ) : (
+            <Typography variant="h6">경로 없음</Typography>
+          )}
         </Stack>
       </Stack>
     </Slide>
