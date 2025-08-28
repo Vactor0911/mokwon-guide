@@ -236,7 +236,8 @@
     "position": [470.75, 300.25],
     "neighbors": [
       { "id": 27, "distance": 21.75 },
-      { "id": 29, "distance": 21.75 }
+      { "id": 29, "distance": 21.75 },
+      { "id": 82, "distance": 16.57 }
     ]
   },
   {
@@ -244,7 +245,8 @@
     "position": [492.5, 300.0],
     "neighbors": [
       { "id": 28, "distance": 21.75 },
-      { "id": 30, "distance": 21.75 }
+      { "id": 30, "distance": 21.75 },
+      { "id": 82, "distance": 12.42 }
     ]
   },
   {
@@ -667,33 +669,25 @@
     "position": [428.25, 344.25],
     "neighbors": [
       { "id": 78, "distance": 22.25 },
-      { "id": 79, "distance": 20.75 },
-      { "id": 81, "distance": 25.25 }
-    ]
-  },
-  {
-    "id": 81,
-    "position": [453.5, 344.0],
-    "neighbors": [
-      { "id": 80, "distance": 25.25 },
-      { "id": 82, "distance": 25.0 }
+      { "id": 79, "distance": 20.75 }
     ]
   },
   {
     "id": 82,
-    "position": [478.5, 343.5],
+    "position": [484.5, 309.5],
     "neighbors": [
-      { "id": 81, "distance": 25.0 },
-      { "id": 83, "distance": 13.48 }
+      { "id": 28, "distance": 16.57 },
+      { "id": 29, "distance": 12.42 },
+      { "id": 83, "distance": 20.0 }
     ]
   },
   {
     "id": 83,
-    "position": [488.75, 334.75],
+    "position": [484.75, 329.5],
     "neighbors": [
-      { "id": 82, "distance": 13.48 },
-      { "id": 913, "distance": 20.1 },
-      { "id": 914, "distance": 26.01 }
+      { "id": 82, "distance": 20.0 },
+      { "id": 913, "distance": 25.96 },
+      { "id": 914, "distance": 32.18 }
     ]
   },
   {
@@ -1786,7 +1780,7 @@
     "id": 913,
     "position": [507.5, 342.0],
     "neighbors": [
-      { "id": 83, "distance": 20.1 },
+      { "id": 83, "distance": 25.96 },
       { "id": 84, "distance": 23.09 },
       { "id": 914, "distance": 21.91 }
     ]
@@ -1795,7 +1789,7 @@
     "id": 914,
     "position": [495.0, 360.0],
     "neighbors": [
-      { "id": 83, "distance": 26.01 },
+      { "id": 83, "distance": 32.18 },
       { "id": 913, "distance": 21.91 }
     ]
   },
