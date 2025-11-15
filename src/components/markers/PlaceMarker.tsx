@@ -42,7 +42,9 @@ const PlaceMarker = (props: PlaceMarkerProps) => {
   }, [category]);
 
   // 건물 마커 클릭
-  const handleMarkerClick = useCallback(() => {}, []);
+  const handleMarkerClick = useCallback(() => {
+    // TODO: 장소 마커 클릭 시 동작 구현
+  }, []);
 
   return (
     <IconMarker
