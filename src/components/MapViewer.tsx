@@ -270,7 +270,7 @@ const MapViewer = () => {
           return (
             <PlaceMarker
               key={place.id}
-              position={[place.position[0], place.position[1]]}
+              position={[place.position[0] * 0.5, place.position[1] * 0.5]}
               category={place.category}
             />
           );
