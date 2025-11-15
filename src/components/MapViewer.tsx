@@ -22,6 +22,7 @@ import LocationSearchingRoundedIcon from "@mui/icons-material/LocationSearchingR
 import MyLocationRoundedIcon from "@mui/icons-material/MyLocationRounded";
 import { findNodeByBuildingId, geoToXY } from "../utils";
 import buildings from "../assets/buildings.json";
+import places from "../assets/places.json";
 import BuildingMarker from "./BuildingMarker";
 import CircularMarker from "./CircularMarker";
 import { useEffect } from "react";
@@ -29,6 +30,7 @@ import PointMarker from "./markers/PointMarker";
 import { useAtom, useAtomValue } from "jotai";
 import { isNavigationMenuOpenAtom, pathAtom, pointAtom } from "../states";
 import NavigationIcon from "@mui/icons-material/Navigation";
+import PlaceMarker from "./markers/PlaceMarker";
 
 const MapViewer = () => {
   // 지도 범위 설정
@@ -259,6 +261,17 @@ const MapViewer = () => {
                 building.marker_position[0] * 0.5,
                 building.marker_position[1] * 0.5,
               ]}
+            />
+          );
+        })}
+
+        {/* 시설물 마커 */}
+        {places.map((place) => {
+          return (
+            <PlaceMarker
+              key={place.id}
+              position={[place.position[0], place.position[1]]}
+              category={place.category}
             />
           );
         })}
