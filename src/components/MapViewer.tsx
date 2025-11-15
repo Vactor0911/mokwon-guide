@@ -25,7 +25,7 @@ import buildings from "../assets/buildings.json";
 import BuildingMarker from "./BuildingMarker";
 import CircularMarker from "./CircularMarker";
 import { useEffect } from "react";
-import PointMarker from "./PointMarker";
+import PointMarker from "./markers/PointMarker";
 import { useAtom, useAtomValue } from "jotai";
 import { isNavigationMenuOpenAtom, pathAtom, pointAtom } from "../states";
 import NavigationIcon from "@mui/icons-material/Navigation";
