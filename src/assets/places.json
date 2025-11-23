@@ -57,13 +57,13 @@
     "id": 10,
     "category": "카페",
     "facilityId": null,
-    "position": [794.0, 480.5]
+    "position": [788.0, 480.5]
   },
   {
     "id": 11,
     "category": "식당",
     "facilityId": null,
-    "position": [788.0, 480.5]
+    "position": [770.0, 480.5]
   },
   {
     "id": 12,
@@ -75,6 +75,6 @@
     "id": 13,
     "category": "식당",
     "facilityId": "N110B",
-    "position": [380.0, 394.0]
+    "position": [375.0, 394.0]
   }
 ]
