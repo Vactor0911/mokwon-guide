@@ -37,6 +37,7 @@ import {
 import NavigationIcon from "@mui/icons-material/Navigation";
 import PlaceMarker from "./markers/PlaceMarker";
 import MarkerSelector from "./MarkerSelector";
+import { useNavigate } from "react-router";
 
 const MapViewer = () => {
   // 지도 범위 설정
@@ -68,6 +69,7 @@ const MapViewer = () => {
   const path = useAtomValue(pathAtom);
 
   // 선택된 카테고리
+  const navigate = useNavigate();
   const selectedCategories = useAtomValue(selectedCategoriesAtom);
 
   // 지도 이벤트 리스너
@@ -288,6 +290,11 @@ const MapViewer = () => {
                 key={place.id}
                 position={[place.position[0] * 0.5, place.position[1] * 0.5]}
                 category={place.category}
+                onClick={() =>
+                  navigate(
+                    `/detail?building=${place.buildingId}&facility=${place.facilityId}`
+                  )
+                }
               />
             );
           })}
