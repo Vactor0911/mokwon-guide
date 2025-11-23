@@ -28,9 +28,15 @@ import CircularMarker from "./CircularMarker";
 import { useEffect } from "react";
 import PointMarker from "./markers/PointMarker";
 import { useAtom, useAtomValue } from "jotai";
-import { isNavigationMenuOpenAtom, pathAtom, pointAtom } from "../states";
+import {
+  isNavigationMenuOpenAtom,
+  pathAtom,
+  pointAtom,
+  selectedCategoriesAtom,
+} from "../states";
 import NavigationIcon from "@mui/icons-material/Navigation";
 import PlaceMarker from "./markers/PlaceMarker";
+import MarkerSelector from "./MarkerSelector";
 
 const MapViewer = () => {
   // 지도 범위 설정
@@ -60,6 +66,9 @@ const MapViewer = () => {
   );
   const point = useAtomValue(pointAtom);
   const path = useAtomValue(pathAtom);
+
+  // 선택된 카테고리
+  const selectedCategories = useAtomValue(selectedCategoriesAtom);
 
   // 지도 이벤트 리스너
   const MapEventListener = () => {
@@ -266,15 +275,22 @@ const MapViewer = () => {
         })}
 
         {/* 시설물 마커 */}
-        {places.map((place) => {
-          return (
-            <PlaceMarker
-              key={place.id}
-              position={[place.position[0] * 0.5, place.position[1] * 0.5]}
-              category={place.category}
-            />
-          );
-        })}
+        {places
+          .filter((place) => {
+            return selectedCategories.some(
+              (categoryObj) =>
+                categoryObj.category === place.category && categoryObj.selected
+            );
+          })
+          .map((place) => {
+            return (
+              <PlaceMarker
+                key={place.id}
+                position={[place.position[0] * 0.5, place.position[1] * 0.5]}
+                category={place.category}
+              />
+            );
+          })}
 
         {/* 내 위치 마커 */}
         {geoLocation && (
@@ -333,9 +349,12 @@ const MapViewer = () => {
             borderRadius: "50%",
             color: "white",
             position: "absolute",
-            top: "20px",
+            top: {
+              xs: "75px",
+              sm: "20px",
+            },
             right: "20px",
-            zIndex: 1000,
+            zIndex: 1002,
           }}
           onClick={handleNavigationButtonClick}
         >
@@ -370,6 +389,14 @@ const MapViewer = () => {
           <GpsOffRoundedIcon />
         )}
       </Button>
+
+      {/* 시설물 마커 선택기 */}
+      <MarkerSelector
+        position="absolute"
+        top={20}
+        zIndex={1000}
+        className="leaflet-control"
+      />
 
       {/* 경고창 */}
       <Snackbar
