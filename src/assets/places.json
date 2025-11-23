@@ -1,0 +1,93 @@
+[
+  {
+    "id": 1,
+    "category": "기타",
+    "buildingId": "N",
+    "facilityId": "N109",
+    "position": [419.0, 388.0]
+  },
+  {
+    "id": 2,
+    "category": "편의점",
+    "buildingId": "N",
+    "facilityId": "N113",
+    "position": [420.0, 403.4]
+  },
+  {
+    "id": 3,
+    "category": "편의점",
+    "buildingId": "C",
+    "facilityId": "C136",
+    "position": [1350.0, 721.0]
+  },
+  {
+    "id": 4,
+    "category": "편의점",
+    "buildingId": "B",
+    "facilityId": "B128",
+    "position": [1219.5, 495.5]
+  },
+  {
+    "id": 5,
+    "category": "편의점",
+    "buildingId": "M",
+    "facilityId": null,
+    "position": [802.5, 480.5]
+  },
+  {
+    "id": 6,
+    "category": "편의점",
+    "buildingId": "K",
+    "facilityId": "K118",
+    "position": [165.0, 339.0]
+  },
+  {
+    "id": 7,
+    "category": "카페",
+    "buildingId": "O1",
+    "facilityId": "O1-117",
+    "position": [1018.0, 695.5]
+  },
+  {
+    "id": 8,
+    "category": "카페",
+    "buildingId": "B",
+    "facilityId": "B128",
+    "position": [1219.5, 495.5]
+  },
+  {
+    "id": 9,
+    "category": "카페",
+    "buildingId": "N",
+    "facilityId": "N110-1B",
+    "position": [429.0, 394]
+  },
+  {
+    "id": 10,
+    "category": "카페",
+    "buildingId": "M",
+    "facilityId": null,
+    "position": [788.0, 480.5]
+  },
+  {
+    "id": 11,
+    "category": "식당",
+    "buildingId": "M",
+    "facilityId": null,
+    "position": [770.0, 480.5]
+  },
+  {
+    "id": 12,
+    "category": "식당",
+    "buildingId": "U",
+    "facilityId": "U110",
+    "position": [381.0, 184.5]
+  },
+  {
+    "id": 13,
+    "category": "식당",
+    "buildingId": "N",
+    "facilityId": "N110B",
+    "position": [375.0, 394.0]
+  }
+]

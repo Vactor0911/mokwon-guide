@@ -3,6 +3,7 @@ import { atomWithStorage } from "jotai/utils";
 import { encryptedStorage } from "../utils/security";
 import { FacilityInterface } from "../utils";
 import { getBuildingFloors } from "../utils";
+import places from "../assets/places.json";
 
 // 층수 상태
 export const buildingFloorsAtom = atom<Record<string, string[]>>(
@@ -61,3 +62,18 @@ export const pathAtom = atom<{
   path: number[][];
   distance: number;
 } | null>(null);
+
+// 카테고리
+const categories = Array.from(new Set(places.map((place) => place.category)));
+
+// 카테고리별 장소 개수로 내림차순 정렬
+categories.sort((a, b) => {
+  const countA = places.filter((place) => place.category === a).length;
+  const countB = places.filter((place) => place.category === b).length;
+  return countB - countA;
+});
+
+// 선택된 카테고리 상태
+export const selectedCategoriesAtom = atom<
+  { category: string; selected: boolean }[]
+>(categories.map((category) => ({ category, selected: false })));
