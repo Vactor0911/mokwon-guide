@@ -211,7 +211,14 @@ const BuildingDetailDrawer = () => {
 
           {/* 로딩 중 스켈레톤 */}
           {!isImageLoaded && !isImageError && (
-            <Skeleton variant="rectangular" width="100%" height={200} />
+            <Skeleton
+              variant="rectangular"
+              width="100%"
+              height="auto"
+              sx={{
+                aspectRatio: "1400/803",
+              }}
+            />
           )}
 
           {/* 더보기 라벨 */}
