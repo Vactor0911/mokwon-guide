@@ -5,6 +5,7 @@ import {
   Grid,
   IconButton,
   Stack,
+  Tooltip,
   Typography,
   useTheme,
 } from "@mui/material";
@@ -16,9 +17,13 @@ import { isDrawerOpenAtom } from "../states";
 import buildings from "../assets/buildings.json";
 import Footer from "./Footer";
 import DrawerNavLink from "./DrawerNavLink";
+import LightModeRoundedIcon from "@mui/icons-material/LightModeRounded";
+import DarkModeIcon from "@mui/icons-material/DarkMode";
+import useThemeMode from "../hooks/theme";
 
 const DrawerMenu = () => {
   const theme = useTheme();
+  const { themeMode, toggleThemeMode } = useThemeMode();
 
   const [isDrawerOpen, setIsDrawerOpen] = useAtom(isDrawerOpenAtom); // 드로어 열림 상태
   const [isAccordionOpen, setIsAccordionOpen] = useState(false);
@@ -67,13 +72,10 @@ const DrawerMenu = () => {
       >
         <Stack spacing={5}>
           {/* 최상단 버튼 컨테이너 */}
-          <Stack
-            direction="row"
-            justifyContent="space-between"
-            alignItems="center"
-          >
+          <Stack direction="row" alignItems="center" gap={0.5}>
             {/* 로고 */}
             <Typography
+              flex={1}
               variant="h4"
               sx={{
                 color: "white",
@@ -81,6 +83,24 @@ const DrawerMenu = () => {
             >
               목원 길잡이
             </Typography>
+
+            {/* 테마 모드 토글 버튼 */}
+            <IconButton
+              sx={{
+                color: "white",
+              }}
+              onClick={toggleThemeMode}
+            >
+              {themeMode === "light" ? (
+                <Tooltip title="다크 모드로 전환" arrow>
+                  <DarkModeIcon fontSize="large" />
+                </Tooltip>
+              ) : (
+                <Tooltip title="라이트 모드로 전환" arrow>
+                  <LightModeRoundedIcon fontSize="large" />
+                </Tooltip>
+              )}
+            </IconButton>
 
             {/* 닫기 버튼 */}
             <IconButton

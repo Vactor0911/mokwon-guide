@@ -393,7 +393,7 @@ const Detail = () => {
                 <TableRow
                   sx={{
                     "& th": {
-                      background: "#f5f2f3",
+                      background: theme.palette.info.main,
                     },
                   }}
                 >
@@ -436,13 +436,13 @@ const Detail = () => {
                         background:
                           selectedFacility?.id === facility.id
                             ? theme.palette.primary.main
-                            : "#fcfcfc",
+                            : theme.palette.action.disabled,
                       },
                       "&:hover": {
                         background:
                           selectedFacility?.id === facility.id
                             ? theme.palette.primary.main
-                            : "#f5f5f5",
+                            : theme.palette.action.hover,
                       },
                     }}
                     onClick={() => handleFacilityItemClick(facility)}

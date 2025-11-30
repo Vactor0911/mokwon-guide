@@ -240,7 +240,7 @@ const MapViewer = () => {
       ref={map}
       css={{
         height: "100%",
-        background: "#f0f0f0",
+        background: "transparent",
         "& .leaflet-control-container .leaflet-top.leaflet-left": {
           bottom: "22px",
           right: "6px",

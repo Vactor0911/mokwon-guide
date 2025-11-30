@@ -21,10 +21,12 @@ import { useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import RadioButtonCheckedRoundedIcon from "@mui/icons-material/RadioButtonCheckedRounded";
 import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
+import useThemeMode from "../hooks/theme";
 
 const BuildingDetailDrawer = () => {
   const navigate = useNavigate(); // 리다이렉트 네비게이션
   const theme = useTheme();
+  const { themeMode } = useThemeMode();
 
   const buildingDetailDrawerBuilding = useAtomValue(
     buildingDetailDrawerBuildingAtom
@@ -167,7 +169,7 @@ const BuildingDetailDrawer = () => {
 
         {/* 건물 대표 이미지 */}
         <Button
-          color="info"
+          color="inherit"
           onClick={handleBuildingImageClick}
           sx={{
             position: "relative",
@@ -197,13 +199,16 @@ const BuildingDetailDrawer = () => {
           {isImageError && (
             <Box
               width="100%"
-              height={200}
+              height="auto"
               display="flex"
               justifyContent="center"
               alignItems="center"
-              bgcolor="grey.300"
+              bgcolor={theme.palette.background.paper}
+              sx={{
+                aspectRatio: "1400/803",
+              }}
             >
-              <Typography variant="subtitle1" color="textSecondary">
+              <Typography variant="subtitle1" color="text.secondary">
                 이미지를 불러올 수 없습니다.
               </Typography>
             </Box>
@@ -246,9 +251,10 @@ const BuildingDetailDrawer = () => {
           {/* 출발 */}
           <Button
             variant="contained"
-            color="info"
+            color={themeMode === "light" ? "info" : "success"}
             startIcon={<RadioButtonCheckedRoundedIcon color="secondary" />}
             sx={{
+              background: "white",
               borderRadius: "50px",
             }}
             onClick={handleOriginButtonClick}
