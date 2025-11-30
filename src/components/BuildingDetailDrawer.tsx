@@ -169,7 +169,7 @@ const BuildingDetailDrawer = () => {
 
         {/* 건물 대표 이미지 */}
         <Button
-          color="info"
+          color="inherit"
           onClick={handleBuildingImageClick}
           sx={{
             position: "relative",
@@ -199,13 +199,16 @@ const BuildingDetailDrawer = () => {
           {isImageError && (
             <Box
               width="100%"
-              height={200}
+              height="auto"
               display="flex"
               justifyContent="center"
               alignItems="center"
-              bgcolor="grey.300"
+              bgcolor={theme.palette.background.paper}
+              sx={{
+                aspectRatio: "1400/803",
+              }}
             >
-              <Typography variant="subtitle1" color="textSecondary">
+              <Typography variant="subtitle1" color="text.secondary">
                 이미지를 불러올 수 없습니다.
               </Typography>
             </Box>
