@@ -35,6 +35,8 @@ const Header = () => {
     <>
       {/* 헤더 */}
       <AppBar
+        color="primary"
+        enableColorOnDark
         position="relative"
         sx={{
           zIndex: 1100,

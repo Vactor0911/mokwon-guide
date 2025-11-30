@@ -123,9 +123,9 @@ const HighLightedText = (props: HighlightedTextProps) => {
         </span>
       );
     }
-
+    
     return splittedText;
-  }, [hasKeyword, keyword, text]);
+  }, [hasKeyword, keyword, text, theme.palette.primary.main]);
 
   return (
     // 스크롤 루트 컨테이너

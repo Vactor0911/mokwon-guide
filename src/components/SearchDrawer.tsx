@@ -118,7 +118,7 @@ const SearchDrawer = () => {
             borderRadius="50px"
             flexGrow={1}
             sx={{
-              background: "white",
+              background: theme.palette.background.paper,
             }}
           >
             {/* 돋보기 아이콘 */}
@@ -153,10 +153,10 @@ const SearchDrawer = () => {
             {/* 검색어 초기화 버튼 */}
             <IconButton
               size="small"
-              sx={{
-                background: "#d9d9d9",
-              }}
               onClick={handleClearButtonClick}
+              sx={{
+                color: "text.secondary",
+              }}
             >
               <CloseRoundedIcon />
             </IconButton>
