@@ -2,7 +2,6 @@ import { Box, Button, ButtonProps, IconButton, Stack } from "@mui/material";
 import { FacilityInterface, getItemUrl } from "../utils";
 import ApartmentRoundedIcon from "@mui/icons-material/ApartmentRounded";
 import LocationOnRoundedIcon from "@mui/icons-material/LocationOnRounded";
-import { grey } from "@mui/material/colors";
 import HighLightedText from "./HighlightedText";
 import { useCallback, useState } from "react";
 import { useNavigate } from "react-router";
@@ -147,13 +146,13 @@ const FacilityItemButton = (props: FacilityItemButtonProps) => {
               text={item.name}
               keyword={keyword}
               variant="h6"
-              color="black"
+              color="text.primary"
             />
             <HighLightedText
               text={item.id}
               keyword={keyword}
               variant="subtitle2"
-              color={grey[500]}
+              color="text.secondary"
             />
           </Stack>
         </Stack>

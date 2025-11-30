@@ -72,6 +72,7 @@ const Footer = () => {
             padding: "4px",
             background: "#f2f484",
             borderRadius: "50px",
+            color: "#404040",
           }}
           onClick={() =>
             handleLinkButtonClick(
@@ -86,9 +87,7 @@ const Footer = () => {
           />
 
           {/* 구글폼 문구 */}
-          <Typography variant="h6" color="black">
-            소중한 의견을 남겨주세요!
-          </Typography>
+          <Typography variant="h6">소중한 의견을 남겨주세요!</Typography>
         </Button>
 
         {/* 외부 링크 컨테이너 */}

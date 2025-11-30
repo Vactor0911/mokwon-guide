@@ -118,7 +118,7 @@ const NavigationMenu = () => {
       unmountOnExit
     >
       <Stack
-        bgcolor="white"
+        bgcolor="inherit"
         padding={1}
         borderRadius={4}
         border={`3px solid ${theme.palette.primary.main}`}

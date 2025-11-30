@@ -21,10 +21,12 @@ import { useCallback, useEffect, useState } from "react";
 import { useNavigate } from "react-router";
 import RadioButtonCheckedRoundedIcon from "@mui/icons-material/RadioButtonCheckedRounded";
 import LocationOnOutlinedIcon from "@mui/icons-material/LocationOnOutlined";
+import useThemeMode from "../hooks/theme";
 
 const BuildingDetailDrawer = () => {
   const navigate = useNavigate(); // 리다이렉트 네비게이션
   const theme = useTheme();
+  const { themeMode } = useThemeMode();
 
   const buildingDetailDrawerBuilding = useAtomValue(
     buildingDetailDrawerBuildingAtom
@@ -246,9 +248,10 @@ const BuildingDetailDrawer = () => {
           {/* 출발 */}
           <Button
             variant="contained"
-            color="info"
+            color={themeMode === "light" ? "info" : "success"}
             startIcon={<RadioButtonCheckedRoundedIcon color="secondary" />}
             sx={{
+              background: "white",
               borderRadius: "50px",
             }}
             onClick={handleOriginButtonClick}

@@ -22,8 +22,8 @@ const App = () => {
 
   return (
     <>
-      <CssBaseline />
-      <ThemeProvider theme={theme}>
+      <ThemeProvider theme={theme} defaultMode="system">
+        <CssBaseline />
         <BrowserRouter basename="/mokwon-guide/">
           <Header />
           <Stack minHeight="calc(100vh - 64px)">
