@@ -8,8 +8,13 @@ import {
   Typography,
   useTheme,
 } from "@mui/material";
-import { useAtom } from "jotai";
-import { isNavigationMenuOpenAtom, pathAtom, pointAtom } from "../states";
+import { useAtom, useAtomValue } from "jotai";
+import {
+  geoLocationAtom,
+  isNavigationMenuOpenAtom,
+  pathAtom,
+  pointAtom,
+} from "../states";
 import SwapVertRoundedIcon from "@mui/icons-material/SwapVertRounded";
 import CloseRoundedIcon from "@mui/icons-material/CloseRounded";
 import TripOriginRoundedIcon from "@mui/icons-material/TripOriginRounded";
@@ -28,10 +33,12 @@ const NavigationMenu = () => {
   const [isNavigationMenuOpen, setIsNavigationMenuOpen] = useAtom(
     isNavigationMenuOpenAtom
   );
+  const geoLocation = useAtomValue(geoLocationAtom);
   const [point, setPoint] = useAtom(pointAtom);
-  const options = BuildingData.map(
-    (building) => `${building.id} ${building.name}`
-  );
+  const options = [
+    "현위치",
+    ...BuildingData.map((building) => `${building.id} ${building.name}`),
+  ];
   const [path, setPath] = useAtom(pathAtom);
 
   // 지점 교체 버튼 클릭
@@ -76,39 +83,48 @@ const NavigationMenu = () => {
 
   // 경로 계산
   useEffect(() => {
-    // 출발지 혹은 도착지가 비어있다면 종료
-    if (!point.origin || !point.destination) {
+    // 출발지 혹은 도착지가 부적절하다면 종료
+    if (
+      !point.origin ||
+      !point.destination ||
+      point.origin === point.destination
+    ) {
       setPath(null);
       return;
     }
 
     // 출발지 및 도착지 정보 추출
-    const originXY = findNodeByBuildingId(point.origin.split(" ")[0])?.position;
-    const destinationNodeId = findNodeByBuildingId(
-      point.destination.split(" ")[0]
-    )?.id;
+    const originXY =
+      point.origin === "현위치"
+        ? geoLocation
+        : findNodeByBuildingId(point.origin.split(" ")[0])?.position;
 
-    if (!originXY || !destinationNodeId) {
+    const destinationXY =
+      point.destination === "현위치"
+        ? geoLocation
+        : findNodeByBuildingId(point.destination.split(" ")[0])?.position;
+
+    if (!originXY || !destinationXY) {
       setPath(null);
       return;
     }
 
     // 경로 계산
-    const result = findShortestPath(originXY, destinationNodeId);
+    const result = findShortestPath(originXY, destinationXY);
 
-    if (result) {
-      const newPath = {
-        path: result.positions,
-        distance: Math.round(result.distance * 1.28),
-      };
-      setPath(newPath);
-    } else {
-      setPath({
-        path: [],
-        distance: -1,
-      });
+    // 경로가 없거나 거리가 너무 길면 null 설정
+    if (!result || result.distance * 1.28 > 2000) {
+      setPath(null);
+      return;
     }
-  }, [point.origin, point.destination, setPath]);
+
+    // 경로 설정
+    const newPath = {
+      path: result.positions,
+      distance: Math.round(result.distance * 1.28),
+    };
+    setPath(newPath);
+  }, [point.origin, point.destination, setPath, geoLocation]);
 
   return (
     <Slide

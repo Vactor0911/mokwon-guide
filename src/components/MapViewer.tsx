@@ -29,6 +29,7 @@ import { useEffect } from "react";
 import PointMarker from "./markers/PointMarker";
 import { useAtom, useAtomValue } from "jotai";
 import {
+  geoLocationAtom,
   isNavigationMenuOpenAtom,
   pathAtom,
   pointAtom,
@@ -59,7 +60,7 @@ const MapViewer = () => {
   const [isLocationFollowing, setIsLocationFollowing] = useState(false); // 실시간 위치 따라오기 상태
   const isLocationFollowingRef = useRef(isLocationFollowing);
   const watchIdRef = useRef<number | null>(null); // 위치 추적 ID
-  const [geoLocation, setGeoLocation] = useState<number[] | null>(null); // 내 위치 좌표
+  const [geoLocation, setGeoLocation] = useAtom(geoLocationAtom); // 내 위치 좌표
   const [isAlertOpen, setIsAlertOpen] = useState(false); // 경고창 열림 상태
   const [alertMessage, setAlertMessage] = useState(""); // 경고창 메시지
   const [isNavigationMenuOpen, setIsNavigationMenuOpen] = useAtom(
@@ -168,7 +169,7 @@ const MapViewer = () => {
     );
 
     watchIdRef.current = id;
-  }, [handleAlertOpen, map]);
+  }, [handleAlertOpen, setGeoLocation]);
 
   // 위치 추적 중지
   const stopLocationTracking = useCallback(() => {
@@ -179,7 +180,7 @@ const MapViewer = () => {
     setIsLocationTracking(false);
     setIsLocationFollowing(false);
     setGeoLocation(null);
-  }, []);
+  }, [setGeoLocation]);
 
   // 내 위치 따라가기 버튼 클릭
   const handleMyLocationClick = useCallback(
@@ -324,7 +325,10 @@ const MapViewer = () => {
         {point.origin && (
           <PointMarker
             position={
-              findNodeByBuildingId(point.origin.split(" ")[0])?.position || []
+              point.origin === "현위치"
+                ? (geoLocation as number[])
+                : findNodeByBuildingId(point.origin.split(" ")[0])?.position ||
+                  []
             }
             type="origin"
           />
@@ -334,8 +338,10 @@ const MapViewer = () => {
         {point.destination && (
           <PointMarker
             position={
-              findNodeByBuildingId(point.destination.split(" ")[0])?.position ||
-              []
+              point.destination === "현위치"
+                ? (geoLocation as number[])
+                : findNodeByBuildingId(point.destination.split(" ")[0])
+                    ?.position || []
             }
             type="destination"
           />

@@ -29,7 +29,7 @@ const PointMarker = (props: PointMarkerProps) => {
   const handleMarkerClick = useCallback(() => {
     let buildingData;
     if (type === "origin") {
-      if (!point.origin || point.origin === "내 위치") {
+      if (!point.origin || point.origin === "현위치") {
         return;
       }
 
@@ -40,7 +40,7 @@ const PointMarker = (props: PointMarkerProps) => {
         name: origin.slice(1).join(" "),
       };
     } else {
-      if (!point.destination) {
+      if (!point.destination || point.destination === "현위치") {
         return;
       }
 
