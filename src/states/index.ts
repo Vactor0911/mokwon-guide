@@ -77,3 +77,5 @@ categories.sort((a, b) => {
 export const selectedCategoriesAtom = atom<
   { category: string; selected: boolean }[]
 >(categories.map((category) => ({ category, selected: false })));
+
+export const geoLocationAtom = atom<number[] | null>(null); // 내 위치 좌표
