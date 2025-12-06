@@ -245,7 +245,7 @@ const NavigationMenu = () => {
               <Stack direction="row" alignItems="center" gap={0.5}>
                 <DirectionsWalkRoundedIcon />
                 <Typography variant="subtitle1" fontWeight="bold">
-                  {`${calcTravelTime(path.distance, 3)}분`}
+                  {`${calcTravelTime(path.distance, 3.5)}분`}
                 </Typography>
               </Stack>
 
