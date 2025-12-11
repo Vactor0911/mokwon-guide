@@ -1,10 +1,12 @@
 # 🗺️ 목원 길잡이
 
 <div align="center">
-    <div style="display: flex; flex-direction: column;">
-        <img src="https://github.com/user-attachments/assets/173bd313-8d4d-489b-9578-613e153ca637" alt="목원길잡이" style="height: 400px;" />
-        <img src="https://github.com/user-attachments/assets/f7ecf483-b874-4b21-9c89-4935e1e0cc4d" alt="목원길잡이" style="height: 400px;" />
-        <img src="https://github.com/user-attachments/assets/1c2d9410-5c77-4316-a3bc-c336357d467f" alt="목원길잡이" style="height: 400px;" />
+    <div align="center">
+        <img src="https://github.com/user-attachments/assets/0e20ade9-3c08-44eb-bb07-b3869177a02e" alt="목원길잡이" height="400px" />
+        <img width="40px" />
+        <img src="https://github.com/user-attachments/assets/4ddd60cb-3b62-47e5-a2e7-6c72d2072650" alt="목원길잡이" height="400px" />
+        <img width="40px" />
+        <img src="https://github.com/user-attachments/assets/0e37280c-a842-485e-adac-cd0bf149be20" alt="목원길잡이" height="400px" />
     </div>
     <h3>원하는 강의실부터 편의시설까지, 클릭 한 번으로 찾는 스마트한 캠퍼스 지도</h3>
     <p>이제 더 이상 헤매지 말고, 편하게 찾아가세요!</p>
@@ -49,7 +51,7 @@
 - **시설물 검색** : 원하는 건물과 시설물을 키워드로 검색
 - **층별 배치도** : 건물별 각 층의 배치도 확인
 - **현재 위치 확인** : 사용자의 현재 위치를 교내 지도에 표시
-- **길찾기** : 특정 건물에서 다른 건물로 가는 경로와 거리, 이동 시간 확인
+- **길찾기** : 현재 위치에서 특정 건물까지, 건물에서 다른 건물로 가는 최단 경로와 거리 및 이동 시간 확인
 
 <br />
 
@@ -57,7 +59,6 @@
 <table style="text-align: center">
     <tr>
         <th style="text-align: center;">[ PM ]<br />팀장</th>
-        <th style="text-align: center;">팀원</th>
         <th style="text-align: center;">팀원</th>
     <tr>
     <tr>
@@ -67,9 +68,6 @@
         <td>
             <a href="https://github.com/L-Hits" target="_blank"><img src="https://avatars.githubusercontent.com/u/130430768?v=4" alt="L-Hits" width="100"></a>
         </td>
-        <td>
-            <a href="https://github.com/costar011" target="_blank"><img src="https://avatars.githubusercontent.com/u/51503128?v=4" alt="costar011" width="100"></a>
-        </td>
     </tr>
     <tr>
         <td style="text-align: center;">
@@ -77,9 +75,6 @@
         </td>
         <td style="text-align: center;">
             <a href="https://github.com/L-Hits" target="_blank">L-Hits</a>
-        </td>
-        <td style="text-align: center;">
-            <a href="https://github.com/costar011" target="_blank">costar011</a>
         </td>
     </tr>
 </table>
