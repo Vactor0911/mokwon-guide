@@ -21,21 +21,19 @@ const App = () => {
   }, []);
 
   return (
-    <>
-      <ThemeProvider theme={theme} defaultMode="system">
-        <CssBaseline />
-        <BrowserRouter basename="/mokwon-guide/">
-          <Header />
-          <Stack minHeight="calc(100vh - 64px)">
-            <Routes>
-              <Route path="/" element={<Main />} />
-              <Route path="/detail/*" element={<Detail />} />
-              <Route path="*" element={<Navigate to={"/"} />} />
-            </Routes>
-          </Stack>
-        </BrowserRouter>
-      </ThemeProvider>
-    </>
+    <ThemeProvider theme={theme} defaultMode="system">
+      <CssBaseline />
+      <BrowserRouter basename="/mokwon-guide/">
+        <Header />
+        <Stack minHeight="calc(100vh - 64px)">
+          <Routes>
+            <Route path="/" element={<Main />} />
+            <Route path="/detail/*" element={<Detail />} />
+            <Route path="*" element={<Navigate to={"/"} />} />
+          </Routes>
+        </Stack>
+      </BrowserRouter>
+    </ThemeProvider>
   );
 };
 
