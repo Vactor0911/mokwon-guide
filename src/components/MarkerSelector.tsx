@@ -85,10 +85,17 @@ const MarkerSelector = (props: StackProps) => {
             >
               <MarkerIcon
                 sx={{
-                  color: getMarkerColor(categoryObj.category),
+                  color: categoryObj.selected
+                    ? theme.palette.primary.main
+                    : getMarkerColor(categoryObj.category),
                 }}
               />
-              <Typography variant="body2" fontWeight={500} whiteSpace="nowrap">
+              <Typography
+                variant="body2"
+                fontWeight={500}
+                whiteSpace="nowrap"
+                color={categoryObj.selected ? "primary" : "inherit"}
+              >
                 {categoryObj.category}
               </Typography>
             </Paper>
