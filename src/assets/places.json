@@ -89,5 +89,12 @@
     "buildingId": "N",
     "facilityId": "N110B",
     "position": [375.0, 394.0]
+  },
+  {
+    "id": 14,
+    "category": "카페",
+    "buildingId": "U",
+    "facilityId": "U109",
+    "position": [341, 171]
   }
 ]
