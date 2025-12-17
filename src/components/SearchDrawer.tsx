@@ -122,17 +122,13 @@ const SearchDrawer = () => {
             }}
           >
             {/* 돋보기 아이콘 */}
-            <Box
-              borderRadius="50%"
-              display="flex"
-              p={0.1}
-              color="white"
+            <SearchRoundedIcon
               sx={{
-                background: theme.palette.primary.main,
+                ml: 1,
+                fontSize: "1.75em",
+                color: theme.palette.grey[400],
               }}
-            >
-              <SearchRoundedIcon fontSize="large" />
-            </Box>
+            />
 
             {/* 검색란 */}
             <InputBase
